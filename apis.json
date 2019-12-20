@@ -1,0 +1,72 @@
+{
+    "name": "VMWare",
+    "description": "<p>At VMware, we believe that software has the power to unlock new opportunities for people and our planet. We look beyond the barriers of compromise to engineer new ways to make technologies work together seamlessly. Our software forms a digital foundation that powers the apps, services and experiences that are transforming the world.<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/VMware_logo.png",
+    "tags": [
+        "cloud",
+        "compute",
+        "have api",
+        "networks",
+        "relative data",
+        "service api"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/vmware\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "vRealize Operations 6",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/VMware_logo.png",
+            "humanURL": "http:\/\/vmware.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/vrealize-operations-6-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/vrealize-operations-6.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "https:\/\/blogs.vmware.com\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/blogs.vmware.com\/all-vmware-blogs\/wprss"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/VMware"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/VMware"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/vmware.com"
+        },
+        {
+            "type": "Curated Source",
+            "url": "https:\/\/blogs.vmware.com\/vcloud\/2015\/12\/vmware-vcloud-air-network-compliance-spotlight-hipaa.html"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/www.vmware.com"
+        },
+        {
+            "type": "Branding",
+            "url": "https:\/\/www.vmware.com\/brand\/our-brand.html"
+        }
+    ]
+}
