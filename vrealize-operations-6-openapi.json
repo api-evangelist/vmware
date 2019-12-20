@@ -1,0 +1,1546 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "vRealize Operations 6",
+        "description": "TODO: Add Description",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsexample.com\/suite-api\/api"
+    ],
+    "paths": {
+        "\/api\/auth\/token\/acquire": {
+            "post": {
+                "summary": "RUN FIRST - Get vR Ops Auth Token",
+                "description": "TODO: Add Description",
+                "operationId": "ApiAuthTokenAcquirePost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/alerts\/query": {
+            "post": {
+                "summary": "Query Alerts",
+                "description": "TODO: Add Description",
+                "operationId": "ApiAlertsQueryPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/alerts\/7c2a4f9a-fd04-4300-b85c-cda555782e86": {
+            "get": {
+                "summary": "Get Alert",
+                "description": "TODO: Add Description",
+                "operationId": "ApiAlerts7c2a4f9aFd044300B85cCda555782e86Get",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/alertdefinitions\/{alertDefinitionId}": {
+            "get": {
+                "summary": "Get Alert Definition",
+                "description": "TODO: Add Description",
+                "operationId": "ApiAlertdefinitionsByAlertDefinitionIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "alertDefinitionId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/symptoms": {
+            "get": {
+                "summary": "Get Impacted Resource Symptoms",
+                "description": "TODO: Add Description",
+                "operationId": "SymptomsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "resourceId",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/alerts\/contributingsymptoms": {
+            "get": {
+                "summary": "Get Alert Contributing Symptoms",
+                "description": "Added in vROps 6.7",
+                "operationId": "AlertsContributingsymptomsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/resources": {
+            "get": {
+                "summary": "Get Resources by Query and Save to var",
+                "description": "Test script will extract resource IDs from the response and load into the env as \"resourceIds\"\nYou can then use this within the body of a request",
+                "operationId": "ResourcesGet5",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "resourceKind",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/internal\/agent\/upgrade": {
+            "post": {
+                "summary": "Update EP Ops Agent",
+                "description": "TODO: Add Description",
+                "operationId": "InternalAgentUpgradePost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "X",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/adapterkinds\/EP Ops Adapter\/resourcekinds\/EP Ops Agent\/resources": {
+            "get": {
+                "summary": "Get Agent Status on Upgrade",
+                "description": "Need agent ID (token)",
+                "operationId": "AdapterkindsEPOpsAdapterResourcekindsEPOpsAgentResourcesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "identifiers[agentID]",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/resources\/{agentResourceId}\/relationships": {
+            "get": {
+                "summary": "Get OS Resource ID and Save",
+                "description": "TODO: Add Description",
+                "operationId": "ApiResourcesRelationshipsByAgentResourceIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "agentResourceId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/resources\/adapters\/{adapterInstanceId}": {
+            "post": {
+                "summary": "Create an EPOPS Unix MultiProcess Monitor Resource",
+                "description": "TODO: Add Description",
+                "operationId": "ApiResourcesAdaptersByAdapterInstanceIdPost3",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    },
+                    {
+                        "name": "adapterInstanceId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/resources\/{osResourceId}\/relationships\/children": {
+            "post": {
+                "summary": "Add Child Resource to a Resource",
+                "description": "This operation adds a child resource to a resource.  \n\nAPI documentation states that POST is additive while PUT is destructive (i.e. overwites existing relationships).\n\nJSON body includes an array of child objects to add.  \n\nThe call does not provide a lot of detail for failure, but it seems\nthat if you have an invalid UUID for a child or the child is already related\nthen it will fail with 400.\n\n204 is a successful call.",
+                "operationId": "ApiResourcesRelationshipsChildrenByOsResourceIdPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    },
+                    {
+                        "name": "osResourceId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/resources\/{epopsMonitorResourceId}\/monitoringstate\/start": {
+            "put": {
+                "summary": "Start Monitoring a Resource",
+                "description": "TODO: Add Description",
+                "operationId": "ApiResourcesMonitoringstateStartByEpopsMonitorResourceIdPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "epopsMonitorResourceId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/internal\/resources\/groups": {
+            "get": {
+                "summary": "Get Custom Groups",
+                "description": "TODO: Add Description",
+                "operationId": "InternalResourcesGroupsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "X",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create Custom Group",
+                "description": "TODO: Add Description",
+                "operationId": "InternalResourcesGroupsPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "X",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/reportdefinitions": {
+            "get": {
+                "summary": "Get Report Definitions",
+                "description": "Gets all - to get a single report ID, just add \/<report def id>\n",
+                "operationId": "ApiReportdefinitionsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/reports": {
+            "get": {
+                "summary": "Get Generated Reports",
+                "description": "You can check status of report runs this way.\nTo get a specific generated report add \/<report id> \n",
+                "operationId": "ApiReportsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Generate a report",
+                "description": "You will need to update several items in the body such as:\n  - ID of resource you wish to run this report on\n  - ID of the report you wish to run\n  - Traversal Spec for the report (you can get this from the API query\n\"Get Report Definitions\", the travesal spec must match the resource type.\n",
+                "operationId": "ApiReportsPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/reports\/be9097f7-0c8c-4a33-a855-faafb6f03a1d\/download": {
+            "get": {
+                "summary": "Download Report",
+                "description": "TODO: Add Description",
+                "operationId": "ReportsBe9097f70c8c4a33A855Faafb6f03a1dDownloadGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/adapterkinds": {
+            "get": {
+                "summary": "Get Adapter Types (Kinds)",
+                "description": "TODO: Add Description",
+                "operationId": "ApiAdapterkindsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/adapters": {
+            "get": {
+                "summary": "Get Adapter Instances",
+                "description": "TODO: Add Description",
+                "operationId": "ApiAdaptersGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create a Python Adapter Instance",
+                "description": "Be sure to check values in the JSON body for credentials.\nAlso note you will need to start the adapter using \"Star an adapter instance\" \nafter creation using the UUID from the response.\n\nIf you aren't using a CA, the certificate will have to be added via the UI\nI do not know of a way to do this via the REST API",
+                "operationId": "ApiAdaptersPost2",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/adapters": {
+            "get": {
+                "summary": "Get An Adapter Instance(s) of Type (Kind)",
+                "description": "TODO: Add Description",
+                "operationId": "AdaptersGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "adapterKindKey",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/adapters\/617d20fd-536a-4bea-9f5e-4c01dd845ddc\/monitoringstate\/start": {
+            "put": {
+                "summary": "Start an adapter instance",
+                "description": "Replace the UUID with the ID of the adapter instance you want to start\nThis can be retrieved using Get Adapter Instances",
+                "operationId": "ApiAdapters617d20fd536a4bea9f5e4c01dd845ddcMonitoringstateStartPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/resources\/query": {
+            "post": {
+                "summary": "Get Resources",
+                "description": "TODO: Add Description",
+                "operationId": "ApiResourcesQueryPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/resources\/{resourceId}\/properties": {
+            "get": {
+                "summary": "Get Properties of a Resource",
+                "description": "TODO: Add Description",
+                "operationId": "ApiResourcesPropertiesByResourceIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "resourceId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Add or Update Properties of a Resource",
+                "description": "TODO: Add Description",
+                "operationId": "ApiResourcesPropertiesByResourceIdPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/resources\/{resourceId}\/statkeys": {
+            "get": {
+                "summary": "Get StatKeys for Resource and Load var",
+                "description": "Grabs CPU statKeys for a VM resource using the {{resourceId}} env var.\nPopulates two env vars:\ncpuStatKeys for GET stats for small requests (1 to ~10 VMs)\ncpuStatKeysJSON for POST stats for large requests (use in conjunction with {{resourceIds}}",
+                "operationId": "ApiResourcesStatkeysByResourceIdGet2",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/resources\/7a3a3bfc-1664-4e1d-bfe1-0e42db1d3c0e\/stats": {
+            "get": {
+                "summary": "Get Stats from Resource (Not query)",
+                "description": "I have not tested but you may be able to use the \"resourceIds\" input paramter to specify multiple resources (of the same kind, obviously).  The example here shows a daily avg for 30 days.  Timestamps are milli from epoch.",
+                "operationId": "Resources7a3a3bfc16644e1dBfe10e42db1d3c0eStatsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "begin",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "end",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "intervalQuantifier",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "intervalType",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "rollUpType",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "statKey",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/resources\/stats\/topn": {
+            "get": {
+                "summary": "Get TopN Stats",
+                "description": "TODO: Add Description",
+                "operationId": "ResourcesStatsTopnGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "begin",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "intervalType",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "intervalQuantifier",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "rollUpType",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "statKey",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/resources\/{resourceId}\/stats": {
+            "post": {
+                "summary": "Add or Update Stats of a Resource",
+                "description": "TODO: Add Description",
+                "operationId": "ApiResourcesStatsByResourceIdPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/symptoms\/query": {
+            "post": {
+                "summary": "Query Symptoms",
+                "description": "TODO: Add Description",
+                "operationId": "ApiSymptomsQueryPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/auth\/sources": {
+            "get": {
+                "summary": "Get Auth Sources",
+                "description": "TODO: Add Description",
+                "operationId": "ApiAuthSourcesGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/api\/auth\/users": {
+            "post": {
+                "summary": "Create Local User",
+                "description": "TODO: Add Description",
+                "operationId": "ApiAuthUsersPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/auth\/users": {
+            "get": {
+                "summary": "Get Users",
+                "description": "May also include query such as id, roleName and username",
+                "operationId": "AuthUsersGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": ""
+                    },
+                    {
+                        "name": "Content",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Run first  get vr ops auth tokenrequest": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "authSource": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "password": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "QueryAlertsrequest": {
+                "type": "object",
+                "properties": {
+                    "activeOnly": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "alertCriticality": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "alertImpact": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceQuery": {
+                "type": "object",
+                "properties": {
+                    "resourceKind": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "UpdateEpOpsAgentrequest": {
+                "type": "object",
+                "properties": {
+                    "agentId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fileLocation": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "agentBundleFile": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CreateAnEpopsIcmpMonitorResourcerequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "creationTime": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceKey": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adapterKindKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceKindKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceIdentifiers": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceIdentifier": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "IdentifierType": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "dataType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "isPartOfUniqueness": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CreateAnEpopsIcmpMonitorResource": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceStatusStates": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "dtEnabled": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "badges": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "relatedResources": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "links": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "identifier": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Link": {
+                "type": "object",
+                "properties": {
+                    "href": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "rel": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CreateAnEpopsWindowsServiceMonitorResourcerequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "creationTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "identifier": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CreateAnEpopsUnixMultiprocessMonitorResourcerequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "creationTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "identifier": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AddChildResourceToAResourcerequest": {
+                "type": "object",
+                "properties": {
+                    "uuids": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CreateCustomGrouprequest": {
+                "type": "object"
+            },
+            "ResourceKey23": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adapterKindKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceKindKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceIdentifiers": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "MembershipDefinition": {
+                "type": "object",
+                "properties": {
+                    "includedResources": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "excludedResources": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "rules": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Rule": {
+                "type": "object",
+                "properties": {
+                    "attributeRules": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceNameRules": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "relationshipRules": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "others": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "otherAttributes": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceKindKey": {
+                "type": "object",
+                "properties": {
+                    "resourceKind": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adapterKind": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceNameRule": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "compareOperator": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "GenerateAReportrequest": {
+                "type": "object",
+                "properties": {
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "reportDefinitionId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "others": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "otherAttributes": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "TraversalSpec": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "rootAdapterKindKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "rootResourceKindKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adapterInstanceAssociation": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CreateAVcenterAdapterInstancerequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "collectorId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adapterKindKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceIdentifiers": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "others": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "otherAttributes": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceIdentifier31": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "value": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Credential": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adapterKindKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "credentialKindKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fields": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "others": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "otherAttributes": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Field": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "value": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CreateAPythonAdapterInstancerequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "collectorId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adapterKindKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceIdentifiers": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "others": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "otherAttributes": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "GetResourcesrequest": {
+                "type": "object",
+                "properties": {
+                    "resourceIds": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AddOrUpdatePropertiesOfAResourcerequest": {
+                "type": "object",
+                "properties": {
+                    "property": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "PropertyContent": {
+                "type": "object",
+                "properties": {
+                    "statKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "timestamps": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "values": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "others": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "otherAttributes": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "QuerySymptomsrequest": {
+                "type": "object",
+                "properties": {
+                    "compositeOperator": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "symptomId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "includeChildrenResources": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "activeOnly": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "alarmType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "alarmCriticality": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "symptomDefinitionId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "statKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "others": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "otherAttributes": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceQuery42": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "regex": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adapterKind": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceKind": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "collectorName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "collectorId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "maintenanceScheduleId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adapterInstanceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "recentlyAdded": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceState": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceStatus": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceHealth": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "parentId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "credentialId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "propertyName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "propertyValue": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "statKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "statKeyLowerBound": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "statKeyUpperBound": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "statKeyInclusive": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "others": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "otherAttributes": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CreateLocalUserrequest": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "firstName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lastName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "password": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "enabled": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "role": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "RolePermission": {
+                "type": "object",
+                "properties": {
+                    "roleName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "allowAllObjects": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            }
+        }
+    }
+}
