@@ -1,0 +1,1524 @@
+{
+    "id": "0c7428e5f1f9838586ec5047f77af54b",
+    "name": "vRealize Operations 6",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "ca7181f81d4d6fa62e8ac27b3b3d77c8",
+            "name": "RUN FIRST - Get vR Ops Auth Token",
+            "url": "httpsexample.com\/suite-api\/api\/api\/auth\/token\/acquire",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "90708226317caa6accddc97374d90eb6",
+            "name": "Query Alerts",
+            "url": "httpsexample.com\/suite-api\/api\/api\/alerts\/query",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "0d300cf0a25b44500ce3246e0c620aaa",
+            "name": "Get Alert",
+            "url": "httpsexample.com\/suite-api\/api\/api\/alerts\/7c2a4f9a-fd04-4300-b85c-cda555782e86",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "22539e9f066fdb96b93f24ecfdaebae3",
+            "name": "Get Alert Definition",
+            "url": "httpsexample.com\/suite-api\/api\/api\/alertdefinitions\/{alertDefinitionId}",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "alertDefinitionId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "4c11b26d2c64e4747375561caf8785a0",
+            "name": "Get Impacted Resource Symptoms",
+            "url": "httpsexample.com\/suite-api\/api\/symptoms",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "resourceId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "ff8c2ab9b24b0af20e605de0d578741a",
+            "name": "Get Alert Contributing Symptoms",
+            "url": "httpsexample.com\/suite-api\/api\/alerts\/contributingsymptoms",
+            "description": "Added in vROps 6.7",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "1731eec775c179cab92f3b42d3cf13dc",
+            "name": "Get Resources by Query and Save to var",
+            "url": "httpsexample.com\/suite-api\/api\/resources",
+            "description": "Test script will extract resource IDs from the response and load into the env as \"resourceIds\"\nYou can then use this within the body of a request",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "resourceKind",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "0e5215912bb446db1663fab5b1e8e870",
+            "name": "Update EP Ops Agent",
+            "url": "httpsexample.com\/suite-api\/api\/internal\/agent\/upgrade",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "X",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "aebd2ee7796ea879d6eeea135617b226",
+            "name": "Get Agent Status on Upgrade",
+            "url": "httpsexample.com\/suite-api\/api\/adapterkinds\/EP Ops Adapter\/resourcekinds\/EP Ops Agent\/resources",
+            "description": "Need agent ID (token)",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "identifiers[agentID]",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "f8f5d31f37f8f7a4438c449ba168522f",
+            "name": "Get OS Resource ID and Save",
+            "url": "httpsexample.com\/suite-api\/api\/api\/resources\/{agentResourceId}\/relationships",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "agentResourceId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "8801e76d47070b15a0f1d6c3ac5879f1",
+            "name": "Create an EPOPS Unix MultiProcess Monitor Resource",
+            "url": "httpsexample.com\/suite-api\/api\/api\/resources\/adapters\/{adapterInstanceId}",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "adapterInstanceId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "95a6504f287794ca2cc9ed8aa9a444f3",
+            "name": "Add Child Resource to a Resource",
+            "url": "httpsexample.com\/suite-api\/api\/api\/resources\/{osResourceId}\/relationships\/children",
+            "description": "This operation adds a child resource to a resource.  \n\nAPI documentation states that POST is additive while PUT is destructive (i.e. overwites existing relationships).\n\nJSON body includes an array of child objects to add.  \n\nThe call does not provide a lot of detail for failure, but it seems\nthat if you have an invalid UUID for a child or the child is already related\nthen it will fail with 400.\n\n204 is a successful call.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "osResourceId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "89b8f44ce5b46f8a2627148cf86747e3",
+            "name": "Start Monitoring a Resource",
+            "url": "httpsexample.com\/suite-api\/api\/api\/resources\/{epopsMonitorResourceId}\/monitoringstate\/start",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "epopsMonitorResourceId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "aeb62ede3b9e99d6b9888e68b9f54bdb",
+            "name": "Get Custom Groups",
+            "url": "httpsexample.com\/suite-api\/api\/internal\/resources\/groups",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "X",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "0ac581bc019115b4b6c0f5ac3a80b083",
+            "name": "Create Custom Group",
+            "url": "httpsexample.com\/suite-api\/api\/internal\/resources\/groups",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "X",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "1f6cdc2c38c1895652437de56e1ad44f",
+            "name": "Get Report Definitions",
+            "url": "httpsexample.com\/suite-api\/api\/api\/reportdefinitions",
+            "description": "Gets all - to get a single report ID, just add \/<report def id>\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "c37b614cb707ca40ee9ce5dff8bc558b",
+            "name": "Get Generated Reports",
+            "url": "httpsexample.com\/suite-api\/api\/api\/reports",
+            "description": "You can check status of report runs this way.\nTo get a specific generated report add \/<report id> \n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "f46c3aec5a6787367ea7435c05a004cb",
+            "name": "Generate a report",
+            "url": "httpsexample.com\/suite-api\/api\/api\/reports",
+            "description": "You will need to update several items in the body such as:\n  - ID of resource you wish to run this report on\n  - ID of the report you wish to run\n  - Traversal Spec for the report (you can get this from the API query\n\"Get Report Definitions\", the travesal spec must match the resource type.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "1fd76679a1fafa3360443c7b9b286542",
+            "name": "Download Report",
+            "url": "httpsexample.com\/suite-api\/api\/reports\/be9097f7-0c8c-4a33-a855-faafb6f03a1d\/download",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "format",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "4c32edb554d3be548795bae911b9920f",
+            "name": "Get Adapter Types (Kinds)",
+            "url": "httpsexample.com\/suite-api\/api\/api\/adapterkinds",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "34496456cae992b6a6e3c12b29c4120d",
+            "name": "Get Adapter Instances",
+            "url": "httpsexample.com\/suite-api\/api\/api\/adapters",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "ab8a38b9f0bf2b5348bb8046a41aecdc",
+            "name": "Create a Python Adapter Instance",
+            "url": "httpsexample.com\/suite-api\/api\/api\/adapters",
+            "description": "Be sure to check values in the JSON body for credentials.\nAlso note you will need to start the adapter using \"Star an adapter instance\" \nafter creation using the UUID from the response.\n\nIf you aren't using a CA, the certificate will have to be added via the UI\nI do not know of a way to do this via the REST API",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "9520ec348f193c8d727a88b4ac7c4eef",
+            "name": "Get An Adapter Instance(s) of Type (Kind)",
+            "url": "httpsexample.com\/suite-api\/api\/adapters",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "adapterKindKey",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "336231a137f915e1f39d5023ab11d801",
+            "name": "Start an adapter instance",
+            "url": "httpsexample.com\/suite-api\/api\/api\/adapters\/617d20fd-536a-4bea-9f5e-4c01dd845ddc\/monitoringstate\/start",
+            "description": "Replace the UUID with the ID of the adapter instance you want to start\nThis can be retrieved using Get Adapter Instances",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "2a7ced3fdb427b752b0e53af7e4787ac",
+            "name": "Get Resources",
+            "url": "httpsexample.com\/suite-api\/api\/api\/resources\/query",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "5552330ea9b0220c4b500d28554674b0",
+            "name": "Get Properties of a Resource",
+            "url": "httpsexample.com\/suite-api\/api\/api\/resources\/{resourceId}\/properties",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "resourceId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "deafddc8183307e923982772e4e86b70",
+            "name": "Add or Update Properties of a Resource",
+            "url": "httpsexample.com\/suite-api\/api\/api\/resources\/{resourceId}\/properties",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "70c3b0788fbb410a7116f0af4fe310a9",
+            "name": "Get StatKeys for Resource and Load var",
+            "url": "httpsexample.com\/suite-api\/api\/api\/resources\/{resourceId}\/statkeys",
+            "description": "Grabs CPU statKeys for a VM resource using the {{resourceId}} env var.\nPopulates two env vars:\ncpuStatKeys for GET stats for small requests (1 to ~10 VMs)\ncpuStatKeysJSON for POST stats for large requests (use in conjunction with {{resourceIds}}",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "3742bad667b1161e135337bb9c113af1",
+            "name": "Get Stats from Resource (Not query)",
+            "url": "httpsexample.com\/suite-api\/api\/resources\/7a3a3bfc-1664-4e1d-bfe1-0e42db1d3c0e\/stats",
+            "description": "I have not tested but you may be able to use the \"resourceIds\" input paramter to specify multiple resources (of the same kind, obviously).  The example here shows a daily avg for 30 days.  Timestamps are milli from epoch.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "begin",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "end",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "intervalQuantifier",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "intervalType",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "rollUpType",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "statKey",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "a5b97aecf836f7733eae63ed4b8beb2f",
+            "name": "Get TopN Stats",
+            "url": "httpsexample.com\/suite-api\/api\/resources\/stats\/topn",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "begin",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "intervalType",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "intervalQuantifier",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "rollUpType",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "statKey",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "0ab93a10cf6d9313021c5d7ef2fc54f9",
+            "name": "Add or Update Stats of a Resource",
+            "url": "httpsexample.com\/suite-api\/api\/api\/resources\/{resourceId}\/stats",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "01c6e1c40d0ca55fdb4c89b8b41428b2",
+            "name": "Query Symptoms",
+            "url": "httpsexample.com\/suite-api\/api\/api\/symptoms\/query",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "7abf31064a043bcfb07a5d6e7f4cac0c",
+            "name": "Get Auth Sources",
+            "url": "httpsexample.com\/suite-api\/api\/api\/auth\/sources",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "7bdd06106d37e4483f5ba0d285463e95",
+            "name": "Create Local User",
+            "url": "httpsexample.com\/suite-api\/api\/api\/auth\/users",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Body",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        },
+        {
+            "id": "75d8aad41236a2343c41392bc26532c5",
+            "name": "Get Users",
+            "url": "httpsexample.com\/suite-api\/api\/auth\/users",
+            "description": "May also include query such as id, roleName and username",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "username",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "Content",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "0c7428e5f1f9838586ec5047f77af54b",
+            "rawModeData": ""
+        }
+    ]
+}
