@@ -1,0 +1,154 @@
+name: VMware
+description: Collection of VMware APIs for cloud infrastructure, virtualization, and management solutions
+image: https://www.vmware.com/content/dam/digitalmarketing/vmware/en/images/vmware-logo.jpg
+tags:
+- Cloud Computing
+- Virtualization
+- Infrastructure
+- Hybrid Cloud
+- Container Management
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+apis:
+- name: vSphere API
+  description: API for managing VMware vSphere virtualization platform, including VMs, hosts, and datastores
+  image: https://www.vmware.com/content/dam/digitalmarketing/vmware/en/images/products/vsphere-icon.svg
+  humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
+  baseURL: https://{{vcenter}}/api
+  tags:
+  - Virtualization
+  - VM Management
+  - Hypervisor
+  - Data Center
+  properties:
+  - type: Documentation
+    url: https://developer.vmware.com/docs/vsphere-automation/latest/
+  - type: OpenAPI
+    url: https://developer.vmware.com/apis/vsphere-automation/latest/openapi/
+  - type: Authentication
+    url: https://developer.vmware.com/docs/vsphere-automation/latest/authentication/
+  contact:
+  - FN: VMware Developer Support
+    email: developer@vmware.com
+    url: https://developer.vmware.com/support
+- name: vCloud Director API
+  description: API for VMware vCloud Director cloud service delivery platform
+  humanURL: https://developer.vmware.com/apis/vmware-cloud-director/latest/
+  baseURL: https://{{vcd-host}}/api
+  tags:
+  - Cloud Management
+  - Multi-tenancy
+  - Service Provider
+  properties:
+  - type: Documentation
+    url: https://developer.vmware.com/docs/vmware-cloud-director/latest/
+  - type: OpenAPI
+    url: https://developer.vmware.com/apis/vmware-cloud-director/latest/openapi/
+  - type: API Reference
+    url: https://developer.vmware.com/apis/vmware-cloud-director/latest/reference/
+- name: NSX-T Data Center API
+  description: API for NSX-T network virtualization and security platform
+  humanURL: https://developer.vmware.com/apis/nsx-t/latest/
+  baseURL: https://{{nsx-manager}}/api/v1
+  tags:
+  - Network Virtualization
+  - Security
+  - Micro-segmentation
+  - Load Balancing
+  properties:
+  - type: Documentation
+    url: https://developer.vmware.com/docs/nsx-t/latest/
+  - type: OpenAPI
+    url: https://developer.vmware.com/apis/nsx-t/latest/openapi/
+  - type: API Guide
+    url: https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html
+- name: vRealize Automation API
+  description: API for automating IT service delivery and cloud infrastructure management
+  humanURL: https://developer.vmware.com/apis/vrealize-automation/latest/
+  baseURL: https://{{vra-host}}/automation-api
+  tags:
+  - Automation
+  - Orchestration
+  - Infrastructure as Code
+  - Self-Service
+  properties:
+  - type: Documentation
+    url: https://developer.vmware.com/docs/vrealize-automation/latest/
+  - type: OpenAPI
+    url: https://developer.vmware.com/apis/vrealize-automation/latest/openapi/
+  - type: Code Samples
+    url: https://github.com/vmware/vrealize-automation-samples
+- name: VMware Cloud on AWS API
+  description: API for managing VMware Cloud on AWS infrastructure
+  humanURL: https://developer.vmware.com/apis/vmc/latest/
+  baseURL: https://vmc.vmware.com/vmc/api
+  tags:
+  - AWS
+  - Hybrid Cloud
+  - SDDC
+  - Cloud Services
+  properties:
+  - type: Documentation
+    url: https://developer.vmware.com/docs/vmc/latest/
+  - type: OpenAPI
+    url: https://developer.vmware.com/apis/vmc/latest/openapi/
+  - type: Getting Started
+    url: https://developer.vmware.com/docs/vmc/latest/getting-started/
+- name: Tanzu Kubernetes Grid API
+  description: API for managing enterprise-ready Kubernetes clusters
+  humanURL: https://developer.vmware.com/apis/tanzu/
+  baseURL: https://{{tkg-endpoint}}/api
+  tags:
+  - Kubernetes
+  - Containers
+  - Cloud Native
+  - DevOps
+  properties:
+  - type: Documentation
+    url: https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/index.html
+  - type: CLI Reference
+    url: https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/latest/vmware-tanzu-kubernetes-grid/cli-reference.html
+- name: vRealize Operations API
+  description: API for IT operations management and performance monitoring
+  humanURL: https://developer.vmware.com/apis/vrealize-operations/latest/
+  baseURL: https://{{vrops-host}}/suite-api/api
+  tags:
+  - Monitoring
+  - Analytics
+  - Performance
+  - Operations
+  properties:
+  - type: Documentation
+    url: https://developer.vmware.com/docs/vrealize-operations/latest/
+  - type: OpenAPI
+    url: https://developer.vmware.com/apis/vrealize-operations/latest/openapi/
+  - type: REST API Guide
+    url: https://docs.vmware.com/en/vRealize-Operations/index.html
+- name: Workspace ONE API
+  description: API for unified endpoint management and digital workspace platform
+  humanURL: https://developer.vmware.com/apis/workspace-one/
+  baseURL: https://{{ws1-host}}/api
+  tags:
+  - Endpoint Management
+  - Mobile Device Management
+  - Enterprise Mobility
+  - Identity
+  properties:
+  - type: Documentation
+    url: https://developer.vmware.com/docs/workspace-one/
+  - type: API Reference
+    url: https://developer.vmware.com/apis/workspace-one/latest/reference/
+maintainers:
+- FN: VMware Developer Relations
+  email: developer@vmware.com
+  url: https://developer.vmware.com/
+include:
+- name: VMware Developer Portal
+  url: https://developer.vmware.com/
+- name: VMware API Explorer
+  url: https://developer.vmware.com/apis
+- name: VMware Code Samples
+  url: https://github.com/vmware
+- name: VMware {code} Community
+  url: https://code.vmware.com/
