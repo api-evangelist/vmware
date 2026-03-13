@@ -1,0 +1,2661 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST API
+  description: >-
+    RESTful API for managing VMware vSphere virtualization platform resources
+    including virtual machines, hosts, datastores, clusters, networks, and
+    related infrastructure. The vSphere Automation API provides modern REST
+    endpoints for vCenter Server operations using JSON payloads and session-based
+    or OAuth authentication. This API supersedes the legacy SOAP-based vSphere
+    Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+servers:
+  - url: https://{vcenter}/api
+    description: vCenter Server REST API endpoint
+    variables:
+      vcenter:
+        default: vcenter.example.com
+        description: Hostname or IP address of your vCenter Server instance
+tags:
+  - name: VMs
+    description: >-
+      Virtual machine lifecycle management including creation, power operations,
+      cloning, migration, and configuration
+  - name: VM Hardware
+    description: >-
+      Virtual machine hardware configuration including CPU, memory, disks,
+      network adapters, CD-ROMs, and other virtual devices
+  - name: VM Power
+    description: >-
+      Virtual machine power state operations including power on, power off,
+      suspend, reset, and guest shutdown
+  - name: VM Guest
+    description: >-
+      Guest operating system operations including identity, networking,
+      local filesystem, and process management via VMware Tools
+  - name: Hosts
+    description: >-
+      ESXi host management including connection state, maintenance mode,
+      and host configuration
+  - name: Datastores
+    description: >-
+      Datastore management including browsing, capacity monitoring, and
+      storage configuration
+  - name: Clusters
+    description: >-
+      Cluster management for compute resource grouping, DRS, and HA
+      configuration
+  - name: Networks
+    description: >-
+      Virtual network management including standard and distributed port
+      groups and network connectivity
+  - name: Datacenters
+    description: Datacenter management for organizing vSphere inventory
+  - name: Folders
+    description: Inventory folder management for organizing vSphere objects
+  - name: Resource Pools
+    description: Resource pool management for allocating compute resources
+  - name: Content Library
+    description: >-
+      Content library management for templates, ISOs, and OVF packages
+      shared across vCenter instances
+  - name: Storage Policies
+    description: >-
+      VM storage policy management for defining storage requirements and
+      compliance
+  - name: Tagging
+    description: >-
+      Tag and category management for organizing and classifying vSphere
+      inventory objects
+  - name: Session
+    description: Authentication session management for the vSphere REST API
+security:
+  - sessionAuth: []
+  - basicAuth: []
+paths:
+  /session:
+    post:
+      operationId: createSession
+      summary: Create a new authentication session
+      description: >-
+        Creates a new session by authenticating with vCenter Server credentials.
+        Returns a session identifier that must be included in the
+        vmware-api-session-id header for subsequent requests.
+      tags:
+        - Session
+      security:
+        - basicAuth: []
+      responses:
+        '201':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Session identifier token
+        '401':
+          description: Authentication failed - invalid credentials
+    delete:
+      operationId: deleteSession
+      summary: Terminate the current session
+      description: >-
+        Terminates the current authenticated session and invalidates the
+        session token.
+      tags:
+        - Session
+      responses:
+        '204':
+          description: Session terminated successfully
+        '401':
+          description: Not authenticated
+    get:
+      operationId: getSessionInfo
+      summary: Get current session information
+      description: >-
+        Returns information about the currently authenticated session
+        including the authenticated user.
+      tags:
+        - Session
+      responses:
+        '200':
+          description: Session information returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionInfo'
+        '401':
+          description: Not authenticated
+
+  /vcenter/vm:
+    get:
+      operationId: listVMs
+      summary: List virtual machines
+      description: >-
+        Returns a list of virtual machines in the vCenter inventory matching
+        the specified filter criteria. Results can be filtered by name,
+        power state, host, cluster, datacenter, folder, and resource pool.
+      tags:
+        - VMs
+      parameters:
+        - name: filter.vms
+          in: query
+          description: Identifiers of VMs to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.names
+          in: query
+          description: Names of VMs to filter by (exact match)
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.folders
+          in: query
+          description: Folders that must contain the VMs
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.datacenters
+          in: query
+          description: Datacenters that must contain the VMs
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.hosts
+          in: query
+          description: Hosts that must contain the VMs
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.clusters
+          in: query
+          description: Clusters that must contain the VMs
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.resource_pools
+          in: query
+          description: Resource pools that must contain the VMs
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.power_states
+          in: query
+          description: Power states to filter by
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - POWERED_ON
+                - POWERED_OFF
+                - SUSPENDED
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: List of virtual machines matching the filter
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMSummary'
+        '400':
+          description: Invalid filter parameters
+        '401':
+          description: Not authenticated
+        '403':
+          description: Insufficient privileges
+    post:
+      operationId: createVM
+      summary: Create a new virtual machine
+      description: >-
+        Creates a new virtual machine with the specified configuration.
+        The VM is created in the powered-off state and must be explicitly
+        powered on after creation.
+      tags:
+        - VMs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VMCreateSpec'
+      responses:
+        '201':
+          description: Virtual machine created successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the newly created VM (e.g., vm-123)
+        '400':
+          description: Invalid VM specification
+        '401':
+          description: Not authenticated
+        '403':
+          description: Insufficient privileges
+
+  /vcenter/vm/{vm}:
+    get:
+      operationId: getVM
+      summary: Get virtual machine details
+      description: >-
+        Returns detailed information about the specified virtual machine
+        including hardware configuration, power state, guest OS, and
+        storage information.
+      tags:
+        - VMs
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Virtual machine details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInfo'
+        '401':
+          description: Not authenticated
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Virtual machine not found
+    delete:
+      operationId: deleteVM
+      summary: Delete a virtual machine
+      description: >-
+        Permanently deletes the specified virtual machine and all
+        associated virtual disks. The VM must be in a powered-off state.
+      tags:
+        - VMs
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '204':
+          description: Virtual machine deleted successfully
+        '400':
+          description: VM is not in a powered-off state
+        '401':
+          description: Not authenticated
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/power:
+    get:
+      operationId: getVMPowerState
+      summary: Get VM power state
+      description: Returns the current power state of the specified virtual machine.
+      tags:
+        - VM Power
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Current power state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PowerInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/power?action=start:
+    post:
+      operationId: powerOnVM
+      summary: Power on a virtual machine
+      description: >-
+        Powers on the specified virtual machine. The VM must be in a
+        powered-off or suspended state.
+      tags:
+        - VM Power
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '204':
+          description: Power on initiated successfully
+        '400':
+          description: VM is already powered on
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/power?action=stop:
+    post:
+      operationId: powerOffVM
+      summary: Power off a virtual machine
+      description: >-
+        Powers off the specified virtual machine immediately. This is
+        equivalent to pulling the power cord and does not perform a
+        graceful guest OS shutdown. Use the guest shutdown operation
+        for a clean shutdown.
+      tags:
+        - VM Power
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '204':
+          description: Power off initiated successfully
+        '400':
+          description: VM is already powered off
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/power?action=suspend:
+    post:
+      operationId: suspendVM
+      summary: Suspend a virtual machine
+      description: >-
+        Suspends the specified virtual machine, saving its current state
+        to disk. The VM can be resumed later from the suspended state.
+      tags:
+        - VM Power
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '204':
+          description: Suspend initiated successfully
+        '400':
+          description: VM is not in a powered-on state
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/power?action=reset:
+    post:
+      operationId: resetVM
+      summary: Reset a virtual machine
+      description: >-
+        Resets the specified virtual machine. This is equivalent to
+        pressing the reset button and does not perform a graceful
+        guest OS reboot.
+      tags:
+        - VM Power
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '204':
+          description: Reset initiated successfully
+        '400':
+          description: VM is not in a powered-on state
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/hardware:
+    get:
+      operationId: getVMHardware
+      summary: Get VM hardware configuration
+      description: >-
+        Returns the full virtual hardware configuration of the specified
+        virtual machine including CPU, memory, and all virtual devices.
+      tags:
+        - VM Hardware
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Hardware configuration returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HardwareInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+    patch:
+      operationId: updateVMHardware
+      summary: Update VM hardware configuration
+      description: >-
+        Updates the virtual hardware configuration. Some changes require
+        the VM to be powered off.
+      tags:
+        - VM Hardware
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HardwareUpdateSpec'
+      responses:
+        '204':
+          description: Hardware updated successfully
+        '400':
+          description: Invalid hardware specification
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/hardware/cpu:
+    get:
+      operationId: getVMCpu
+      summary: Get VM CPU configuration
+      description: Returns the CPU configuration of the specified virtual machine.
+      tags:
+        - VM Hardware
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: CPU configuration returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CpuInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+    patch:
+      operationId: updateVMCpu
+      summary: Update VM CPU configuration
+      description: >-
+        Updates the CPU configuration. Hot-add of CPUs is supported if the
+        VM and guest OS support it and the VM is powered on.
+      tags:
+        - VM Hardware
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CpuUpdateSpec'
+      responses:
+        '204':
+          description: CPU configuration updated
+        '400':
+          description: Invalid CPU specification
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/hardware/memory:
+    get:
+      operationId: getVMMemory
+      summary: Get VM memory configuration
+      description: Returns the memory configuration of the specified virtual machine.
+      tags:
+        - VM Hardware
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Memory configuration returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+    patch:
+      operationId: updateVMMemory
+      summary: Update VM memory configuration
+      description: >-
+        Updates the memory configuration. Hot-add of memory is supported
+        if the VM and guest OS support it and the VM is powered on.
+      tags:
+        - VM Hardware
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemoryUpdateSpec'
+      responses:
+        '204':
+          description: Memory configuration updated
+        '400':
+          description: Invalid memory specification
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/hardware/disk:
+    get:
+      operationId: listVMDisks
+      summary: List VM virtual disks
+      description: Returns a list of virtual disks attached to the specified VM.
+      tags:
+        - VM Hardware
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: List of virtual disks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DiskSummary'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+    post:
+      operationId: createVMDisk
+      summary: Add a virtual disk to a VM
+      description: >-
+        Creates and attaches a new virtual disk to the specified VM.
+        Supports creating new VMDK files or attaching existing ones.
+      tags:
+        - VM Hardware
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiskCreateSpec'
+      responses:
+        '201':
+          description: Disk created and attached successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the new virtual disk
+        '400':
+          description: Invalid disk specification
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/hardware/ethernet:
+    get:
+      operationId: listVMEthernet
+      summary: List VM network adapters
+      description: >-
+        Returns a list of virtual Ethernet adapters attached to the
+        specified virtual machine.
+      tags:
+        - VM Hardware
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: List of network adapters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EthernetSummary'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+    post:
+      operationId: createVMEthernet
+      summary: Add a network adapter to a VM
+      description: >-
+        Creates and attaches a new virtual Ethernet adapter to the
+        specified virtual machine.
+      tags:
+        - VM Hardware
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EthernetCreateSpec'
+      responses:
+        '201':
+          description: Network adapter created successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the new network adapter
+        '400':
+          description: Invalid adapter specification
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/vm/{vm}/guest/identity:
+    get:
+      operationId: getVMGuestIdentity
+      summary: Get guest OS identity
+      description: >-
+        Returns guest operating system identity information reported by
+        VMware Tools running inside the VM, including OS name, version,
+        hostname, and IP addresses.
+      tags:
+        - VM Guest
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Guest identity information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuestIdentityInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+        '503':
+          description: VMware Tools not running in the guest
+
+  /vcenter/vm/{vm}/guest/networking:
+    get:
+      operationId: getVMGuestNetworking
+      summary: Get guest networking information
+      description: >-
+        Returns guest networking information reported by VMware Tools
+        including network interfaces, IP addresses, DNS configuration,
+        and routing tables.
+      tags:
+        - VM Guest
+      parameters:
+        - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Guest networking information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuestNetworkingInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+
+  /vcenter/host:
+    get:
+      operationId: listHosts
+      summary: List ESXi hosts
+      description: >-
+        Returns a list of ESXi hosts in the vCenter inventory matching
+        the specified filter criteria. Results can be filtered by name,
+        connection state, cluster, datacenter, and folder.
+      tags:
+        - Hosts
+      parameters:
+        - name: filter.hosts
+          in: query
+          description: Identifiers of hosts to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.names
+          in: query
+          description: Names of hosts to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.folders
+          in: query
+          description: Folders that must contain the hosts
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.datacenters
+          in: query
+          description: Datacenters that must contain the hosts
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.clusters
+          in: query
+          description: Clusters that must contain the hosts
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.connection_states
+          in: query
+          description: Connection states to filter by
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - CONNECTED
+                - DISCONNECTED
+                - NOT_RESPONDING
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: List of hosts matching the filter
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HostSummary'
+        '400':
+          description: Invalid filter parameters
+        '401':
+          description: Not authenticated
+        '403':
+          description: Insufficient privileges
+
+  /vcenter/host/{host}:
+    get:
+      operationId: getHost
+      summary: Get ESXi host details
+      description: >-
+        Returns detailed information about the specified ESXi host
+        including connection state, hardware, and resource utilization.
+      tags:
+        - Hosts
+      parameters:
+        - $ref: '#/components/parameters/hostId'
+      responses:
+        '200':
+          description: Host details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Host not found
+
+  /vcenter/host/{host}/connect:
+    post:
+      operationId: connectHost
+      summary: Connect an ESXi host
+      description: >-
+        Connects to the specified ESXi host, making it available for
+        virtual machine operations.
+      tags:
+        - Hosts
+      parameters:
+        - $ref: '#/components/parameters/hostId'
+      responses:
+        '204':
+          description: Host connected successfully
+        '401':
+          description: Not authenticated
+        '404':
+          description: Host not found
+
+  /vcenter/host/{host}/disconnect:
+    post:
+      operationId: disconnectHost
+      summary: Disconnect an ESXi host
+      description: >-
+        Disconnects the specified ESXi host from vCenter Server. Running
+        VMs are not affected but can no longer be managed through vCenter.
+      tags:
+        - Hosts
+      parameters:
+        - $ref: '#/components/parameters/hostId'
+      responses:
+        '204':
+          description: Host disconnected successfully
+        '401':
+          description: Not authenticated
+        '404':
+          description: Host not found
+
+  /vcenter/datastore:
+    get:
+      operationId: listDatastores
+      summary: List datastores
+      description: >-
+        Returns a list of datastores in the vCenter inventory matching
+        the specified filter criteria. Results can be filtered by name,
+        type, datacenter, and folder.
+      tags:
+        - Datastores
+      parameters:
+        - name: filter.datastores
+          in: query
+          description: Identifiers of datastores to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.names
+          in: query
+          description: Names of datastores to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.types
+          in: query
+          description: Types of datastores to filter by
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - VMFS
+                - NFS
+                - NFS41
+                - CIFS
+                - VSAN
+                - VFFS
+                - VVOL
+          style: form
+          explode: true
+        - name: filter.folders
+          in: query
+          description: Folders that must contain the datastores
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.datacenters
+          in: query
+          description: Datacenters that must contain the datastores
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: List of datastores matching the filter
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DatastoreSummary'
+        '400':
+          description: Invalid filter parameters
+        '401':
+          description: Not authenticated
+        '403':
+          description: Insufficient privileges
+
+  /vcenter/datastore/{datastore}:
+    get:
+      operationId: getDatastore
+      summary: Get datastore details
+      description: >-
+        Returns detailed information about the specified datastore
+        including capacity, free space, type, and accessible hosts.
+      tags:
+        - Datastores
+      parameters:
+        - $ref: '#/components/parameters/datastoreId'
+      responses:
+        '200':
+          description: Datastore details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatastoreInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Datastore not found
+
+  /vcenter/cluster:
+    get:
+      operationId: listClusters
+      summary: List clusters
+      description: >-
+        Returns a list of clusters in the vCenter inventory matching
+        the specified filter criteria.
+      tags:
+        - Clusters
+      parameters:
+        - name: filter.clusters
+          in: query
+          description: Identifiers of clusters to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.names
+          in: query
+          description: Names of clusters to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.folders
+          in: query
+          description: Folders that must contain the clusters
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.datacenters
+          in: query
+          description: Datacenters that must contain the clusters
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: List of clusters matching the filter
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClusterSummary'
+        '400':
+          description: Invalid filter parameters
+        '401':
+          description: Not authenticated
+
+  /vcenter/cluster/{cluster}:
+    get:
+      operationId: getCluster
+      summary: Get cluster details
+      description: >-
+        Returns detailed information about the specified cluster
+        including DRS and HA configuration.
+      tags:
+        - Clusters
+      parameters:
+        - $ref: '#/components/parameters/clusterId'
+      responses:
+        '200':
+          description: Cluster details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Cluster not found
+
+  /vcenter/network:
+    get:
+      operationId: listNetworks
+      summary: List networks
+      description: >-
+        Returns a list of networks in the vCenter inventory matching
+        the specified filter criteria, including standard port groups,
+        distributed port groups, and NSX logical switches.
+      tags:
+        - Networks
+      parameters:
+        - name: filter.networks
+          in: query
+          description: Identifiers of networks to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.names
+          in: query
+          description: Names of networks to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.types
+          in: query
+          description: Types of networks to filter by
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - STANDARD_PORTGROUP
+                - DISTRIBUTED_PORTGROUP
+                - OPAQUE_NETWORK
+          style: form
+          explode: true
+        - name: filter.datacenters
+          in: query
+          description: Datacenters that must contain the networks
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.folders
+          in: query
+          description: Folders that must contain the networks
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: List of networks matching the filter
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NetworkSummary'
+        '400':
+          description: Invalid filter parameters
+        '401':
+          description: Not authenticated
+
+  /vcenter/datacenter:
+    get:
+      operationId: listDatacenters
+      summary: List datacenters
+      description: >-
+        Returns a list of datacenters in the vCenter inventory matching
+        the specified filter criteria.
+      tags:
+        - Datacenters
+      parameters:
+        - name: filter.datacenters
+          in: query
+          description: Identifiers of datacenters to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.names
+          in: query
+          description: Names of datacenters to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.folders
+          in: query
+          description: Folders that must contain the datacenters
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: List of datacenters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DatacenterSummary'
+        '401':
+          description: Not authenticated
+    post:
+      operationId: createDatacenter
+      summary: Create a datacenter
+      description: Creates a new datacenter in the specified folder.
+      tags:
+        - Datacenters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatacenterCreateSpec'
+      responses:
+        '201':
+          description: Datacenter created
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the new datacenter
+        '400':
+          description: Invalid specification
+        '401':
+          description: Not authenticated
+
+  /vcenter/datacenter/{datacenter}:
+    get:
+      operationId: getDatacenter
+      summary: Get datacenter details
+      description: Returns detailed information about the specified datacenter.
+      tags:
+        - Datacenters
+      parameters:
+        - $ref: '#/components/parameters/datacenterId'
+      responses:
+        '200':
+          description: Datacenter details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatacenterInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Datacenter not found
+    delete:
+      operationId: deleteDatacenter
+      summary: Delete a datacenter
+      description: >-
+        Deletes the specified datacenter. All hosts and VMs must be
+        removed from the datacenter before deletion.
+      tags:
+        - Datacenters
+      parameters:
+        - $ref: '#/components/parameters/datacenterId'
+        - name: force
+          in: query
+          description: Force delete even if datacenter is not empty
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '204':
+          description: Datacenter deleted
+        '400':
+          description: Datacenter is not empty
+        '401':
+          description: Not authenticated
+        '404':
+          description: Datacenter not found
+
+  /vcenter/folder:
+    get:
+      operationId: listFolders
+      summary: List folders
+      description: >-
+        Returns a list of folders in the vCenter inventory matching
+        the specified filter criteria.
+      tags:
+        - Folders
+      parameters:
+        - name: filter.folders
+          in: query
+          description: Identifiers of folders to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.names
+          in: query
+          description: Names of folders to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.type
+          in: query
+          description: Type of folder to filter by
+          schema:
+            type: string
+            enum:
+              - DATACENTER
+              - DATASTORE
+              - HOST
+              - NETWORK
+              - VIRTUAL_MACHINE
+        - name: filter.parent_folders
+          in: query
+          description: Parent folders to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.datacenters
+          in: query
+          description: Datacenters that must contain the folders
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: List of folders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FolderSummary'
+        '401':
+          description: Not authenticated
+
+  /vcenter/resource-pool:
+    get:
+      operationId: listResourcePools
+      summary: List resource pools
+      description: >-
+        Returns a list of resource pools in the vCenter inventory
+        matching the specified filter criteria.
+      tags:
+        - Resource Pools
+      parameters:
+        - name: filter.resource_pools
+          in: query
+          description: Identifiers of resource pools to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.names
+          in: query
+          description: Names of resource pools to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.clusters
+          in: query
+          description: Clusters that must contain the resource pools
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.hosts
+          in: query
+          description: Hosts that must contain the resource pools
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: filter.parent_resource_pools
+          in: query
+          description: Parent resource pools to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: List of resource pools
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourcePoolSummary'
+        '401':
+          description: Not authenticated
+
+  /content/library:
+    get:
+      operationId: listContentLibraries
+      summary: List content libraries
+      description: >-
+        Returns a list of all content library identifiers in the
+        vCenter inventory.
+      tags:
+        - Content Library
+      responses:
+        '200':
+          description: List of content library identifiers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '401':
+          description: Not authenticated
+    post:
+      operationId: createContentLibrary
+      summary: Create a content library
+      description: >-
+        Creates a new local or subscribed content library for storing
+        templates, ISOs, and OVF packages.
+      tags:
+        - Content Library
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryCreateSpec'
+      responses:
+        '201':
+          description: Content library created
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the new content library
+        '400':
+          description: Invalid specification
+        '401':
+          description: Not authenticated
+
+  /content/library/{library_id}:
+    get:
+      operationId: getContentLibrary
+      summary: Get content library details
+      description: Returns detailed information about the specified content library.
+      tags:
+        - Content Library
+      parameters:
+        - name: library_id
+          in: path
+          required: true
+          description: Identifier of the content library
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Content library details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryInfo'
+        '401':
+          description: Not authenticated
+        '404':
+          description: Content library not found
+    delete:
+      operationId: deleteContentLibrary
+      summary: Delete a content library
+      description: >-
+        Deletes the specified content library and all of its items.
+      tags:
+        - Content Library
+      parameters:
+        - name: library_id
+          in: path
+          required: true
+          description: Identifier of the content library
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Content library deleted
+        '401':
+          description: Not authenticated
+        '404':
+          description: Content library not found
+
+  /vcenter/storage/policies:
+    get:
+      operationId: listStoragePolicies
+      summary: List storage policies
+      description: >-
+        Returns a list of VM storage policies available in the vCenter
+        inventory.
+      tags:
+        - Storage Policies
+      parameters:
+        - name: filter.policies
+          in: query
+          description: Identifiers of storage policies to filter by
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+      responses:
+        '200':
+          description: List of storage policies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StoragePolicySummary'
+        '401':
+          description: Not authenticated
+
+  /cis/tagging/category:
+    get:
+      operationId: listTagCategories
+      summary: List tag categories
+      description: Returns all tag category identifiers in the system.
+      tags:
+        - Tagging
+      responses:
+        '200':
+          description: List of tag category identifiers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '401':
+          description: Not authenticated
+    post:
+      operationId: createTagCategory
+      summary: Create a tag category
+      description: Creates a new tag category used to group related tags.
+      tags:
+        - Tagging
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagCategoryCreateSpec'
+      responses:
+        '201':
+          description: Tag category created
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the new tag category
+        '400':
+          description: Invalid specification
+        '401':
+          description: Not authenticated
+
+  /cis/tagging/tag:
+    get:
+      operationId: listTags
+      summary: List tags
+      description: Returns all tag identifiers in the system.
+      tags:
+        - Tagging
+      responses:
+        '200':
+          description: List of tag identifiers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '401':
+          description: Not authenticated
+    post:
+      operationId: createTag
+      summary: Create a tag
+      description: Creates a new tag within a specified category.
+      tags:
+        - Tagging
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagCreateSpec'
+      responses:
+        '201':
+          description: Tag created
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the new tag
+        '400':
+          description: Invalid specification
+        '401':
+          description: Not authenticated
+
+  /cis/tagging/tag-association?action=attach:
+    post:
+      operationId: attachTag
+      summary: Attach a tag to an object
+      description: >-
+        Attaches a tag to a vSphere managed object such as a VM, host,
+        datastore, or cluster.
+      tags:
+        - Tagging
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagAssociationSpec'
+      responses:
+        '204':
+          description: Tag attached successfully
+        '401':
+          description: Not authenticated
+        '404':
+          description: Tag or object not found
+
+components:
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: >-
+        Session token obtained from POST /session. Include this header
+        in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication using vCenter Server credentials.
+        Used primarily for creating sessions.
+
+  parameters:
+    vmId:
+      name: vm
+      in: path
+      required: true
+      description: Identifier of the virtual machine (e.g., vm-123)
+      schema:
+        type: string
+    hostId:
+      name: host
+      in: path
+      required: true
+      description: Identifier of the ESXi host (e.g., host-10)
+      schema:
+        type: string
+    datastoreId:
+      name: datastore
+      in: path
+      required: true
+      description: Identifier of the datastore (e.g., datastore-15)
+      schema:
+        type: string
+    clusterId:
+      name: cluster
+      in: path
+      required: true
+      description: Identifier of the cluster (e.g., domain-c7)
+      schema:
+        type: string
+    datacenterId:
+      name: datacenter
+      in: path
+      required: true
+      description: Identifier of the datacenter (e.g., datacenter-2)
+      schema:
+        type: string
+
+  schemas:
+    SessionInfo:
+      type: object
+      description: Information about the authenticated session
+      properties:
+        user:
+          type: string
+          description: Authenticated user principal name
+        created_time:
+          type: string
+          format: date-time
+          description: Time when the session was created
+        last_accessed_time:
+          type: string
+          format: date-time
+          description: Time when the session was last accessed
+
+    VMSummary:
+      type: object
+      description: Summary of a virtual machine in the vCenter inventory
+      required:
+        - vm
+        - name
+      properties:
+        vm:
+          type: string
+          description: Unique identifier of the virtual machine (e.g., vm-123)
+        name:
+          type: string
+          description: Display name of the virtual machine
+        power_state:
+          type: string
+          description: Current power state of the VM
+          enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - SUSPENDED
+        cpu_count:
+          type: integer
+          description: Number of virtual CPUs
+        memory_size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+
+    VMCreateSpec:
+      type: object
+      description: Specification for creating a new virtual machine
+      required:
+        - name
+        - guest_OS
+        - placement
+      properties:
+        name:
+          type: string
+          description: Display name for the new VM
+        guest_OS:
+          type: string
+          description: Guest operating system identifier
+          enum:
+            - RHEL_9_64
+            - RHEL_8_64
+            - UBUNTU_64
+            - DEBIAN_11_64
+            - WINDOWS_SERVER_2022
+            - WINDOWS_SERVER_2019
+            - WINDOWS_11_64
+            - OTHER_LINUX_64
+            - OTHER_64
+        placement:
+          type: object
+          description: Placement specification for the VM
+          properties:
+            folder:
+              type: string
+              description: VM folder identifier
+            host:
+              type: string
+              description: Host identifier for initial placement
+            cluster:
+              type: string
+              description: Cluster identifier for initial placement
+            resource_pool:
+              type: string
+              description: Resource pool identifier
+            datastore:
+              type: string
+              description: Datastore identifier for VM files
+        hardware_version:
+          type: string
+          description: Virtual hardware version
+          enum:
+            - VMX_21
+            - VMX_20
+            - VMX_19
+            - VMX_18
+            - VMX_17
+            - VMX_16
+            - VMX_15
+            - VMX_14
+            - VMX_13
+        cpu:
+          $ref: '#/components/schemas/CpuUpdateSpec'
+        memory:
+          $ref: '#/components/schemas/MemoryUpdateSpec'
+        disks:
+          type: array
+          description: Virtual disks to create with the VM
+          items:
+            $ref: '#/components/schemas/DiskCreateSpec'
+        nics:
+          type: array
+          description: Network adapters to create with the VM
+          items:
+            $ref: '#/components/schemas/EthernetCreateSpec'
+        boot:
+          type: object
+          description: Boot configuration
+          properties:
+            type:
+              type: string
+              enum:
+                - BIOS
+                - EFI
+            efi_legacy_boot:
+              type: boolean
+            delay:
+              type: integer
+              description: Boot delay in milliseconds
+            enter_setup_mode:
+              type: boolean
+              description: Enter BIOS/EFI setup on next boot
+
+    VMInfo:
+      type: object
+      description: Detailed virtual machine configuration and state
+      properties:
+        name:
+          type: string
+          description: Display name of the virtual machine
+        identity:
+          type: object
+          description: VM identity information
+          properties:
+            name:
+              type: string
+            instance_uuid:
+              type: string
+              format: uuid
+            bios_uuid:
+              type: string
+              format: uuid
+        power_state:
+          type: string
+          enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - SUSPENDED
+        guest_OS:
+          type: string
+          description: Configured guest operating system
+        hardware:
+          $ref: '#/components/schemas/HardwareInfo'
+        boot:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - BIOS
+                - EFI
+            delay:
+              type: integer
+            enter_setup_mode:
+              type: boolean
+        cpu:
+          $ref: '#/components/schemas/CpuInfo'
+        memory:
+          $ref: '#/components/schemas/MemoryInfo'
+        disks:
+          type: object
+          description: Map of disk identifier to disk configuration
+          additionalProperties:
+            $ref: '#/components/schemas/DiskInfo'
+        nics:
+          type: object
+          description: Map of NIC identifier to NIC configuration
+          additionalProperties:
+            $ref: '#/components/schemas/EthernetInfo'
+        cdroms:
+          type: object
+          description: Map of CD-ROM identifier to CD-ROM configuration
+          additionalProperties:
+            type: object
+        parallel_ports:
+          type: object
+          additionalProperties:
+            type: object
+        serial_ports:
+          type: object
+          additionalProperties:
+            type: object
+        floppy_drives:
+          type: object
+          additionalProperties:
+            type: object
+
+    PowerInfo:
+      type: object
+      description: Power state information for a virtual machine
+      properties:
+        state:
+          type: string
+          description: Current power state
+          enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - SUSPENDED
+        clean_power_off:
+          type: boolean
+          description: Whether the last power-off was clean
+
+    HardwareInfo:
+      type: object
+      description: Virtual hardware configuration
+      properties:
+        version:
+          type: string
+          description: Virtual hardware version (e.g., VMX_21)
+        upgrade_policy:
+          type: string
+          description: Hardware upgrade policy
+          enum:
+            - NEVER
+            - AFTER_CLEAN_SHUTDOWN
+            - ALWAYS
+        upgrade_version:
+          type: string
+          description: Target hardware version for upgrade
+
+    HardwareUpdateSpec:
+      type: object
+      description: Specification for updating virtual hardware
+      properties:
+        upgrade_policy:
+          type: string
+          enum:
+            - NEVER
+            - AFTER_CLEAN_SHUTDOWN
+            - ALWAYS
+        upgrade_version:
+          type: string
+
+    CpuInfo:
+      type: object
+      description: CPU configuration of a virtual machine
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+        cores_per_socket:
+          type: integer
+          description: Number of cores per CPU socket
+        hot_add_enabled:
+          type: boolean
+          description: Whether CPU hot-add is enabled
+        hot_remove_enabled:
+          type: boolean
+          description: Whether CPU hot-remove is enabled
+
+    CpuUpdateSpec:
+      type: object
+      description: Specification for CPU configuration
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+          minimum: 1
+          maximum: 768
+        cores_per_socket:
+          type: integer
+          description: Number of cores per socket
+          minimum: 1
+        hot_add_enabled:
+          type: boolean
+        hot_remove_enabled:
+          type: boolean
+
+    MemoryInfo:
+      type: object
+      description: Memory configuration of a virtual machine
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+        hot_add_enabled:
+          type: boolean
+          description: Whether memory hot-add is enabled
+        hot_add_increment_size_MiB:
+          type: integer
+          description: Granularity for memory hot-add in mebibytes
+        hot_add_limit_MiB:
+          type: integer
+          description: Maximum memory size for hot-add in mebibytes
+
+    MemoryUpdateSpec:
+      type: object
+      description: Specification for memory configuration
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          minimum: 4
+        hot_add_enabled:
+          type: boolean
+
+    DiskSummary:
+      type: object
+      description: Summary of a virtual disk
+      properties:
+        disk:
+          type: string
+          description: Identifier of the virtual disk
+
+    DiskInfo:
+      type: object
+      description: Detailed virtual disk configuration
+      properties:
+        label:
+          type: string
+          description: Display label of the virtual disk
+        type:
+          type: string
+          description: Type of host bus adapter
+          enum:
+            - IDE
+            - SCSI
+            - SATA
+            - NVME
+        capacity:
+          type: integer
+          description: Capacity of the virtual disk in bytes
+          format: int64
+        backing:
+          type: object
+          description: Disk backing information
+          properties:
+            type:
+              type: string
+              enum:
+                - VMDK_FILE
+            vmdk_file:
+              type: string
+              description: Path to the VMDK file
+
+    DiskCreateSpec:
+      type: object
+      description: Specification for creating a virtual disk
+      properties:
+        type:
+          type: string
+          description: Host bus adapter type
+          enum:
+            - IDE
+            - SCSI
+            - SATA
+            - NVME
+        new_vmdk:
+          type: object
+          description: Specification for a new VMDK file
+          properties:
+            name:
+              type: string
+              description: Name of the VMDK file
+            capacity:
+              type: integer
+              description: Capacity in bytes
+              format: int64
+            storage_policy:
+              type: object
+              properties:
+                policy:
+                  type: string
+                  description: Storage policy identifier
+        backing:
+          type: object
+          description: Existing disk backing
+          properties:
+            type:
+              type: string
+              enum:
+                - VMDK_FILE
+            vmdk_file:
+              type: string
+
+    EthernetSummary:
+      type: object
+      description: Summary of a virtual network adapter
+      properties:
+        nic:
+          type: string
+          description: Identifier of the network adapter
+
+    EthernetInfo:
+      type: object
+      description: Detailed virtual network adapter configuration
+      properties:
+        label:
+          type: string
+          description: Display label of the adapter
+        type:
+          type: string
+          description: Adapter emulation type
+          enum:
+            - E1000
+            - E1000E
+            - PCNET32
+            - VMXNET
+            - VMXNET2
+            - VMXNET3
+        mac_type:
+          type: string
+          description: MAC address type
+          enum:
+            - MANUAL
+            - GENERATED
+            - ASSIGNED
+        mac_address:
+          type: string
+          description: MAC address of the adapter
+        state:
+          type: string
+          description: Connection state
+          enum:
+            - CONNECTED
+            - NOT_CONNECTED
+        start_connected:
+          type: boolean
+          description: Whether the adapter connects at power on
+        backing:
+          type: object
+          description: Network backing information
+          properties:
+            type:
+              type: string
+              enum:
+                - STANDARD_PORTGROUP
+                - DISTRIBUTED_PORTGROUP
+                - OPAQUE_NETWORK
+                - HOST_DEVICE
+            network:
+              type: string
+              description: Identifier of the backing network
+        allow_guest_control:
+          type: boolean
+          description: Whether guest OS can change adapter settings
+        wake_on_lan_enabled:
+          type: boolean
+
+    EthernetCreateSpec:
+      type: object
+      description: Specification for creating a virtual network adapter
+      properties:
+        type:
+          type: string
+          description: Adapter emulation type
+          enum:
+            - E1000
+            - E1000E
+            - PCNET32
+            - VMXNET
+            - VMXNET2
+            - VMXNET3
+        mac_type:
+          type: string
+          enum:
+            - MANUAL
+            - GENERATED
+            - ASSIGNED
+        mac_address:
+          type: string
+          description: MAC address (required when mac_type is MANUAL)
+        backing:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - STANDARD_PORTGROUP
+                - DISTRIBUTED_PORTGROUP
+                - OPAQUE_NETWORK
+            network:
+              type: string
+              description: Identifier of the network
+        start_connected:
+          type: boolean
+          default: true
+        allow_guest_control:
+          type: boolean
+          default: false
+        wake_on_lan_enabled:
+          type: boolean
+          default: false
+
+    GuestIdentityInfo:
+      type: object
+      description: Guest operating system identity information from VMware Tools
+      properties:
+        name:
+          type: string
+          description: Guest OS full name
+          examples:
+            - Red Hat Enterprise Linux 9 (64-bit)
+        family:
+          type: string
+          description: Guest OS family
+          enum:
+            - LINUX
+            - WINDOWS
+            - OTHER
+        full_name:
+          type: object
+          properties:
+            default_message:
+              type: string
+            id:
+              type: string
+        host_name:
+          type: string
+          description: Guest hostname
+        ip_address:
+          type: string
+          description: Primary IP address of the guest
+          format: ipv4
+
+    GuestNetworkingInfo:
+      type: object
+      description: Guest OS networking information from VMware Tools
+      properties:
+        dns_values:
+          type: object
+          properties:
+            domain_name:
+              type: string
+            search_domains:
+              type: array
+              items:
+                type: string
+        dns:
+          type: object
+          properties:
+            ip_addresses:
+              type: array
+              items:
+                type: string
+        interfaces:
+          type: array
+          items:
+            type: object
+            properties:
+              mac_address:
+                type: string
+              ip:
+                type: object
+                properties:
+                  ip_addresses:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ip_address:
+                          type: string
+                        prefix_length:
+                          type: integer
+                        state:
+                          type: string
+                          enum:
+                            - PREFERRED
+                            - DEPRECATED
+                            - DUPLICATE
+                            - INACCESSIBLE
+                            - UNKNOWN
+
+    HostSummary:
+      type: object
+      description: Summary of an ESXi host in the vCenter inventory
+      required:
+        - host
+        - name
+      properties:
+        host:
+          type: string
+          description: Unique identifier of the host (e.g., host-10)
+        name:
+          type: string
+          description: Display name or hostname of the ESXi host
+        connection_state:
+          type: string
+          description: Connection state of the host
+          enum:
+            - CONNECTED
+            - DISCONNECTED
+            - NOT_RESPONDING
+        power_state:
+          type: string
+          description: Power state of the host
+          enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - STANDBY
+
+    HostInfo:
+      type: object
+      description: Detailed ESXi host information
+      properties:
+        name:
+          type: string
+          description: Host name
+        connection_state:
+          type: string
+          enum:
+            - CONNECTED
+            - DISCONNECTED
+            - NOT_RESPONDING
+        power_state:
+          type: string
+          enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - STANDBY
+
+    DatastoreSummary:
+      type: object
+      description: Summary of a datastore in the vCenter inventory
+      required:
+        - datastore
+        - name
+      properties:
+        datastore:
+          type: string
+          description: Unique identifier of the datastore (e.g., datastore-15)
+        name:
+          type: string
+          description: Display name of the datastore
+        type:
+          type: string
+          description: Type of the datastore
+          enum:
+            - VMFS
+            - NFS
+            - NFS41
+            - CIFS
+            - VSAN
+            - VFFS
+            - VVOL
+        free_space:
+          type: integer
+          description: Free space in bytes
+          format: int64
+        capacity:
+          type: integer
+          description: Total capacity in bytes
+          format: int64
+
+    DatastoreInfo:
+      type: object
+      description: Detailed datastore configuration and status
+      properties:
+        name:
+          type: string
+          description: Display name of the datastore
+        type:
+          type: string
+          enum:
+            - VMFS
+            - NFS
+            - NFS41
+            - CIFS
+            - VSAN
+            - VFFS
+            - VVOL
+        accessible:
+          type: boolean
+          description: Whether the datastore is currently accessible
+        free_space:
+          type: integer
+          description: Available free space in bytes
+          format: int64
+        capacity:
+          type: integer
+          description: Maximum capacity in bytes
+          format: int64
+        thin_provisioning_supported:
+          type: boolean
+          description: Whether thin provisioning is supported
+        multiple_host_access:
+          type: boolean
+          description: Whether the datastore is accessible by multiple hosts
+
+    ClusterSummary:
+      type: object
+      description: Summary of a cluster in the vCenter inventory
+      required:
+        - cluster
+        - name
+      properties:
+        cluster:
+          type: string
+          description: Unique identifier of the cluster (e.g., domain-c7)
+        name:
+          type: string
+          description: Display name of the cluster
+        ha_enabled:
+          type: boolean
+          description: Whether vSphere HA is enabled
+        drs_enabled:
+          type: boolean
+          description: Whether vSphere DRS is enabled
+
+    ClusterInfo:
+      type: object
+      description: Detailed cluster configuration
+      properties:
+        name:
+          type: string
+          description: Display name of the cluster
+        resource_pool:
+          type: string
+          description: Root resource pool of the cluster
+
+    NetworkSummary:
+      type: object
+      description: Summary of a network in the vCenter inventory
+      required:
+        - network
+        - name
+      properties:
+        network:
+          type: string
+          description: Unique identifier of the network
+        name:
+          type: string
+          description: Display name of the network
+        type:
+          type: string
+          description: Type of the network
+          enum:
+            - STANDARD_PORTGROUP
+            - DISTRIBUTED_PORTGROUP
+            - OPAQUE_NETWORK
+
+    DatacenterSummary:
+      type: object
+      description: Summary of a datacenter
+      required:
+        - datacenter
+        - name
+      properties:
+        datacenter:
+          type: string
+          description: Unique identifier of the datacenter
+        name:
+          type: string
+          description: Display name of the datacenter
+
+    DatacenterCreateSpec:
+      type: object
+      description: Specification for creating a datacenter
+      required:
+        - name
+        - folder
+      properties:
+        name:
+          type: string
+          description: Name for the new datacenter
+        folder:
+          type: string
+          description: Parent folder identifier
+
+    DatacenterInfo:
+      type: object
+      description: Detailed datacenter information
+      properties:
+        name:
+          type: string
+          description: Display name of the datacenter
+        datastore_folder:
+          type: string
+          description: Datastore folder identifier
+        host_folder:
+          type: string
+          description: Host folder identifier
+        network_folder:
+          type: string
+          description: Network folder identifier
+        vm_folder:
+          type: string
+          description: VM folder identifier
+
+    FolderSummary:
+      type: object
+      description: Summary of an inventory folder
+      required:
+        - folder
+        - name
+      properties:
+        folder:
+          type: string
+          description: Unique identifier of the folder
+        name:
+          type: string
+          description: Display name of the folder
+        type:
+          type: string
+          description: Type of folder
+          enum:
+            - DATACENTER
+            - DATASTORE
+            - HOST
+            - NETWORK
+            - VIRTUAL_MACHINE
+
+    ResourcePoolSummary:
+      type: object
+      description: Summary of a resource pool
+      required:
+        - resource_pool
+        - name
+      properties:
+        resource_pool:
+          type: string
+          description: Unique identifier of the resource pool
+        name:
+          type: string
+          description: Display name of the resource pool
+
+    LibraryCreateSpec:
+      type: object
+      description: Specification for creating a content library
+      required:
+        - name
+        - type
+        - storage_backings
+      properties:
+        name:
+          type: string
+          description: Name for the new content library
+        description:
+          type: string
+          description: Description of the content library
+        type:
+          type: string
+          description: Library type
+          enum:
+            - LOCAL
+            - SUBSCRIBED
+        storage_backings:
+          type: array
+          description: Storage backings for the library content
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                  - DATASTORE
+                  - OTHER
+              datastore_id:
+                type: string
+                description: Datastore identifier for DATASTORE type
+
+    LibraryInfo:
+      type: object
+      description: Content library details
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the content library
+        name:
+          type: string
+          description: Name of the content library
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+            - LOCAL
+            - SUBSCRIBED
+        creation_time:
+          type: string
+          format: date-time
+        last_modified_time:
+          type: string
+          format: date-time
+        last_sync_time:
+          type: string
+          format: date-time
+        storage_backings:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              datastore_id:
+                type: string
+        version:
+          type: string
+
+    StoragePolicySummary:
+      type: object
+      description: Summary of a VM storage policy
+      properties:
+        policy:
+          type: string
+          description: Identifier of the storage policy
+        name:
+          type: string
+          description: Name of the storage policy
+        description:
+          type: string
+          description: Description of the storage policy
+
+    TagCategoryCreateSpec:
+      type: object
+      description: Specification for creating a tag category
+      required:
+        - name
+        - cardinality
+      properties:
+        name:
+          type: string
+          description: Name for the new category
+        description:
+          type: string
+        cardinality:
+          type: string
+          description: Cardinality of the category
+          enum:
+            - SINGLE
+            - MULTIPLE
+        associable_types:
+          type: array
+          description: Object types that can be tagged with tags in this category
+          items:
+            type: string
+
+    TagCreateSpec:
+      type: object
+      description: Specification for creating a tag
+      required:
+        - name
+        - category_id
+      properties:
+        name:
+          type: string
+          description: Name for the new tag
+        description:
+          type: string
+        category_id:
+          type: string
+          description: Identifier of the parent category
+
+    TagAssociationSpec:
+      type: object
+      description: Specification for attaching a tag to an object
+      required:
+        - tag_id
+        - object_id
+      properties:
+        tag_id:
+          type: string
+          description: Identifier of the tag to attach
+        object_id:
+          type: object
+          description: Managed object reference
+          required:
+            - type
+            - id
+          properties:
+            type:
+              type: string
+              description: Type of the managed object
+              examples:
+                - VirtualMachine
+                - HostSystem
+                - Datastore
+                - ClusterComputeResource
+            id:
+              type: string
+              description: Identifier of the managed object

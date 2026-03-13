@@ -1,0 +1,327 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "vmw": "https://vmware.com/ns/vsphere/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "VirtualMachine": {
+      "@id": "vmw:VirtualMachine",
+      "@context": {
+        "vm": "vmw:vmIdentifier",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "powerState": "vmw:powerState",
+        "guestOS": "vmw:guestOS",
+        "instanceUuid": {
+          "@id": "vmw:instanceUuid",
+          "@type": "xsd:string"
+        },
+        "biosUuid": {
+          "@id": "vmw:biosUuid",
+          "@type": "xsd:string"
+        },
+        "hardwareVersion": "vmw:hardwareVersion",
+        "cpuCount": {
+          "@id": "vmw:cpuCount",
+          "@type": "xsd:integer"
+        },
+        "coresPerSocket": {
+          "@id": "vmw:coresPerSocket",
+          "@type": "xsd:integer"
+        },
+        "memorySizeMiB": {
+          "@id": "vmw:memorySizeMiB",
+          "@type": "xsd:integer"
+        },
+        "bootType": "vmw:bootType",
+        "storageCommitted": {
+          "@id": "vmw:storageCommitted",
+          "@type": "xsd:long"
+        },
+        "storageUncommitted": {
+          "@id": "vmw:storageUncommitted",
+          "@type": "xsd:long"
+        },
+        "host": {
+          "@id": "vmw:placedOnHost",
+          "@type": "@id"
+        },
+        "cluster": {
+          "@id": "vmw:memberOfCluster",
+          "@type": "@id"
+        },
+        "datastore": {
+          "@id": "vmw:storedOnDatastore",
+          "@type": "@id"
+        },
+        "resourcePool": {
+          "@id": "vmw:assignedToResourcePool",
+          "@type": "@id"
+        },
+        "datacenter": {
+          "@id": "vmw:withinDatacenter",
+          "@type": "@id"
+        },
+        "folder": {
+          "@id": "vmw:withinFolder",
+          "@type": "@id"
+        },
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@set"
+        },
+        "disks": {
+          "@id": "vmw:hasVirtualDisk",
+          "@container": "@set"
+        },
+        "nics": {
+          "@id": "vmw:hasNetworkAdapter",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "ESXiHost": {
+      "@id": "vmw:ESXiHost",
+      "@context": {
+        "host": "vmw:hostIdentifier",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "connectionState": "vmw:connectionState",
+        "powerState": "vmw:powerState",
+        "cluster": {
+          "@id": "vmw:memberOfCluster",
+          "@type": "@id"
+        },
+        "datacenter": {
+          "@id": "vmw:withinDatacenter",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Datastore": {
+      "@id": "vmw:Datastore",
+      "@context": {
+        "datastore": "vmw:datastoreIdentifier",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "type": "vmw:datastoreType",
+        "capacity": {
+          "@id": "vmw:capacityBytes",
+          "@type": "xsd:long"
+        },
+        "freeSpace": {
+          "@id": "vmw:freeSpaceBytes",
+          "@type": "xsd:long"
+        },
+        "accessible": {
+          "@id": "vmw:accessible",
+          "@type": "xsd:boolean"
+        },
+        "thinProvisioningSupported": {
+          "@id": "vmw:thinProvisioningSupported",
+          "@type": "xsd:boolean"
+        },
+        "multipleHostAccess": {
+          "@id": "vmw:multipleHostAccess",
+          "@type": "xsd:boolean"
+        },
+        "datacenter": {
+          "@id": "vmw:withinDatacenter",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Cluster": {
+      "@id": "vmw:Cluster",
+      "@context": {
+        "cluster": "vmw:clusterIdentifier",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "haEnabled": {
+          "@id": "vmw:haEnabled",
+          "@type": "xsd:boolean"
+        },
+        "drsEnabled": {
+          "@id": "vmw:drsEnabled",
+          "@type": "xsd:boolean"
+        },
+        "resourcePool": {
+          "@id": "vmw:rootResourcePool",
+          "@type": "@id"
+        },
+        "datacenter": {
+          "@id": "vmw:withinDatacenter",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Datacenter": {
+      "@id": "vmw:Datacenter",
+      "@context": {
+        "datacenter": "vmw:datacenterIdentifier",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "datastoreFolder": {
+          "@id": "vmw:datastoreFolder",
+          "@type": "@id"
+        },
+        "hostFolder": {
+          "@id": "vmw:hostFolder",
+          "@type": "@id"
+        },
+        "networkFolder": {
+          "@id": "vmw:networkFolder",
+          "@type": "@id"
+        },
+        "vmFolder": {
+          "@id": "vmw:vmFolder",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Network": {
+      "@id": "vmw:Network",
+      "@context": {
+        "network": "vmw:networkIdentifier",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "type": "vmw:networkType",
+        "datacenter": {
+          "@id": "vmw:withinDatacenter",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "VirtualDisk": {
+      "@id": "vmw:VirtualDisk",
+      "@context": {
+        "label": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "controllerType": "vmw:controllerType",
+        "capacityBytes": {
+          "@id": "vmw:capacityBytes",
+          "@type": "xsd:long"
+        },
+        "vmdkFile": {
+          "@id": "vmw:vmdkFile",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "NetworkAdapter": {
+      "@id": "vmw:NetworkAdapter",
+      "@context": {
+        "label": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "adapterType": "vmw:adapterType",
+        "macAddress": {
+          "@id": "vmw:macAddress",
+          "@type": "xsd:string"
+        },
+        "state": "vmw:connectionState",
+        "network": {
+          "@id": "vmw:connectedToNetwork",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "ResourcePool": {
+      "@id": "vmw:ResourcePool",
+      "@context": {
+        "resourcePool": "vmw:resourcePoolIdentifier",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "cluster": {
+          "@id": "vmw:memberOfCluster",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "ContentLibrary": {
+      "@id": "vmw:ContentLibrary",
+      "@context": {
+        "id": "vmw:libraryIdentifier",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "type": "vmw:libraryType",
+        "creationTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "lastModifiedTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "StoragePolicy": {
+      "@id": "vmw:StoragePolicy",
+      "@context": {
+        "policy": "vmw:policyIdentifier",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Tag": {
+      "@id": "vmw:Tag",
+      "@context": {
+        "tagId": "vmw:tagIdentifier",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "category": {
+          "@id": "vmw:belongsToCategory",
+          "@type": "@id"
+        }
+      }
+    }
+  }
+}
