@@ -1,22 +1,18 @@
+aid: vmware
 name: VMware
 description: Collection of VMware APIs for cloud infrastructure, virtualization, and management solutions
-image: https://www.vmware.com/content/dam/digitalmarketing/vmware/en/images/vmware-logo.jpg
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Cloud Computing
-- Virtualization
-- Infrastructure
-- Hybrid Cloud
-- Container Management
-- Network Security
-- Disaster Recovery
-- Digital Workspace
-- Data Management
-- Automation
-- Load Balancing
-- Observability
-created: '2024'
-modified: '2026-03-03'
-specificationVersion: '0.18'
+  - Cloud Computing
+  - Virtualization
+  - Infrastructure
+  - Hybrid Cloud
+  - Container Management
+created: '2024-01-01'
+modified: '2026-03-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/vmware/refs/heads/main/apis.yml
+specificationVersion: '0.19'
 apis:
 - name: vSphere API
   description: API for managing VMware vSphere virtualization platform, including VMs, hosts, and datastores
