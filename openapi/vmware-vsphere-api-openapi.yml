@@ -27,48 +27,34 @@ servers:
         default: vcenter.example.com
         description: Hostname or IP address of your vCenter Server instance
 tags:
-  - name: VMs
-    description: >-
-      Virtual machine lifecycle management including creation, power operations,
-      cloning, migration, and configuration
-  - name: VM Hardware
-    description: >-
-      Virtual machine hardware configuration including CPU, memory, disks,
-      network adapters, CD-ROMs, and other virtual devices
-  - name: VM Power
-    description: >-
-      Virtual machine power state operations including power on, power off,
-      suspend, reset, and guest shutdown
-  - name: VM Guest
-    description: >-
-      Guest operating system operations including identity, networking,
-      local filesystem, and process management via VMware Tools
-  - name: Hosts
-    description: >-
-      ESXi host management including connection state, maintenance mode,
-      and host configuration
-  - name: Datastores
-    description: >-
-      Datastore management including browsing, capacity monitoring, and
-      storage configuration
   - name: Clusters
     description: >-
       Cluster management for compute resource grouping, DRS, and HA
       configuration
-  - name: Networks
-    description: >-
-      Virtual network management including standard and distributed port
-      groups and network connectivity
-  - name: Datacenters
-    description: Datacenter management for organizing vSphere inventory
-  - name: Folders
-    description: Inventory folder management for organizing vSphere objects
-  - name: Resource Pools
-    description: Resource pool management for allocating compute resources
   - name: Content Library
     description: >-
       Content library management for templates, ISOs, and OVF packages
       shared across vCenter instances
+  - name: Datacenters
+    description: Datacenter management for organizing vSphere inventory
+  - name: Datastores
+    description: >-
+      Datastore management including browsing, capacity monitoring, and
+      storage configuration
+  - name: Folders
+    description: Inventory folder management for organizing vSphere objects
+  - name: Hosts
+    description: >-
+      ESXi host management including connection state, maintenance mode,
+      and host configuration
+  - name: Networks
+    description: >-
+      Virtual network management including standard and distributed port
+      groups and network connectivity
+  - name: Resource Pools
+    description: Resource pool management for allocating compute resources
+  - name: Session
+    description: Authentication session management for the vSphere REST API
   - name: Storage Policies
     description: >-
       VM storage policy management for defining storage requirements and
@@ -77,8 +63,22 @@ tags:
     description: >-
       Tag and category management for organizing and classifying vSphere
       inventory objects
-  - name: Session
-    description: Authentication session management for the vSphere REST API
+  - name: VM Guest
+    description: >-
+      Guest operating system operations including identity, networking,
+      local filesystem, and process management via VMware Tools
+  - name: VM Hardware
+    description: >-
+      Virtual machine hardware configuration including CPU, memory, disks,
+      network adapters, CD-ROMs, and other virtual devices
+  - name: VM Power
+    description: >-
+      Virtual machine power state operations including power on, power off,
+      suspend, reset, and guest shutdown
+  - name: VMs
+    description: >-
+      Virtual machine lifecycle management including creation, power operations,
+      cloning, migration, and configuration
 security:
   - sessionAuth: []
   - basicAuth: []
