@@ -86,7 +86,7 @@ paths:
   /session:
     post:
       operationId: createSession
-      summary: Create a new authentication session
+      summary: VMware Create a new authentication session
       description: >-
         Creates a new session by authenticating with vCenter Server credentials.
         Returns a session identifier that must be included in the
@@ -107,7 +107,7 @@ paths:
           description: Authentication failed - invalid credentials
     delete:
       operationId: deleteSession
-      summary: Terminate the current session
+      summary: VMware Terminate the current session
       description: >-
         Terminates the current authenticated session and invalidates the
         session token.
@@ -120,7 +120,7 @@ paths:
           description: Not authenticated
     get:
       operationId: getSessionInfo
-      summary: Get current session information
+      summary: VMware Get current session information
       description: >-
         Returns information about the currently authenticated session
         including the authenticated user.
@@ -139,7 +139,7 @@ paths:
   /vcenter/vm:
     get:
       operationId: listVMs
-      summary: List virtual machines
+      summary: VMware List virtual machines
       description: >-
         Returns a list of virtual machines in the vCenter inventory matching
         the specified filter criteria. Results can be filtered by name,
@@ -240,7 +240,7 @@ paths:
           description: Insufficient privileges
     post:
       operationId: createVM
-      summary: Create a new virtual machine
+      summary: VMware Create a new virtual machine
       description: >-
         Creates a new virtual machine with the specified configuration.
         The VM is created in the powered-off state and must be explicitly
@@ -271,7 +271,7 @@ paths:
   /vcenter/vm/{vm}:
     get:
       operationId: getVM
-      summary: Get virtual machine details
+      summary: VMware Get virtual machine details
       description: >-
         Returns detailed information about the specified virtual machine
         including hardware configuration, power state, guest OS, and
@@ -295,7 +295,7 @@ paths:
           description: Virtual machine not found
     delete:
       operationId: deleteVM
-      summary: Delete a virtual machine
+      summary: VMware Delete a virtual machine
       description: >-
         Permanently deletes the specified virtual machine and all
         associated virtual disks. The VM must be in a powered-off state.
@@ -318,7 +318,7 @@ paths:
   /vcenter/vm/{vm}/power:
     get:
       operationId: getVMPowerState
-      summary: Get VM power state
+      summary: VMware Get VM power state
       description: Returns the current power state of the specified virtual machine.
       tags:
         - VM Power
@@ -339,7 +339,7 @@ paths:
   /vcenter/vm/{vm}/power?action=start:
     post:
       operationId: powerOnVM
-      summary: Power on a virtual machine
+      summary: VMware Power on a virtual machine
       description: >-
         Powers on the specified virtual machine. The VM must be in a
         powered-off or suspended state.
@@ -360,7 +360,7 @@ paths:
   /vcenter/vm/{vm}/power?action=stop:
     post:
       operationId: powerOffVM
-      summary: Power off a virtual machine
+      summary: VMware Power off a virtual machine
       description: >-
         Powers off the specified virtual machine immediately. This is
         equivalent to pulling the power cord and does not perform a
@@ -383,7 +383,7 @@ paths:
   /vcenter/vm/{vm}/power?action=suspend:
     post:
       operationId: suspendVM
-      summary: Suspend a virtual machine
+      summary: VMware Suspend a virtual machine
       description: >-
         Suspends the specified virtual machine, saving its current state
         to disk. The VM can be resumed later from the suspended state.
@@ -404,7 +404,7 @@ paths:
   /vcenter/vm/{vm}/power?action=reset:
     post:
       operationId: resetVM
-      summary: Reset a virtual machine
+      summary: VMware Reset a virtual machine
       description: >-
         Resets the specified virtual machine. This is equivalent to
         pressing the reset button and does not perform a graceful
@@ -426,7 +426,7 @@ paths:
   /vcenter/vm/{vm}/hardware:
     get:
       operationId: getVMHardware
-      summary: Get VM hardware configuration
+      summary: VMware Get VM hardware configuration
       description: >-
         Returns the full virtual hardware configuration of the specified
         virtual machine including CPU, memory, and all virtual devices.
@@ -447,7 +447,7 @@ paths:
           description: Virtual machine not found
     patch:
       operationId: updateVMHardware
-      summary: Update VM hardware configuration
+      summary: VMware Update VM hardware configuration
       description: >-
         Updates the virtual hardware configuration. Some changes require
         the VM to be powered off.
@@ -474,7 +474,7 @@ paths:
   /vcenter/vm/{vm}/hardware/cpu:
     get:
       operationId: getVMCpu
-      summary: Get VM CPU configuration
+      summary: VMware Get VM CPU configuration
       description: Returns the CPU configuration of the specified virtual machine.
       tags:
         - VM Hardware
@@ -493,7 +493,7 @@ paths:
           description: Virtual machine not found
     patch:
       operationId: updateVMCpu
-      summary: Update VM CPU configuration
+      summary: VMware Update VM CPU configuration
       description: >-
         Updates the CPU configuration. Hot-add of CPUs is supported if the
         VM and guest OS support it and the VM is powered on.
@@ -520,7 +520,7 @@ paths:
   /vcenter/vm/{vm}/hardware/memory:
     get:
       operationId: getVMMemory
-      summary: Get VM memory configuration
+      summary: VMware Get VM memory configuration
       description: Returns the memory configuration of the specified virtual machine.
       tags:
         - VM Hardware
@@ -539,7 +539,7 @@ paths:
           description: Virtual machine not found
     patch:
       operationId: updateVMMemory
-      summary: Update VM memory configuration
+      summary: VMware Update VM memory configuration
       description: >-
         Updates the memory configuration. Hot-add of memory is supported
         if the VM and guest OS support it and the VM is powered on.
@@ -566,7 +566,7 @@ paths:
   /vcenter/vm/{vm}/hardware/disk:
     get:
       operationId: listVMDisks
-      summary: List VM virtual disks
+      summary: VMware List VM virtual disks
       description: Returns a list of virtual disks attached to the specified VM.
       tags:
         - VM Hardware
@@ -587,7 +587,7 @@ paths:
           description: Virtual machine not found
     post:
       operationId: createVMDisk
-      summary: Add a virtual disk to a VM
+      summary: VMware Add a virtual disk to a VM
       description: >-
         Creates and attaches a new virtual disk to the specified VM.
         Supports creating new VMDK files or attaching existing ones.
@@ -619,7 +619,7 @@ paths:
   /vcenter/vm/{vm}/hardware/ethernet:
     get:
       operationId: listVMEthernet
-      summary: List VM network adapters
+      summary: VMware List VM network adapters
       description: >-
         Returns a list of virtual Ethernet adapters attached to the
         specified virtual machine.
@@ -642,7 +642,7 @@ paths:
           description: Virtual machine not found
     post:
       operationId: createVMEthernet
-      summary: Add a network adapter to a VM
+      summary: VMware Add a network adapter to a VM
       description: >-
         Creates and attaches a new virtual Ethernet adapter to the
         specified virtual machine.
@@ -674,7 +674,7 @@ paths:
   /vcenter/vm/{vm}/guest/identity:
     get:
       operationId: getVMGuestIdentity
-      summary: Get guest OS identity
+      summary: VMware Get guest OS identity
       description: >-
         Returns guest operating system identity information reported by
         VMware Tools running inside the VM, including OS name, version,
@@ -700,7 +700,7 @@ paths:
   /vcenter/vm/{vm}/guest/networking:
     get:
       operationId: getVMGuestNetworking
-      summary: Get guest networking information
+      summary: VMware Get guest networking information
       description: >-
         Returns guest networking information reported by VMware Tools
         including network interfaces, IP addresses, DNS configuration,
@@ -724,7 +724,7 @@ paths:
   /vcenter/host:
     get:
       operationId: listHosts
-      summary: List ESXi hosts
+      summary: VMware List ESXi hosts
       description: >-
         Returns a list of ESXi hosts in the vCenter inventory matching
         the specified filter criteria. Results can be filtered by name,
@@ -809,7 +809,7 @@ paths:
   /vcenter/host/{host}:
     get:
       operationId: getHost
-      summary: Get ESXi host details
+      summary: VMware Get ESXi host details
       description: >-
         Returns detailed information about the specified ESXi host
         including connection state, hardware, and resource utilization.
@@ -832,7 +832,7 @@ paths:
   /vcenter/host/{host}/connect:
     post:
       operationId: connectHost
-      summary: Connect an ESXi host
+      summary: VMware Connect an ESXi host
       description: >-
         Connects to the specified ESXi host, making it available for
         virtual machine operations.
@@ -851,7 +851,7 @@ paths:
   /vcenter/host/{host}/disconnect:
     post:
       operationId: disconnectHost
-      summary: Disconnect an ESXi host
+      summary: VMware Disconnect an ESXi host
       description: >-
         Disconnects the specified ESXi host from vCenter Server. Running
         VMs are not affected but can no longer be managed through vCenter.
@@ -870,7 +870,7 @@ paths:
   /vcenter/datastore:
     get:
       operationId: listDatastores
-      summary: List datastores
+      summary: VMware List datastores
       description: >-
         Returns a list of datastores in the vCenter inventory matching
         the specified filter criteria. Results can be filtered by name,
@@ -950,7 +950,7 @@ paths:
   /vcenter/datastore/{datastore}:
     get:
       operationId: getDatastore
-      summary: Get datastore details
+      summary: VMware Get datastore details
       description: >-
         Returns detailed information about the specified datastore
         including capacity, free space, type, and accessible hosts.
@@ -973,7 +973,7 @@ paths:
   /vcenter/cluster:
     get:
       operationId: listClusters
-      summary: List clusters
+      summary: VMware List clusters
       description: >-
         Returns a list of clusters in the vCenter inventory matching
         the specified filter criteria.
@@ -1033,7 +1033,7 @@ paths:
   /vcenter/cluster/{cluster}:
     get:
       operationId: getCluster
-      summary: Get cluster details
+      summary: VMware Get cluster details
       description: >-
         Returns detailed information about the specified cluster
         including DRS and HA configuration.
@@ -1056,7 +1056,7 @@ paths:
   /vcenter/network:
     get:
       operationId: listNetworks
-      summary: List networks
+      summary: VMware List networks
       description: >-
         Returns a list of networks in the vCenter inventory matching
         the specified filter criteria, including standard port groups,
@@ -1130,7 +1130,7 @@ paths:
   /vcenter/datacenter:
     get:
       operationId: listDatacenters
-      summary: List datacenters
+      summary: VMware List datacenters
       description: >-
         Returns a list of datacenters in the vCenter inventory matching
         the specified filter criteria.
@@ -1177,7 +1177,7 @@ paths:
           description: Not authenticated
     post:
       operationId: createDatacenter
-      summary: Create a datacenter
+      summary: VMware Create a datacenter
       description: Creates a new datacenter in the specified folder.
       tags:
         - Datacenters
@@ -1203,7 +1203,7 @@ paths:
   /vcenter/datacenter/{datacenter}:
     get:
       operationId: getDatacenter
-      summary: Get datacenter details
+      summary: VMware Get datacenter details
       description: Returns detailed information about the specified datacenter.
       tags:
         - Datacenters
@@ -1222,7 +1222,7 @@ paths:
           description: Datacenter not found
     delete:
       operationId: deleteDatacenter
-      summary: Delete a datacenter
+      summary: VMware Delete a datacenter
       description: >-
         Deletes the specified datacenter. All hosts and VMs must be
         removed from the datacenter before deletion.
@@ -1249,7 +1249,7 @@ paths:
   /vcenter/folder:
     get:
       operationId: listFolders
-      summary: List folders
+      summary: VMware List folders
       description: >-
         Returns a list of folders in the vCenter inventory matching
         the specified filter criteria.
@@ -1318,7 +1318,7 @@ paths:
   /vcenter/resource-pool:
     get:
       operationId: listResourcePools
-      summary: List resource pools
+      summary: VMware List resource pools
       description: >-
         Returns a list of resource pools in the vCenter inventory
         matching the specified filter criteria.
@@ -1385,7 +1385,7 @@ paths:
   /content/library:
     get:
       operationId: listContentLibraries
-      summary: List content libraries
+      summary: VMware List content libraries
       description: >-
         Returns a list of all content library identifiers in the
         vCenter inventory.
@@ -1404,7 +1404,7 @@ paths:
           description: Not authenticated
     post:
       operationId: createContentLibrary
-      summary: Create a content library
+      summary: VMware Create a content library
       description: >-
         Creates a new local or subscribed content library for storing
         templates, ISOs, and OVF packages.
@@ -1432,7 +1432,7 @@ paths:
   /content/library/{library_id}:
     get:
       operationId: getContentLibrary
-      summary: Get content library details
+      summary: VMware Get content library details
       description: Returns detailed information about the specified content library.
       tags:
         - Content Library
@@ -1456,7 +1456,7 @@ paths:
           description: Content library not found
     delete:
       operationId: deleteContentLibrary
-      summary: Delete a content library
+      summary: VMware Delete a content library
       description: >-
         Deletes the specified content library and all of its items.
       tags:
@@ -1479,7 +1479,7 @@ paths:
   /vcenter/storage/policies:
     get:
       operationId: listStoragePolicies
-      summary: List storage policies
+      summary: VMware List storage policies
       description: >-
         Returns a list of VM storage policies available in the vCenter
         inventory.
@@ -1510,7 +1510,7 @@ paths:
   /cis/tagging/category:
     get:
       operationId: listTagCategories
-      summary: List tag categories
+      summary: VMware List tag categories
       description: Returns all tag category identifiers in the system.
       tags:
         - Tagging
@@ -1527,7 +1527,7 @@ paths:
           description: Not authenticated
     post:
       operationId: createTagCategory
-      summary: Create a tag category
+      summary: VMware Create a tag category
       description: Creates a new tag category used to group related tags.
       tags:
         - Tagging
@@ -1553,7 +1553,7 @@ paths:
   /cis/tagging/tag:
     get:
       operationId: listTags
-      summary: List tags
+      summary: VMware List tags
       description: Returns all tag identifiers in the system.
       tags:
         - Tagging
@@ -1570,7 +1570,7 @@ paths:
           description: Not authenticated
     post:
       operationId: createTag
-      summary: Create a tag
+      summary: VMware Create a tag
       description: Creates a new tag within a specified category.
       tags:
         - Tagging
@@ -1596,7 +1596,7 @@ paths:
   /cis/tagging/tag-association?action=attach:
     post:
       operationId: attachTag
-      summary: Attach a tag to an object
+      summary: VMware Attach a tag to an object
       description: >-
         Attaches a tag to a vSphere managed object such as a VM, host,
         datastore, or cluster.
