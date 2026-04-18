@@ -1,0 +1,11 @@
+{
+  "id": "abc123",
+  "name": "Example Title",
+  "description": "A sample description.",
+  "type": "example_value",
+  "creation_time": "example_value",
+  "last_modified_time": "example_value",
+  "last_sync_time": "example_value",
+  "storage_backings": [],
+  "version": "example_value"
+}

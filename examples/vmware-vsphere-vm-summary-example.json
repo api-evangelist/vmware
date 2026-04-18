@@ -1,0 +1,7 @@
+{
+  "vm": "example_value",
+  "name": "Example Title",
+  "power_state": "example_value",
+  "cpu_count": 10,
+  "memory_size_MiB": 10
+}

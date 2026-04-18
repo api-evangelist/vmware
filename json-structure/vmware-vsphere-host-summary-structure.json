@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "HostSummary",
+  "type": "object",
+  "properties": {
+    "host": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "connection_state": {
+      "type": "string"
+    },
+    "power_state": {
+      "type": "string"
+    }
+  }
+}

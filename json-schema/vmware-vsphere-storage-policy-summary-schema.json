@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StoragePolicySummary",
+  "type": "object",
+  "description": "Summary of a VM storage policy",
+  "properties": {
+    "policy": {
+      "type": "string",
+      "description": "Identifier of the storage policy"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the storage policy"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the storage policy"
+    }
+  }
+}

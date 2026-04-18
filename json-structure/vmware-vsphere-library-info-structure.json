@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "LibraryInfo",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "creation_time": {
+      "type": "string"
+    },
+    "last_modified_time": {
+      "type": "string"
+    },
+    "last_sync_time": {
+      "type": "string"
+    },
+    "storage_backings": {
+      "type": "array"
+    },
+    "version": {
+      "type": "string"
+    }
+  }
+}

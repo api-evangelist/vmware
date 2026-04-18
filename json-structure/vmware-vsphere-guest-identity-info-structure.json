@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GuestIdentityInfo",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string"
+    },
+    "full_name": {
+      "type": "object"
+    },
+    "host_name": {
+      "type": "string"
+    },
+    "ip_address": {
+      "type": "string"
+    }
+  }
+}

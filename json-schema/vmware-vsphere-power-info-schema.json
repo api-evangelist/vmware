@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PowerInfo",
+  "type": "object",
+  "description": "Power state information for a virtual machine",
+  "properties": {
+    "state": {
+      "type": "string",
+      "description": "Current power state"
+    },
+    "clean_power_off": {
+      "type": "boolean",
+      "description": "Whether the last power-off was clean"
+    }
+  }
+}

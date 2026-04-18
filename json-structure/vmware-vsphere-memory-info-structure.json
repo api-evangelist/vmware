@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MemoryInfo",
+  "type": "object",
+  "properties": {
+    "size_MiB": {
+      "type": "integer"
+    },
+    "hot_add_enabled": {
+      "type": "boolean"
+    },
+    "hot_add_increment_size_MiB": {
+      "type": "integer"
+    },
+    "hot_add_limit_MiB": {
+      "type": "integer"
+    }
+  }
+}

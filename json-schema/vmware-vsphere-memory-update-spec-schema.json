@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MemoryUpdateSpec",
+  "type": "object",
+  "description": "Specification for memory configuration",
+  "properties": {
+    "size_MiB": {
+      "type": "integer",
+      "description": "Memory size in mebibytes"
+    },
+    "hot_add_enabled": {
+      "type": "boolean"
+    }
+  }
+}

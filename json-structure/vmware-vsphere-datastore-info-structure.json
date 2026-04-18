@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DatastoreInfo",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "accessible": {
+      "type": "boolean"
+    },
+    "free_space": {
+      "type": "integer"
+    },
+    "capacity": {
+      "type": "integer"
+    },
+    "thin_provisioning_supported": {
+      "type": "boolean"
+    },
+    "multiple_host_access": {
+      "type": "boolean"
+    }
+  }
+}

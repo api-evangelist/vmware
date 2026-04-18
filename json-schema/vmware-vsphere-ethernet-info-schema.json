@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EthernetInfo",
+  "type": "object",
+  "description": "Detailed virtual network adapter configuration",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Display label of the adapter"
+    },
+    "type": {
+      "type": "string",
+      "description": "Adapter emulation type"
+    },
+    "mac_type": {
+      "type": "string",
+      "description": "MAC address type"
+    },
+    "mac_address": {
+      "type": "string",
+      "description": "MAC address of the adapter"
+    },
+    "state": {
+      "type": "string",
+      "description": "Connection state"
+    },
+    "start_connected": {
+      "type": "boolean",
+      "description": "Whether the adapter connects at power on"
+    },
+    "backing": {
+      "type": "object",
+      "description": "Network backing information"
+    },
+    "allow_guest_control": {
+      "type": "boolean",
+      "description": "Whether guest OS can change adapter settings"
+    },
+    "wake_on_lan_enabled": {
+      "type": "boolean"
+    }
+  }
+}

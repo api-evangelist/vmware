@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TagCategoryCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a tag category",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name for the new category"
+    },
+    "description": {
+      "type": "string"
+    },
+    "cardinality": {
+      "type": "string",
+      "description": "Cardinality of the category"
+    },
+    "associable_types": {
+      "type": "array",
+      "description": "Object types that can be tagged with tags in this category"
+    }
+  }
+}

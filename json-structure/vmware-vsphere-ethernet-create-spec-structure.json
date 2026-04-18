@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EthernetCreateSpec",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "mac_type": {
+      "type": "string"
+    },
+    "mac_address": {
+      "type": "string"
+    },
+    "backing": {
+      "type": "object"
+    },
+    "start_connected": {
+      "type": "boolean"
+    },
+    "allow_guest_control": {
+      "type": "boolean"
+    },
+    "wake_on_lan_enabled": {
+      "type": "boolean"
+    }
+  }
+}

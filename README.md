@@ -1,147 +1,139 @@
 # VMware (vmware)
-Collection of VMware APIs for cloud infrastructure, virtualization, and management solutions
+Collection of VMware APIs for cloud infrastructure, virtualization, and management solutions including vSphere, NSX, vCloud Director, Tanzu, and Aria operations.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/vmware/refs/heads/main/apis.yml)
 
+**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+
 ## Tags:
 
- - Cloud Computing, Virtualization, Infrastructure, Hybrid Cloud, Container Management
+ - Cloud Computing, Container Management, Hybrid Cloud, Infrastructure, Virtualization
 
 ## Timestamps
 
-- **Created:** 2024 
-- **Modified:** 2024 
+- **Created:** 2024-01-01
+- **Modified:** 2026-04-18
 
 ## APIs
 
 ### vSphere API
-API for managing VMware vSphere virtualization platform, including VMs, hosts, and datastores
+API for managing VMware vSphere virtualization platform, including VMs, hosts, and datastores.
 
 **Human URL:** [https://developer.vmware.com/apis/vsphere-automation/latest/](https://developer.vmware.com/apis/vsphere-automation/latest/)
 
-
 #### Tags:
 
- - Virtualization, VM Management, Hypervisor, Data Center
+ - Data Center, Hypervisor, Virtualization, VM Management
 
 #### Properties
 
 - [Documentation](https://developer.vmware.com/docs/vsphere-automation/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/vsphere-automation/latest/openapi/)
+- [OpenAPI](openapi/vmware-vsphere-api-openapi.yml)
 - [Authentication](https://developer.vmware.com/docs/vsphere-automation/latest/authentication/)
+- [APIReference](https://developer.broadcom.com/xapis/vsphere-automation-api/latest/)
+- [JSONSchema](json-schema/vmware-virtual-machine-schema.json)
+- [JSONLD](json-ld/vmware-vsphere-context.jsonld)
 
-### vCloud Director API
-API for VMware vCloud Director cloud service delivery platform
+### vSphere Web Services API
+Comprehensive SOAP-based API providing access to all vSphere management functionality.
 
-**Human URL:** [https://developer.vmware.com/apis/vmware-cloud-director/latest/](https://developer.vmware.com/apis/vmware-cloud-director/latest/)
-
-
-#### Tags:
-
- - Cloud Management, Multi-tenancy, Service Provider
+**Human URL:** [https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/)
 
 #### Properties
 
-- [Documentation](https://developer.vmware.com/docs/vmware-cloud-director/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/vmware-cloud-director/latest/openapi/)
-- [API Reference](https://developer.vmware.com/apis/vmware-cloud-director/latest/reference/)
+- [APIReference](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/)
+- [SDK](https://github.com/vmware/vsphere-automation-sdk-java)
 
 ### NSX-T Data Center API
-API for NSX-T network virtualization and security platform
+API for NSX-T network virtualization and security platform.
 
 **Human URL:** [https://developer.vmware.com/apis/nsx-t/latest/](https://developer.vmware.com/apis/nsx-t/latest/)
-
-
-#### Tags:
-
- - Network Virtualization, Security, Micro-segmentation, Load Balancing
 
 #### Properties
 
 - [Documentation](https://developer.vmware.com/docs/nsx-t/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/nsx-t/latest/openapi/)
-- [API Guide](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html)
+- [APIReference](https://developer.broadcom.com/xapis/nsx-t-data-center-rest-api/latest/)
 
-### vRealize Automation API
-API for automating IT service delivery and cloud infrastructure management
+### VMware Cloud Foundation API
+API for managing the full VMware Cloud Foundation stack.
 
-**Human URL:** [https://developer.vmware.com/apis/vrealize-automation/latest/](https://developer.vmware.com/apis/vrealize-automation/latest/)
-
-
-#### Tags:
-
- - Automation, Orchestration, Infrastructure as Code, Self-Service
+**Human URL:** [https://developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/](https://developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/)
 
 #### Properties
 
-- [Documentation](https://developer.vmware.com/docs/vrealize-automation/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/vrealize-automation/latest/openapi/)
-- [Code Samples](https://github.com/vmware/vrealize-automation-samples)
+- [APIReference](https://developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/)
+- [SDK](https://github.com/vmware/vcf-sdk-java)
 
-### VMware Cloud on AWS API
-API for managing VMware Cloud on AWS infrastructure
+## Common Properties
 
-**Human URL:** [https://developer.vmware.com/apis/vmc/latest/](https://developer.vmware.com/apis/vmc/latest/)
+- [Portal](https://developer.broadcom.com/)
+- [Documentation](https://techdocs.broadcom.com/us/en/vmware-cis.html)
+- [SDK](https://developer.broadcom.com/vmware-sdk-api)
+- [CodeExamples](https://developer.broadcom.com/codesample)
+- [CLI](https://developer.broadcom.com/powercli/latest/)
+- [Blog](https://blogs.vmware.com/code/)
+- [Support](https://www.broadcom.com/support/vmware-services)
+- [GitHubOrganization](https://github.com/vmware)
+- [GitHubRepository](https://github.com/vmware-samples)
+- [PrivacyPolicy](https://www.broadcom.com/company/legal/privacy/policy)
+- [TermsOfService](https://www.broadcom.com/company/legal/terms-of-use)
+- [StatusPage](https://status.vmware-services.io/)
+- [Pricing](https://www.broadcom.com/products/software/vmware)
 
+## Features
 
-#### Tags:
+| Name | Description |
+|------|-------------|
+| vSphere Virtualization | Industry-leading server virtualization platform for running and managing virtual machines across data center infrastructure. |
+| NSX Networking | Software-defined networking and security platform with micro-segmentation, load balancing, and distributed firewall. |
+| vSAN Storage | Hyper-converged software-defined storage integrated with vSphere for simplified storage management and high availability. |
+| Tanzu Kubernetes | Enterprise Kubernetes management for building, running, and managing modern containerized applications at scale. |
+| Aria Operations | AI-powered operations management for proactive performance optimization, capacity planning, and intelligent remediation. |
+| Horizon VDI | Virtual desktop and application delivery platform for secure remote work with published desktops and applications. |
+| Cloud Foundation | Integrated software stack for private and hybrid cloud with automated lifecycle management and consistent operations. |
+| Site Recovery | Automated disaster recovery and business continuity with recovery plan orchestration and non-disruptive testing. |
+| Private AI | On-premises AI infrastructure services for deploying and managing AI workloads within VMware environments. |
 
- - AWS, Hybrid Cloud, SDDC, Cloud Services
+## Use Cases
 
-#### Properties
+| Name | Description |
+|------|-------------|
+| Data Center Modernization | Transform traditional data centers with software-defined compute, storage, and networking for improved agility and efficiency. |
+| Hybrid Cloud Operations | Extend on-premises infrastructure to public clouds with consistent management, security, and networking across environments. |
+| Application Modernization | Containerize existing applications and deploy new cloud-native workloads on Kubernetes with enterprise-grade management. |
+| Disaster Recovery | Protect business-critical workloads with automated failover, recovery plan testing, and ransomware protection. |
+| Virtual Desktop Infrastructure | Deliver secure virtual desktops and applications to remote workers with centralized management and endpoint security. |
+| Network Security | Implement zero-trust security with micro-segmentation, distributed firewall, and threat detection across the network. |
 
-- [Documentation](https://developer.vmware.com/docs/vmc/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/vmc/latest/openapi/)
-- [Getting Started](https://developer.vmware.com/docs/vmc/latest/getting-started/)
+## Integrations
 
-### Tanzu Kubernetes Grid API
-API for managing enterprise-ready Kubernetes clusters
+| Name | Description |
+|------|-------------|
+| AWS | VMware Cloud on AWS provides a jointly engineered hybrid cloud service running vSphere on AWS bare-metal infrastructure. |
+| Microsoft Azure | Azure VMware Solution runs VMware workloads natively on Azure with full vSphere, vSAN, and NSX integration. |
+| Google Cloud | Google Cloud VMware Engine provides a fully managed VMware environment on Google Cloud infrastructure. |
+| Dell VxRail | Jointly engineered hyperconverged infrastructure combining VCF with Dell PowerEdge servers for turnkey private cloud. |
+| Kubernetes | Native Kubernetes integration through Tanzu and vSphere with Kubernetes for container orchestration at enterprise scale. |
+| Terraform | Official VMware Terraform provider for infrastructure-as-code automation of vSphere, NSX, and VCF resources. |
 
-**Human URL:** [https://developer.vmware.com/apis/tanzu/](https://developer.vmware.com/apis/tanzu/)
+## Artifacts
 
+Machine-readable API specifications organized by format.
 
-#### Tags:
+### OpenAPI
 
- - Kubernetes, Containers, Cloud Native, DevOps
+- [VMware vSphere API](openapi/vmware-vsphere-api-openapi.yml)
 
-#### Properties
+## Rules
 
-- [Documentation](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/index.html)
-- [CLI Reference](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/latest/vmware-tanzu-kubernetes-grid/cli-reference.html)
+- [VMware Spectral Rules](rules/vmware-spectral-rules.yml)
 
-### vRealize Operations API
-API for IT operations management and performance monitoring
+## Vocabulary
 
-**Human URL:** [https://developer.vmware.com/apis/vrealize-operations/latest/](https://developer.vmware.com/apis/vrealize-operations/latest/)
-
-
-#### Tags:
-
- - Monitoring, Analytics, Performance, Operations
-
-#### Properties
-
-- [Documentation](https://developer.vmware.com/docs/vrealize-operations/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/vrealize-operations/latest/openapi/)
-- [REST API Guide](https://docs.vmware.com/en/vRealize-Operations/index.html)
-
-### Workspace ONE API
-API for unified endpoint management and digital workspace platform
-
-**Human URL:** [https://developer.vmware.com/apis/workspace-one/](https://developer.vmware.com/apis/workspace-one/)
-
-
-#### Tags:
-
- - Endpoint Management, Mobile Device Management, Enterprise Mobility, Identity
-
-#### Properties
-
-- [Documentation](https://developer.vmware.com/docs/workspace-one/)
-- [API Reference](https://developer.vmware.com/apis/workspace-one/latest/reference/)
+- [VMware Vocabulary](vocabulary/vmware-vocabulary.yaml)
 
 ## Maintainers
 
-**FN:** VMware Developer Relations
+**FN:** Kin Lane
 
-**Email:** developer@vmware.com
+**Email:** kin@apievangelist.com

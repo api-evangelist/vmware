@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GuestNetworkingInfo",
+  "type": "object",
+  "description": "Guest OS networking information from VMware Tools",
+  "properties": {
+    "dns_values": {
+      "type": "object"
+    },
+    "dns": {
+      "type": "object"
+    },
+    "interfaces": {
+      "type": "array"
+    }
+  }
+}

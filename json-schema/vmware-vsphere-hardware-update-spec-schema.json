@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HardwareUpdateSpec",
+  "type": "object",
+  "description": "Specification for updating virtual hardware",
+  "properties": {
+    "upgrade_policy": {
+      "type": "string"
+    },
+    "upgrade_version": {
+      "type": "string"
+    }
+  }
+}

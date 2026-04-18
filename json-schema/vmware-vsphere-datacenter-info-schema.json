@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DatacenterInfo",
+  "type": "object",
+  "description": "Detailed datacenter information",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the datacenter"
+    },
+    "datastore_folder": {
+      "type": "string",
+      "description": "Datastore folder identifier"
+    },
+    "host_folder": {
+      "type": "string",
+      "description": "Host folder identifier"
+    },
+    "network_folder": {
+      "type": "string",
+      "description": "Network folder identifier"
+    },
+    "vm_folder": {
+      "type": "string",
+      "description": "VM folder identifier"
+    }
+  }
+}

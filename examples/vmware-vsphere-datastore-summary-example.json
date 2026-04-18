@@ -1,0 +1,7 @@
+{
+  "datastore": "example_value",
+  "name": "Example Title",
+  "type": "example_value",
+  "free_space": 10,
+  "capacity": 10
+}

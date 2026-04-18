@@ -1,0 +1,7 @@
+{
+  "name": "Example Title",
+  "datastore_folder": "example_value",
+  "host_folder": "example_value",
+  "network_folder": "example_value",
+  "vm_folder": "example_value"
+}

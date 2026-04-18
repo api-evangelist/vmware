@@ -1,0 +1,6 @@
+{
+  "cluster": "example_value",
+  "name": "Example Title",
+  "ha_enabled": true,
+  "drs_enabled": true
+}

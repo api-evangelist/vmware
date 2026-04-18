@@ -1,0 +1,9 @@
+{
+  "type": "example_value",
+  "mac_type": "example_value",
+  "mac_address": "example_value",
+  "backing": "example_value",
+  "start_connected": true,
+  "allow_guest_control": true,
+  "wake_on_lan_enabled": true
+}

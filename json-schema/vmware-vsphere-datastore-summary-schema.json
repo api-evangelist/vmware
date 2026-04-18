@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DatastoreSummary",
+  "type": "object",
+  "description": "Summary of a datastore in the vCenter inventory",
+  "properties": {
+    "datastore": {
+      "type": "string",
+      "description": "Unique identifier of the datastore (e.g., datastore-15)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the datastore"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of the datastore"
+    },
+    "free_space": {
+      "type": "integer",
+      "description": "Free space in bytes"
+    },
+    "capacity": {
+      "type": "integer",
+      "description": "Total capacity in bytes"
+    }
+  }
+}

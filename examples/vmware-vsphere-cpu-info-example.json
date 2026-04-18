@@ -1,0 +1,6 @@
+{
+  "count": 10,
+  "cores_per_socket": 10,
+  "hot_add_enabled": true,
+  "hot_remove_enabled": true
+}

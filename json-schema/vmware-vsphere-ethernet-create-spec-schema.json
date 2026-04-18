@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EthernetCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a virtual network adapter",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Adapter emulation type"
+    },
+    "mac_type": {
+      "type": "string"
+    },
+    "mac_address": {
+      "type": "string",
+      "description": "MAC address (required when mac_type is MANUAL)"
+    },
+    "backing": {
+      "type": "object"
+    },
+    "start_connected": {
+      "type": "boolean"
+    },
+    "allow_guest_control": {
+      "type": "boolean"
+    },
+    "wake_on_lan_enabled": {
+      "type": "boolean"
+    }
+  }
+}

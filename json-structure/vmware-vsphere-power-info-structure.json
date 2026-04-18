@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PowerInfo",
+  "type": "object",
+  "properties": {
+    "state": {
+      "type": "string"
+    },
+    "clean_power_off": {
+      "type": "boolean"
+    }
+  }
+}

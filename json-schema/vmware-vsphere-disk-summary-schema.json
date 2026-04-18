@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DiskSummary",
+  "type": "object",
+  "description": "Summary of a virtual disk",
+  "properties": {
+    "disk": {
+      "type": "string",
+      "description": "Identifier of the virtual disk"
+    }
+  }
+}

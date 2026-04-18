@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VMInfo",
+  "type": "object",
+  "description": "Detailed virtual machine configuration and state",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the virtual machine"
+    },
+    "identity": {
+      "type": "object",
+      "description": "VM identity information"
+    },
+    "power_state": {
+      "type": "string"
+    },
+    "guest_OS": {
+      "type": "string",
+      "description": "Configured guest operating system"
+    },
+    "boot": {
+      "type": "object"
+    },
+    "disks": {
+      "type": "object",
+      "description": "Map of disk identifier to disk configuration"
+    },
+    "nics": {
+      "type": "object",
+      "description": "Map of NIC identifier to NIC configuration"
+    },
+    "cdroms": {
+      "type": "object",
+      "description": "Map of CD-ROM identifier to CD-ROM configuration"
+    },
+    "parallel_ports": {
+      "type": "object"
+    },
+    "serial_ports": {
+      "type": "object"
+    },
+    "floppy_drives": {
+      "type": "object"
+    }
+  }
+}

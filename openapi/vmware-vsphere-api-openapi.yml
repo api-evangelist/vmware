@@ -20,81 +20,81 @@ externalDocs:
   description: vSphere Automation API Reference on Broadcom Developer Portal
   url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
 servers:
-  - url: https://{vcenter}/api
-    description: vCenter Server REST API endpoint
-    variables:
-      vcenter:
-        default: vcenter.example.com
-        description: Hostname or IP address of your vCenter Server instance
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
 tags:
-  - name: Clusters
-    description: >-
-      Cluster management for compute resource grouping, DRS, and HA
-      configuration
-  - name: Content Library
-    description: >-
-      Content library management for templates, ISOs, and OVF packages
-      shared across vCenter instances
-  - name: Datacenters
-    description: Datacenter management for organizing vSphere inventory
-  - name: Datastores
-    description: >-
-      Datastore management including browsing, capacity monitoring, and
-      storage configuration
-  - name: Folders
-    description: Inventory folder management for organizing vSphere objects
-  - name: Hosts
-    description: >-
-      ESXi host management including connection state, maintenance mode,
-      and host configuration
-  - name: Networks
-    description: >-
-      Virtual network management including standard and distributed port
-      groups and network connectivity
-  - name: Resource Pools
-    description: Resource pool management for allocating compute resources
-  - name: Session
-    description: Authentication session management for the vSphere REST API
-  - name: Storage Policies
-    description: >-
-      VM storage policy management for defining storage requirements and
-      compliance
-  - name: Tagging
-    description: >-
-      Tag and category management for organizing and classifying vSphere
-      inventory objects
-  - name: VM Guest
-    description: >-
-      Guest operating system operations including identity, networking,
-      local filesystem, and process management via VMware Tools
-  - name: VM Hardware
-    description: >-
-      Virtual machine hardware configuration including CPU, memory, disks,
-      network adapters, CD-ROMs, and other virtual devices
-  - name: VM Power
-    description: >-
-      Virtual machine power state operations including power on, power off,
-      suspend, reset, and guest shutdown
-  - name: VMs
-    description: >-
-      Virtual machine lifecycle management including creation, power operations,
-      cloning, migration, and configuration
+- name: Clusters
+  description: >-
+    Cluster management for compute resource grouping, DRS, and HA
+    configuration
+- name: Content Library
+  description: >-
+    Content library management for templates, ISOs, and OVF packages
+    shared across vCenter instances
+- name: Datacenters
+  description: Datacenter management for organizing vSphere inventory
+- name: Datastores
+  description: >-
+    Datastore management including browsing, capacity monitoring, and
+    storage configuration
+- name: Folders
+  description: Inventory folder management for organizing vSphere objects
+- name: Hosts
+  description: >-
+    ESXi host management including connection state, maintenance mode,
+    and host configuration
+- name: Networks
+  description: >-
+    Virtual network management including standard and distributed port
+    groups and network connectivity
+- name: Resource Pools
+  description: Resource pool management for allocating compute resources
+- name: Session
+  description: Authentication session management for the vSphere REST API
+- name: Storage Policies
+  description: >-
+    VM storage policy management for defining storage requirements and
+    compliance
+- name: Tagging
+  description: >-
+    Tag and category management for organizing and classifying vSphere
+    inventory objects
+- name: VM Guest
+  description: >-
+    Guest operating system operations including identity, networking,
+    local filesystem, and process management via VMware Tools
+- name: VM Hardware
+  description: >-
+    Virtual machine hardware configuration including CPU, memory, disks,
+    network adapters, CD-ROMs, and other virtual devices
+- name: VM Power
+  description: >-
+    Virtual machine power state operations including power on, power off,
+    suspend, reset, and guest shutdown
+- name: VMs
+  description: >-
+    Virtual machine lifecycle management including creation, power operations,
+    cloning, migration, and configuration
 security:
-  - sessionAuth: []
-  - basicAuth: []
+- sessionAuth: []
+- basicAuth: []
 paths:
   /session:
     post:
       operationId: createSession
-      summary: VMware Create a new authentication session
+      summary: Vmware Create a New Authentication Session
       description: >-
         Creates a new session by authenticating with vCenter Server credentials.
         Returns a session identifier that must be included in the
         vmware-api-session-id header for subsequent requests.
       tags:
-        - Session
+      - Session
       security:
-        - basicAuth: []
+      - basicAuth: []
       responses:
         '201':
           description: Session created successfully
@@ -103,29 +103,40 @@ paths:
               schema:
                 type: string
                 description: Session identifier token
+              examples:
+                Createsession201Example:
+                  summary: Default createSession 201 response
+                  x-microcks-default: true
+                  value: example_value
         '401':
           description: Authentication failed - invalid credentials
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteSession
-      summary: VMware Terminate the current session
+      summary: Vmware Terminate the Current Session
       description: >-
         Terminates the current authenticated session and invalidates the
         session token.
       tags:
-        - Session
+      - Session
       responses:
         '204':
           description: Session terminated successfully
         '401':
           description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     get:
       operationId: getSessionInfo
-      summary: VMware Get current session information
+      summary: Vmware Get Current Session Information
       description: >-
         Returns information about the currently authenticated session
         including the authenticated user.
       tags:
-        - Session
+      - Session
       responses:
         '200':
           description: Session information returned
@@ -133,96 +144,115 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SessionInfo'
+              examples:
+                Getsessioninfo200Example:
+                  summary: Default getSessionInfo 200 response
+                  x-microcks-default: true
+                  value:
+                    user: example_value
+                    created_time: '2026-01-15T10:30:00Z'
+                    last_accessed_time: '2026-01-15T10:30:00Z'
         '401':
           description: Not authenticated
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm:
     get:
       operationId: listVMs
-      summary: VMware List virtual machines
+      summary: Vmware List Virtual Machines
       description: >-
         Returns a list of virtual machines in the vCenter inventory matching
         the specified filter criteria. Results can be filtered by name,
         power state, host, cluster, datacenter, folder, and resource pool.
       tags:
-        - VMs
+      - VMs
       parameters:
-        - name: filter.vms
-          in: query
-          description: Identifiers of VMs to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.names
-          in: query
-          description: Names of VMs to filter by (exact match)
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.folders
-          in: query
-          description: Folders that must contain the VMs
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.datacenters
-          in: query
-          description: Datacenters that must contain the VMs
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.hosts
-          in: query
-          description: Hosts that must contain the VMs
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.clusters
-          in: query
-          description: Clusters that must contain the VMs
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.resource_pools
-          in: query
-          description: Resource pools that must contain the VMs
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.power_states
-          in: query
-          description: Power states to filter by
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - POWERED_ON
-                - POWERED_OFF
-                - SUSPENDED
-          style: form
-          explode: true
+      - name: filter.vms
+        in: query
+        description: Identifiers of VMs to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of VMs to filter by (exact match)
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.folders
+        in: query
+        description: Folders that must contain the VMs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.datacenters
+        in: query
+        description: Datacenters that must contain the VMs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.hosts
+        in: query
+        description: Hosts that must contain the VMs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.clusters
+        in: query
+        description: Clusters that must contain the VMs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.resource_pools
+        in: query
+        description: Resource pools that must contain the VMs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.power_states
+        in: query
+        description: Power states to filter by
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - SUSPENDED
+        style: form
+        explode: true
+        example: []
       responses:
         '200':
           description: List of virtual machines matching the filter
@@ -232,27 +262,79 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/VMSummary'
+              examples:
+                Listvms200Example:
+                  summary: Default listVMs 200 response
+                  x-microcks-default: true
+                  value:
+                  - vm: example_value
+                    name: Example Title
+                    power_state: POWERED_ON
+                    cpu_count: 10
+                    memory_size_MiB: 10
         '400':
           description: Invalid filter parameters
         '401':
           description: Not authenticated
         '403':
           description: Insufficient privileges
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createVM
-      summary: VMware Create a new virtual machine
+      summary: Vmware Create a New Virtual Machine
       description: >-
         Creates a new virtual machine with the specified configuration.
         The VM is created in the powered-off state and must be explicitly
         powered on after creation.
       tags:
-        - VMs
+      - VMs
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/VMCreateSpec'
+            examples:
+              CreatevmRequestExample:
+                summary: Default createVM request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  guest_OS: RHEL_9_64
+                  placement:
+                    folder: example_value
+                    host: example_value
+                    cluster: example_value
+                    resource_pool: example_value
+                    datastore: example_value
+                  hardware_version: VMX_21
+                  cpu:
+                    count: 10
+                    cores_per_socket: 10
+                    hot_add_enabled: true
+                    hot_remove_enabled: true
+                  memory:
+                    size_MiB: 10
+                    hot_add_enabled: true
+                  disks:
+                  - type: IDE
+                    new_vmdk: {}
+                    backing: {}
+                  nics:
+                  - type: E1000
+                    mac_type: MANUAL
+                    mac_address: example_value
+                    backing: {}
+                    start_connected: true
+                    allow_guest_control: true
+                    wake_on_lan_enabled: true
+                  boot:
+                    type: BIOS
+                    efi_legacy_boot: true
+                    delay: 10
+                    enter_setup_mode: true
       responses:
         '201':
           description: Virtual machine created successfully
@@ -261,6 +343,11 @@ paths:
               schema:
                 type: string
                 description: Identifier of the newly created VM (e.g., vm-123)
+              examples:
+                Createvm201Example:
+                  summary: Default createVM 201 response
+                  x-microcks-default: true
+                  value: example_value
         '400':
           description: Invalid VM specification
         '401':
@@ -268,18 +355,21 @@ paths:
         '403':
           description: Insufficient privileges
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}:
     get:
       operationId: getVM
-      summary: VMware Get virtual machine details
+      summary: Vmware Get Virtual Machine Details
       description: >-
         Returns detailed information about the specified virtual machine
         including hardware configuration, power state, guest OS, and
         storage information.
       tags:
-        - VMs
+      - VMs
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '200':
           description: Virtual machine details
@@ -287,22 +377,61 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VMInfo'
+              examples:
+                Getvm200Example:
+                  summary: Default getVM 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    identity:
+                      name: Example Title
+                      instance_uuid: '500123'
+                      bios_uuid: '500123'
+                    power_state: POWERED_ON
+                    guest_OS: example_value
+                    hardware:
+                      version: example_value
+                      upgrade_policy: NEVER
+                      upgrade_version: example_value
+                    boot:
+                      type: BIOS
+                      delay: 10
+                      enter_setup_mode: true
+                    cpu:
+                      count: 10
+                      cores_per_socket: 10
+                      hot_add_enabled: true
+                      hot_remove_enabled: true
+                    memory:
+                      size_MiB: 10
+                      hot_add_enabled: true
+                      hot_add_increment_size_MiB: 10
+                      hot_add_limit_MiB: 10
+                    disks: example_value
+                    nics: example_value
+                    cdroms: example_value
+                    parallel_ports: example_value
+                    serial_ports: example_value
+                    floppy_drives: example_value
         '401':
           description: Not authenticated
         '403':
           description: Insufficient privileges
         '404':
           description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteVM
-      summary: VMware Delete a virtual machine
+      summary: Vmware Delete a Virtual Machine
       description: >-
         Permanently deletes the specified virtual machine and all
         associated virtual disks. The VM must be in a powered-off state.
       tags:
-        - VMs
+      - VMs
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '204':
           description: Virtual machine deleted successfully
@@ -315,15 +444,18 @@ paths:
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/power:
     get:
       operationId: getVMPowerState
-      summary: VMware Get VM power state
+      summary: Vmware Get Vm Power State
       description: Returns the current power state of the specified virtual machine.
       tags:
-        - VM Power
+      - VM Power
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '200':
           description: Current power state
@@ -331,22 +463,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PowerInfo'
+              examples:
+                Getvmpowerstate200Example:
+                  summary: Default getVMPowerState 200 response
+                  x-microcks-default: true
+                  value:
+                    state: POWERED_ON
+                    clean_power_off: true
         '401':
           description: Not authenticated
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/power?action=start:
     post:
       operationId: powerOnVM
-      summary: VMware Power on a virtual machine
+      summary: Vmware Power on a Virtual Machine
       description: >-
         Powers on the specified virtual machine. The VM must be in a
         powered-off or suspended state.
       tags:
-        - VM Power
+      - VM Power
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '204':
           description: Power on initiated successfully
@@ -357,19 +499,22 @@ paths:
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/power?action=stop:
     post:
       operationId: powerOffVM
-      summary: VMware Power off a virtual machine
+      summary: Vmware Power Off a Virtual Machine
       description: >-
         Powers off the specified virtual machine immediately. This is
         equivalent to pulling the power cord and does not perform a
         graceful guest OS shutdown. Use the guest shutdown operation
         for a clean shutdown.
       tags:
-        - VM Power
+      - VM Power
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '204':
           description: Power off initiated successfully
@@ -380,17 +525,20 @@ paths:
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/power?action=suspend:
     post:
       operationId: suspendVM
-      summary: VMware Suspend a virtual machine
+      summary: Vmware Suspend a Virtual Machine
       description: >-
         Suspends the specified virtual machine, saving its current state
         to disk. The VM can be resumed later from the suspended state.
       tags:
-        - VM Power
+      - VM Power
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '204':
           description: Suspend initiated successfully
@@ -401,18 +549,21 @@ paths:
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/power?action=reset:
     post:
       operationId: resetVM
-      summary: VMware Reset a virtual machine
+      summary: Vmware Reset a Virtual Machine
       description: >-
         Resets the specified virtual machine. This is equivalent to
         pressing the reset button and does not perform a graceful
         guest OS reboot.
       tags:
-        - VM Power
+      - VM Power
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '204':
           description: Reset initiated successfully
@@ -423,17 +574,20 @@ paths:
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/hardware:
     get:
       operationId: getVMHardware
-      summary: VMware Get VM hardware configuration
+      summary: Vmware Get Vm Hardware Configuration
       description: >-
         Returns the full virtual hardware configuration of the specified
         virtual machine including CPU, memory, and all virtual devices.
       tags:
-        - VM Hardware
+      - VM Hardware
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '200':
           description: Hardware configuration returned
@@ -441,26 +595,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HardwareInfo'
+              examples:
+                Getvmhardware200Example:
+                  summary: Default getVMHardware 200 response
+                  x-microcks-default: true
+                  value:
+                    version: example_value
+                    upgrade_policy: NEVER
+                    upgrade_version: example_value
         '401':
           description: Not authenticated
         '404':
           description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: updateVMHardware
-      summary: VMware Update VM hardware configuration
+      summary: Vmware Update Vm Hardware Configuration
       description: >-
         Updates the virtual hardware configuration. Some changes require
         the VM to be powered off.
       tags:
-        - VM Hardware
+      - VM Hardware
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/HardwareUpdateSpec'
+            examples:
+              UpdatevmhardwareRequestExample:
+                summary: Default updateVMHardware request
+                x-microcks-default: true
+                value:
+                  upgrade_policy: NEVER
+                  upgrade_version: example_value
       responses:
         '204':
           description: Hardware updated successfully
@@ -471,15 +643,18 @@ paths:
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/hardware/cpu:
     get:
       operationId: getVMCpu
-      summary: VMware Get VM CPU configuration
+      summary: Vmware Get Vm Cpu Configuration
       description: Returns the CPU configuration of the specified virtual machine.
       tags:
-        - VM Hardware
+      - VM Hardware
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '200':
           description: CPU configuration returned
@@ -487,26 +662,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CpuInfo'
+              examples:
+                Getvmcpu200Example:
+                  summary: Default getVMCpu 200 response
+                  x-microcks-default: true
+                  value:
+                    count: 10
+                    cores_per_socket: 10
+                    hot_add_enabled: true
+                    hot_remove_enabled: true
         '401':
           description: Not authenticated
         '404':
           description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: updateVMCpu
-      summary: VMware Update VM CPU configuration
+      summary: Vmware Update Vm Cpu Configuration
       description: >-
         Updates the CPU configuration. Hot-add of CPUs is supported if the
         VM and guest OS support it and the VM is powered on.
       tags:
-        - VM Hardware
+      - VM Hardware
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CpuUpdateSpec'
+            examples:
+              UpdatevmcpuRequestExample:
+                summary: Default updateVMCpu request
+                x-microcks-default: true
+                value:
+                  count: 10
+                  cores_per_socket: 10
+                  hot_add_enabled: true
+                  hot_remove_enabled: true
       responses:
         '204':
           description: CPU configuration updated
@@ -517,15 +713,18 @@ paths:
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/hardware/memory:
     get:
       operationId: getVMMemory
-      summary: VMware Get VM memory configuration
+      summary: Vmware Get Vm Memory Configuration
       description: Returns the memory configuration of the specified virtual machine.
       tags:
-        - VM Hardware
+      - VM Hardware
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '200':
           description: Memory configuration returned
@@ -533,26 +732,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MemoryInfo'
+              examples:
+                Getvmmemory200Example:
+                  summary: Default getVMMemory 200 response
+                  x-microcks-default: true
+                  value:
+                    size_MiB: 10
+                    hot_add_enabled: true
+                    hot_add_increment_size_MiB: 10
+                    hot_add_limit_MiB: 10
         '401':
           description: Not authenticated
         '404':
           description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: updateVMMemory
-      summary: VMware Update VM memory configuration
+      summary: Vmware Update Vm Memory Configuration
       description: >-
         Updates the memory configuration. Hot-add of memory is supported
         if the VM and guest OS support it and the VM is powered on.
       tags:
-        - VM Hardware
+      - VM Hardware
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/MemoryUpdateSpec'
+            examples:
+              UpdatevmmemoryRequestExample:
+                summary: Default updateVMMemory request
+                x-microcks-default: true
+                value:
+                  size_MiB: 10
+                  hot_add_enabled: true
       responses:
         '204':
           description: Memory configuration updated
@@ -563,15 +781,18 @@ paths:
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/hardware/disk:
     get:
       operationId: listVMDisks
-      summary: VMware List VM virtual disks
+      summary: Vmware List Vm Virtual Disks
       description: Returns a list of virtual disks attached to the specified VM.
       tags:
-        - VM Hardware
+      - VM Hardware
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '200':
           description: List of virtual disks
@@ -581,26 +802,49 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/DiskSummary'
+              examples:
+                Listvmdisks200Example:
+                  summary: Default listVMDisks 200 response
+                  x-microcks-default: true
+                  value:
+                  - disk: example_value
         '401':
           description: Not authenticated
         '404':
           description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createVMDisk
-      summary: VMware Add a virtual disk to a VM
+      summary: Vmware Add a Virtual Disk to a Vm
       description: >-
         Creates and attaches a new virtual disk to the specified VM.
         Supports creating new VMDK files or attaching existing ones.
       tags:
-        - VM Hardware
+      - VM Hardware
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/DiskCreateSpec'
+            examples:
+              CreatevmdiskRequestExample:
+                summary: Default createVMDisk request
+                x-microcks-default: true
+                value:
+                  type: IDE
+                  new_vmdk:
+                    name: Example Title
+                    capacity: 10
+                    storage_policy:
+                      policy: example_value
+                  backing:
+                    type: VMDK_FILE
+                    vmdk_file: example_value
       responses:
         '201':
           description: Disk created and attached successfully
@@ -609,6 +853,11 @@ paths:
               schema:
                 type: string
                 description: Identifier of the new virtual disk
+              examples:
+                Createvmdisk201Example:
+                  summary: Default createVMDisk 201 response
+                  x-microcks-default: true
+                  value: example_value
         '400':
           description: Invalid disk specification
         '401':
@@ -616,17 +865,20 @@ paths:
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/hardware/ethernet:
     get:
       operationId: listVMEthernet
-      summary: VMware List VM network adapters
+      summary: Vmware List Vm Network Adapters
       description: >-
         Returns a list of virtual Ethernet adapters attached to the
         specified virtual machine.
       tags:
-        - VM Hardware
+      - VM Hardware
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '200':
           description: List of network adapters
@@ -636,26 +888,49 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/EthernetSummary'
+              examples:
+                Listvmethernet200Example:
+                  summary: Default listVMEthernet 200 response
+                  x-microcks-default: true
+                  value:
+                  - nic: example_value
         '401':
           description: Not authenticated
         '404':
           description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createVMEthernet
-      summary: VMware Add a network adapter to a VM
+      summary: Vmware Add a Network Adapter to a Vm
       description: >-
         Creates and attaches a new virtual Ethernet adapter to the
         specified virtual machine.
       tags:
-        - VM Hardware
+      - VM Hardware
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/EthernetCreateSpec'
+            examples:
+              CreatevmethernetRequestExample:
+                summary: Default createVMEthernet request
+                x-microcks-default: true
+                value:
+                  type: E1000
+                  mac_type: MANUAL
+                  mac_address: example_value
+                  backing:
+                    type: STANDARD_PORTGROUP
+                    network: example_value
+                  start_connected: true
+                  allow_guest_control: true
+                  wake_on_lan_enabled: true
       responses:
         '201':
           description: Network adapter created successfully
@@ -664,6 +939,11 @@ paths:
               schema:
                 type: string
                 description: Identifier of the new network adapter
+              examples:
+                Createvmethernet201Example:
+                  summary: Default createVMEthernet 201 response
+                  x-microcks-default: true
+                  value: example_value
         '400':
           description: Invalid adapter specification
         '401':
@@ -671,18 +951,21 @@ paths:
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/guest/identity:
     get:
       operationId: getVMGuestIdentity
-      summary: VMware Get guest OS identity
+      summary: Vmware Get Guest Os Identity
       description: >-
         Returns guest operating system identity information reported by
         VMware Tools running inside the VM, including OS name, version,
         hostname, and IP addresses.
       tags:
-        - VM Guest
+      - VM Guest
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '200':
           description: Guest identity information
@@ -690,6 +973,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GuestIdentityInfo'
+              examples:
+                Getvmguestidentity200Example:
+                  summary: Default getVMGuestIdentity 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    family: LINUX
+                    full_name:
+                      default_message: example_value
+                      id: abc123
+                    host_name: example_value
+                    ip_address: example_value
         '401':
           description: Not authenticated
         '404':
@@ -697,18 +992,21 @@ paths:
         '503':
           description: VMware Tools not running in the guest
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/vm/{vm}/guest/networking:
     get:
       operationId: getVMGuestNetworking
-      summary: VMware Get guest networking information
+      summary: Vmware Get Guest Networking Information
       description: >-
         Returns guest networking information reported by VMware Tools
         including network interfaces, IP addresses, DNS configuration,
         and routing tables.
       tags:
-        - VM Guest
+      - VM Guest
       parameters:
-        - $ref: '#/components/parameters/vmId'
+      - $ref: '#/components/parameters/vmId'
       responses:
         '200':
           description: Guest networking information
@@ -716,80 +1014,105 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GuestNetworkingInfo'
+              examples:
+                Getvmguestnetworking200Example:
+                  summary: Default getVMGuestNetworking 200 response
+                  x-microcks-default: true
+                  value:
+                    dns_values:
+                      domain_name: example_value
+                      search_domains:
+                      - example_value
+                    dns:
+                      ip_addresses:
+                      - example_value
+                    interfaces:
+                    - mac_address: example_value
+                      ip:
+                        ip_addresses: {}
         '401':
           description: Not authenticated
         '404':
           description: Virtual machine not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/host:
     get:
       operationId: listHosts
-      summary: VMware List ESXi hosts
+      summary: Vmware List Esxi Hosts
       description: >-
         Returns a list of ESXi hosts in the vCenter inventory matching
         the specified filter criteria. Results can be filtered by name,
         connection state, cluster, datacenter, and folder.
       tags:
-        - Hosts
+      - Hosts
       parameters:
-        - name: filter.hosts
-          in: query
-          description: Identifiers of hosts to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.names
-          in: query
-          description: Names of hosts to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.folders
-          in: query
-          description: Folders that must contain the hosts
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.datacenters
-          in: query
-          description: Datacenters that must contain the hosts
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.clusters
-          in: query
-          description: Clusters that must contain the hosts
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.connection_states
-          in: query
-          description: Connection states to filter by
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - CONNECTED
-                - DISCONNECTED
-                - NOT_RESPONDING
-          style: form
-          explode: true
+      - name: filter.hosts
+        in: query
+        description: Identifiers of hosts to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of hosts to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.folders
+        in: query
+        description: Folders that must contain the hosts
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.datacenters
+        in: query
+        description: Datacenters that must contain the hosts
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.clusters
+        in: query
+        description: Clusters that must contain the hosts
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.connection_states
+        in: query
+        description: Connection states to filter by
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - CONNECTED
+            - DISCONNECTED
+            - NOT_RESPONDING
+        style: form
+        explode: true
+        example: []
       responses:
         '200':
           description: List of hosts matching the filter
@@ -799,6 +1122,15 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/HostSummary'
+              examples:
+                Listhosts200Example:
+                  summary: Default listHosts 200 response
+                  x-microcks-default: true
+                  value:
+                  - host: example_value
+                    name: Example Title
+                    connection_state: CONNECTED
+                    power_state: POWERED_ON
         '400':
           description: Invalid filter parameters
         '401':
@@ -806,17 +1138,20 @@ paths:
         '403':
           description: Insufficient privileges
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/host/{host}:
     get:
       operationId: getHost
-      summary: VMware Get ESXi host details
+      summary: Vmware Get Esxi Host Details
       description: >-
         Returns detailed information about the specified ESXi host
         including connection state, hardware, and resource utilization.
       tags:
-        - Hosts
+      - Hosts
       parameters:
-        - $ref: '#/components/parameters/hostId'
+      - $ref: '#/components/parameters/hostId'
       responses:
         '200':
           description: Host details
@@ -824,22 +1159,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HostInfo'
+              examples:
+                Gethost200Example:
+                  summary: Default getHost 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    connection_state: CONNECTED
+                    power_state: POWERED_ON
         '401':
           description: Not authenticated
         '404':
           description: Host not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/host/{host}/connect:
     post:
       operationId: connectHost
-      summary: VMware Connect an ESXi host
+      summary: Vmware Connect an Esxi Host
       description: >-
         Connects to the specified ESXi host, making it available for
         virtual machine operations.
       tags:
-        - Hosts
+      - Hosts
       parameters:
-        - $ref: '#/components/parameters/hostId'
+      - $ref: '#/components/parameters/hostId'
       responses:
         '204':
           description: Host connected successfully
@@ -848,17 +1194,20 @@ paths:
         '404':
           description: Host not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/host/{host}/disconnect:
     post:
       operationId: disconnectHost
-      summary: VMware Disconnect an ESXi host
+      summary: Vmware Disconnect an Esxi Host
       description: >-
         Disconnects the specified ESXi host from vCenter Server. Running
         VMs are not affected but can no longer be managed through vCenter.
       tags:
-        - Hosts
+      - Hosts
       parameters:
-        - $ref: '#/components/parameters/hostId'
+      - $ref: '#/components/parameters/hostId'
       responses:
         '204':
           description: Host disconnected successfully
@@ -867,70 +1216,78 @@ paths:
         '404':
           description: Host not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/datastore:
     get:
       operationId: listDatastores
-      summary: VMware List datastores
+      summary: Vmware List Datastores
       description: >-
         Returns a list of datastores in the vCenter inventory matching
         the specified filter criteria. Results can be filtered by name,
         type, datacenter, and folder.
       tags:
-        - Datastores
+      - Datastores
       parameters:
-        - name: filter.datastores
-          in: query
-          description: Identifiers of datastores to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.names
-          in: query
-          description: Names of datastores to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.types
-          in: query
-          description: Types of datastores to filter by
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - VMFS
-                - NFS
-                - NFS41
-                - CIFS
-                - VSAN
-                - VFFS
-                - VVOL
-          style: form
-          explode: true
-        - name: filter.folders
-          in: query
-          description: Folders that must contain the datastores
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.datacenters
-          in: query
-          description: Datacenters that must contain the datastores
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
+      - name: filter.datastores
+        in: query
+        description: Identifiers of datastores to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of datastores to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.types
+        in: query
+        description: Types of datastores to filter by
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - VMFS
+            - NFS
+            - NFS41
+            - CIFS
+            - VSAN
+            - VFFS
+            - VVOL
+        style: form
+        explode: true
+        example: []
+      - name: filter.folders
+        in: query
+        description: Folders that must contain the datastores
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.datacenters
+        in: query
+        description: Datacenters that must contain the datastores
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
       responses:
         '200':
           description: List of datastores matching the filter
@@ -940,6 +1297,16 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/DatastoreSummary'
+              examples:
+                Listdatastores200Example:
+                  summary: Default listDatastores 200 response
+                  x-microcks-default: true
+                  value:
+                  - datastore: example_value
+                    name: Example Title
+                    type: VMFS
+                    free_space: 10
+                    capacity: 10
         '400':
           description: Invalid filter parameters
         '401':
@@ -947,17 +1314,20 @@ paths:
         '403':
           description: Insufficient privileges
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/datastore/{datastore}:
     get:
       operationId: getDatastore
-      summary: VMware Get datastore details
+      summary: Vmware Get Datastore Details
       description: >-
         Returns detailed information about the specified datastore
         including capacity, free space, type, and accessible hosts.
       tags:
-        - Datastores
+      - Datastores
       parameters:
-        - $ref: '#/components/parameters/datastoreId'
+      - $ref: '#/components/parameters/datastoreId'
       responses:
         '200':
           description: Datastore details
@@ -965,57 +1335,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DatastoreInfo'
+              examples:
+                Getdatastore200Example:
+                  summary: Default getDatastore 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    type: VMFS
+                    accessible: true
+                    free_space: 10
+                    capacity: 10
+                    thin_provisioning_supported: true
+                    multiple_host_access: true
         '401':
           description: Not authenticated
         '404':
           description: Datastore not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/cluster:
     get:
       operationId: listClusters
-      summary: VMware List clusters
+      summary: Vmware List Clusters
       description: >-
         Returns a list of clusters in the vCenter inventory matching
         the specified filter criteria.
       tags:
-        - Clusters
+      - Clusters
       parameters:
-        - name: filter.clusters
-          in: query
-          description: Identifiers of clusters to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.names
-          in: query
-          description: Names of clusters to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.folders
-          in: query
-          description: Folders that must contain the clusters
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.datacenters
-          in: query
-          description: Datacenters that must contain the clusters
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
+      - name: filter.clusters
+        in: query
+        description: Identifiers of clusters to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of clusters to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.folders
+        in: query
+        description: Folders that must contain the clusters
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.datacenters
+        in: query
+        description: Datacenters that must contain the clusters
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
       responses:
         '200':
           description: List of clusters matching the filter
@@ -1025,22 +1414,34 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ClusterSummary'
+              examples:
+                Listclusters200Example:
+                  summary: Default listClusters 200 response
+                  x-microcks-default: true
+                  value:
+                  - cluster: example_value
+                    name: Example Title
+                    ha_enabled: true
+                    drs_enabled: true
         '400':
           description: Invalid filter parameters
         '401':
           description: Not authenticated
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/cluster/{cluster}:
     get:
       operationId: getCluster
-      summary: VMware Get cluster details
+      summary: Vmware Get Cluster Details
       description: >-
         Returns detailed information about the specified cluster
         including DRS and HA configuration.
       tags:
-        - Clusters
+      - Clusters
       parameters:
-        - $ref: '#/components/parameters/clusterId'
+      - $ref: '#/components/parameters/clusterId'
       responses:
         '200':
           description: Cluster details
@@ -1048,71 +1449,86 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClusterInfo'
+              examples:
+                Getcluster200Example:
+                  summary: Default getCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    resource_pool: example_value
         '401':
           description: Not authenticated
         '404':
           description: Cluster not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/network:
     get:
       operationId: listNetworks
-      summary: VMware List networks
+      summary: Vmware List Networks
       description: >-
         Returns a list of networks in the vCenter inventory matching
         the specified filter criteria, including standard port groups,
         distributed port groups, and NSX logical switches.
       tags:
-        - Networks
+      - Networks
       parameters:
-        - name: filter.networks
-          in: query
-          description: Identifiers of networks to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.names
-          in: query
-          description: Names of networks to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.types
-          in: query
-          description: Types of networks to filter by
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - STANDARD_PORTGROUP
-                - DISTRIBUTED_PORTGROUP
-                - OPAQUE_NETWORK
-          style: form
-          explode: true
-        - name: filter.datacenters
-          in: query
-          description: Datacenters that must contain the networks
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.folders
-          in: query
-          description: Folders that must contain the networks
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
+      - name: filter.networks
+        in: query
+        description: Identifiers of networks to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of networks to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.types
+        in: query
+        description: Types of networks to filter by
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - STANDARD_PORTGROUP
+            - DISTRIBUTED_PORTGROUP
+            - OPAQUE_NETWORK
+        style: form
+        explode: true
+        example: []
+      - name: filter.datacenters
+        in: query
+        description: Datacenters that must contain the networks
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.folders
+        in: query
+        description: Folders that must contain the networks
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
       responses:
         '200':
           description: List of networks matching the filter
@@ -1122,48 +1538,62 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/NetworkSummary'
+              examples:
+                Listnetworks200Example:
+                  summary: Default listNetworks 200 response
+                  x-microcks-default: true
+                  value:
+                  - network: example_value
+                    name: Example Title
+                    type: STANDARD_PORTGROUP
         '400':
           description: Invalid filter parameters
         '401':
           description: Not authenticated
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/datacenter:
     get:
       operationId: listDatacenters
-      summary: VMware List datacenters
+      summary: Vmware List Datacenters
       description: >-
         Returns a list of datacenters in the vCenter inventory matching
         the specified filter criteria.
       tags:
-        - Datacenters
+      - Datacenters
       parameters:
-        - name: filter.datacenters
-          in: query
-          description: Identifiers of datacenters to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.names
-          in: query
-          description: Names of datacenters to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.folders
-          in: query
-          description: Folders that must contain the datacenters
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
+      - name: filter.datacenters
+        in: query
+        description: Identifiers of datacenters to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of datacenters to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.folders
+        in: query
+        description: Folders that must contain the datacenters
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
       responses:
         '200':
           description: List of datacenters
@@ -1173,20 +1603,37 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/DatacenterSummary'
+              examples:
+                Listdatacenters200Example:
+                  summary: Default listDatacenters 200 response
+                  x-microcks-default: true
+                  value:
+                  - datacenter: example_value
+                    name: Example Title
         '401':
           description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createDatacenter
-      summary: VMware Create a datacenter
+      summary: Vmware Create a Datacenter
       description: Creates a new datacenter in the specified folder.
       tags:
-        - Datacenters
+      - Datacenters
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/DatacenterCreateSpec'
+            examples:
+              CreatedatacenterRequestExample:
+                summary: Default createDatacenter request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  folder: example_value
       responses:
         '201':
           description: Datacenter created
@@ -1195,20 +1642,28 @@ paths:
               schema:
                 type: string
                 description: Identifier of the new datacenter
+              examples:
+                Createdatacenter201Example:
+                  summary: Default createDatacenter 201 response
+                  x-microcks-default: true
+                  value: example_value
         '400':
           description: Invalid specification
         '401':
           description: Not authenticated
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/datacenter/{datacenter}:
     get:
       operationId: getDatacenter
-      summary: VMware Get datacenter details
+      summary: Vmware Get Datacenter Details
       description: Returns detailed information about the specified datacenter.
       tags:
-        - Datacenters
+      - Datacenters
       parameters:
-        - $ref: '#/components/parameters/datacenterId'
+      - $ref: '#/components/parameters/datacenterId'
       responses:
         '200':
           description: Datacenter details
@@ -1216,26 +1671,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DatacenterInfo'
+              examples:
+                Getdatacenter200Example:
+                  summary: Default getDatacenter 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    datastore_folder: example_value
+                    host_folder: example_value
+                    network_folder: example_value
+                    vm_folder: example_value
         '401':
           description: Not authenticated
         '404':
           description: Datacenter not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteDatacenter
-      summary: VMware Delete a datacenter
+      summary: Vmware Delete a Datacenter
       description: >-
         Deletes the specified datacenter. All hosts and VMs must be
         removed from the datacenter before deletion.
       tags:
-        - Datacenters
+      - Datacenters
       parameters:
-        - $ref: '#/components/parameters/datacenterId'
-        - name: force
-          in: query
-          description: Force delete even if datacenter is not empty
-          schema:
-            type: boolean
-            default: false
+      - $ref: '#/components/parameters/datacenterId'
+      - name: force
+        in: query
+        description: Force delete even if datacenter is not empty
+        schema:
+          type: boolean
+          default: false
+        example: true
       responses:
         '204':
           description: Datacenter deleted
@@ -1246,63 +1715,71 @@ paths:
         '404':
           description: Datacenter not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/folder:
     get:
       operationId: listFolders
-      summary: VMware List folders
+      summary: Vmware List Folders
       description: >-
         Returns a list of folders in the vCenter inventory matching
         the specified filter criteria.
       tags:
-        - Folders
+      - Folders
       parameters:
-        - name: filter.folders
-          in: query
-          description: Identifiers of folders to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.names
-          in: query
-          description: Names of folders to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.type
-          in: query
-          description: Type of folder to filter by
-          schema:
+      - name: filter.folders
+        in: query
+        description: Identifiers of folders to filter by
+        schema:
+          type: array
+          items:
             type: string
-            enum:
-              - DATACENTER
-              - DATASTORE
-              - HOST
-              - NETWORK
-              - VIRTUAL_MACHINE
-        - name: filter.parent_folders
-          in: query
-          description: Parent folders to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.datacenters
-          in: query
-          description: Datacenters that must contain the folders
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of folders to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.type
+        in: query
+        description: Type of folder to filter by
+        schema:
+          type: string
+          enum:
+          - DATACENTER
+          - DATASTORE
+          - HOST
+          - NETWORK
+          - VIRTUAL_MACHINE
+        example: DATACENTER
+      - name: filter.parent_folders
+        in: query
+        description: Parent folders to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.datacenters
+        in: query
+        description: Datacenters that must contain the folders
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
       responses:
         '200':
           description: List of folders
@@ -1312,64 +1789,80 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/FolderSummary'
+              examples:
+                Listfolders200Example:
+                  summary: Default listFolders 200 response
+                  x-microcks-default: true
+                  value:
+                  - folder: example_value
+                    name: Example Title
+                    type: DATACENTER
         '401':
           description: Not authenticated
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/resource-pool:
     get:
       operationId: listResourcePools
-      summary: VMware List resource pools
+      summary: Vmware List Resource Pools
       description: >-
         Returns a list of resource pools in the vCenter inventory
         matching the specified filter criteria.
       tags:
-        - Resource Pools
+      - Resource Pools
       parameters:
-        - name: filter.resource_pools
-          in: query
-          description: Identifiers of resource pools to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.names
-          in: query
-          description: Names of resource pools to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.clusters
-          in: query
-          description: Clusters that must contain the resource pools
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.hosts
-          in: query
-          description: Hosts that must contain the resource pools
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        - name: filter.parent_resource_pools
-          in: query
-          description: Parent resource pools to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
+      - name: filter.resource_pools
+        in: query
+        description: Identifiers of resource pools to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of resource pools to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.clusters
+        in: query
+        description: Clusters that must contain the resource pools
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.hosts
+        in: query
+        description: Hosts that must contain the resource pools
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.parent_resource_pools
+        in: query
+        description: Parent resource pools to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
       responses:
         '200':
           description: List of resource pools
@@ -1379,18 +1872,28 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ResourcePoolSummary'
+              examples:
+                Listresourcepools200Example:
+                  summary: Default listResourcePools 200 response
+                  x-microcks-default: true
+                  value:
+                  - resource_pool: example_value
+                    name: Example Title
         '401':
           description: Not authenticated
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /content/library:
     get:
       operationId: listContentLibraries
-      summary: VMware List content libraries
+      summary: Vmware List Content Libraries
       description: >-
         Returns a list of all content library identifiers in the
         vCenter inventory.
       tags:
-        - Content Library
+      - Content Library
       responses:
         '200':
           description: List of content library identifiers
@@ -1400,22 +1903,42 @@ paths:
                 type: array
                 items:
                   type: string
+              examples:
+                Listcontentlibraries200Example:
+                  summary: Default listContentLibraries 200 response
+                  x-microcks-default: true
+                  value:
+                  - example_value
         '401':
           description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createContentLibrary
-      summary: VMware Create a content library
+      summary: Vmware Create a Content Library
       description: >-
         Creates a new local or subscribed content library for storing
         templates, ISOs, and OVF packages.
       tags:
-        - Content Library
+      - Content Library
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/LibraryCreateSpec'
+            examples:
+              CreatecontentlibraryRequestExample:
+                summary: Default createContentLibrary request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  description: A sample description.
+                  type: LOCAL
+                  storage_backings:
+                  - type: DATASTORE
+                    datastore_id: '500123'
       responses:
         '201':
           description: Content library created
@@ -1424,25 +1947,34 @@ paths:
               schema:
                 type: string
                 description: Identifier of the new content library
+              examples:
+                Createcontentlibrary201Example:
+                  summary: Default createContentLibrary 201 response
+                  x-microcks-default: true
+                  value: example_value
         '400':
           description: Invalid specification
         '401':
           description: Not authenticated
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /content/library/{library_id}:
     get:
       operationId: getContentLibrary
-      summary: VMware Get content library details
+      summary: Vmware Get Content Library Details
       description: Returns detailed information about the specified content library.
       tags:
-        - Content Library
+      - Content Library
       parameters:
-        - name: library_id
-          in: path
-          required: true
-          description: Identifier of the content library
-          schema:
-            type: string
+      - name: library_id
+        in: path
+        required: true
+        description: Identifier of the content library
+        schema:
+          type: string
+        example: '500123'
       responses:
         '200':
           description: Content library details
@@ -1450,24 +1982,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LibraryInfo'
+              examples:
+                Getcontentlibrary200Example:
+                  summary: Default getContentLibrary 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    description: A sample description.
+                    type: LOCAL
+                    creation_time: '2026-01-15T10:30:00Z'
+                    last_modified_time: '2026-01-15T10:30:00Z'
+                    last_sync_time: '2026-01-15T10:30:00Z'
+                    storage_backings:
+                    - type: example_value
+                      datastore_id: '500123'
+                    version: example_value
         '401':
           description: Not authenticated
         '404':
           description: Content library not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteContentLibrary
-      summary: VMware Delete a content library
+      summary: Vmware Delete a Content Library
       description: >-
         Deletes the specified content library and all of its items.
       tags:
-        - Content Library
+      - Content Library
       parameters:
-        - name: library_id
-          in: path
-          required: true
-          description: Identifier of the content library
-          schema:
-            type: string
+      - name: library_id
+        in: path
+        required: true
+        description: Identifier of the content library
+        schema:
+          type: string
+        example: '500123'
       responses:
         '204':
           description: Content library deleted
@@ -1476,25 +2028,29 @@ paths:
         '404':
           description: Content library not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /vcenter/storage/policies:
     get:
       operationId: listStoragePolicies
-      summary: VMware List storage policies
+      summary: Vmware List Storage Policies
       description: >-
         Returns a list of VM storage policies available in the vCenter
         inventory.
       tags:
-        - Storage Policies
+      - Storage Policies
       parameters:
-        - name: filter.policies
-          in: query
-          description: Identifiers of storage policies to filter by
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
+      - name: filter.policies
+        in: query
+        description: Identifiers of storage policies to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
       responses:
         '200':
           description: List of storage policies
@@ -1504,16 +2060,27 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/StoragePolicySummary'
+              examples:
+                Liststoragepolicies200Example:
+                  summary: Default listStoragePolicies 200 response
+                  x-microcks-default: true
+                  value:
+                  - policy: example_value
+                    name: Example Title
+                    description: A sample description.
         '401':
           description: Not authenticated
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /cis/tagging/category:
     get:
       operationId: listTagCategories
-      summary: VMware List tag categories
+      summary: Vmware List Tag Categories
       description: Returns all tag category identifiers in the system.
       tags:
-        - Tagging
+      - Tagging
       responses:
         '200':
           description: List of tag category identifiers
@@ -1523,20 +2090,39 @@ paths:
                 type: array
                 items:
                   type: string
+              examples:
+                Listtagcategories200Example:
+                  summary: Default listTagCategories 200 response
+                  x-microcks-default: true
+                  value:
+                  - example_value
         '401':
           description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createTagCategory
-      summary: VMware Create a tag category
+      summary: Vmware Create a Tag Category
       description: Creates a new tag category used to group related tags.
       tags:
-        - Tagging
+      - Tagging
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/TagCategoryCreateSpec'
+            examples:
+              CreatetagcategoryRequestExample:
+                summary: Default createTagCategory request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  description: A sample description.
+                  cardinality: SINGLE
+                  associable_types:
+                  - example_value
       responses:
         '201':
           description: Tag category created
@@ -1545,18 +2131,26 @@ paths:
               schema:
                 type: string
                 description: Identifier of the new tag category
+              examples:
+                Createtagcategory201Example:
+                  summary: Default createTagCategory 201 response
+                  x-microcks-default: true
+                  value: example_value
         '400':
           description: Invalid specification
         '401':
           description: Not authenticated
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /cis/tagging/tag:
     get:
       operationId: listTags
-      summary: VMware List tags
+      summary: Vmware List Tags
       description: Returns all tag identifiers in the system.
       tags:
-        - Tagging
+      - Tagging
       responses:
         '200':
           description: List of tag identifiers
@@ -1566,20 +2160,37 @@ paths:
                 type: array
                 items:
                   type: string
+              examples:
+                Listtags200Example:
+                  summary: Default listTags 200 response
+                  x-microcks-default: true
+                  value:
+                  - example_value
         '401':
           description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createTag
-      summary: VMware Create a tag
+      summary: Vmware Create a Tag
       description: Creates a new tag within a specified category.
       tags:
-        - Tagging
+      - Tagging
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/TagCreateSpec'
+            examples:
+              CreatetagRequestExample:
+                summary: Default createTag request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  description: A sample description.
+                  category_id: '500123'
       responses:
         '201':
           description: Tag created
@@ -1588,26 +2199,43 @@ paths:
               schema:
                 type: string
                 description: Identifier of the new tag
+              examples:
+                Createtag201Example:
+                  summary: Default createTag 201 response
+                  x-microcks-default: true
+                  value: example_value
         '400':
           description: Invalid specification
         '401':
           description: Not authenticated
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /cis/tagging/tag-association?action=attach:
     post:
       operationId: attachTag
-      summary: VMware Attach a tag to an object
+      summary: Vmware Attach a Tag to an Object
       description: >-
         Attaches a tag to a vSphere managed object such as a VM, host,
         datastore, or cluster.
       tags:
-        - Tagging
+      - Tagging
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/TagAssociationSpec'
+            examples:
+              AttachtagRequestExample:
+                summary: Default attachTag request
+                x-microcks-default: true
+                value:
+                  tag_id: '500123'
+                  object_id:
+                    type: example_value
+                    id: abc123
       responses:
         '204':
           description: Tag attached successfully
@@ -1616,6 +2244,9 @@ paths:
         '404':
           description: Tag or object not found
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     sessionAuth:
@@ -1677,66 +2308,76 @@ components:
         user:
           type: string
           description: Authenticated user principal name
+          example: example_value
         created_time:
           type: string
           format: date-time
           description: Time when the session was created
+          example: '2026-01-15T10:30:00Z'
         last_accessed_time:
           type: string
           format: date-time
           description: Time when the session was last accessed
 
+          example: '2026-01-15T10:30:00Z'
     VMSummary:
       type: object
       description: Summary of a virtual machine in the vCenter inventory
       required:
-        - vm
-        - name
+      - vm
+      - name
       properties:
         vm:
           type: string
           description: Unique identifier of the virtual machine (e.g., vm-123)
+          example: example_value
         name:
           type: string
           description: Display name of the virtual machine
+          example: Example Title
         power_state:
           type: string
           description: Current power state of the VM
           enum:
-            - POWERED_ON
-            - POWERED_OFF
-            - SUSPENDED
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+          example: POWERED_ON
         cpu_count:
           type: integer
           description: Number of virtual CPUs
+          example: 10
         memory_size_MiB:
           type: integer
           description: Memory size in mebibytes
 
+          example: 10
     VMCreateSpec:
       type: object
       description: Specification for creating a new virtual machine
       required:
-        - name
-        - guest_OS
-        - placement
+      - name
+      - guest_OS
+      - placement
       properties:
         name:
           type: string
           description: Display name for the new VM
+          example: Example Title
         guest_OS:
           type: string
           description: Guest operating system identifier
           enum:
-            - RHEL_9_64
-            - RHEL_8_64
-            - UBUNTU_64
-            - DEBIAN_11_64
-            - WINDOWS_SERVER_2022
-            - WINDOWS_SERVER_2019
-            - WINDOWS_11_64
-            - OTHER_LINUX_64
-            - OTHER_64
+          - RHEL_9_64
+          - RHEL_8_64
+          - UBUNTU_64
+          - DEBIAN_11_64
+          - WINDOWS_SERVER_2022
+          - WINDOWS_SERVER_2019
+          - WINDOWS_11_64
+          - OTHER_LINUX_64
+          - OTHER_64
+          example: RHEL_9_64
         placement:
           type: object
           description: Placement specification for the VM
@@ -1756,19 +2397,21 @@ components:
             datastore:
               type: string
               description: Datastore identifier for VM files
+          example: example_value
         hardware_version:
           type: string
           description: Virtual hardware version
           enum:
-            - VMX_21
-            - VMX_20
-            - VMX_19
-            - VMX_18
-            - VMX_17
-            - VMX_16
-            - VMX_15
-            - VMX_14
-            - VMX_13
+          - VMX_21
+          - VMX_20
+          - VMX_19
+          - VMX_18
+          - VMX_17
+          - VMX_16
+          - VMX_15
+          - VMX_14
+          - VMX_13
+          example: VMX_21
         cpu:
           $ref: '#/components/schemas/CpuUpdateSpec'
         memory:
@@ -1778,11 +2421,13 @@ components:
           description: Virtual disks to create with the VM
           items:
             $ref: '#/components/schemas/DiskCreateSpec'
+          example: []
         nics:
           type: array
           description: Network adapters to create with the VM
           items:
             $ref: '#/components/schemas/EthernetCreateSpec'
+          example: []
         boot:
           type: object
           description: Boot configuration
@@ -1790,8 +2435,8 @@ components:
             type:
               type: string
               enum:
-                - BIOS
-                - EFI
+              - BIOS
+              - EFI
             efi_legacy_boot:
               type: boolean
             delay:
@@ -1801,6 +2446,7 @@ components:
               type: boolean
               description: Enter BIOS/EFI setup on next boot
 
+          example: example_value
     VMInfo:
       type: object
       description: Detailed virtual machine configuration and state
@@ -1808,6 +2454,7 @@ components:
         name:
           type: string
           description: Display name of the virtual machine
+          example: Example Title
         identity:
           type: object
           description: VM identity information
@@ -1820,15 +2467,18 @@ components:
             bios_uuid:
               type: string
               format: uuid
+          example: example_value
         power_state:
           type: string
           enum:
-            - POWERED_ON
-            - POWERED_OFF
-            - SUSPENDED
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+          example: POWERED_ON
         guest_OS:
           type: string
           description: Configured guest operating system
+          example: example_value
         hardware:
           $ref: '#/components/schemas/HardwareInfo'
         boot:
@@ -1837,12 +2487,13 @@ components:
             type:
               type: string
               enum:
-                - BIOS
-                - EFI
+              - BIOS
+              - EFI
             delay:
               type: integer
             enter_setup_mode:
               type: boolean
+          example: example_value
         cpu:
           $ref: '#/components/schemas/CpuInfo'
         memory:
@@ -1852,29 +2503,35 @@ components:
           description: Map of disk identifier to disk configuration
           additionalProperties:
             $ref: '#/components/schemas/DiskInfo'
+          example: example_value
         nics:
           type: object
           description: Map of NIC identifier to NIC configuration
           additionalProperties:
             $ref: '#/components/schemas/EthernetInfo'
+          example: example_value
         cdroms:
           type: object
           description: Map of CD-ROM identifier to CD-ROM configuration
           additionalProperties:
             type: object
+          example: example_value
         parallel_ports:
           type: object
           additionalProperties:
             type: object
+          example: example_value
         serial_ports:
           type: object
           additionalProperties:
             type: object
+          example: example_value
         floppy_drives:
           type: object
           additionalProperties:
             type: object
 
+          example: example_value
     PowerInfo:
       type: object
       description: Power state information for a virtual machine
@@ -1883,13 +2540,15 @@ components:
           type: string
           description: Current power state
           enum:
-            - POWERED_ON
-            - POWERED_OFF
-            - SUSPENDED
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+          example: POWERED_ON
         clean_power_off:
           type: boolean
           description: Whether the last power-off was clean
 
+          example: true
     HardwareInfo:
       type: object
       description: Virtual hardware configuration
@@ -1897,17 +2556,20 @@ components:
         version:
           type: string
           description: Virtual hardware version (e.g., VMX_21)
+          example: example_value
         upgrade_policy:
           type: string
           description: Hardware upgrade policy
           enum:
-            - NEVER
-            - AFTER_CLEAN_SHUTDOWN
-            - ALWAYS
+          - NEVER
+          - AFTER_CLEAN_SHUTDOWN
+          - ALWAYS
+          example: NEVER
         upgrade_version:
           type: string
           description: Target hardware version for upgrade
 
+          example: example_value
     HardwareUpdateSpec:
       type: object
       description: Specification for updating virtual hardware
@@ -1915,12 +2577,14 @@ components:
         upgrade_policy:
           type: string
           enum:
-            - NEVER
-            - AFTER_CLEAN_SHUTDOWN
-            - ALWAYS
+          - NEVER
+          - AFTER_CLEAN_SHUTDOWN
+          - ALWAYS
+          example: NEVER
         upgrade_version:
           type: string
 
+          example: example_value
     CpuInfo:
       type: object
       description: CPU configuration of a virtual machine
@@ -1928,16 +2592,20 @@ components:
         count:
           type: integer
           description: Number of virtual CPU cores
+          example: 10
         cores_per_socket:
           type: integer
           description: Number of cores per CPU socket
+          example: 10
         hot_add_enabled:
           type: boolean
           description: Whether CPU hot-add is enabled
+          example: true
         hot_remove_enabled:
           type: boolean
           description: Whether CPU hot-remove is enabled
 
+          example: true
     CpuUpdateSpec:
       type: object
       description: Specification for CPU configuration
@@ -1947,15 +2615,19 @@ components:
           description: Number of virtual CPU cores
           minimum: 1
           maximum: 768
+          example: 10
         cores_per_socket:
           type: integer
           description: Number of cores per socket
           minimum: 1
+          example: 10
         hot_add_enabled:
           type: boolean
+          example: true
         hot_remove_enabled:
           type: boolean
 
+          example: true
     MemoryInfo:
       type: object
       description: Memory configuration of a virtual machine
@@ -1963,16 +2635,20 @@ components:
         size_MiB:
           type: integer
           description: Memory size in mebibytes
+          example: 10
         hot_add_enabled:
           type: boolean
           description: Whether memory hot-add is enabled
+          example: true
         hot_add_increment_size_MiB:
           type: integer
           description: Granularity for memory hot-add in mebibytes
+          example: 10
         hot_add_limit_MiB:
           type: integer
           description: Maximum memory size for hot-add in mebibytes
 
+          example: 10
     MemoryUpdateSpec:
       type: object
       description: Specification for memory configuration
@@ -1981,9 +2657,11 @@ components:
           type: integer
           description: Memory size in mebibytes
           minimum: 4
+          example: 10
         hot_add_enabled:
           type: boolean
 
+          example: true
     DiskSummary:
       type: object
       description: Summary of a virtual disk
@@ -1992,6 +2670,7 @@ components:
           type: string
           description: Identifier of the virtual disk
 
+          example: example_value
     DiskInfo:
       type: object
       description: Detailed virtual disk configuration
@@ -1999,18 +2678,21 @@ components:
         label:
           type: string
           description: Display label of the virtual disk
+          example: Example Title
         type:
           type: string
           description: Type of host bus adapter
           enum:
-            - IDE
-            - SCSI
-            - SATA
-            - NVME
+          - IDE
+          - SCSI
+          - SATA
+          - NVME
+          example: IDE
         capacity:
           type: integer
           description: Capacity of the virtual disk in bytes
           format: int64
+          example: 10
         backing:
           type: object
           description: Disk backing information
@@ -2018,11 +2700,12 @@ components:
             type:
               type: string
               enum:
-                - VMDK_FILE
+              - VMDK_FILE
             vmdk_file:
               type: string
               description: Path to the VMDK file
 
+          example: example_value
     DiskCreateSpec:
       type: object
       description: Specification for creating a virtual disk
@@ -2031,10 +2714,11 @@ components:
           type: string
           description: Host bus adapter type
           enum:
-            - IDE
-            - SCSI
-            - SATA
-            - NVME
+          - IDE
+          - SCSI
+          - SATA
+          - NVME
+          example: IDE
         new_vmdk:
           type: object
           description: Specification for a new VMDK file
@@ -2052,6 +2736,7 @@ components:
                 policy:
                   type: string
                   description: Storage policy identifier
+          example: example_value
         backing:
           type: object
           description: Existing disk backing
@@ -2059,10 +2744,11 @@ components:
             type:
               type: string
               enum:
-                - VMDK_FILE
+              - VMDK_FILE
             vmdk_file:
               type: string
 
+          example: example_value
     EthernetSummary:
       type: object
       description: Summary of a virtual network adapter
@@ -2071,6 +2757,7 @@ components:
           type: string
           description: Identifier of the network adapter
 
+          example: example_value
     EthernetInfo:
       type: object
       description: Detailed virtual network adapter configuration
@@ -2078,35 +2765,41 @@ components:
         label:
           type: string
           description: Display label of the adapter
+          example: Example Title
         type:
           type: string
           description: Adapter emulation type
           enum:
-            - E1000
-            - E1000E
-            - PCNET32
-            - VMXNET
-            - VMXNET2
-            - VMXNET3
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VMXNET2
+          - VMXNET3
+          example: E1000
         mac_type:
           type: string
           description: MAC address type
           enum:
-            - MANUAL
-            - GENERATED
-            - ASSIGNED
+          - MANUAL
+          - GENERATED
+          - ASSIGNED
+          example: MANUAL
         mac_address:
           type: string
           description: MAC address of the adapter
+          example: example_value
         state:
           type: string
           description: Connection state
           enum:
-            - CONNECTED
-            - NOT_CONNECTED
+          - CONNECTED
+          - NOT_CONNECTED
+          example: CONNECTED
         start_connected:
           type: boolean
           description: Whether the adapter connects at power on
+          example: true
         backing:
           type: object
           description: Network backing information
@@ -2114,19 +2807,22 @@ components:
             type:
               type: string
               enum:
-                - STANDARD_PORTGROUP
-                - DISTRIBUTED_PORTGROUP
-                - OPAQUE_NETWORK
-                - HOST_DEVICE
+              - STANDARD_PORTGROUP
+              - DISTRIBUTED_PORTGROUP
+              - OPAQUE_NETWORK
+              - HOST_DEVICE
             network:
               type: string
               description: Identifier of the backing network
+          example: example_value
         allow_guest_control:
           type: boolean
           description: Whether guest OS can change adapter settings
+          example: true
         wake_on_lan_enabled:
           type: boolean
 
+          example: true
     EthernetCreateSpec:
       type: object
       description: Specification for creating a virtual network adapter
@@ -2135,43 +2831,50 @@ components:
           type: string
           description: Adapter emulation type
           enum:
-            - E1000
-            - E1000E
-            - PCNET32
-            - VMXNET
-            - VMXNET2
-            - VMXNET3
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VMXNET2
+          - VMXNET3
+          example: E1000
         mac_type:
           type: string
           enum:
-            - MANUAL
-            - GENERATED
-            - ASSIGNED
+          - MANUAL
+          - GENERATED
+          - ASSIGNED
+          example: MANUAL
         mac_address:
           type: string
           description: MAC address (required when mac_type is MANUAL)
+          example: example_value
         backing:
           type: object
           properties:
             type:
               type: string
               enum:
-                - STANDARD_PORTGROUP
-                - DISTRIBUTED_PORTGROUP
-                - OPAQUE_NETWORK
+              - STANDARD_PORTGROUP
+              - DISTRIBUTED_PORTGROUP
+              - OPAQUE_NETWORK
             network:
               type: string
               description: Identifier of the network
+          example: example_value
         start_connected:
           type: boolean
           default: true
+          example: true
         allow_guest_control:
           type: boolean
           default: false
+          example: true
         wake_on_lan_enabled:
           type: boolean
           default: false
 
+          example: true
     GuestIdentityInfo:
       type: object
       description: Guest operating system identity information from VMware Tools
@@ -2180,14 +2883,15 @@ components:
           type: string
           description: Guest OS full name
           examples:
-            - Red Hat Enterprise Linux 9 (64-bit)
+          - Red Hat Enterprise Linux 9 (64-bit)
         family:
           type: string
           description: Guest OS family
           enum:
-            - LINUX
-            - WINDOWS
-            - OTHER
+          - LINUX
+          - WINDOWS
+          - OTHER
+          example: LINUX
         full_name:
           type: object
           properties:
@@ -2195,14 +2899,17 @@ components:
               type: string
             id:
               type: string
+          example: example_value
         host_name:
           type: string
           description: Guest hostname
+          example: example_value
         ip_address:
           type: string
           description: Primary IP address of the guest
           format: ipv4
 
+          example: example_value
     GuestNetworkingInfo:
       type: object
       description: Guest OS networking information from VMware Tools
@@ -2216,6 +2923,7 @@ components:
               type: array
               items:
                 type: string
+          example: example_value
         dns:
           type: object
           properties:
@@ -2223,6 +2931,7 @@ components:
               type: array
               items:
                 type: string
+          example: example_value
         interfaces:
           type: array
           items:
@@ -2245,40 +2954,45 @@ components:
                         state:
                           type: string
                           enum:
-                            - PREFERRED
-                            - DEPRECATED
-                            - DUPLICATE
-                            - INACCESSIBLE
-                            - UNKNOWN
+                          - PREFERRED
+                          - DEPRECATED
+                          - DUPLICATE
+                          - INACCESSIBLE
+                          - UNKNOWN
 
+          example: []
     HostSummary:
       type: object
       description: Summary of an ESXi host in the vCenter inventory
       required:
-        - host
-        - name
+      - host
+      - name
       properties:
         host:
           type: string
           description: Unique identifier of the host (e.g., host-10)
+          example: example_value
         name:
           type: string
           description: Display name or hostname of the ESXi host
+          example: Example Title
         connection_state:
           type: string
           description: Connection state of the host
           enum:
-            - CONNECTED
-            - DISCONNECTED
-            - NOT_RESPONDING
+          - CONNECTED
+          - DISCONNECTED
+          - NOT_RESPONDING
+          example: CONNECTED
         power_state:
           type: string
           description: Power state of the host
           enum:
-            - POWERED_ON
-            - POWERED_OFF
-            - STANDBY
+          - POWERED_ON
+          - POWERED_OFF
+          - STANDBY
 
+          example: POWERED_ON
     HostInfo:
       type: object
       description: Detailed ESXi host information
@@ -2286,52 +3000,60 @@ components:
         name:
           type: string
           description: Host name
+          example: Example Title
         connection_state:
           type: string
           enum:
-            - CONNECTED
-            - DISCONNECTED
-            - NOT_RESPONDING
+          - CONNECTED
+          - DISCONNECTED
+          - NOT_RESPONDING
+          example: CONNECTED
         power_state:
           type: string
           enum:
-            - POWERED_ON
-            - POWERED_OFF
-            - STANDBY
+          - POWERED_ON
+          - POWERED_OFF
+          - STANDBY
 
+          example: POWERED_ON
     DatastoreSummary:
       type: object
       description: Summary of a datastore in the vCenter inventory
       required:
-        - datastore
-        - name
+      - datastore
+      - name
       properties:
         datastore:
           type: string
           description: Unique identifier of the datastore (e.g., datastore-15)
+          example: example_value
         name:
           type: string
           description: Display name of the datastore
+          example: Example Title
         type:
           type: string
           description: Type of the datastore
           enum:
-            - VMFS
-            - NFS
-            - NFS41
-            - CIFS
-            - VSAN
-            - VFFS
-            - VVOL
+          - VMFS
+          - NFS
+          - NFS41
+          - CIFS
+          - VSAN
+          - VFFS
+          - VVOL
+          example: VMFS
         free_space:
           type: integer
           description: Free space in bytes
           format: int64
+          example: 10
         capacity:
           type: integer
           description: Total capacity in bytes
           format: int64
 
+          example: 10
     DatastoreInfo:
       type: object
       description: Detailed datastore configuration and status
@@ -2339,54 +3061,65 @@ components:
         name:
           type: string
           description: Display name of the datastore
+          example: Example Title
         type:
           type: string
           enum:
-            - VMFS
-            - NFS
-            - NFS41
-            - CIFS
-            - VSAN
-            - VFFS
-            - VVOL
+          - VMFS
+          - NFS
+          - NFS41
+          - CIFS
+          - VSAN
+          - VFFS
+          - VVOL
+          example: VMFS
         accessible:
           type: boolean
           description: Whether the datastore is currently accessible
+          example: true
         free_space:
           type: integer
           description: Available free space in bytes
           format: int64
+          example: 10
         capacity:
           type: integer
           description: Maximum capacity in bytes
           format: int64
+          example: 10
         thin_provisioning_supported:
           type: boolean
           description: Whether thin provisioning is supported
+          example: true
         multiple_host_access:
           type: boolean
           description: Whether the datastore is accessible by multiple hosts
 
+          example: true
     ClusterSummary:
       type: object
       description: Summary of a cluster in the vCenter inventory
       required:
-        - cluster
-        - name
+      - cluster
+      - name
       properties:
         cluster:
           type: string
           description: Unique identifier of the cluster (e.g., domain-c7)
+          example: example_value
         name:
           type: string
           description: Display name of the cluster
+          example: Example Title
         ha_enabled:
           type: boolean
           description: Whether vSphere HA is enabled
+          example: true
         drs_enabled:
           type: boolean
           description: Whether vSphere DRS is enabled
 
+          example: true
     ClusterInfo:
       type: object
       description: Detailed cluster configuration
@@ -2394,59 +3127,68 @@ components:
         name:
           type: string
           description: Display name of the cluster
+          example: Example Title
         resource_pool:
           type: string
           description: Root resource pool of the cluster
 
+          example: example_value
     NetworkSummary:
       type: object
       description: Summary of a network in the vCenter inventory
       required:
-        - network
-        - name
+      - network
+      - name
       properties:
         network:
           type: string
           description: Unique identifier of the network
+          example: example_value
         name:
           type: string
           description: Display name of the network
+          example: Example Title
         type:
           type: string
           description: Type of the network
           enum:
-            - STANDARD_PORTGROUP
-            - DISTRIBUTED_PORTGROUP
-            - OPAQUE_NETWORK
+          - STANDARD_PORTGROUP
+          - DISTRIBUTED_PORTGROUP
+          - OPAQUE_NETWORK
 
+          example: STANDARD_PORTGROUP
     DatacenterSummary:
       type: object
       description: Summary of a datacenter
       required:
-        - datacenter
-        - name
+      - datacenter
+      - name
       properties:
         datacenter:
           type: string
           description: Unique identifier of the datacenter
+          example: example_value
         name:
           type: string
           description: Display name of the datacenter
 
+          example: Example Title
     DatacenterCreateSpec:
       type: object
       description: Specification for creating a datacenter
       required:
-        - name
-        - folder
+      - name
+      - folder
       properties:
         name:
           type: string
           description: Name for the new datacenter
+          example: Example Title
         folder:
           type: string
           description: Parent folder identifier
 
+          example: example_value
     DatacenterInfo:
       type: object
       description: Detailed datacenter information
@@ -2454,76 +3196,89 @@ components:
         name:
           type: string
           description: Display name of the datacenter
+          example: Example Title
         datastore_folder:
           type: string
           description: Datastore folder identifier
+          example: example_value
         host_folder:
           type: string
           description: Host folder identifier
+          example: example_value
         network_folder:
           type: string
           description: Network folder identifier
+          example: example_value
         vm_folder:
           type: string
           description: VM folder identifier
 
+          example: example_value
     FolderSummary:
       type: object
       description: Summary of an inventory folder
       required:
-        - folder
-        - name
+      - folder
+      - name
       properties:
         folder:
           type: string
           description: Unique identifier of the folder
+          example: example_value
         name:
           type: string
           description: Display name of the folder
+          example: Example Title
         type:
           type: string
           description: Type of folder
           enum:
-            - DATACENTER
-            - DATASTORE
-            - HOST
-            - NETWORK
-            - VIRTUAL_MACHINE
+          - DATACENTER
+          - DATASTORE
+          - HOST
+          - NETWORK
+          - VIRTUAL_MACHINE
 
+          example: DATACENTER
     ResourcePoolSummary:
       type: object
       description: Summary of a resource pool
       required:
-        - resource_pool
-        - name
+      - resource_pool
+      - name
       properties:
         resource_pool:
           type: string
           description: Unique identifier of the resource pool
+          example: example_value
         name:
           type: string
           description: Display name of the resource pool
 
+          example: Example Title
     LibraryCreateSpec:
       type: object
       description: Specification for creating a content library
       required:
-        - name
-        - type
-        - storage_backings
+      - name
+      - type
+      - storage_backings
       properties:
         name:
           type: string
           description: Name for the new content library
+          example: Example Title
         description:
           type: string
           description: Description of the content library
+          example: A sample description.
         type:
           type: string
           description: Library type
           enum:
-            - LOCAL
-            - SUBSCRIBED
+          - LOCAL
+          - SUBSCRIBED
+          example: LOCAL
         storage_backings:
           type: array
           description: Storage backings for the library content
@@ -2533,12 +3288,13 @@ components:
               type:
                 type: string
                 enum:
-                  - DATASTORE
-                  - OTHER
+                - DATASTORE
+                - OTHER
               datastore_id:
                 type: string
                 description: Datastore identifier for DATASTORE type
 
+          example: []
     LibraryInfo:
       type: object
       description: Content library details
@@ -2546,25 +3302,32 @@ components:
         id:
           type: string
           description: Unique identifier of the content library
+          example: abc123
         name:
           type: string
           description: Name of the content library
+          example: Example Title
         description:
           type: string
+          example: A sample description.
         type:
           type: string
           enum:
-            - LOCAL
-            - SUBSCRIBED
+          - LOCAL
+          - SUBSCRIBED
+          example: LOCAL
         creation_time:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         last_modified_time:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         last_sync_time:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         storage_backings:
           type: array
           items:
@@ -2574,9 +3337,11 @@ components:
                 type: string
               datastore_id:
                 type: string
+          example: []
         version:
           type: string
 
+          example: example_value
     StoragePolicySummary:
       type: object
       description: Summary of a VM storage policy
@@ -2584,78 +3349,90 @@ components:
         policy:
           type: string
           description: Identifier of the storage policy
+          example: example_value
         name:
           type: string
           description: Name of the storage policy
+          example: Example Title
         description:
           type: string
           description: Description of the storage policy
 
+          example: A sample description.
     TagCategoryCreateSpec:
       type: object
       description: Specification for creating a tag category
       required:
-        - name
-        - cardinality
+      - name
+      - cardinality
       properties:
         name:
           type: string
           description: Name for the new category
+          example: Example Title
         description:
           type: string
+          example: A sample description.
         cardinality:
           type: string
           description: Cardinality of the category
           enum:
-            - SINGLE
-            - MULTIPLE
+          - SINGLE
+          - MULTIPLE
+          example: SINGLE
         associable_types:
           type: array
           description: Object types that can be tagged with tags in this category
           items:
             type: string
 
+          example: []
     TagCreateSpec:
       type: object
       description: Specification for creating a tag
       required:
-        - name
-        - category_id
+      - name
+      - category_id
       properties:
         name:
           type: string
           description: Name for the new tag
+          example: Example Title
         description:
           type: string
+          example: A sample description.
         category_id:
           type: string
           description: Identifier of the parent category
 
+          example: '500123'
     TagAssociationSpec:
       type: object
       description: Specification for attaching a tag to an object
       required:
-        - tag_id
-        - object_id
+      - tag_id
+      - object_id
       properties:
         tag_id:
           type: string
           description: Identifier of the tag to attach
+          example: '500123'
         object_id:
           type: object
           description: Managed object reference
           required:
-            - type
-            - id
+          - type
+          - id
           properties:
             type:
               type: string
               description: Type of the managed object
               examples:
-                - VirtualMachine
-                - HostSystem
-                - Datastore
-                - ClusterComputeResource
+              - VirtualMachine
+              - HostSystem
+              - Datastore
+              - ClusterComputeResource
             id:
               type: string
               description: Identifier of the managed object
+          example: '500123'

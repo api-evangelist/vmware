@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SessionInfo",
+  "type": "object",
+  "properties": {
+    "user": {
+      "type": "string"
+    },
+    "created_time": {
+      "type": "string"
+    },
+    "last_accessed_time": {
+      "type": "string"
+    }
+  }
+}

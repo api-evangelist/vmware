@@ -1,0 +1,6 @@
+{
+  "size_MiB": 10,
+  "hot_add_enabled": true,
+  "hot_add_increment_size_MiB": 10,
+  "hot_add_limit_MiB": 10
+}

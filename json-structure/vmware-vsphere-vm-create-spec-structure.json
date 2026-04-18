@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "VMCreateSpec",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "guest_OS": {
+      "type": "string"
+    },
+    "placement": {
+      "type": "object"
+    },
+    "hardware_version": {
+      "type": "string"
+    },
+    "disks": {
+      "type": "array"
+    },
+    "nics": {
+      "type": "array"
+    },
+    "boot": {
+      "type": "object"
+    }
+  }
+}

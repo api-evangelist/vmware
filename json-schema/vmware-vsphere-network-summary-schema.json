@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NetworkSummary",
+  "type": "object",
+  "description": "Summary of a network in the vCenter inventory",
+  "properties": {
+    "network": {
+      "type": "string",
+      "description": "Unique identifier of the network"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the network"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of the network"
+    }
+  }
+}

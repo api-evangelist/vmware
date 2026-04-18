@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DatacenterCreateSpec",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "folder": {
+      "type": "string"
+    }
+  }
+}

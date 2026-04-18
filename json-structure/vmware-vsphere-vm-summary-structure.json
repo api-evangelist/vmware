@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "VMSummary",
+  "type": "object",
+  "properties": {
+    "vm": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "power_state": {
+      "type": "string"
+    },
+    "cpu_count": {
+      "type": "integer"
+    },
+    "memory_size_MiB": {
+      "type": "integer"
+    }
+  }
+}

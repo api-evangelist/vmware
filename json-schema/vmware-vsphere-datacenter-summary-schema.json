@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DatacenterSummary",
+  "type": "object",
+  "description": "Summary of a datacenter",
+  "properties": {
+    "datacenter": {
+      "type": "string",
+      "description": "Unique identifier of the datacenter"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the datacenter"
+    }
+  }
+}

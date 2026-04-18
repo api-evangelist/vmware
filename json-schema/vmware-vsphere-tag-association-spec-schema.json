@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TagAssociationSpec",
+  "type": "object",
+  "description": "Specification for attaching a tag to an object",
+  "properties": {
+    "tag_id": {
+      "type": "string",
+      "description": "Identifier of the tag to attach"
+    },
+    "object_id": {
+      "type": "object",
+      "description": "Managed object reference"
+    }
+  }
+}

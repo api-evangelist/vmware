@@ -1,0 +1,9 @@
+{
+  "name": "Example Title",
+  "guest_OS": "example_value",
+  "placement": "example_value",
+  "hardware_version": "example_value",
+  "disks": [],
+  "nics": [],
+  "boot": "example_value"
+}

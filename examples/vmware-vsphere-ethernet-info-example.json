@@ -1,0 +1,11 @@
+{
+  "label": "Example Title",
+  "type": "example_value",
+  "mac_type": "example_value",
+  "mac_address": "example_value",
+  "state": "example_value",
+  "start_connected": true,
+  "backing": "example_value",
+  "allow_guest_control": true,
+  "wake_on_lan_enabled": true
+}

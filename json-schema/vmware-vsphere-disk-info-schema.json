@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DiskInfo",
+  "type": "object",
+  "description": "Detailed virtual disk configuration",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Display label of the virtual disk"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of host bus adapter"
+    },
+    "capacity": {
+      "type": "integer",
+      "description": "Capacity of the virtual disk in bytes"
+    },
+    "backing": {
+      "type": "object",
+      "description": "Disk backing information"
+    }
+  }
+}

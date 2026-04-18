@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClusterInfo",
+  "type": "object",
+  "description": "Detailed cluster configuration",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the cluster"
+    },
+    "resource_pool": {
+      "type": "string",
+      "description": "Root resource pool of the cluster"
+    }
+  }
+}

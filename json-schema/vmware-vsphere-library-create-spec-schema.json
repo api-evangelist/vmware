@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LibraryCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a content library",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name for the new content library"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the content library"
+    },
+    "type": {
+      "type": "string",
+      "description": "Library type"
+    },
+    "storage_backings": {
+      "type": "array",
+      "description": "Storage backings for the library content"
+    }
+  }
+}

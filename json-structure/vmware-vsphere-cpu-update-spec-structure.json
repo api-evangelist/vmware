@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CpuUpdateSpec",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "integer"
+    },
+    "cores_per_socket": {
+      "type": "integer"
+    },
+    "hot_add_enabled": {
+      "type": "boolean"
+    },
+    "hot_remove_enabled": {
+      "type": "boolean"
+    }
+  }
+}

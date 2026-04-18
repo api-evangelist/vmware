@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GuestIdentityInfo",
+  "type": "object",
+  "description": "Guest operating system identity information from VMware Tools",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Guest OS full name"
+    },
+    "family": {
+      "type": "string",
+      "description": "Guest OS family"
+    },
+    "full_name": {
+      "type": "object"
+    },
+    "host_name": {
+      "type": "string",
+      "description": "Guest hostname"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "Primary IP address of the guest"
+    }
+  }
+}

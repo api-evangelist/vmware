@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "VMInfo",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "identity": {
+      "type": "object"
+    },
+    "power_state": {
+      "type": "string"
+    },
+    "guest_OS": {
+      "type": "string"
+    },
+    "boot": {
+      "type": "object"
+    },
+    "disks": {
+      "type": "object"
+    },
+    "nics": {
+      "type": "object"
+    },
+    "cdroms": {
+      "type": "object"
+    },
+    "parallel_ports": {
+      "type": "object"
+    },
+    "serial_ports": {
+      "type": "object"
+    },
+    "floppy_drives": {
+      "type": "object"
+    }
+  }
+}

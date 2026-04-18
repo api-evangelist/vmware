@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SessionInfo",
+  "type": "object",
+  "description": "Information about the authenticated session",
+  "properties": {
+    "user": {
+      "type": "string",
+      "description": "Authenticated user principal name"
+    },
+    "created_time": {
+      "type": "string",
+      "description": "Time when the session was created"
+    },
+    "last_accessed_time": {
+      "type": "string",
+      "description": "Time when the session was last accessed"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HostSummary",
+  "type": "object",
+  "description": "Summary of an ESXi host in the vCenter inventory",
+  "properties": {
+    "host": {
+      "type": "string",
+      "description": "Unique identifier of the host (e.g., host-10)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name or hostname of the ESXi host"
+    },
+    "connection_state": {
+      "type": "string",
+      "description": "Connection state of the host"
+    },
+    "power_state": {
+      "type": "string",
+      "description": "Power state of the host"
+    }
+  }
+}

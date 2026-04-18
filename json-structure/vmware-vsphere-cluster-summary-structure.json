@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ClusterSummary",
+  "type": "object",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "ha_enabled": {
+      "type": "boolean"
+    },
+    "drs_enabled": {
+      "type": "boolean"
+    }
+  }
+}

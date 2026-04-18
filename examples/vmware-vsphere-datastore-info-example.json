@@ -1,0 +1,9 @@
+{
+  "name": "Example Title",
+  "type": "example_value",
+  "accessible": true,
+  "free_space": 10,
+  "capacity": 10,
+  "thin_provisioning_supported": true,
+  "multiple_host_access": true
+}

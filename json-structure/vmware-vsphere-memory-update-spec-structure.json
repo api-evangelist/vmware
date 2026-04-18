@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MemoryUpdateSpec",
+  "type": "object",
+  "properties": {
+    "size_MiB": {
+      "type": "integer"
+    },
+    "hot_add_enabled": {
+      "type": "boolean"
+    }
+  }
+}

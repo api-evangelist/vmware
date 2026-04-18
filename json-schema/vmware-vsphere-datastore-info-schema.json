@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DatastoreInfo",
+  "type": "object",
+  "description": "Detailed datastore configuration and status",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the datastore"
+    },
+    "type": {
+      "type": "string"
+    },
+    "accessible": {
+      "type": "boolean",
+      "description": "Whether the datastore is currently accessible"
+    },
+    "free_space": {
+      "type": "integer",
+      "description": "Available free space in bytes"
+    },
+    "capacity": {
+      "type": "integer",
+      "description": "Maximum capacity in bytes"
+    },
+    "thin_provisioning_supported": {
+      "type": "boolean",
+      "description": "Whether thin provisioning is supported"
+    },
+    "multiple_host_access": {
+      "type": "boolean",
+      "description": "Whether the datastore is accessible by multiple hosts"
+    }
+  }
+}

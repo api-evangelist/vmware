@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DatastoreSummary",
+  "type": "object",
+  "properties": {
+    "datastore": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "free_space": {
+      "type": "integer"
+    },
+    "capacity": {
+      "type": "integer"
+    }
+  }
+}

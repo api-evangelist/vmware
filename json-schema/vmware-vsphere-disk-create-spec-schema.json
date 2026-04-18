@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DiskCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a virtual disk",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Host bus adapter type"
+    },
+    "new_vmdk": {
+      "type": "object",
+      "description": "Specification for a new VMDK file"
+    },
+    "backing": {
+      "type": "object",
+      "description": "Existing disk backing"
+    }
+  }
+}

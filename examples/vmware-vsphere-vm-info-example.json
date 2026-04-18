@@ -1,0 +1,13 @@
+{
+  "name": "Example Title",
+  "identity": "example_value",
+  "power_state": "example_value",
+  "guest_OS": "example_value",
+  "boot": "example_value",
+  "disks": "example_value",
+  "nics": "example_value",
+  "cdroms": "example_value",
+  "parallel_ports": "example_value",
+  "serial_ports": "example_value",
+  "floppy_drives": "example_value"
+}

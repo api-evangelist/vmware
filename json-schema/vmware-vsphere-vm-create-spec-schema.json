@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VMCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a new virtual machine",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name for the new VM"
+    },
+    "guest_OS": {
+      "type": "string",
+      "description": "Guest operating system identifier"
+    },
+    "placement": {
+      "type": "object",
+      "description": "Placement specification for the VM"
+    },
+    "hardware_version": {
+      "type": "string",
+      "description": "Virtual hardware version"
+    },
+    "disks": {
+      "type": "array",
+      "description": "Virtual disks to create with the VM"
+    },
+    "nics": {
+      "type": "array",
+      "description": "Network adapters to create with the VM"
+    },
+    "boot": {
+      "type": "object",
+      "description": "Boot configuration"
+    }
+  }
+}

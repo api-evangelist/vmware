@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DatacenterInfo",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "datastore_folder": {
+      "type": "string"
+    },
+    "host_folder": {
+      "type": "string"
+    },
+    "network_folder": {
+      "type": "string"
+    },
+    "vm_folder": {
+      "type": "string"
+    }
+  }
+}

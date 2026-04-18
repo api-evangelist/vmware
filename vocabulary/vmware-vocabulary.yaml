@@ -1,0 +1,22 @@
+name: vmware API Vocabulary
+provider: vmware
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 49
+schemas: 37
+tags:
+- Clusters
+- Content Library
+- Datacenters
+- Datastores
+- Folders
+- Hosts
+- Networks
+- Resource Pools
+- Session
+- Storage Policies
+- Tagging
+- VM Guest
+- VM Hardware
+- VM Power
+- VMs

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResourcePoolSummary",
+  "type": "object",
+  "description": "Summary of a resource pool",
+  "properties": {
+    "resource_pool": {
+      "type": "string",
+      "description": "Unique identifier of the resource pool"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the resource pool"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TagCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a tag",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name for the new tag"
+    },
+    "description": {
+      "type": "string"
+    },
+    "category_id": {
+      "type": "string",
+      "description": "Identifier of the parent category"
+    }
+  }
+}
