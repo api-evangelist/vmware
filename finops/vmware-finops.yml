@@ -1,0 +1,572 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: VMware
+providerId: vmware
+publisherName: VMware
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - Cloud Computing
+  - Container Management
+  - Hybrid Cloud
+  - Infrastructure
+  - Virtualization
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the VMware API surface. Provides a FOCUS-aligned mapping
+  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: VMware
+  ServiceCategory: Developer Tools / API
+  ProviderName: VMware
+  PublisherName: VMware
+  InvoiceIssuerName: VMware
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: vSphere API
+    baseURL: https://{{vcenter}}/api
+    tags:
+      - Data Center
+      - Hypervisor
+      - Virtualization
+      - VM Management
+    serviceName: vSphere API
+    serviceCategory: API
+  - name: vSphere Web Services API
+    baseURL: https://{{vcenter}}/sdk
+    tags:
+      - Data Center
+      - SOAP
+      - Virtualization
+      - VM Management
+    serviceName: vSphere Web Services API
+    serviceCategory: API
+  - name: Virtual Infrastructure JSON API
+    baseURL: https://{{vcenter}}/sdk/vim25/8.0.1.0
+    tags:
+      - JSON
+      - REST
+      - vCenter
+      - Virtualization
+    serviceName: Virtual Infrastructure JSON API
+    serviceCategory: API
+  - name: vCloud Director API
+    baseURL: https://{{vcd-host}}/api
+    tags:
+      - Cloud Management
+      - Multi-Tenancy
+      - Service Provider
+    serviceName: vCloud Director API
+    serviceCategory: API
+  - name: NSX-T Data Center API
+    baseURL: https://{{nsx-manager}}/api/v1
+    tags:
+      - Load Balancing
+      - Micro-Segmentation
+      - Network Virtualization
+      - Security
+    serviceName: NSX-T Data Center API
+    serviceCategory: API
+  - name: NSX-T Global Manager API
+    baseURL: https://{{global-manager}}/global-manager/api/v1
+    tags:
+      - Federation
+      - Multi-Site
+      - Network Virtualization
+      - Security
+    serviceName: NSX-T Global Manager API
+    serviceCategory: API
+  - name: NSX Intelligence API
+    baseURL: https://{{nsx-manager}}/napp/api/v1
+    tags:
+      - Network Intelligence
+      - Security Analytics
+      - Traffic Analysis
+    serviceName: NSX Intelligence API
+    serviceCategory: API
+  - name: NSX Autonomous Edge API
+    baseURL: https://{{nsx-edge}}/api/v1
+    tags:
+      - Edge Computing
+      - Network Virtualization
+      - SD-WAN
+    serviceName: NSX Autonomous Edge API
+    serviceCategory: API
+  - name: vRealize Automation API
+    baseURL: https://{{vra-host}}/automation-api
+    tags:
+      - Automation
+      - Infrastructure as Code
+      - Orchestration
+      - Self-Service
+    serviceName: vRealize Automation API
+    serviceCategory: API
+  - name: VMware Cloud on AWS API
+    baseURL: https://vmc.vmware.com/vmc/api
+    tags:
+      - AWS
+      - Cloud Services
+      - Hybrid Cloud
+      - SDDC
+    serviceName: VMware Cloud on AWS API
+    serviceCategory: API
+  - name: Tanzu Kubernetes Grid API
+    baseURL: https://{{tkg-endpoint}}/api
+    tags:
+      - Cloud Native
+      - Containers
+      - DevOps
+      - Kubernetes
+    serviceName: Tanzu Kubernetes Grid API
+    serviceCategory: API
+  - name: vRealize Operations API
+    baseURL: https://{{vrops-host}}/suite-api/api
+    tags:
+      - Analytics
+      - Monitoring
+      - Operations
+      - Performance
+    serviceName: vRealize Operations API
+    serviceCategory: API
+  - name: Workspace ONE API
+    baseURL: https://{{ws1-host}}/api
+    tags:
+      - Endpoint Management
+      - Enterprise Mobility
+      - Identity
+      - Mobile Device Management
+    serviceName: Workspace ONE API
+    serviceCategory: API
+  - name: VMware Cloud Foundation API
+    baseURL: https://{{sddc-manager}}/v1
+    tags:
+      - Cloud Foundation
+      - Hyperconverged Infrastructure
+      - Lifecycle Management
+      - SDDC
+    serviceName: VMware Cloud Foundation API
+    serviceCategory: API
+  - name: VMware Horizon Server API
+    baseURL: https://{{horizon-server}}/rest
+    tags:
+      - Desktop Virtualization
+      - Remote Access
+      - VDI
+      - Virtual Desktop
+    serviceName: VMware Horizon Server API
+    serviceCategory: API
+  - name: vSAN Management API
+    baseURL: https://{{vcenter}}/vsanHealth
+    tags:
+      - Data Management
+      - Hyper-Converged
+      - Storage
+      - vSAN
+    serviceName: vSAN Management API
+    serviceCategory: API
+  - name: VMware Aria Operations for Logs API
+    baseURL: https://{{log-insight-host}}:9543/api/v2
+    tags:
+      - Analytics
+      - Log Management
+      - Monitoring
+      - Observability
+    serviceName: VMware Aria Operations for Logs API
+    serviceCategory: API
+  - name: VMware Aria Operations for Networks API
+    baseURL: https://{{vrni-host}}/api/ni
+    tags:
+      - Microsegmentation
+      - Network Analytics
+      - Network Monitoring
+      - Troubleshooting
+    serviceName: VMware Aria Operations for Networks API
+    serviceCategory: API
+  - name: VMware Aria Suite Lifecycle API
+    baseURL: https://{{lcm-host}}/lcm/api
+    tags:
+      - Automation
+      - Configuration Management
+      - Deployment
+      - Lifecycle Management
+    serviceName: VMware Aria Suite Lifecycle API
+    serviceCategory: API
+  - name: VMware Site Recovery Manager API
+    baseURL: https://{{srm-host}}/api
+    tags:
+      - Business Continuity
+      - Disaster Recovery
+      - Replication
+      - Site Recovery
+    serviceName: VMware Site Recovery Manager API
+    serviceCategory: API
+  - name: VMware Live Cyber Recovery API
+    baseURL: https://{{vcdr-orchestrator}}/api
+    tags:
+      - Cloud Recovery
+      - Cyber Recovery
+      - Data Protection
+      - Ransomware Protection
+    serviceName: VMware Live Cyber Recovery API
+    serviceCategory: API
+  - name: VMware Live Site Recovery API
+    baseURL: https://{{vcdr-host}}/api/vcdr/v1
+    tags:
+      - Business Continuity
+      - Disaster Recovery
+      - DRaaS
+      - Site Recovery
+    serviceName: VMware Live Site Recovery API
+    serviceCategory: API
+  - name: VMware vDefend API
+    baseURL: https://{{nsx-manager}}/api/v1
+    tags:
+      - Firewall
+      - Micro-Segmentation
+      - Network Security
+      - Threat Detection
+    serviceName: VMware vDefend API
+    serviceCategory: API
+  - name: VCF Operations API
+    baseURL: https://{{vrops-host}}/suite-api/api
+    tags:
+      - Analytics
+      - Cloud Foundation
+      - Monitoring
+      - Operations Management
+    serviceName: VCF Operations API
+    serviceCategory: API
+  - name: VMware View API
+    baseURL: https://{{horizon-server}}/view-vlsi/rest
+    tags:
+      - Desktop Management
+      - Horizon View
+      - VDI
+      - Virtual Desktop
+    serviceName: VMware View API
+    serviceCategory: API
+  - name: VMware Cloud on AWS API Reference
+    baseURL: https://vmc.vmware.com/vmc/api
+    tags:
+      - AWS
+      - Cloud Infrastructure
+      - Hybrid Cloud
+      - SDDC
+    serviceName: VMware Cloud on AWS API Reference
+    serviceCategory: API
+  - name: NSX VMC Policy API
+    baseURL: https://{{nsx-manager}}/policy/api/v1
+    tags:
+      - AWS
+      - Network Virtualization
+      - Security Policy
+      - VMware Cloud
+    serviceName: NSX VMC Policy API
+    serviceCategory: API
+  - name: VMware Cloud Disaster Recovery API
+    baseURL: https://{{vcdr-host}}/api
+    tags:
+      - Business Continuity
+      - Cloud Recovery
+      - Data Protection
+      - Disaster Recovery
+    serviceName: VMware Cloud Disaster Recovery API
+    serviceCategory: API
+  - name: VMware Aria Automation Orchestrator API
+    baseURL: https://{{vro-host}}/vco/api
+    tags:
+      - IT Automation
+      - Orchestration
+      - Plug-Ins
+      - Workflow Automation
+    serviceName: VMware Aria Automation Orchestrator API
+    serviceCategory: API
+  - name: VMware Aria Operations for Networks SaaS API
+    baseURL: https://{{vrni-saas-host}}/api/ni
+    tags:
+      - Microsegmentation
+      - Network Analytics
+      - Network Monitoring
+      - SaaS
+    serviceName: VMware Aria Operations for Networks SaaS API
+    serviceCategory: API
+  - name: VCF Operations for Networks API
+    baseURL: https://{{vrni-host}}/api/ni
+    tags:
+      - Cloud Foundation
+      - Network Analytics
+      - Network Monitoring
+      - Troubleshooting
+    serviceName: VCF Operations for Networks API
+    serviceCategory: API
+  - name: VMware Avi Load Balancer API
+    baseURL: https://{{avi-controller}}/api
+    tags:
+      - Analytics
+      - Application Delivery
+      - Load Balancing
+      - Traffic Management
+    serviceName: VMware Avi Load Balancer API
+    serviceCategory: API
+  - name: VMware Data Services Manager API
+    baseURL: https://{{dsm-host}}/api
+    tags:
+      - Data Services
+      - Database Management
+      - MySQL
+      - PostgreSQL
+    serviceName: VMware Data Services Manager API
+    serviceCategory: API
+  - name: VMware Data Services Manager Kubernetes API
+    baseURL: https://{{k8s-api}}/apis
+    tags:
+      - Data Services
+      - Database Management
+      - Kubernetes
+      - Self-Service
+    serviceName: VMware Data Services Manager Kubernetes API
+    serviceCategory: API
+  - name: App Volumes API
+    baseURL: https://{{app-volumes-manager}}/api
+    tags:
+      - Application Delivery
+      - Application Management
+      - Desktop Virtualization
+      - VDI
+    serviceName: App Volumes API
+    serviceCategory: API
+  - name: VMware vSphere Kubernetes Service API
+    baseURL: https://{{vcenter}}/api
+    tags:
+      - Container Management
+      - Kubernetes
+      - Tanzu
+      - vSphere
+    serviceName: VMware vSphere Kubernetes Service API
+    serviceCategory: API
+  - name: SDDC Manager API
+    baseURL: https://{{sddc-manager}}/v1
+    tags:
+      - Cloud Foundation
+      - Infrastructure
+      - Lifecycle Management
+      - SDDC
+    serviceName: SDDC Manager API
+    serviceCategory: API
+  - name: VCF Installer API
+    baseURL: https://{{cloud-builder}}/v1
+    tags:
+      - Automation
+      - Cloud Foundation
+      - Deployment
+      - Installation
+    serviceName: VCF Installer API
+    serviceCategory: API
+  - name: VCF Operations Orchestrator API
+    baseURL: https://{{vro-host}}/vco/api
+    tags:
+      - Cloud Foundation
+      - Operations
+      - Orchestration
+      - Workflow Automation
+    serviceName: VCF Operations Orchestrator API
+    serviceCategory: API
+  - name: VMware Cloud Director OpenAPI
+    baseURL: https://{{vcd-host}}/cloudapi
+    tags:
+      - Cloud Management
+      - Multi-Tenancy
+      - OpenAPI
+      - Service Provider
+    serviceName: VMware Cloud Director OpenAPI
+    serviceCategory: API
+  - name: VMware Cloud Director API
+    baseURL: https://{{vcd-host}}/api
+    tags:
+      - Cloud Management
+      - Multi-Tenancy
+      - Service Provider
+      - XML
+    serviceName: VMware Cloud Director API
+    serviceCategory: API
+  - name: VMware Identity Manager API
+    baseURL: https://{{idm-host}}/SAAS/jersey/manager/api
+    tags:
+      - Access Management
+      - Authentication
+      - Identity Management
+      - Single Sign-On
+    serviceName: VMware Identity Manager API
+    serviceCategory: API
+  - name: Operations for Applications REST API
+    baseURL: https://{{wavefront-host}}/api/v2
+    tags:
+      - Dashboards
+      - Metrics
+      - Monitoring
+      - Observability
+    serviceName: Operations for Applications REST API
+    serviceCategory: API
+  - name: Data Management for VMware Tanzu REST API
+    baseURL: https://{{tanzu-data-host}}/api
+    tags:
+      - Data Management
+      - Database
+      - Kubernetes
+      - Tanzu
+    serviceName: Data Management for VMware Tanzu REST API
+    serviceCategory: API
+  - name: VMware Cloud Foundation for VxRail API
+    baseURL: https://{{sddc-manager}}/v1
+    tags:
+      - Cloud Foundation
+      - Dell
+      - Hyperconverged Infrastructure
+      - VxRail
+    serviceName: VMware Cloud Foundation for VxRail API
+    serviceCategory: API
+  - name: VCF Usage Meter API
+    baseURL: https://{{usage-meter}}/api
+    tags:
+      - Billing
+      - Reporting
+      - Service Provider
+      - Usage Metering
+    serviceName: VCF Usage Meter API
+    serviceCategory: API
+  - name: Virtual Storage Lifecycle Management API
+    baseURL: https://{{vcenter}}/api
+    tags:
+      - Lifecycle Management
+      - Storage
+      - Storage Policy
+      - Virtual Disk
+    serviceName: Virtual Storage Lifecycle Management API
+    serviceCategory: API
+  - name: VMware Private AI Service API
+    baseURL: https://{{pai-host}}/api
+    tags:
+      - Artificial Intelligence
+      - Infrastructure
+      - Machine Learning
+      - Private AI
+    serviceName: VMware Private AI Service API
+    serviceCategory: API
+  - name: VMware HCX API
+    baseURL: https://{{hcx-manager}}/hybridity/api
+    tags:
+      - Disaster Recovery
+      - Hybrid Cloud
+      - Network Extension
+      - Workload Migration
+    serviceName: VMware HCX API
+    serviceCategory: API
+  - name: VMware Cloud Provider Lifecycle Manager API
+    baseURL: https://{{vclm-host}}/api
+    tags:
+      - Cloud Provider
+      - Deployment
+      - Lifecycle Management
+      - Service Provider
+    serviceName: VMware Cloud Provider Lifecycle Manager API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
