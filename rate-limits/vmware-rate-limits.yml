@@ -4,331 +4,47 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: VMware
 providerId: vmware
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Cloud Computing
-  - Container Management
   - Hybrid Cloud
   - Infrastructure
   - Virtualization
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the VMware API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: VMware (Broadcom) does not publish a single product-wide API rate-limit
+  policy. Most VMware APIs (vSphere, NSX, vCloud Director, Aria, etc.) run inside
+  customer-managed control planes (vCenter, NSX Manager, SDDC Manager) where
+  request behavior is governed by the appliance's own throttling, session limits,
+  and the underlying infrastructure rather than a published per-key quota. SaaS
+  endpoints (VMware Cloud on AWS, Workspace ONE) document service-specific limits
+  on a per-product basis. Trimmed scaffold; consult product-specific docs.
+sources:
+  - https://www.broadcom.com/support/vmware-services
+  - https://developer.broadcom.com/
+notes: No vendor-wide rate-limit policy is published. Rate limits are appliance-
+  or service-specific and not exposed as a unified contract. Customers should
+  consult each product's API reference (vCenter, NSX Manager, VMware Cloud on AWS,
+  Workspace ONE) for documented throttling behavior.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - vSphere API
-      - vSphere Web Services API
-      - Virtual Infrastructure JSON API
-      - vCloud Director API
-      - NSX-T Data Center API
-      - NSX-T Global Manager API
-      - NSX Intelligence API
-      - NSX Autonomous Edge API
-      - vRealize Automation API
-      - VMware Cloud on AWS API
-      - Tanzu Kubernetes Grid API
-      - vRealize Operations API
-      - Workspace ONE API
-      - VMware Cloud Foundation API
-      - VMware Horizon Server API
-      - vSAN Management API
-      - VMware Aria Operations for Logs API
-      - VMware Aria Operations for Networks API
-      - VMware Aria Suite Lifecycle API
-      - VMware Site Recovery Manager API
-      - VMware Live Cyber Recovery API
-      - VMware Live Site Recovery API
-      - VMware vDefend API
-      - VCF Operations API
-      - VMware View API
-      - VMware Cloud on AWS API Reference
-      - NSX VMC Policy API
-      - VMware Cloud Disaster Recovery API
-      - VMware Aria Automation Orchestrator API
-      - VMware Aria Operations for Networks SaaS API
-      - VCF Operations for Networks API
-      - VMware Avi Load Balancer API
-      - VMware Data Services Manager API
-      - VMware Data Services Manager Kubernetes API
-      - App Volumes API
-      - VMware vSphere Kubernetes Service API
-      - SDDC Manager API
-      - VCF Installer API
-      - VCF Operations Orchestrator API
-      - VMware Cloud Director OpenAPI
-      - VMware Cloud Director API
-      - VMware Identity Manager API
-      - Operations for Applications REST API
-      - Data Management for VMware Tanzu REST API
-      - VMware Cloud Foundation for VxRail API
-      - VCF Usage Meter API
-      - Virtual Storage Lifecycle Management API
-      - VMware Private AI Service API
-      - VMware HCX API
-      - VMware Cloud Provider Lifecycle Manager API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - vSphere API
-      - vSphere Web Services API
-      - Virtual Infrastructure JSON API
-      - vCloud Director API
-      - NSX-T Data Center API
-      - NSX-T Global Manager API
-      - NSX Intelligence API
-      - NSX Autonomous Edge API
-      - vRealize Automation API
-      - VMware Cloud on AWS API
-      - Tanzu Kubernetes Grid API
-      - vRealize Operations API
-      - Workspace ONE API
-      - VMware Cloud Foundation API
-      - VMware Horizon Server API
-      - vSAN Management API
-      - VMware Aria Operations for Logs API
-      - VMware Aria Operations for Networks API
-      - VMware Aria Suite Lifecycle API
-      - VMware Site Recovery Manager API
-      - VMware Live Cyber Recovery API
-      - VMware Live Site Recovery API
-      - VMware vDefend API
-      - VCF Operations API
-      - VMware View API
-      - VMware Cloud on AWS API Reference
-      - NSX VMC Policy API
-      - VMware Cloud Disaster Recovery API
-      - VMware Aria Automation Orchestrator API
-      - VMware Aria Operations for Networks SaaS API
-      - VCF Operations for Networks API
-      - VMware Avi Load Balancer API
-      - VMware Data Services Manager API
-      - VMware Data Services Manager Kubernetes API
-      - App Volumes API
-      - VMware vSphere Kubernetes Service API
-      - SDDC Manager API
-      - VCF Installer API
-      - VCF Operations Orchestrator API
-      - VMware Cloud Director OpenAPI
-      - VMware Cloud Director API
-      - VMware Identity Manager API
-      - Operations for Applications REST API
-      - Data Management for VMware Tanzu REST API
-      - VMware Cloud Foundation for VxRail API
-      - VCF Usage Meter API
-      - Virtual Storage Lifecycle Management API
-      - VMware Private AI Service API
-      - VMware HCX API
-      - VMware Cloud Provider Lifecycle Manager API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - vSphere API
-      - vSphere Web Services API
-      - Virtual Infrastructure JSON API
-      - vCloud Director API
-      - NSX-T Data Center API
-      - NSX-T Global Manager API
-      - NSX Intelligence API
-      - NSX Autonomous Edge API
-      - vRealize Automation API
-      - VMware Cloud on AWS API
-      - Tanzu Kubernetes Grid API
-      - vRealize Operations API
-      - Workspace ONE API
-      - VMware Cloud Foundation API
-      - VMware Horizon Server API
-      - vSAN Management API
-      - VMware Aria Operations for Logs API
-      - VMware Aria Operations for Networks API
-      - VMware Aria Suite Lifecycle API
-      - VMware Site Recovery Manager API
-      - VMware Live Cyber Recovery API
-      - VMware Live Site Recovery API
-      - VMware vDefend API
-      - VCF Operations API
-      - VMware View API
-      - VMware Cloud on AWS API Reference
-      - NSX VMC Policy API
-      - VMware Cloud Disaster Recovery API
-      - VMware Aria Automation Orchestrator API
-      - VMware Aria Operations for Networks SaaS API
-      - VCF Operations for Networks API
-      - VMware Avi Load Balancer API
-      - VMware Data Services Manager API
-      - VMware Data Services Manager Kubernetes API
-      - App Volumes API
-      - VMware vSphere Kubernetes Service API
-      - SDDC Manager API
-      - VCF Installer API
-      - VCF Operations Orchestrator API
-      - VMware Cloud Director OpenAPI
-      - VMware Cloud Director API
-      - VMware Identity Manager API
-      - Operations for Applications REST API
-      - Data Management for VMware Tanzu REST API
-      - VMware Cloud Foundation for VxRail API
-      - VCF Usage Meter API
-      - Virtual Storage Lifecycle Management API
-      - VMware Private AI Service API
-      - VMware HCX API
-      - VMware Cloud Provider Lifecycle Manager API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - vSphere API
-      - vSphere Web Services API
-      - Virtual Infrastructure JSON API
-      - vCloud Director API
-      - NSX-T Data Center API
-      - NSX-T Global Manager API
-      - NSX Intelligence API
-      - NSX Autonomous Edge API
-      - vRealize Automation API
-      - VMware Cloud on AWS API
-      - Tanzu Kubernetes Grid API
-      - vRealize Operations API
-      - Workspace ONE API
-      - VMware Cloud Foundation API
-      - VMware Horizon Server API
-      - vSAN Management API
-      - VMware Aria Operations for Logs API
-      - VMware Aria Operations for Networks API
-      - VMware Aria Suite Lifecycle API
-      - VMware Site Recovery Manager API
-      - VMware Live Cyber Recovery API
-      - VMware Live Site Recovery API
-      - VMware vDefend API
-      - VCF Operations API
-      - VMware View API
-      - VMware Cloud on AWS API Reference
-      - NSX VMC Policy API
-      - VMware Cloud Disaster Recovery API
-      - VMware Aria Automation Orchestrator API
-      - VMware Aria Operations for Networks SaaS API
-      - VCF Operations for Networks API
-      - VMware Avi Load Balancer API
-      - VMware Data Services Manager API
-      - VMware Data Services Manager Kubernetes API
-      - App Volumes API
-      - VMware vSphere Kubernetes Service API
-      - SDDC Manager API
-      - VCF Installer API
-      - VCF Operations Orchestrator API
-      - VMware Cloud Director OpenAPI
-      - VMware Cloud Director API
-      - VMware Identity Manager API
-      - Operations for Applications REST API
-      - Data Management for VMware Tanzu REST API
-      - VMware Cloud Foundation for VxRail API
-      - VCF Usage Meter API
-      - Virtual Storage Lifecycle Management API
-      - VMware Private AI Service API
-      - VMware HCX API
-      - VMware Cloud Provider Lifecycle Manager API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - vSphere API
-      - vSphere Web Services API
-      - Virtual Infrastructure JSON API
-      - vCloud Director API
-      - NSX-T Data Center API
-      - NSX-T Global Manager API
-      - NSX Intelligence API
-      - NSX Autonomous Edge API
-      - vRealize Automation API
-      - VMware Cloud on AWS API
-      - Tanzu Kubernetes Grid API
-      - vRealize Operations API
-      - Workspace ONE API
-      - VMware Cloud Foundation API
-      - VMware Horizon Server API
-      - vSAN Management API
-      - VMware Aria Operations for Logs API
-      - VMware Aria Operations for Networks API
-      - VMware Aria Suite Lifecycle API
-      - VMware Site Recovery Manager API
-      - VMware Live Cyber Recovery API
-      - VMware Live Site Recovery API
-      - VMware vDefend API
-      - VCF Operations API
-      - VMware View API
-      - VMware Cloud on AWS API Reference
-      - NSX VMC Policy API
-      - VMware Cloud Disaster Recovery API
-      - VMware Aria Automation Orchestrator API
-      - VMware Aria Operations for Networks SaaS API
-      - VCF Operations for Networks API
-      - VMware Avi Load Balancer API
-      - VMware Data Services Manager API
-      - VMware Data Services Manager Kubernetes API
-      - App Volumes API
-      - VMware vSphere Kubernetes Service API
-      - SDDC Manager API
-      - VCF Installer API
-      - VCF Operations Orchestrator API
-      - VMware Cloud Director OpenAPI
-      - VMware Cloud Director API
-      - VMware Identity Manager API
-      - Operations for Applications REST API
-      - Data Management for VMware Tanzu REST API
-      - VMware Cloud Foundation for VxRail API
-      - VCF Usage Meter API
-      - Virtual Storage Lifecycle Management API
-      - VMware Private AI Service API
-      - VMware HCX API
-      - VMware Cloud Provider Lifecycle Manager API
+  - name: Per-product appliance limits
+    scope: appliance
+    metric: varies
+    limit: see product-specific API reference
+    notes: Each VMware control plane (vCenter, NSX Manager, SDDC Manager, Aria)
+      enforces its own session, concurrency, and request-rate limits documented
+      in its respective API reference.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Consult Product Docs
+    description: There is no unified VMware/Broadcom rate-limit specification.
+      Refer to the product-specific API reference for the appliance or SaaS
+      endpoint being called.
+  - name: Backoff and Retry
+    description: Standard practice for VMware REST APIs is exponential backoff
+      with jitter when 429 or 503 is returned, honoring Retry-After when present.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
