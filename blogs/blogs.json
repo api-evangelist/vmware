@@ -1,0 +1,13 @@
+{
+  "repo": "vmware",
+  "feeds": [
+    {
+      "source": "https://blogs.vmware.com/code/",
+      "feed_url": "https://blogs.vmware.com/code/feed/",
+      "title": "VMware {code}",
+      "saved": 10
+    }
+  ],
+  "fetched": "2026-05-09T20:17:51Z",
+  "post_count": 10
+}
