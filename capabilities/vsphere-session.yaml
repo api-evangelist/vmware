@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: VMware vSphere Automation REST API — Session
+  description: 'VMware vSphere Automation REST API — Session. 3 operations. Lead operation: Vmware Create a New Authentication
+    Session. Self-contained Naftiko capability covering one Vmware business surface.'
+  tags:
+  - Vmware
+  - Session
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VMWARE_API_KEY: VMWARE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vsphere-session
+    baseUri: https://{vcenter}/api
+    description: VMware vSphere Automation REST API — Session business capability. Self-contained, no shared references.
+    resources:
+    - name: session
+      path: /session
+      operations:
+      - name: createsession
+        method: POST
+        description: Vmware Create a New Authentication Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletesession
+        method: DELETE
+        description: Vmware Terminate the Current Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: getsessioninfo
+        method: GET
+        description: Vmware Get Current Session Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: vmware-api-session-id
+      value: '{{env.VMWARE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: vsphere-session-rest
+    port: 8080
+    description: REST adapter for VMware vSphere Automation REST API — Session. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/session
+      name: session
+      description: REST surface for session.
+      operations:
+      - method: POST
+        name: createsession
+        description: Vmware Create a New Authentication Session
+        call: vsphere-session.createsession
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesession
+        description: Vmware Terminate the Current Session
+        call: vsphere-session.deletesession
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getsessioninfo
+        description: Vmware Get Current Session Information
+        call: vsphere-session.getsessioninfo
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vsphere-session-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for VMware vSphere Automation REST API — Session. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: vmware-create-new-authentication-session
+      description: Vmware Create a New Authentication Session
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: vsphere-session.createsession
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vmware-terminate-current-session
+      description: Vmware Terminate the Current Session
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: vsphere-session.deletesession
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vmware-get-current-session-information
+      description: Vmware Get Current Session Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-session.getsessioninfo
+      outputParameters:
+      - type: object
+        mapping: $.

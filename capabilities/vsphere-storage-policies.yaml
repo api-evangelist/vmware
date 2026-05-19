@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: VMware vSphere Automation REST API — Storage Policies
+  description: 'VMware vSphere Automation REST API — Storage Policies. 1 operations. Lead operation: Vmware List Storage Policies.
+    Self-contained Naftiko capability covering one Vmware business surface.'
+  tags:
+  - Vmware
+  - Storage Policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VMWARE_API_KEY: VMWARE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vsphere-storage-policies
+    baseUri: https://{vcenter}/api
+    description: VMware vSphere Automation REST API — Storage Policies business capability. Self-contained, no shared references.
+    resources:
+    - name: vcenter-storage-policies
+      path: /vcenter/storage/policies
+      operations:
+      - name: liststoragepolicies
+        method: GET
+        description: Vmware List Storage Policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter.policies
+          in: query
+          type: array
+          description: Identifiers of storage policies to filter by
+    authentication:
+      type: apikey
+      key: vmware-api-session-id
+      value: '{{env.VMWARE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: vsphere-storage-policies-rest
+    port: 8080
+    description: REST adapter for VMware vSphere Automation REST API — Storage Policies. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/vcenter/storage/policies
+      name: vcenter-storage-policies
+      description: REST surface for vcenter-storage-policies.
+      operations:
+      - method: GET
+        name: liststoragepolicies
+        description: Vmware List Storage Policies
+        call: vsphere-storage-policies.liststoragepolicies
+        with:
+          filter.policies: rest.filter.policies
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vsphere-storage-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for VMware vSphere Automation REST API — Storage Policies. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: vmware-list-storage-policies
+      description: Vmware List Storage Policies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-storage-policies.liststoragepolicies
+      with:
+        filter.policies: tools.filter.policies
+      outputParameters:
+      - type: object
+        mapping: $.

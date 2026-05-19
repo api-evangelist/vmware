@@ -1,0 +1,105 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: VMware vSphere Automation REST API — Folders
+  description: 'VMware vSphere Automation REST API — Folders. 1 operations. Lead operation: Vmware List Folders. Self-contained
+    Naftiko capability covering one Vmware business surface.'
+  tags:
+  - Vmware
+  - Folders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VMWARE_API_KEY: VMWARE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vsphere-folders
+    baseUri: https://{vcenter}/api
+    description: VMware vSphere Automation REST API — Folders business capability. Self-contained, no shared references.
+    resources:
+    - name: vcenter-folder
+      path: /vcenter/folder
+      operations:
+      - name: listfolders
+        method: GET
+        description: Vmware List Folders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter.folders
+          in: query
+          type: array
+          description: Identifiers of folders to filter by
+        - name: filter.names
+          in: query
+          type: array
+          description: Names of folders to filter by
+        - name: filter.type
+          in: query
+          type: string
+          description: Type of folder to filter by
+        - name: filter.parent_folders
+          in: query
+          type: array
+          description: Parent folders to filter by
+        - name: filter.datacenters
+          in: query
+          type: array
+          description: Datacenters that must contain the folders
+    authentication:
+      type: apikey
+      key: vmware-api-session-id
+      value: '{{env.VMWARE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: vsphere-folders-rest
+    port: 8080
+    description: REST adapter for VMware vSphere Automation REST API — Folders. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/vcenter/folder
+      name: vcenter-folder
+      description: REST surface for vcenter-folder.
+      operations:
+      - method: GET
+        name: listfolders
+        description: Vmware List Folders
+        call: vsphere-folders.listfolders
+        with:
+          filter.folders: rest.filter.folders
+          filter.names: rest.filter.names
+          filter.type: rest.filter.type
+          filter.parent_folders: rest.filter.parent_folders
+          filter.datacenters: rest.filter.datacenters
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vsphere-folders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for VMware vSphere Automation REST API — Folders. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: vmware-list-folders
+      description: Vmware List Folders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-folders.listfolders
+      with:
+        filter.folders: tools.filter.folders
+        filter.names: tools.filter.names
+        filter.type: tools.filter.type
+        filter.parent_folders: tools.filter.parent_folders
+        filter.datacenters: tools.filter.datacenters
+      outputParameters:
+      - type: object
+        mapping: $.

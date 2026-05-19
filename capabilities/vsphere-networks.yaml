@@ -1,0 +1,105 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: VMware vSphere Automation REST API — Networks
+  description: 'VMware vSphere Automation REST API — Networks. 1 operations. Lead operation: Vmware List Networks. Self-contained
+    Naftiko capability covering one Vmware business surface.'
+  tags:
+  - Vmware
+  - Networks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VMWARE_API_KEY: VMWARE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vsphere-networks
+    baseUri: https://{vcenter}/api
+    description: VMware vSphere Automation REST API — Networks business capability. Self-contained, no shared references.
+    resources:
+    - name: vcenter-network
+      path: /vcenter/network
+      operations:
+      - name: listnetworks
+        method: GET
+        description: Vmware List Networks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter.networks
+          in: query
+          type: array
+          description: Identifiers of networks to filter by
+        - name: filter.names
+          in: query
+          type: array
+          description: Names of networks to filter by
+        - name: filter.types
+          in: query
+          type: array
+          description: Types of networks to filter by
+        - name: filter.datacenters
+          in: query
+          type: array
+          description: Datacenters that must contain the networks
+        - name: filter.folders
+          in: query
+          type: array
+          description: Folders that must contain the networks
+    authentication:
+      type: apikey
+      key: vmware-api-session-id
+      value: '{{env.VMWARE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: vsphere-networks-rest
+    port: 8080
+    description: REST adapter for VMware vSphere Automation REST API — Networks. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/vcenter/network
+      name: vcenter-network
+      description: REST surface for vcenter-network.
+      operations:
+      - method: GET
+        name: listnetworks
+        description: Vmware List Networks
+        call: vsphere-networks.listnetworks
+        with:
+          filter.networks: rest.filter.networks
+          filter.names: rest.filter.names
+          filter.types: rest.filter.types
+          filter.datacenters: rest.filter.datacenters
+          filter.folders: rest.filter.folders
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vsphere-networks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for VMware vSphere Automation REST API — Networks. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: vmware-list-networks
+      description: Vmware List Networks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-networks.listnetworks
+      with:
+        filter.networks: tools.filter.networks
+        filter.names: tools.filter.names
+        filter.types: tools.filter.types
+        filter.datacenters: tools.filter.datacenters
+        filter.folders: tools.filter.folders
+      outputParameters:
+      - type: object
+        mapping: $.

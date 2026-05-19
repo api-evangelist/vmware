@@ -1,0 +1,184 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: VMware vSphere Automation REST API — Content Library
+  description: 'VMware vSphere Automation REST API — Content Library. 4 operations. Lead operation: Vmware List Content Libraries.
+    Self-contained Naftiko capability covering one Vmware business surface.'
+  tags:
+  - Vmware
+  - Content Library
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VMWARE_API_KEY: VMWARE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vsphere-content-library
+    baseUri: https://{vcenter}/api
+    description: VMware vSphere Automation REST API — Content Library business capability. Self-contained, no shared references.
+    resources:
+    - name: content-library
+      path: /content/library
+      operations:
+      - name: listcontentlibraries
+        method: GET
+        description: Vmware List Content Libraries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcontentlibrary
+        method: POST
+        description: Vmware Create a Content Library
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: content-library-library_id
+      path: /content/library/{library_id}
+      operations:
+      - name: getcontentlibrary
+        method: GET
+        description: Vmware Get Content Library Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: library_id
+          in: path
+          type: string
+          description: Identifier of the content library
+          required: true
+      - name: deletecontentlibrary
+        method: DELETE
+        description: Vmware Delete a Content Library
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: library_id
+          in: path
+          type: string
+          description: Identifier of the content library
+          required: true
+    authentication:
+      type: apikey
+      key: vmware-api-session-id
+      value: '{{env.VMWARE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: vsphere-content-library-rest
+    port: 8080
+    description: REST adapter for VMware vSphere Automation REST API — Content Library. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/content/library
+      name: content-library
+      description: REST surface for content-library.
+      operations:
+      - method: GET
+        name: listcontentlibraries
+        description: Vmware List Content Libraries
+        call: vsphere-content-library.listcontentlibraries
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcontentlibrary
+        description: Vmware Create a Content Library
+        call: vsphere-content-library.createcontentlibrary
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/content/library/{library-id}
+      name: content-library-library-id
+      description: REST surface for content-library-library_id.
+      operations:
+      - method: GET
+        name: getcontentlibrary
+        description: Vmware Get Content Library Details
+        call: vsphere-content-library.getcontentlibrary
+        with:
+          library_id: rest.library_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecontentlibrary
+        description: Vmware Delete a Content Library
+        call: vsphere-content-library.deletecontentlibrary
+        with:
+          library_id: rest.library_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vsphere-content-library-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for VMware vSphere Automation REST API — Content Library. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: vmware-list-content-libraries
+      description: Vmware List Content Libraries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-content-library.listcontentlibraries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vmware-create-content-library
+      description: Vmware Create a Content Library
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: vsphere-content-library.createcontentlibrary
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vmware-get-content-library-details
+      description: Vmware Get Content Library Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-content-library.getcontentlibrary
+      with:
+        library_id: tools.library_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: vmware-delete-content-library
+      description: Vmware Delete a Content Library
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: vsphere-content-library.deletecontentlibrary
+      with:
+        library_id: tools.library_id
+      outputParameters:
+      - type: object
+        mapping: $.
