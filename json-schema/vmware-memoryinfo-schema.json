@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MemoryInfo",
+  "title": "MemoryInfo",
+  "type": "object",
+  "description": "Memory configuration of a virtual machine",
+  "properties": {
+    "size_MiB": {
+      "type": "integer",
+      "description": "Memory size in mebibytes",
+      "example": 10
+    },
+    "hot_add_enabled": {
+      "type": "boolean",
+      "description": "Whether memory hot-add is enabled",
+      "example": true
+    },
+    "hot_add_increment_size_MiB": {
+      "type": "integer",
+      "description": "Granularity for memory hot-add in mebibytes",
+      "example": 10
+    },
+    "hot_add_limit_MiB": {
+      "type": "integer",
+      "description": "Maximum memory size for hot-add in mebibytes",
+      "example": 10
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DiskCreateSpec",
+  "title": "DiskCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a virtual disk",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Host bus adapter type",
+      "enum": [
+        "IDE",
+        "SCSI",
+        "SATA",
+        "NVME"
+      ],
+      "example": "IDE"
+    },
+    "new_vmdk": {
+      "type": "object",
+      "description": "Specification for a new VMDK file",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the VMDK file"
+        },
+        "capacity": {
+          "type": "integer",
+          "description": "Capacity in bytes",
+          "format": "int64"
+        },
+        "storage_policy": {
+          "type": "object",
+          "properties": {
+            "policy": {
+              "type": "string",
+              "description": "Storage policy identifier"
+            }
+          }
+        }
+      },
+      "example": "example_value"
+    },
+    "backing": {
+      "type": "object",
+      "description": "Existing disk backing",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "VMDK_FILE"
+          ]
+        },
+        "vmdk_file": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

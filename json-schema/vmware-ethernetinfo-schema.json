@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EthernetInfo",
+  "title": "EthernetInfo",
+  "type": "object",
+  "description": "Detailed virtual network adapter configuration",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Display label of the adapter",
+      "example": "Example Title"
+    },
+    "type": {
+      "type": "string",
+      "description": "Adapter emulation type",
+      "enum": [
+        "E1000",
+        "E1000E",
+        "PCNET32",
+        "VMXNET",
+        "VMXNET2",
+        "VMXNET3"
+      ],
+      "example": "E1000"
+    },
+    "mac_type": {
+      "type": "string",
+      "description": "MAC address type",
+      "enum": [
+        "MANUAL",
+        "GENERATED",
+        "ASSIGNED"
+      ],
+      "example": "MANUAL"
+    },
+    "mac_address": {
+      "type": "string",
+      "description": "MAC address of the adapter",
+      "example": "example_value"
+    },
+    "state": {
+      "type": "string",
+      "description": "Connection state",
+      "enum": [
+        "CONNECTED",
+        "NOT_CONNECTED"
+      ],
+      "example": "CONNECTED"
+    },
+    "start_connected": {
+      "type": "boolean",
+      "description": "Whether the adapter connects at power on",
+      "example": true
+    },
+    "backing": {
+      "type": "object",
+      "description": "Network backing information",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "STANDARD_PORTGROUP",
+            "DISTRIBUTED_PORTGROUP",
+            "OPAQUE_NETWORK",
+            "HOST_DEVICE"
+          ]
+        },
+        "network": {
+          "type": "string",
+          "description": "Identifier of the backing network"
+        }
+      },
+      "example": "example_value"
+    },
+    "allow_guest_control": {
+      "type": "boolean",
+      "description": "Whether guest OS can change adapter settings",
+      "example": true
+    },
+    "wake_on_lan_enabled": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

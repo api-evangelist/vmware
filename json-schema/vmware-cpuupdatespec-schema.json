@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CpuUpdateSpec",
+  "title": "CpuUpdateSpec",
+  "type": "object",
+  "description": "Specification for CPU configuration",
+  "properties": {
+    "count": {
+      "type": "integer",
+      "description": "Number of virtual CPU cores",
+      "minimum": 1,
+      "maximum": 768,
+      "example": 10
+    },
+    "cores_per_socket": {
+      "type": "integer",
+      "description": "Number of cores per socket",
+      "minimum": 1,
+      "example": 10
+    },
+    "hot_add_enabled": {
+      "type": "boolean",
+      "example": true
+    },
+    "hot_remove_enabled": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

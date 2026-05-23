@@ -1,0 +1,37 @@
+name: VMware Domain Vocabulary
+provider: VMware
+providerId: vmware
+description: Tag-derived vocabulary for the VMware API surface; sourced from openapi/ tags.
+terms:
+- term: Clusters
+  description: Cluster management for compute resource grouping, DRS, and HA configuration
+- term: Content Library
+  description: Content library management for templates, ISOs, and OVF packages shared across vCenter instances
+- term: Datacenters
+  description: Datacenter management for organizing vSphere inventory
+- term: Datastores
+  description: Datastore management including browsing, capacity monitoring, and storage configuration
+- term: Folders
+  description: Inventory folder management for organizing vSphere objects
+- term: Hosts
+  description: ESXi host management including connection state, maintenance mode, and host configuration
+- term: Networks
+  description: Virtual network management including standard and distributed port groups and network connectivity
+- term: Resource Pools
+  description: Resource pool management for allocating compute resources
+- term: Session
+  description: Authentication session management for the vSphere REST API
+- term: Storage Policies
+  description: VM storage policy management for defining storage requirements and compliance
+- term: Tagging
+  description: Tag and category management for organizing and classifying vSphere inventory objects
+- term: VM Guest
+  description: Guest operating system operations including identity, networking, local filesystem, and process management
+    via VMware Tools
+- term: VM Hardware
+  description: Virtual machine hardware configuration including CPU, memory, disks, network adapters, CD-ROMs, and other virtual
+    devices
+- term: VM Power
+  description: Virtual machine power state operations including power on, power off, suspend, reset, and guest shutdown
+- term: VMs
+  description: Virtual machine lifecycle management including creation, power operations, cloning, migration, and configuration

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DatastoreInfo",
+  "title": "DatastoreInfo",
+  "type": "object",
+  "description": "Detailed datastore configuration and status",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the datastore",
+      "example": "Example Title"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VMFS",
+        "NFS",
+        "NFS41",
+        "CIFS",
+        "VSAN",
+        "VFFS",
+        "VVOL"
+      ],
+      "example": "VMFS"
+    },
+    "accessible": {
+      "type": "boolean",
+      "description": "Whether the datastore is currently accessible",
+      "example": true
+    },
+    "free_space": {
+      "type": "integer",
+      "description": "Available free space in bytes",
+      "format": "int64",
+      "example": 10
+    },
+    "capacity": {
+      "type": "integer",
+      "description": "Maximum capacity in bytes",
+      "format": "int64",
+      "example": 10
+    },
+    "thin_provisioning_supported": {
+      "type": "boolean",
+      "description": "Whether thin provisioning is supported",
+      "example": true
+    },
+    "multiple_host_access": {
+      "type": "boolean",
+      "description": "Whether the datastore is accessible by multiple hosts",
+      "example": true
+    }
+  }
+}

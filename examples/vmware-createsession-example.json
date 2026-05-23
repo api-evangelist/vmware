@@ -1,0 +1,15 @@
+{
+  "operationId": "createSession",
+  "method": "POST",
+  "path": "/session",
+  "summary": "Vmware Create a New Authentication Session",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createsession201Example",
+      "example": "example_value"
+    }
+  ]
+}

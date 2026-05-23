@@ -1,0 +1,30 @@
+{
+  "operationId": "getContentLibrary",
+  "method": "GET",
+  "path": "/content/library/{library_id}",
+  "summary": "Vmware Get Content Library Details",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcontentlibrary200Example",
+      "example": {
+        "id": "abc123",
+        "name": "Example Title",
+        "description": "A sample description.",
+        "type": "LOCAL",
+        "creation_time": "2026-01-15T10:30:00Z",
+        "last_modified_time": "2026-01-15T10:30:00Z",
+        "last_sync_time": "2026-01-15T10:30:00Z",
+        "storage_backings": [
+          {
+            "type": "example_value",
+            "datastore_id": "500123"
+          }
+        ],
+        "version": "example_value"
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "operationId": "listHosts",
+  "method": "GET",
+  "path": "/vcenter/host",
+  "summary": "Vmware List Esxi Hosts",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listhosts200Example",
+      "example": [
+        {
+          "host": "example_value",
+          "name": "Example Title",
+          "connection_state": "CONNECTED",
+          "power_state": "POWERED_ON"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "operationId": "getVMPowerState",
+  "method": "GET",
+  "path": "/vcenter/vm/{vm}/power",
+  "summary": "Vmware Get Vm Power State",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getvmpowerstate200Example",
+      "example": {
+        "state": "POWERED_ON",
+        "clean_power_off": true
+      }
+    }
+  ]
+}

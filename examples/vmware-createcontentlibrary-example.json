@@ -1,0 +1,31 @@
+{
+  "operationId": "createContentLibrary",
+  "method": "POST",
+  "path": "/content/library",
+  "summary": "Vmware Create a Content Library",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatecontentlibraryRequestExample",
+      "example": {
+        "name": "Example Title",
+        "description": "A sample description.",
+        "type": "LOCAL",
+        "storage_backings": [
+          {
+            "type": "DATASTORE",
+            "datastore_id": "500123"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createcontentlibrary201Example",
+      "example": "example_value"
+    }
+  ]
+}

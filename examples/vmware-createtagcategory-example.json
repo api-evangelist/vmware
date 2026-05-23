@@ -1,0 +1,28 @@
+{
+  "operationId": "createTagCategory",
+  "method": "POST",
+  "path": "/cis/tagging/category",
+  "summary": "Vmware Create a Tag Category",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatetagcategoryRequestExample",
+      "example": {
+        "name": "Example Title",
+        "description": "A sample description.",
+        "cardinality": "SINGLE",
+        "associable_types": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createtagcategory201Example",
+      "example": "example_value"
+    }
+  ]
+}

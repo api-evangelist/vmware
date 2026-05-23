@@ -1,0 +1,52 @@
+{
+  "operationId": "getVM",
+  "method": "GET",
+  "path": "/vcenter/vm/{vm}",
+  "summary": "Vmware Get Virtual Machine Details",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getvm200Example",
+      "example": {
+        "name": "Example Title",
+        "identity": {
+          "name": "Example Title",
+          "instance_uuid": "500123",
+          "bios_uuid": "500123"
+        },
+        "power_state": "POWERED_ON",
+        "guest_OS": "example_value",
+        "hardware": {
+          "version": "example_value",
+          "upgrade_policy": "NEVER",
+          "upgrade_version": "example_value"
+        },
+        "boot": {
+          "type": "BIOS",
+          "delay": 10,
+          "enter_setup_mode": true
+        },
+        "cpu": {
+          "count": 10,
+          "cores_per_socket": 10,
+          "hot_add_enabled": true,
+          "hot_remove_enabled": true
+        },
+        "memory": {
+          "size_MiB": 10,
+          "hot_add_enabled": true,
+          "hot_add_increment_size_MiB": 10,
+          "hot_add_limit_MiB": 10
+        },
+        "disks": "example_value",
+        "nics": "example_value",
+        "cdroms": "example_value",
+        "parallel_ports": "example_value",
+        "serial_ports": "example_value",
+        "floppy_drives": "example_value"
+      }
+    }
+  ]
+}

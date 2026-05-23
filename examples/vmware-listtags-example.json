@@ -1,0 +1,17 @@
+{
+  "operationId": "listTags",
+  "method": "GET",
+  "path": "/cis/tagging/tag",
+  "summary": "Vmware List Tags",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listtags200Example",
+      "example": [
+        "example_value"
+      ]
+    }
+  ]
+}

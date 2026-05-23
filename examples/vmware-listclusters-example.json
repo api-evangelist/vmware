@@ -1,0 +1,22 @@
+{
+  "operationId": "listClusters",
+  "method": "GET",
+  "path": "/vcenter/cluster",
+  "summary": "Vmware List Clusters",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listclusters200Example",
+      "example": [
+        {
+          "cluster": "example_value",
+          "name": "Example Title",
+          "ha_enabled": true,
+          "drs_enabled": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "operationId": "listStoragePolicies",
+  "method": "GET",
+  "path": "/vcenter/storage/policies",
+  "summary": "Vmware List Storage Policies",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Liststoragepolicies200Example",
+      "example": [
+        {
+          "policy": "example_value",
+          "name": "Example Title",
+          "description": "A sample description."
+        }
+      ]
+    }
+  ]
+}

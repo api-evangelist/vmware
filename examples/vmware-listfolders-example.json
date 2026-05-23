@@ -1,0 +1,21 @@
+{
+  "operationId": "listFolders",
+  "method": "GET",
+  "path": "/vcenter/folder",
+  "summary": "Vmware List Folders",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listfolders200Example",
+      "example": [
+        {
+          "folder": "example_value",
+          "name": "Example Title",
+          "type": "DATACENTER"
+        }
+      ]
+    }
+  ]
+}

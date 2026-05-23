@@ -1,0 +1,719 @@
+{
+  "provider": "VMware",
+  "providerId": "vmware",
+  "kind": "json-structure",
+  "description": "Structural overview of the VMware API surface; extracted from openapi/.",
+  "schemaCount": 37,
+  "operationCount": 49,
+  "schemas": [
+    {
+      "name": "SessionInfo",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "VMSummary",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "vm",
+        "name"
+      ]
+    },
+    {
+      "name": "VMCreateSpec",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "name",
+        "guest_OS",
+        "placement"
+      ]
+    },
+    {
+      "name": "VMInfo",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "PowerInfo",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "HardwareInfo",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "HardwareUpdateSpec",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CpuInfo",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "CpuUpdateSpec",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "MemoryInfo",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "MemoryUpdateSpec",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DiskSummary",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DiskInfo",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DiskCreateSpec",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "EthernetSummary",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "EthernetInfo",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "EthernetCreateSpec",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "GuestIdentityInfo",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "GuestNetworkingInfo",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "HostSummary",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "host",
+        "name"
+      ]
+    },
+    {
+      "name": "HostInfo",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "DatastoreSummary",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "datastore",
+        "name"
+      ]
+    },
+    {
+      "name": "DatastoreInfo",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ClusterSummary",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "cluster",
+        "name"
+      ]
+    },
+    {
+      "name": "ClusterInfo",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "NetworkSummary",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "network",
+        "name"
+      ]
+    },
+    {
+      "name": "DatacenterSummary",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "datacenter",
+        "name"
+      ]
+    },
+    {
+      "name": "DatacenterCreateSpec",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "name",
+        "folder"
+      ]
+    },
+    {
+      "name": "DatacenterInfo",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "FolderSummary",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "folder",
+        "name"
+      ]
+    },
+    {
+      "name": "ResourcePoolSummary",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "resource_pool",
+        "name"
+      ]
+    },
+    {
+      "name": "LibraryCreateSpec",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "type",
+        "storage_backings"
+      ]
+    },
+    {
+      "name": "LibraryInfo",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "StoragePolicySummary",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "TagCategoryCreateSpec",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "cardinality"
+      ]
+    },
+    {
+      "name": "TagCreateSpec",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "name",
+        "category_id"
+      ]
+    },
+    {
+      "name": "TagAssociationSpec",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "tag_id",
+        "object_id"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/session",
+      "operationId": "getSessionInfo",
+      "summary": "Vmware Get Current Session Information",
+      "tags": [
+        "Session"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/session",
+      "operationId": "createSession",
+      "summary": "Vmware Create a New Authentication Session",
+      "tags": [
+        "Session"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/session",
+      "operationId": "deleteSession",
+      "summary": "Vmware Terminate the Current Session",
+      "tags": [
+        "Session"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/vm",
+      "operationId": "listVMs",
+      "summary": "Vmware List Virtual Machines",
+      "tags": [
+        "VMs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/vcenter/vm",
+      "operationId": "createVM",
+      "summary": "Vmware Create a New Virtual Machine",
+      "tags": [
+        "VMs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/vm/{vm}",
+      "operationId": "getVM",
+      "summary": "Vmware Get Virtual Machine Details",
+      "tags": [
+        "VMs"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/vcenter/vm/{vm}",
+      "operationId": "deleteVM",
+      "summary": "Vmware Delete a Virtual Machine",
+      "tags": [
+        "VMs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/vm/{vm}/power",
+      "operationId": "getVMPowerState",
+      "summary": "Vmware Get Vm Power State",
+      "tags": [
+        "VM Power"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/vcenter/vm/{vm}/power?action=start",
+      "operationId": "powerOnVM",
+      "summary": "Vmware Power on a Virtual Machine",
+      "tags": [
+        "VM Power"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/vcenter/vm/{vm}/power?action=stop",
+      "operationId": "powerOffVM",
+      "summary": "Vmware Power Off a Virtual Machine",
+      "tags": [
+        "VM Power"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/vcenter/vm/{vm}/power?action=suspend",
+      "operationId": "suspendVM",
+      "summary": "Vmware Suspend a Virtual Machine",
+      "tags": [
+        "VM Power"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/vcenter/vm/{vm}/power?action=reset",
+      "operationId": "resetVM",
+      "summary": "Vmware Reset a Virtual Machine",
+      "tags": [
+        "VM Power"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/vm/{vm}/hardware",
+      "operationId": "getVMHardware",
+      "summary": "Vmware Get Vm Hardware Configuration",
+      "tags": [
+        "VM Hardware"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/vcenter/vm/{vm}/hardware",
+      "operationId": "updateVMHardware",
+      "summary": "Vmware Update Vm Hardware Configuration",
+      "tags": [
+        "VM Hardware"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/vm/{vm}/hardware/cpu",
+      "operationId": "getVMCpu",
+      "summary": "Vmware Get Vm Cpu Configuration",
+      "tags": [
+        "VM Hardware"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/vcenter/vm/{vm}/hardware/cpu",
+      "operationId": "updateVMCpu",
+      "summary": "Vmware Update Vm Cpu Configuration",
+      "tags": [
+        "VM Hardware"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/vm/{vm}/hardware/memory",
+      "operationId": "getVMMemory",
+      "summary": "Vmware Get Vm Memory Configuration",
+      "tags": [
+        "VM Hardware"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/vcenter/vm/{vm}/hardware/memory",
+      "operationId": "updateVMMemory",
+      "summary": "Vmware Update Vm Memory Configuration",
+      "tags": [
+        "VM Hardware"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/vm/{vm}/hardware/disk",
+      "operationId": "listVMDisks",
+      "summary": "Vmware List Vm Virtual Disks",
+      "tags": [
+        "VM Hardware"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/vcenter/vm/{vm}/hardware/disk",
+      "operationId": "createVMDisk",
+      "summary": "Vmware Add a Virtual Disk to a Vm",
+      "tags": [
+        "VM Hardware"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/vm/{vm}/hardware/ethernet",
+      "operationId": "listVMEthernet",
+      "summary": "Vmware List Vm Network Adapters",
+      "tags": [
+        "VM Hardware"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/vcenter/vm/{vm}/hardware/ethernet",
+      "operationId": "createVMEthernet",
+      "summary": "Vmware Add a Network Adapter to a Vm",
+      "tags": [
+        "VM Hardware"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/vm/{vm}/guest/identity",
+      "operationId": "getVMGuestIdentity",
+      "summary": "Vmware Get Guest Os Identity",
+      "tags": [
+        "VM Guest"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/vm/{vm}/guest/networking",
+      "operationId": "getVMGuestNetworking",
+      "summary": "Vmware Get Guest Networking Information",
+      "tags": [
+        "VM Guest"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/host",
+      "operationId": "listHosts",
+      "summary": "Vmware List Esxi Hosts",
+      "tags": [
+        "Hosts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/host/{host}",
+      "operationId": "getHost",
+      "summary": "Vmware Get Esxi Host Details",
+      "tags": [
+        "Hosts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/vcenter/host/{host}/connect",
+      "operationId": "connectHost",
+      "summary": "Vmware Connect an Esxi Host",
+      "tags": [
+        "Hosts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/vcenter/host/{host}/disconnect",
+      "operationId": "disconnectHost",
+      "summary": "Vmware Disconnect an Esxi Host",
+      "tags": [
+        "Hosts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/datastore",
+      "operationId": "listDatastores",
+      "summary": "Vmware List Datastores",
+      "tags": [
+        "Datastores"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/datastore/{datastore}",
+      "operationId": "getDatastore",
+      "summary": "Vmware Get Datastore Details",
+      "tags": [
+        "Datastores"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/cluster",
+      "operationId": "listClusters",
+      "summary": "Vmware List Clusters",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/cluster/{cluster}",
+      "operationId": "getCluster",
+      "summary": "Vmware Get Cluster Details",
+      "tags": [
+        "Clusters"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/network",
+      "operationId": "listNetworks",
+      "summary": "Vmware List Networks",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/datacenter",
+      "operationId": "listDatacenters",
+      "summary": "Vmware List Datacenters",
+      "tags": [
+        "Datacenters"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/vcenter/datacenter",
+      "operationId": "createDatacenter",
+      "summary": "Vmware Create a Datacenter",
+      "tags": [
+        "Datacenters"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/datacenter/{datacenter}",
+      "operationId": "getDatacenter",
+      "summary": "Vmware Get Datacenter Details",
+      "tags": [
+        "Datacenters"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/vcenter/datacenter/{datacenter}",
+      "operationId": "deleteDatacenter",
+      "summary": "Vmware Delete a Datacenter",
+      "tags": [
+        "Datacenters"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/folder",
+      "operationId": "listFolders",
+      "summary": "Vmware List Folders",
+      "tags": [
+        "Folders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/resource-pool",
+      "operationId": "listResourcePools",
+      "summary": "Vmware List Resource Pools",
+      "tags": [
+        "Resource Pools"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/content/library",
+      "operationId": "listContentLibraries",
+      "summary": "Vmware List Content Libraries",
+      "tags": [
+        "Content Library"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/content/library",
+      "operationId": "createContentLibrary",
+      "summary": "Vmware Create a Content Library",
+      "tags": [
+        "Content Library"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/content/library/{library_id}",
+      "operationId": "getContentLibrary",
+      "summary": "Vmware Get Content Library Details",
+      "tags": [
+        "Content Library"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/content/library/{library_id}",
+      "operationId": "deleteContentLibrary",
+      "summary": "Vmware Delete a Content Library",
+      "tags": [
+        "Content Library"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vcenter/storage/policies",
+      "operationId": "listStoragePolicies",
+      "summary": "Vmware List Storage Policies",
+      "tags": [
+        "Storage Policies"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/cis/tagging/category",
+      "operationId": "listTagCategories",
+      "summary": "Vmware List Tag Categories",
+      "tags": [
+        "Tagging"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/cis/tagging/category",
+      "operationId": "createTagCategory",
+      "summary": "Vmware Create a Tag Category",
+      "tags": [
+        "Tagging"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/cis/tagging/tag",
+      "operationId": "listTags",
+      "summary": "Vmware List Tags",
+      "tags": [
+        "Tagging"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/cis/tagging/tag",
+      "operationId": "createTag",
+      "summary": "Vmware Create a Tag",
+      "tags": [
+        "Tagging"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/cis/tagging/tag-association?action=attach",
+      "operationId": "attachTag",
+      "summary": "Vmware Attach a Tag to an Object",
+      "tags": [
+        "Tagging"
+      ]
+    }
+  ]
+}

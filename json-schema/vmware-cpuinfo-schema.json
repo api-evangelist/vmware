@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CpuInfo",
+  "title": "CpuInfo",
+  "type": "object",
+  "description": "CPU configuration of a virtual machine",
+  "properties": {
+    "count": {
+      "type": "integer",
+      "description": "Number of virtual CPU cores",
+      "example": 10
+    },
+    "cores_per_socket": {
+      "type": "integer",
+      "description": "Number of cores per CPU socket",
+      "example": 10
+    },
+    "hot_add_enabled": {
+      "type": "boolean",
+      "description": "Whether CPU hot-add is enabled",
+      "example": true
+    },
+    "hot_remove_enabled": {
+      "type": "boolean",
+      "description": "Whether CPU hot-remove is enabled",
+      "example": true
+    }
+  }
+}

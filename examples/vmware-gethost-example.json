@@ -1,0 +1,19 @@
+{
+  "operationId": "getHost",
+  "method": "GET",
+  "path": "/vcenter/host/{host}",
+  "summary": "Vmware Get Esxi Host Details",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Gethost200Example",
+      "example": {
+        "name": "Example Title",
+        "connection_state": "CONNECTED",
+        "power_state": "POWERED_ON"
+      }
+    }
+  ]
+}

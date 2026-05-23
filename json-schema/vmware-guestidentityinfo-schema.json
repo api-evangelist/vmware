@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GuestIdentityInfo",
+  "title": "GuestIdentityInfo",
+  "type": "object",
+  "description": "Guest operating system identity information from VMware Tools",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Guest OS full name",
+      "examples": [
+        "Red Hat Enterprise Linux 9 (64-bit)"
+      ]
+    },
+    "family": {
+      "type": "string",
+      "description": "Guest OS family",
+      "enum": [
+        "LINUX",
+        "WINDOWS",
+        "OTHER"
+      ],
+      "example": "LINUX"
+    },
+    "full_name": {
+      "type": "object",
+      "properties": {
+        "default_message": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    },
+    "host_name": {
+      "type": "string",
+      "description": "Guest hostname",
+      "example": "example_value"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "Primary IP address of the guest",
+      "format": "ipv4",
+      "example": "example_value"
+    }
+  }
+}

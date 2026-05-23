@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HostSummary",
+  "title": "HostSummary",
+  "type": "object",
+  "description": "Summary of an ESXi host in the vCenter inventory",
+  "required": [
+    "host",
+    "name"
+  ],
+  "properties": {
+    "host": {
+      "type": "string",
+      "description": "Unique identifier of the host (e.g., host-10)",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name or hostname of the ESXi host",
+      "example": "Example Title"
+    },
+    "connection_state": {
+      "type": "string",
+      "description": "Connection state of the host",
+      "enum": [
+        "CONNECTED",
+        "DISCONNECTED",
+        "NOT_RESPONDING"
+      ],
+      "example": "CONNECTED"
+    },
+    "power_state": {
+      "type": "string",
+      "description": "Power state of the host",
+      "enum": [
+        "POWERED_ON",
+        "POWERED_OFF",
+        "STANDBY"
+      ],
+      "example": "POWERED_ON"
+    }
+  }
+}

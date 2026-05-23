@@ -1,0 +1,17 @@
+{
+  "operationId": "listContentLibraries",
+  "method": "GET",
+  "path": "/content/library",
+  "summary": "Vmware List Content Libraries",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listcontentlibraries200Example",
+      "example": [
+        "example_value"
+      ]
+    }
+  ]
+}

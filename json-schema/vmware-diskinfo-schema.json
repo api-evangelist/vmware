@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DiskInfo",
+  "title": "DiskInfo",
+  "type": "object",
+  "description": "Detailed virtual disk configuration",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Display label of the virtual disk",
+      "example": "Example Title"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of host bus adapter",
+      "enum": [
+        "IDE",
+        "SCSI",
+        "SATA",
+        "NVME"
+      ],
+      "example": "IDE"
+    },
+    "capacity": {
+      "type": "integer",
+      "description": "Capacity of the virtual disk in bytes",
+      "format": "int64",
+      "example": 10
+    },
+    "backing": {
+      "type": "object",
+      "description": "Disk backing information",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "VMDK_FILE"
+          ]
+        },
+        "vmdk_file": {
+          "type": "string",
+          "description": "Path to the VMDK file"
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

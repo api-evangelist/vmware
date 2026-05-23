@@ -1,0 +1,23 @@
+{
+  "operationId": "listDatastores",
+  "method": "GET",
+  "path": "/vcenter/datastore",
+  "summary": "Vmware List Datastores",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listdatastores200Example",
+      "example": [
+        {
+          "datastore": "example_value",
+          "name": "Example Title",
+          "type": "VMFS",
+          "free_space": 10,
+          "capacity": 10
+        }
+      ]
+    }
+  ]
+}

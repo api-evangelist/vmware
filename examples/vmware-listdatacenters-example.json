@@ -1,0 +1,20 @@
+{
+  "operationId": "listDatacenters",
+  "method": "GET",
+  "path": "/vcenter/datacenter",
+  "summary": "Vmware List Datacenters",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listdatacenters200Example",
+      "example": [
+        {
+          "datacenter": "example_value",
+          "name": "Example Title"
+        }
+      ]
+    }
+  ]
+}

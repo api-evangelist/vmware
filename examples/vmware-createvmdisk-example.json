@@ -1,0 +1,34 @@
+{
+  "operationId": "createVMDisk",
+  "method": "POST",
+  "path": "/vcenter/vm/{vm}/hardware/disk",
+  "summary": "Vmware Add a Virtual Disk to a Vm",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatevmdiskRequestExample",
+      "example": {
+        "type": "IDE",
+        "new_vmdk": {
+          "name": "Example Title",
+          "capacity": 10,
+          "storage_policy": {
+            "policy": "example_value"
+          }
+        },
+        "backing": {
+          "type": "VMDK_FILE",
+          "vmdk_file": "example_value"
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createvmdisk201Example",
+      "example": "example_value"
+    }
+  ]
+}

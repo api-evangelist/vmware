@@ -1,0 +1,35 @@
+{
+  "operationId": "getVMGuestNetworking",
+  "method": "GET",
+  "path": "/vcenter/vm/{vm}/guest/networking",
+  "summary": "Vmware Get Guest Networking Information",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getvmguestnetworking200Example",
+      "example": {
+        "dns_values": {
+          "domain_name": "example_value",
+          "search_domains": [
+            "example_value"
+          ]
+        },
+        "dns": {
+          "ip_addresses": [
+            "example_value"
+          ]
+        },
+        "interfaces": [
+          {
+            "mac_address": "example_value",
+            "ip": {
+              "ip_addresses": {}
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

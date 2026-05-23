@@ -1,0 +1,19 @@
+{
+  "operationId": "getSessionInfo",
+  "method": "GET",
+  "path": "/session",
+  "summary": "Vmware Get Current Session Information",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getsessioninfo200Example",
+      "example": {
+        "user": "example_value",
+        "created_time": "2026-01-15T10:30:00Z",
+        "last_accessed_time": "2026-01-15T10:30:00Z"
+      }
+    }
+  ]
+}

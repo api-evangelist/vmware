@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PowerInfo",
+  "title": "PowerInfo",
+  "type": "object",
+  "description": "Power state information for a virtual machine",
+  "properties": {
+    "state": {
+      "type": "string",
+      "description": "Current power state",
+      "enum": [
+        "POWERED_ON",
+        "POWERED_OFF",
+        "SUSPENDED"
+      ],
+      "example": "POWERED_ON"
+    },
+    "clean_power_off": {
+      "type": "boolean",
+      "description": "Whether the last power-off was clean",
+      "example": true
+    }
+  }
+}

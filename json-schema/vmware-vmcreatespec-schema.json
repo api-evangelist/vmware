@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VMCreateSpec",
+  "title": "VMCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a new virtual machine",
+  "required": [
+    "name",
+    "guest_OS",
+    "placement"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name for the new VM",
+      "example": "Example Title"
+    },
+    "guest_OS": {
+      "type": "string",
+      "description": "Guest operating system identifier",
+      "enum": [
+        "RHEL_9_64",
+        "RHEL_8_64",
+        "UBUNTU_64",
+        "DEBIAN_11_64",
+        "WINDOWS_SERVER_2022",
+        "WINDOWS_SERVER_2019",
+        "WINDOWS_11_64",
+        "OTHER_LINUX_64",
+        "OTHER_64"
+      ],
+      "example": "RHEL_9_64"
+    },
+    "placement": {
+      "type": "object",
+      "description": "Placement specification for the VM",
+      "properties": {
+        "folder": {
+          "type": "string",
+          "description": "VM folder identifier"
+        },
+        "host": {
+          "type": "string",
+          "description": "Host identifier for initial placement"
+        },
+        "cluster": {
+          "type": "string",
+          "description": "Cluster identifier for initial placement"
+        },
+        "resource_pool": {
+          "type": "string",
+          "description": "Resource pool identifier"
+        },
+        "datastore": {
+          "type": "string",
+          "description": "Datastore identifier for VM files"
+        }
+      },
+      "example": "example_value"
+    },
+    "hardware_version": {
+      "type": "string",
+      "description": "Virtual hardware version",
+      "enum": [
+        "VMX_21",
+        "VMX_20",
+        "VMX_19",
+        "VMX_18",
+        "VMX_17",
+        "VMX_16",
+        "VMX_15",
+        "VMX_14",
+        "VMX_13"
+      ],
+      "example": "VMX_21"
+    },
+    "cpu": {
+      "$ref": "#/components/schemas/CpuUpdateSpec"
+    },
+    "memory": {
+      "$ref": "#/components/schemas/MemoryUpdateSpec"
+    },
+    "disks": {
+      "type": "array",
+      "description": "Virtual disks to create with the VM",
+      "items": {
+        "$ref": "#/components/schemas/DiskCreateSpec"
+      },
+      "example": []
+    },
+    "nics": {
+      "type": "array",
+      "description": "Network adapters to create with the VM",
+      "items": {
+        "$ref": "#/components/schemas/EthernetCreateSpec"
+      },
+      "example": []
+    },
+    "boot": {
+      "type": "object",
+      "description": "Boot configuration",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "BIOS",
+            "EFI"
+          ]
+        },
+        "efi_legacy_boot": {
+          "type": "boolean"
+        },
+        "delay": {
+          "type": "integer",
+          "description": "Boot delay in milliseconds"
+        },
+        "enter_setup_mode": {
+          "type": "boolean",
+          "description": "Enter BIOS/EFI setup on next boot"
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

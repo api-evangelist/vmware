@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TagCategoryCreateSpec",
+  "title": "TagCategoryCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a tag category",
+  "required": [
+    "name",
+    "cardinality"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name for the new category",
+      "example": "Example Title"
+    },
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "cardinality": {
+      "type": "string",
+      "description": "Cardinality of the category",
+      "enum": [
+        "SINGLE",
+        "MULTIPLE"
+      ],
+      "example": "SINGLE"
+    },
+    "associable_types": {
+      "type": "array",
+      "description": "Object types that can be tagged with tags in this category",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    }
+  }
+}

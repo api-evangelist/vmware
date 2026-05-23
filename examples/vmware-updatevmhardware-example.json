@@ -1,0 +1,17 @@
+{
+  "operationId": "updateVMHardware",
+  "method": "PATCH",
+  "path": "/vcenter/vm/{vm}/hardware",
+  "summary": "Vmware Update Vm Hardware Configuration",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "UpdatevmhardwareRequestExample",
+      "example": {
+        "upgrade_policy": "NEVER",
+        "upgrade_version": "example_value"
+      }
+    }
+  ],
+  "responseExamples": []
+}

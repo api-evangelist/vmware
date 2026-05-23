@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HardwareUpdateSpec",
+  "title": "HardwareUpdateSpec",
+  "type": "object",
+  "description": "Specification for updating virtual hardware",
+  "properties": {
+    "upgrade_policy": {
+      "type": "string",
+      "enum": [
+        "NEVER",
+        "AFTER_CLEAN_SHUTDOWN",
+        "ALWAYS"
+      ],
+      "example": "NEVER"
+    },
+    "upgrade_version": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

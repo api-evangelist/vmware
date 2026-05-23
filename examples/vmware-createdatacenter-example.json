@@ -1,0 +1,24 @@
+{
+  "operationId": "createDatacenter",
+  "method": "POST",
+  "path": "/vcenter/datacenter",
+  "summary": "Vmware Create a Datacenter",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatedatacenterRequestExample",
+      "example": {
+        "name": "Example Title",
+        "folder": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createdatacenter201Example",
+      "example": "example_value"
+    }
+  ]
+}

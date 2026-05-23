@@ -1,0 +1,17 @@
+{
+  "operationId": "updateVMMemory",
+  "method": "PATCH",
+  "path": "/vcenter/vm/{vm}/hardware/memory",
+  "summary": "Vmware Update Vm Memory Configuration",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "UpdatevmmemoryRequestExample",
+      "example": {
+        "size_MiB": 10,
+        "hot_add_enabled": true
+      }
+    }
+  ],
+  "responseExamples": []
+}

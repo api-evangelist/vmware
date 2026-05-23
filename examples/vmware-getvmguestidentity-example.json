@@ -1,0 +1,24 @@
+{
+  "operationId": "getVMGuestIdentity",
+  "method": "GET",
+  "path": "/vcenter/vm/{vm}/guest/identity",
+  "summary": "Vmware Get Guest Os Identity",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getvmguestidentity200Example",
+      "example": {
+        "name": "Example Title",
+        "family": "LINUX",
+        "full_name": {
+          "default_message": "example_value",
+          "id": "abc123"
+        },
+        "host_name": "example_value",
+        "ip_address": "example_value"
+      }
+    }
+  ]
+}

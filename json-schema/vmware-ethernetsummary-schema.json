@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EthernetSummary",
+  "title": "EthernetSummary",
+  "type": "object",
+  "description": "Summary of a virtual network adapter",
+  "properties": {
+    "nic": {
+      "type": "string",
+      "description": "Identifier of the network adapter",
+      "example": "example_value"
+    }
+  }
+}

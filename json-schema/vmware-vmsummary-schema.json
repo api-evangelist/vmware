@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VMSummary",
+  "title": "VMSummary",
+  "type": "object",
+  "description": "Summary of a virtual machine in the vCenter inventory",
+  "required": [
+    "vm",
+    "name"
+  ],
+  "properties": {
+    "vm": {
+      "type": "string",
+      "description": "Unique identifier of the virtual machine (e.g., vm-123)",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the virtual machine",
+      "example": "Example Title"
+    },
+    "power_state": {
+      "type": "string",
+      "description": "Current power state of the VM",
+      "enum": [
+        "POWERED_ON",
+        "POWERED_OFF",
+        "SUSPENDED"
+      ],
+      "example": "POWERED_ON"
+    },
+    "cpu_count": {
+      "type": "integer",
+      "description": "Number of virtual CPUs",
+      "example": 10
+    },
+    "memory_size_MiB": {
+      "type": "integer",
+      "description": "Memory size in mebibytes",
+      "example": 10
+    }
+  }
+}

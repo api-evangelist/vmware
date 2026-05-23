@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ClusterSummary",
+  "title": "ClusterSummary",
+  "type": "object",
+  "description": "Summary of a cluster in the vCenter inventory",
+  "required": [
+    "cluster",
+    "name"
+  ],
+  "properties": {
+    "cluster": {
+      "type": "string",
+      "description": "Unique identifier of the cluster (e.g., domain-c7)",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the cluster",
+      "example": "Example Title"
+    },
+    "ha_enabled": {
+      "type": "boolean",
+      "description": "Whether vSphere HA is enabled",
+      "example": true
+    },
+    "drs_enabled": {
+      "type": "boolean",
+      "description": "Whether vSphere DRS is enabled",
+      "example": true
+    }
+  }
+}

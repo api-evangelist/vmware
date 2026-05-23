@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TagAssociationSpec",
+  "title": "TagAssociationSpec",
+  "type": "object",
+  "description": "Specification for attaching a tag to an object",
+  "required": [
+    "tag_id",
+    "object_id"
+  ],
+  "properties": {
+    "tag_id": {
+      "type": "string",
+      "description": "Identifier of the tag to attach",
+      "example": "500123"
+    },
+    "object_id": {
+      "type": "object",
+      "description": "Managed object reference",
+      "required": [
+        "type",
+        "id"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Type of the managed object",
+          "examples": [
+            "VirtualMachine",
+            "HostSystem",
+            "Datastore",
+            "ClusterComputeResource"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "description": "Identifier of the managed object"
+        }
+      },
+      "example": "500123"
+    }
+  }
+}

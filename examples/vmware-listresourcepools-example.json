@@ -1,0 +1,20 @@
+{
+  "operationId": "listResourcePools",
+  "method": "GET",
+  "path": "/vcenter/resource-pool",
+  "summary": "Vmware List Resource Pools",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listresourcepools200Example",
+      "example": [
+        {
+          "resource_pool": "example_value",
+          "name": "Example Title"
+        }
+      ]
+    }
+  ]
+}

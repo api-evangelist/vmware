@@ -1,0 +1,66 @@
+{
+  "operationId": "createVM",
+  "method": "POST",
+  "path": "/vcenter/vm",
+  "summary": "Vmware Create a New Virtual Machine",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatevmRequestExample",
+      "example": {
+        "name": "Example Title",
+        "guest_OS": "RHEL_9_64",
+        "placement": {
+          "folder": "example_value",
+          "host": "example_value",
+          "cluster": "example_value",
+          "resource_pool": "example_value",
+          "datastore": "example_value"
+        },
+        "hardware_version": "VMX_21",
+        "cpu": {
+          "count": 10,
+          "cores_per_socket": 10,
+          "hot_add_enabled": true,
+          "hot_remove_enabled": true
+        },
+        "memory": {
+          "size_MiB": 10,
+          "hot_add_enabled": true
+        },
+        "disks": [
+          {
+            "type": "IDE",
+            "new_vmdk": {},
+            "backing": {}
+          }
+        ],
+        "nics": [
+          {
+            "type": "E1000",
+            "mac_type": "MANUAL",
+            "mac_address": "example_value",
+            "backing": {},
+            "start_connected": true,
+            "allow_guest_control": true,
+            "wake_on_lan_enabled": true
+          }
+        ],
+        "boot": {
+          "type": "BIOS",
+          "efi_legacy_boot": true,
+          "delay": 10,
+          "enter_setup_mode": true
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createvm201Example",
+      "example": "example_value"
+    }
+  ]
+}

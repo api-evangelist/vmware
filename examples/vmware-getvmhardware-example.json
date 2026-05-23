@@ -1,0 +1,19 @@
+{
+  "operationId": "getVMHardware",
+  "method": "GET",
+  "path": "/vcenter/vm/{vm}/hardware",
+  "summary": "Vmware Get Vm Hardware Configuration",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getvmhardware200Example",
+      "example": {
+        "version": "example_value",
+        "upgrade_policy": "NEVER",
+        "upgrade_version": "example_value"
+      }
+    }
+  ]
+}

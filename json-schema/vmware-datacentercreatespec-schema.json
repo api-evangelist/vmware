@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DatacenterCreateSpec",
+  "title": "DatacenterCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a datacenter",
+  "required": [
+    "name",
+    "folder"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name for the new datacenter",
+      "example": "Example Title"
+    },
+    "folder": {
+      "type": "string",
+      "description": "Parent folder identifier",
+      "example": "example_value"
+    }
+  }
+}

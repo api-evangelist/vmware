@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HardwareInfo",
+  "title": "HardwareInfo",
+  "type": "object",
+  "description": "Virtual hardware configuration",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Virtual hardware version (e.g., VMX_21)",
+      "example": "example_value"
+    },
+    "upgrade_policy": {
+      "type": "string",
+      "description": "Hardware upgrade policy",
+      "enum": [
+        "NEVER",
+        "AFTER_CLEAN_SHUTDOWN",
+        "ALWAYS"
+      ],
+      "example": "NEVER"
+    },
+    "upgrade_version": {
+      "type": "string",
+      "description": "Target hardware version for upgrade",
+      "example": "example_value"
+    }
+  }
+}

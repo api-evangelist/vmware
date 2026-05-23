@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FolderSummary",
+  "title": "FolderSummary",
+  "type": "object",
+  "description": "Summary of an inventory folder",
+  "required": [
+    "folder",
+    "name"
+  ],
+  "properties": {
+    "folder": {
+      "type": "string",
+      "description": "Unique identifier of the folder",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the folder",
+      "example": "Example Title"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of folder",
+      "enum": [
+        "DATACENTER",
+        "DATASTORE",
+        "HOST",
+        "NETWORK",
+        "VIRTUAL_MACHINE"
+      ],
+      "example": "DATACENTER"
+    }
+  }
+}

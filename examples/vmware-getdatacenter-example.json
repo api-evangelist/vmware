@@ -1,0 +1,21 @@
+{
+  "operationId": "getDatacenter",
+  "method": "GET",
+  "path": "/vcenter/datacenter/{datacenter}",
+  "summary": "Vmware Get Datacenter Details",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getdatacenter200Example",
+      "example": {
+        "name": "Example Title",
+        "datastore_folder": "example_value",
+        "host_folder": "example_value",
+        "network_folder": "example_value",
+        "vm_folder": "example_value"
+      }
+    }
+  ]
+}

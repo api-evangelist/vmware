@@ -1,0 +1,20 @@
+{
+  "operationId": "attachTag",
+  "method": "POST",
+  "path": "/cis/tagging/tag-association?action=attach",
+  "summary": "Vmware Attach a Tag to an Object",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "AttachtagRequestExample",
+      "example": {
+        "tag_id": "500123",
+        "object_id": {
+          "type": "example_value",
+          "id": "abc123"
+        }
+      }
+    }
+  ],
+  "responseExamples": []
+}

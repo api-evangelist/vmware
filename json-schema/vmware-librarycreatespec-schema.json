@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LibraryCreateSpec",
+  "title": "LibraryCreateSpec",
+  "type": "object",
+  "description": "Specification for creating a content library",
+  "required": [
+    "name",
+    "type",
+    "storage_backings"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name for the new content library",
+      "example": "Example Title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the content library",
+      "example": "A sample description."
+    },
+    "type": {
+      "type": "string",
+      "description": "Library type",
+      "enum": [
+        "LOCAL",
+        "SUBSCRIBED"
+      ],
+      "example": "LOCAL"
+    },
+    "storage_backings": {
+      "type": "array",
+      "description": "Storage backings for the library content",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "DATASTORE",
+              "OTHER"
+            ]
+          },
+          "datastore_id": {
+            "type": "string",
+            "description": "Datastore identifier for DATASTORE type"
+          }
+        }
+      },
+      "example": []
+    }
+  }
+}

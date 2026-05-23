@@ -1,0 +1,32 @@
+{
+  "operationId": "createVMEthernet",
+  "method": "POST",
+  "path": "/vcenter/vm/{vm}/hardware/ethernet",
+  "summary": "Vmware Add a Network Adapter to a Vm",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatevmethernetRequestExample",
+      "example": {
+        "type": "E1000",
+        "mac_type": "MANUAL",
+        "mac_address": "example_value",
+        "backing": {
+          "type": "STANDARD_PORTGROUP",
+          "network": "example_value"
+        },
+        "start_connected": true,
+        "allow_guest_control": true,
+        "wake_on_lan_enabled": true
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createvmethernet201Example",
+      "example": "example_value"
+    }
+  ]
+}

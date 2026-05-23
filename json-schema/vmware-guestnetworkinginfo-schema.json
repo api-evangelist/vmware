@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GuestNetworkingInfo",
+  "title": "GuestNetworkingInfo",
+  "type": "object",
+  "description": "Guest OS networking information from VMware Tools",
+  "properties": {
+    "dns_values": {
+      "type": "object",
+      "properties": {
+        "domain_name": {
+          "type": "string"
+        },
+        "search_domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "example": "example_value"
+    },
+    "dns": {
+      "type": "object",
+      "properties": {
+        "ip_addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "example": "example_value"
+    },
+    "interfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "mac_address": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "object",
+            "properties": {
+              "ip_addresses": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "ip_address": {
+                      "type": "string"
+                    },
+                    "prefix_length": {
+                      "type": "integer"
+                    },
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "PREFERRED",
+                        "DEPRECATED",
+                        "DUPLICATE",
+                        "INACCESSIBLE",
+                        "UNKNOWN"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": []
+    }
+  }
+}

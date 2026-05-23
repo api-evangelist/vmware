@@ -1,0 +1,19 @@
+{
+  "operationId": "listVMDisks",
+  "method": "GET",
+  "path": "/vcenter/vm/{vm}/hardware/disk",
+  "summary": "Vmware List Vm Virtual Disks",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listvmdisks200Example",
+      "example": [
+        {
+          "disk": "example_value"
+        }
+      ]
+    }
+  ]
+}

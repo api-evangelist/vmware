@@ -1,0 +1,23 @@
+{
+  "operationId": "getDatastore",
+  "method": "GET",
+  "path": "/vcenter/datastore/{datastore}",
+  "summary": "Vmware Get Datastore Details",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getdatastore200Example",
+      "example": {
+        "name": "Example Title",
+        "type": "VMFS",
+        "accessible": true,
+        "free_space": 10,
+        "capacity": 10,
+        "thin_provisioning_supported": true,
+        "multiple_host_access": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VMInfo",
+  "title": "VMInfo",
+  "type": "object",
+  "description": "Detailed virtual machine configuration and state",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the virtual machine",
+      "example": "Example Title"
+    },
+    "identity": {
+      "type": "object",
+      "description": "VM identity information",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "instance_uuid": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "bios_uuid": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "example": "example_value"
+    },
+    "power_state": {
+      "type": "string",
+      "enum": [
+        "POWERED_ON",
+        "POWERED_OFF",
+        "SUSPENDED"
+      ],
+      "example": "POWERED_ON"
+    },
+    "guest_OS": {
+      "type": "string",
+      "description": "Configured guest operating system",
+      "example": "example_value"
+    },
+    "hardware": {
+      "$ref": "#/components/schemas/HardwareInfo"
+    },
+    "boot": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "BIOS",
+            "EFI"
+          ]
+        },
+        "delay": {
+          "type": "integer"
+        },
+        "enter_setup_mode": {
+          "type": "boolean"
+        }
+      },
+      "example": "example_value"
+    },
+    "cpu": {
+      "$ref": "#/components/schemas/CpuInfo"
+    },
+    "memory": {
+      "$ref": "#/components/schemas/MemoryInfo"
+    },
+    "disks": {
+      "type": "object",
+      "description": "Map of disk identifier to disk configuration",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/DiskInfo"
+      },
+      "example": "example_value"
+    },
+    "nics": {
+      "type": "object",
+      "description": "Map of NIC identifier to NIC configuration",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/EthernetInfo"
+      },
+      "example": "example_value"
+    },
+    "cdroms": {
+      "type": "object",
+      "description": "Map of CD-ROM identifier to CD-ROM configuration",
+      "additionalProperties": {
+        "type": "object"
+      },
+      "example": "example_value"
+    },
+    "parallel_ports": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      },
+      "example": "example_value"
+    },
+    "serial_ports": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      },
+      "example": "example_value"
+    },
+    "floppy_drives": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      },
+      "example": "example_value"
+    }
+  }
+}

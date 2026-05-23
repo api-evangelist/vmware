@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HostInfo",
+  "title": "HostInfo",
+  "type": "object",
+  "description": "Detailed ESXi host information",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Host name",
+      "example": "Example Title"
+    },
+    "connection_state": {
+      "type": "string",
+      "enum": [
+        "CONNECTED",
+        "DISCONNECTED",
+        "NOT_RESPONDING"
+      ],
+      "example": "CONNECTED"
+    },
+    "power_state": {
+      "type": "string",
+      "enum": [
+        "POWERED_ON",
+        "POWERED_OFF",
+        "STANDBY"
+      ],
+      "example": "POWERED_ON"
+    }
+  }
+}

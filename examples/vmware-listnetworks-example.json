@@ -1,0 +1,21 @@
+{
+  "operationId": "listNetworks",
+  "method": "GET",
+  "path": "/vcenter/network",
+  "summary": "Vmware List Networks",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listnetworks200Example",
+      "example": [
+        {
+          "network": "example_value",
+          "name": "Example Title",
+          "type": "STANDARD_PORTGROUP"
+        }
+      ]
+    }
+  ]
+}

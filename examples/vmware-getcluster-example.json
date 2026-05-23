@@ -1,0 +1,18 @@
+{
+  "operationId": "getCluster",
+  "method": "GET",
+  "path": "/vcenter/cluster/{cluster}",
+  "summary": "Vmware Get Cluster Details",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcluster200Example",
+      "example": {
+        "name": "Example Title",
+        "resource_pool": "example_value"
+      }
+    }
+  ]
+}

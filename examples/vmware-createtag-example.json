@@ -1,0 +1,25 @@
+{
+  "operationId": "createTag",
+  "method": "POST",
+  "path": "/cis/tagging/tag",
+  "summary": "Vmware Create a Tag",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatetagRequestExample",
+      "example": {
+        "name": "Example Title",
+        "description": "A sample description.",
+        "category_id": "500123"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createtag201Example",
+      "example": "example_value"
+    }
+  ]
+}

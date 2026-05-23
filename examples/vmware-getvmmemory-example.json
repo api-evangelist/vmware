@@ -1,0 +1,20 @@
+{
+  "operationId": "getVMMemory",
+  "method": "GET",
+  "path": "/vcenter/vm/{vm}/hardware/memory",
+  "summary": "Vmware Get Vm Memory Configuration",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getvmmemory200Example",
+      "example": {
+        "size_MiB": 10,
+        "hot_add_enabled": true,
+        "hot_add_increment_size_MiB": 10,
+        "hot_add_limit_MiB": 10
+      }
+    }
+  ]
+}

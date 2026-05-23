@@ -1,0 +1,19 @@
+{
+  "operationId": "listVMEthernet",
+  "method": "GET",
+  "path": "/vcenter/vm/{vm}/hardware/ethernet",
+  "summary": "Vmware List Vm Network Adapters",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listvmethernet200Example",
+      "example": [
+        {
+          "nic": "example_value"
+        }
+      ]
+    }
+  ]
+}
