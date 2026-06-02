@@ -2,12 +2,17 @@
   "repo": "vmware",
   "feeds": [
     {
-      "source": "https://blogs.vmware.com/code/",
+      "source": "https://blogs.vmware.com/code/feed/",
       "feed_url": "https://blogs.vmware.com/code/feed/",
-      "title": "VMware {code}",
-      "saved": 0
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://developer.broadcom.com/powercli/latest/",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-05-17T20:20:35Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 10
 }
