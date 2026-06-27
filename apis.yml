@@ -61,7 +61,7 @@ apis:
     properties:
       - type: APIReference
         url: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
-      - type: SDK
+      - type: SDKs
         url: https://github.com/vmware/vsphere-automation-sdk-java
   - aid: vmware:virtual-infrastructure-json-api
     name: Virtual Infrastructure JSON API
@@ -251,7 +251,7 @@ apis:
       - type: Documentation
         url: >-
           https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/administration-sdks-cli-and-tools/about-vmware-cloud-foundation-development/vcf-apis-and-scripts.html
-      - type: SDK
+      - type: SDKs
         url: https://github.com/vmware/vcf-sdk-java
   - aid: vmware:vmware-horizon-server-api
     name: VMware Horizon Server API
@@ -351,7 +351,7 @@ apis:
       - type: Documentation
         url: >-
           https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-administration-8-8/using-the-site-recovery-manager-rest-api-gateway.html
-      - type: SDK
+      - type: SDKs
         url: https://developer.broadcom.com/sdks/site-recovery-manager-srm/latest
   - aid: vmware:vmware-live-cyber-recovery-api
     name: VMware Live Cyber Recovery API
@@ -368,7 +368,7 @@ apis:
     properties:
       - type: APIReference
         url: https://developer.broadcom.com/xapis/vmware-live-cyber-recovery-api/latest/
-      - type: SDK
+      - type: SDKs
         url: https://developer.broadcom.com/sdks/vmware-live-cyber-recovery-sdk/latest
   - aid: vmware:vmware-live-site-recovery-api
     name: VMware Live Site Recovery API
@@ -498,7 +498,7 @@ apis:
       - type: Documentation
         url: >-
           https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-automation/all/developing-web-services-client-for-vco-all/using-the-orchestrator-rest-api.html
-      - type: SDK
+      - type: SDKs
         url: https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-automation/all/vro-plug-in-development-all.html
   - aid: vmware:vmware-aria-operations-for-networks-saas-api
     name: VMware Aria Operations for Networks SaaS API
@@ -830,7 +830,7 @@ common:
     url: https://developer.broadcom.com/
   - type: Documentation
     url: https://techdocs.broadcom.com/us/en/vmware-cis.html
-  - type: SDK
+  - type: SDKs
     url: https://developer.broadcom.com/vmware-sdk-api
   - type: CodeExamples
     url: https://developer.broadcom.com/codesample
