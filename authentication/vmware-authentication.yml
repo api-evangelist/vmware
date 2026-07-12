@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/vmware-vsphere-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: sessionAuth
+  type: apiKey
+  in: header
+  parameter: vmware-api-session-id
+  description: Session token obtained from POST /session. Include this header in all subsequent
+    API requests.
+  sources:
+  - openapi/vmware-vsphere-api-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication using vCenter Server credentials. Used primarily for
+    creating sessions.
+  sources:
+  - openapi/vmware-vsphere-api-openapi.yml

@@ -824,6 +824,10 @@ apis:
       - type: APIReference
         url: https://developer.broadcom.com/xapis/vmware-cloud-provider-lifecycle-manager-api/latest/
 common:
+  - type: DomainSecurity
+    url: security/vmware-domain-security.yml
+  - type: Authentication
+    url: authentication/vmware-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/vmware
   - type: Portal
