@@ -824,6 +824,8 @@ apis:
       - type: APIReference
         url: https://developer.broadcom.com/xapis/vmware-cloud-provider-lifecycle-manager-api/latest/
 common:
+  - type: AgenticAccess
+    url: agentic-access/vmware-agentic-access.yml
   - type: DomainSecurity
     url: security/vmware-domain-security.yml
   - type: Authentication
