@@ -1,0 +1,284 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST Clusters Tagging API
+  description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
+security:
+- sessionAuth: []
+- basicAuth: []
+tags:
+- name: Tagging
+  description: Tag and category management for organizing and classifying vSphere inventory objects
+paths:
+  /cis/tagging/category:
+    get:
+      operationId: listTagCategories
+      summary: Vmware List Tag Categories
+      description: Returns all tag category identifiers in the system.
+      tags:
+      - Tagging
+      responses:
+        '200':
+          description: List of tag category identifiers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                Listtagcategories200Example:
+                  summary: Default listTagCategories 200 response
+                  x-microcks-default: true
+                  value:
+                  - example_value
+        '401':
+          description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createTagCategory
+      summary: Vmware Create a Tag Category
+      description: Creates a new tag category used to group related tags.
+      tags:
+      - Tagging
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagCategoryCreateSpec'
+            examples:
+              CreatetagcategoryRequestExample:
+                summary: Default createTagCategory request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  description: A sample description.
+                  cardinality: SINGLE
+                  associable_types:
+                  - example_value
+      responses:
+        '201':
+          description: Tag category created
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the new tag category
+              examples:
+                Createtagcategory201Example:
+                  summary: Default createTagCategory 201 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Invalid specification
+        '401':
+          description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /cis/tagging/tag:
+    get:
+      operationId: listTags
+      summary: Vmware List Tags
+      description: Returns all tag identifiers in the system.
+      tags:
+      - Tagging
+      responses:
+        '200':
+          description: List of tag identifiers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                Listtags200Example:
+                  summary: Default listTags 200 response
+                  x-microcks-default: true
+                  value:
+                  - example_value
+        '401':
+          description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createTag
+      summary: Vmware Create a Tag
+      description: Creates a new tag within a specified category.
+      tags:
+      - Tagging
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagCreateSpec'
+            examples:
+              CreatetagRequestExample:
+                summary: Default createTag request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  description: A sample description.
+                  category_id: '500123'
+      responses:
+        '201':
+          description: Tag created
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the new tag
+              examples:
+                Createtag201Example:
+                  summary: Default createTag 201 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Invalid specification
+        '401':
+          description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /cis/tagging/tag-association?action=attach:
+    post:
+      operationId: attachTag
+      summary: Vmware Attach a Tag to an Object
+      description: Attaches a tag to a vSphere managed object such as a VM, host, datastore, or cluster.
+      tags:
+      - Tagging
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagAssociationSpec'
+            examples:
+              AttachtagRequestExample:
+                summary: Default attachTag request
+                x-microcks-default: true
+                value:
+                  tag_id: '500123'
+                  object_id:
+                    type: example_value
+                    id: abc123
+      responses:
+        '204':
+          description: Tag attached successfully
+        '401':
+          description: Not authenticated
+        '404':
+          description: Tag or object not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    TagCreateSpec:
+      type: object
+      description: Specification for creating a tag
+      required:
+      - name
+      - category_id
+      properties:
+        name:
+          type: string
+          description: Name for the new tag
+          example: Example Title
+        description:
+          type: string
+          example: A sample description.
+        category_id:
+          type: string
+          description: Identifier of the parent category
+          example: '500123'
+    TagCategoryCreateSpec:
+      type: object
+      description: Specification for creating a tag category
+      required:
+      - name
+      - cardinality
+      properties:
+        name:
+          type: string
+          description: Name for the new category
+          example: Example Title
+        description:
+          type: string
+          example: A sample description.
+        cardinality:
+          type: string
+          description: Cardinality of the category
+          enum:
+          - SINGLE
+          - MULTIPLE
+          example: SINGLE
+        associable_types:
+          type: array
+          description: Object types that can be tagged with tags in this category
+          items:
+            type: string
+          example: []
+    TagAssociationSpec:
+      type: object
+      description: Specification for attaching a tag to an object
+      required:
+      - tag_id
+      - object_id
+      properties:
+        tag_id:
+          type: string
+          description: Identifier of the tag to attach
+          example: '500123'
+        object_id:
+          type: object
+          description: Managed object reference
+          required:
+          - type
+          - id
+          properties:
+            type:
+              type: string
+              description: Type of the managed object
+              examples:
+              - VirtualMachine
+              - HostSystem
+              - Datastore
+              - ClusterComputeResource
+            id:
+              type: string
+              description: Identifier of the managed object
+          example: '500123'
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained from POST /session. Include this header in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using vCenter Server credentials. Used primarily for creating sessions.
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/

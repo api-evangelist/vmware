@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST Clusters Folders API
+  description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
+security:
+- sessionAuth: []
+- basicAuth: []
+tags:
+- name: Folders
+  description: Inventory folder management for organizing vSphere objects
+paths:
+  /vcenter/folder:
+    get:
+      operationId: listFolders
+      summary: Vmware List Folders
+      description: Returns a list of folders in the vCenter inventory matching the specified filter criteria.
+      tags:
+      - Folders
+      parameters:
+      - name: filter.folders
+        in: query
+        description: Identifiers of folders to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of folders to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.type
+        in: query
+        description: Type of folder to filter by
+        schema:
+          type: string
+          enum:
+          - DATACENTER
+          - DATASTORE
+          - HOST
+          - NETWORK
+          - VIRTUAL_MACHINE
+        example: DATACENTER
+      - name: filter.parent_folders
+        in: query
+        description: Parent folders to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.datacenters
+        in: query
+        description: Datacenters that must contain the folders
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      responses:
+        '200':
+          description: List of folders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FolderSummary'
+              examples:
+                Listfolders200Example:
+                  summary: Default listFolders 200 response
+                  x-microcks-default: true
+                  value:
+                  - folder: example_value
+                    name: Example Title
+                    type: DATACENTER
+        '401':
+          description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    FolderSummary:
+      type: object
+      description: Summary of an inventory folder
+      required:
+      - folder
+      - name
+      properties:
+        folder:
+          type: string
+          description: Unique identifier of the folder
+          example: example_value
+        name:
+          type: string
+          description: Display name of the folder
+          example: Example Title
+        type:
+          type: string
+          description: Type of folder
+          enum:
+          - DATACENTER
+          - DATASTORE
+          - HOST
+          - NETWORK
+          - VIRTUAL_MACHINE
+          example: DATACENTER
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained from POST /session. Include this header in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using vCenter Server credentials. Used primarily for creating sessions.
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/

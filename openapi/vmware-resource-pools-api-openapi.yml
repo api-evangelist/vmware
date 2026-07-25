@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST Clusters Resource Pools API
+  description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
+security:
+- sessionAuth: []
+- basicAuth: []
+tags:
+- name: Resource Pools
+  description: Resource pool management for allocating compute resources
+paths:
+  /vcenter/resource-pool:
+    get:
+      operationId: listResourcePools
+      summary: Vmware List Resource Pools
+      description: Returns a list of resource pools in the vCenter inventory matching the specified filter criteria.
+      tags:
+      - Resource Pools
+      parameters:
+      - name: filter.resource_pools
+        in: query
+        description: Identifiers of resource pools to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of resource pools to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.clusters
+        in: query
+        description: Clusters that must contain the resource pools
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.hosts
+        in: query
+        description: Hosts that must contain the resource pools
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.parent_resource_pools
+        in: query
+        description: Parent resource pools to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      responses:
+        '200':
+          description: List of resource pools
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourcePoolSummary'
+              examples:
+                Listresourcepools200Example:
+                  summary: Default listResourcePools 200 response
+                  x-microcks-default: true
+                  value:
+                  - resource_pool: example_value
+                    name: Example Title
+        '401':
+          description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ResourcePoolSummary:
+      type: object
+      description: Summary of a resource pool
+      required:
+      - resource_pool
+      - name
+      properties:
+        resource_pool:
+          type: string
+          description: Unique identifier of the resource pool
+          example: example_value
+        name:
+          type: string
+          description: Display name of the resource pool
+          example: Example Title
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained from POST /session. Include this header in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using vCenter Server credentials. Used primarily for creating sessions.
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/

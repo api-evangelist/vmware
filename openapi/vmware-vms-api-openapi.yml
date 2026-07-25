@@ -1,0 +1,818 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST Clusters VMs API
+  description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
+security:
+- sessionAuth: []
+- basicAuth: []
+tags:
+- name: VMs
+  description: Virtual machine lifecycle management including creation, power operations, cloning, migration, and configuration
+paths:
+  /vcenter/vm:
+    get:
+      operationId: listVMs
+      summary: Vmware List Virtual Machines
+      description: Returns a list of virtual machines in the vCenter inventory matching the specified filter criteria. Results can be filtered by name, power state, host, cluster, datacenter, folder, and resource pool.
+      tags:
+      - VMs
+      parameters:
+      - name: filter.vms
+        in: query
+        description: Identifiers of VMs to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of VMs to filter by (exact match)
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.folders
+        in: query
+        description: Folders that must contain the VMs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.datacenters
+        in: query
+        description: Datacenters that must contain the VMs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.hosts
+        in: query
+        description: Hosts that must contain the VMs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.clusters
+        in: query
+        description: Clusters that must contain the VMs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.resource_pools
+        in: query
+        description: Resource pools that must contain the VMs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.power_states
+        in: query
+        description: Power states to filter by
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - SUSPENDED
+        style: form
+        explode: true
+        example: []
+      responses:
+        '200':
+          description: List of virtual machines matching the filter
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMSummary'
+              examples:
+                Listvms200Example:
+                  summary: Default listVMs 200 response
+                  x-microcks-default: true
+                  value:
+                  - vm: example_value
+                    name: Example Title
+                    power_state: POWERED_ON
+                    cpu_count: 10
+                    memory_size_MiB: 10
+        '400':
+          description: Invalid filter parameters
+        '401':
+          description: Not authenticated
+        '403':
+          description: Insufficient privileges
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createVM
+      summary: Vmware Create a New Virtual Machine
+      description: Creates a new virtual machine with the specified configuration. The VM is created in the powered-off state and must be explicitly powered on after creation.
+      tags:
+      - VMs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VMCreateSpec'
+            examples:
+              CreatevmRequestExample:
+                summary: Default createVM request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  guest_OS: RHEL_9_64
+                  placement:
+                    folder: example_value
+                    host: example_value
+                    cluster: example_value
+                    resource_pool: example_value
+                    datastore: example_value
+                  hardware_version: VMX_21
+                  cpu:
+                    count: 10
+                    cores_per_socket: 10
+                    hot_add_enabled: true
+                    hot_remove_enabled: true
+                  memory:
+                    size_MiB: 10
+                    hot_add_enabled: true
+                  disks:
+                  - type: IDE
+                    new_vmdk: {}
+                    backing: {}
+                  nics:
+                  - type: E1000
+                    mac_type: MANUAL
+                    mac_address: example_value
+                    backing: {}
+                    start_connected: true
+                    allow_guest_control: true
+                    wake_on_lan_enabled: true
+                  boot:
+                    type: BIOS
+                    efi_legacy_boot: true
+                    delay: 10
+                    enter_setup_mode: true
+      responses:
+        '201':
+          description: Virtual machine created successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the newly created VM (e.g., vm-123)
+              examples:
+                Createvm201Example:
+                  summary: Default createVM 201 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Invalid VM specification
+        '401':
+          description: Not authenticated
+        '403':
+          description: Insufficient privileges
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/vm/{vm}:
+    get:
+      operationId: getVM
+      summary: Vmware Get Virtual Machine Details
+      description: Returns detailed information about the specified virtual machine including hardware configuration, power state, guest OS, and storage information.
+      tags:
+      - VMs
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Virtual machine details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInfo'
+              examples:
+                Getvm200Example:
+                  summary: Default getVM 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    identity:
+                      name: Example Title
+                      instance_uuid: '500123'
+                      bios_uuid: '500123'
+                    power_state: POWERED_ON
+                    guest_OS: example_value
+                    hardware:
+                      version: example_value
+                      upgrade_policy: NEVER
+                      upgrade_version: example_value
+                    boot:
+                      type: BIOS
+                      delay: 10
+                      enter_setup_mode: true
+                    cpu:
+                      count: 10
+                      cores_per_socket: 10
+                      hot_add_enabled: true
+                      hot_remove_enabled: true
+                    memory:
+                      size_MiB: 10
+                      hot_add_enabled: true
+                      hot_add_increment_size_MiB: 10
+                      hot_add_limit_MiB: 10
+                    disks: example_value
+                    nics: example_value
+                    cdroms: example_value
+                    parallel_ports: example_value
+                    serial_ports: example_value
+                    floppy_drives: example_value
+        '401':
+          description: Not authenticated
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteVM
+      summary: Vmware Delete a Virtual Machine
+      description: Permanently deletes the specified virtual machine and all associated virtual disks. The VM must be in a powered-off state.
+      tags:
+      - VMs
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '204':
+          description: Virtual machine deleted successfully
+        '400':
+          description: VM is not in a powered-off state
+        '401':
+          description: Not authenticated
+        '403':
+          description: Insufficient privileges
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DiskCreateSpec:
+      type: object
+      description: Specification for creating a virtual disk
+      properties:
+        type:
+          type: string
+          description: Host bus adapter type
+          enum:
+          - IDE
+          - SCSI
+          - SATA
+          - NVME
+          example: IDE
+        new_vmdk:
+          type: object
+          description: Specification for a new VMDK file
+          properties:
+            name:
+              type: string
+              description: Name of the VMDK file
+            capacity:
+              type: integer
+              description: Capacity in bytes
+              format: int64
+            storage_policy:
+              type: object
+              properties:
+                policy:
+                  type: string
+                  description: Storage policy identifier
+          example: example_value
+        backing:
+          type: object
+          description: Existing disk backing
+          properties:
+            type:
+              type: string
+              enum:
+              - VMDK_FILE
+            vmdk_file:
+              type: string
+          example: example_value
+    VMSummary:
+      type: object
+      description: Summary of a virtual machine in the vCenter inventory
+      required:
+      - vm
+      - name
+      properties:
+        vm:
+          type: string
+          description: Unique identifier of the virtual machine (e.g., vm-123)
+          example: example_value
+        name:
+          type: string
+          description: Display name of the virtual machine
+          example: Example Title
+        power_state:
+          type: string
+          description: Current power state of the VM
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+          example: POWERED_ON
+        cpu_count:
+          type: integer
+          description: Number of virtual CPUs
+          example: 10
+        memory_size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          example: 10
+    MemoryUpdateSpec:
+      type: object
+      description: Specification for memory configuration
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          minimum: 4
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          example: true
+    MemoryInfo:
+      type: object
+      description: Memory configuration of a virtual machine
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          description: Whether memory hot-add is enabled
+          example: true
+        hot_add_increment_size_MiB:
+          type: integer
+          description: Granularity for memory hot-add in mebibytes
+          example: 10
+        hot_add_limit_MiB:
+          type: integer
+          description: Maximum memory size for hot-add in mebibytes
+          example: 10
+    EthernetCreateSpec:
+      type: object
+      description: Specification for creating a virtual network adapter
+      properties:
+        type:
+          type: string
+          description: Adapter emulation type
+          enum:
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VMXNET2
+          - VMXNET3
+          example: E1000
+        mac_type:
+          type: string
+          enum:
+          - MANUAL
+          - GENERATED
+          - ASSIGNED
+          example: MANUAL
+        mac_address:
+          type: string
+          description: MAC address (required when mac_type is MANUAL)
+          example: example_value
+        backing:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - STANDARD_PORTGROUP
+              - DISTRIBUTED_PORTGROUP
+              - OPAQUE_NETWORK
+            network:
+              type: string
+              description: Identifier of the network
+          example: example_value
+        start_connected:
+          type: boolean
+          default: true
+          example: true
+        allow_guest_control:
+          type: boolean
+          default: false
+          example: true
+        wake_on_lan_enabled:
+          type: boolean
+          default: false
+          example: true
+    HardwareInfo:
+      type: object
+      description: Virtual hardware configuration
+      properties:
+        version:
+          type: string
+          description: Virtual hardware version (e.g., VMX_21)
+          example: example_value
+        upgrade_policy:
+          type: string
+          description: Hardware upgrade policy
+          enum:
+          - NEVER
+          - AFTER_CLEAN_SHUTDOWN
+          - ALWAYS
+          example: NEVER
+        upgrade_version:
+          type: string
+          description: Target hardware version for upgrade
+          example: example_value
+    VMInfo:
+      type: object
+      description: Detailed virtual machine configuration and state
+      properties:
+        name:
+          type: string
+          description: Display name of the virtual machine
+          example: Example Title
+        identity:
+          type: object
+          description: VM identity information
+          properties:
+            name:
+              type: string
+            instance_uuid:
+              type: string
+              format: uuid
+            bios_uuid:
+              type: string
+              format: uuid
+          example: example_value
+        power_state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+          example: POWERED_ON
+        guest_OS:
+          type: string
+          description: Configured guest operating system
+          example: example_value
+        hardware:
+          $ref: '#/components/schemas/HardwareInfo'
+        boot:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - BIOS
+              - EFI
+            delay:
+              type: integer
+            enter_setup_mode:
+              type: boolean
+          example: example_value
+        cpu:
+          $ref: '#/components/schemas/CpuInfo'
+        memory:
+          $ref: '#/components/schemas/MemoryInfo'
+        disks:
+          type: object
+          description: Map of disk identifier to disk configuration
+          additionalProperties:
+            $ref: '#/components/schemas/DiskInfo'
+          example: example_value
+        nics:
+          type: object
+          description: Map of NIC identifier to NIC configuration
+          additionalProperties:
+            $ref: '#/components/schemas/EthernetInfo'
+          example: example_value
+        cdroms:
+          type: object
+          description: Map of CD-ROM identifier to CD-ROM configuration
+          additionalProperties:
+            type: object
+          example: example_value
+        parallel_ports:
+          type: object
+          additionalProperties:
+            type: object
+          example: example_value
+        serial_ports:
+          type: object
+          additionalProperties:
+            type: object
+          example: example_value
+        floppy_drives:
+          type: object
+          additionalProperties:
+            type: object
+          example: example_value
+    CpuInfo:
+      type: object
+      description: CPU configuration of a virtual machine
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+          example: 10
+        cores_per_socket:
+          type: integer
+          description: Number of cores per CPU socket
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          description: Whether CPU hot-add is enabled
+          example: true
+        hot_remove_enabled:
+          type: boolean
+          description: Whether CPU hot-remove is enabled
+          example: true
+    DiskInfo:
+      type: object
+      description: Detailed virtual disk configuration
+      properties:
+        label:
+          type: string
+          description: Display label of the virtual disk
+          example: Example Title
+        type:
+          type: string
+          description: Type of host bus adapter
+          enum:
+          - IDE
+          - SCSI
+          - SATA
+          - NVME
+          example: IDE
+        capacity:
+          type: integer
+          description: Capacity of the virtual disk in bytes
+          format: int64
+          example: 10
+        backing:
+          type: object
+          description: Disk backing information
+          properties:
+            type:
+              type: string
+              enum:
+              - VMDK_FILE
+            vmdk_file:
+              type: string
+              description: Path to the VMDK file
+          example: example_value
+    VMCreateSpec:
+      type: object
+      description: Specification for creating a new virtual machine
+      required:
+      - name
+      - guest_OS
+      - placement
+      properties:
+        name:
+          type: string
+          description: Display name for the new VM
+          example: Example Title
+        guest_OS:
+          type: string
+          description: Guest operating system identifier
+          enum:
+          - RHEL_9_64
+          - RHEL_8_64
+          - UBUNTU_64
+          - DEBIAN_11_64
+          - WINDOWS_SERVER_2022
+          - WINDOWS_SERVER_2019
+          - WINDOWS_11_64
+          - OTHER_LINUX_64
+          - OTHER_64
+          example: RHEL_9_64
+        placement:
+          type: object
+          description: Placement specification for the VM
+          properties:
+            folder:
+              type: string
+              description: VM folder identifier
+            host:
+              type: string
+              description: Host identifier for initial placement
+            cluster:
+              type: string
+              description: Cluster identifier for initial placement
+            resource_pool:
+              type: string
+              description: Resource pool identifier
+            datastore:
+              type: string
+              description: Datastore identifier for VM files
+          example: example_value
+        hardware_version:
+          type: string
+          description: Virtual hardware version
+          enum:
+          - VMX_21
+          - VMX_20
+          - VMX_19
+          - VMX_18
+          - VMX_17
+          - VMX_16
+          - VMX_15
+          - VMX_14
+          - VMX_13
+          example: VMX_21
+        cpu:
+          $ref: '#/components/schemas/CpuUpdateSpec'
+        memory:
+          $ref: '#/components/schemas/MemoryUpdateSpec'
+        disks:
+          type: array
+          description: Virtual disks to create with the VM
+          items:
+            $ref: '#/components/schemas/DiskCreateSpec'
+          example: []
+        nics:
+          type: array
+          description: Network adapters to create with the VM
+          items:
+            $ref: '#/components/schemas/EthernetCreateSpec'
+          example: []
+        boot:
+          type: object
+          description: Boot configuration
+          properties:
+            type:
+              type: string
+              enum:
+              - BIOS
+              - EFI
+            efi_legacy_boot:
+              type: boolean
+            delay:
+              type: integer
+              description: Boot delay in milliseconds
+            enter_setup_mode:
+              type: boolean
+              description: Enter BIOS/EFI setup on next boot
+          example: example_value
+    EthernetInfo:
+      type: object
+      description: Detailed virtual network adapter configuration
+      properties:
+        label:
+          type: string
+          description: Display label of the adapter
+          example: Example Title
+        type:
+          type: string
+          description: Adapter emulation type
+          enum:
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VMXNET2
+          - VMXNET3
+          example: E1000
+        mac_type:
+          type: string
+          description: MAC address type
+          enum:
+          - MANUAL
+          - GENERATED
+          - ASSIGNED
+          example: MANUAL
+        mac_address:
+          type: string
+          description: MAC address of the adapter
+          example: example_value
+        state:
+          type: string
+          description: Connection state
+          enum:
+          - CONNECTED
+          - NOT_CONNECTED
+          example: CONNECTED
+        start_connected:
+          type: boolean
+          description: Whether the adapter connects at power on
+          example: true
+        backing:
+          type: object
+          description: Network backing information
+          properties:
+            type:
+              type: string
+              enum:
+              - STANDARD_PORTGROUP
+              - DISTRIBUTED_PORTGROUP
+              - OPAQUE_NETWORK
+              - HOST_DEVICE
+            network:
+              type: string
+              description: Identifier of the backing network
+          example: example_value
+        allow_guest_control:
+          type: boolean
+          description: Whether guest OS can change adapter settings
+          example: true
+        wake_on_lan_enabled:
+          type: boolean
+          example: true
+    CpuUpdateSpec:
+      type: object
+      description: Specification for CPU configuration
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+          minimum: 1
+          maximum: 768
+          example: 10
+        cores_per_socket:
+          type: integer
+          description: Number of cores per socket
+          minimum: 1
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          example: true
+        hot_remove_enabled:
+          type: boolean
+          example: true
+  parameters:
+    vmId:
+      name: vm
+      in: path
+      required: true
+      description: Identifier of the virtual machine (e.g., vm-123)
+      schema:
+        type: string
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained from POST /session. Include this header in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using vCenter Server credentials. Used primarily for creating sessions.
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/

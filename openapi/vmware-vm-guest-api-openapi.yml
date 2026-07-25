@@ -1,0 +1,209 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST Clusters VM Guest API
+  description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
+security:
+- sessionAuth: []
+- basicAuth: []
+tags:
+- name: VM Guest
+  description: Guest operating system operations including identity, networking, local filesystem, and process management via VMware Tools
+paths:
+  /vcenter/vm/{vm}/guest/identity:
+    get:
+      operationId: getVMGuestIdentity
+      summary: Vmware Get Guest Os Identity
+      description: Returns guest operating system identity information reported by VMware Tools running inside the VM, including OS name, version, hostname, and IP addresses.
+      tags:
+      - VM Guest
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Guest identity information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuestIdentityInfo'
+              examples:
+                Getvmguestidentity200Example:
+                  summary: Default getVMGuestIdentity 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    family: LINUX
+                    full_name:
+                      default_message: example_value
+                      id: abc123
+                    host_name: example_value
+                    ip_address: example_value
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+        '503':
+          description: VMware Tools not running in the guest
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/vm/{vm}/guest/networking:
+    get:
+      operationId: getVMGuestNetworking
+      summary: Vmware Get Guest Networking Information
+      description: Returns guest networking information reported by VMware Tools including network interfaces, IP addresses, DNS configuration, and routing tables.
+      tags:
+      - VM Guest
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Guest networking information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuestNetworkingInfo'
+              examples:
+                Getvmguestnetworking200Example:
+                  summary: Default getVMGuestNetworking 200 response
+                  x-microcks-default: true
+                  value:
+                    dns_values:
+                      domain_name: example_value
+                      search_domains:
+                      - example_value
+                    dns:
+                      ip_addresses:
+                      - example_value
+                    interfaces:
+                    - mac_address: example_value
+                      ip:
+                        ip_addresses: {}
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    vmId:
+      name: vm
+      in: path
+      required: true
+      description: Identifier of the virtual machine (e.g., vm-123)
+      schema:
+        type: string
+  schemas:
+    GuestNetworkingInfo:
+      type: object
+      description: Guest OS networking information from VMware Tools
+      properties:
+        dns_values:
+          type: object
+          properties:
+            domain_name:
+              type: string
+            search_domains:
+              type: array
+              items:
+                type: string
+          example: example_value
+        dns:
+          type: object
+          properties:
+            ip_addresses:
+              type: array
+              items:
+                type: string
+          example: example_value
+        interfaces:
+          type: array
+          items:
+            type: object
+            properties:
+              mac_address:
+                type: string
+              ip:
+                type: object
+                properties:
+                  ip_addresses:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ip_address:
+                          type: string
+                        prefix_length:
+                          type: integer
+                        state:
+                          type: string
+                          enum:
+                          - PREFERRED
+                          - DEPRECATED
+                          - DUPLICATE
+                          - INACCESSIBLE
+                          - UNKNOWN
+          example: []
+    GuestIdentityInfo:
+      type: object
+      description: Guest operating system identity information from VMware Tools
+      properties:
+        name:
+          type: string
+          description: Guest OS full name
+          examples:
+          - Red Hat Enterprise Linux 9 (64-bit)
+        family:
+          type: string
+          description: Guest OS family
+          enum:
+          - LINUX
+          - WINDOWS
+          - OTHER
+          example: LINUX
+        full_name:
+          type: object
+          properties:
+            default_message:
+              type: string
+            id:
+              type: string
+          example: example_value
+        host_name:
+          type: string
+          description: Guest hostname
+          example: example_value
+        ip_address:
+          type: string
+          description: Primary IP address of the guest
+          format: ipv4
+          example: example_value
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained from POST /session. Include this header in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using vCenter Server credentials. Used primarily for creating sessions.
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/

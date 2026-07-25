@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST Clusters Storage Policies API
+  description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
+security:
+- sessionAuth: []
+- basicAuth: []
+tags:
+- name: Storage Policies
+  description: VM storage policy management for defining storage requirements and compliance
+paths:
+  /vcenter/storage/policies:
+    get:
+      operationId: listStoragePolicies
+      summary: Vmware List Storage Policies
+      description: Returns a list of VM storage policies available in the vCenter inventory.
+      tags:
+      - Storage Policies
+      parameters:
+      - name: filter.policies
+        in: query
+        description: Identifiers of storage policies to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      responses:
+        '200':
+          description: List of storage policies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StoragePolicySummary'
+              examples:
+                Liststoragepolicies200Example:
+                  summary: Default listStoragePolicies 200 response
+                  x-microcks-default: true
+                  value:
+                  - policy: example_value
+                    name: Example Title
+                    description: A sample description.
+        '401':
+          description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    StoragePolicySummary:
+      type: object
+      description: Summary of a VM storage policy
+      properties:
+        policy:
+          type: string
+          description: Identifier of the storage policy
+          example: example_value
+        name:
+          type: string
+          description: Name of the storage policy
+          example: Example Title
+        description:
+          type: string
+          description: Description of the storage policy
+          example: A sample description.
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained from POST /session. Include this header in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using vCenter Server credentials. Used primarily for creating sessions.
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/

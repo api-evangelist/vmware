@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST Clusters Session API
+  description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
+security:
+- sessionAuth: []
+- basicAuth: []
+tags:
+- name: Session
+  description: Authentication session management for the vSphere REST API
+paths:
+  /session:
+    post:
+      operationId: createSession
+      summary: Vmware Create a New Authentication Session
+      description: Creates a new session by authenticating with vCenter Server credentials. Returns a session identifier that must be included in the vmware-api-session-id header for subsequent requests.
+      tags:
+      - Session
+      security:
+      - basicAuth: []
+      responses:
+        '201':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Session identifier token
+              examples:
+                Createsession201Example:
+                  summary: Default createSession 201 response
+                  x-microcks-default: true
+                  value: example_value
+        '401':
+          description: Authentication failed - invalid credentials
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteSession
+      summary: Vmware Terminate the Current Session
+      description: Terminates the current authenticated session and invalidates the session token.
+      tags:
+      - Session
+      responses:
+        '204':
+          description: Session terminated successfully
+        '401':
+          description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: getSessionInfo
+      summary: Vmware Get Current Session Information
+      description: Returns information about the currently authenticated session including the authenticated user.
+      tags:
+      - Session
+      responses:
+        '200':
+          description: Session information returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionInfo'
+              examples:
+                Getsessioninfo200Example:
+                  summary: Default getSessionInfo 200 response
+                  x-microcks-default: true
+                  value:
+                    user: example_value
+                    created_time: '2026-01-15T10:30:00Z'
+                    last_accessed_time: '2026-01-15T10:30:00Z'
+        '401':
+          description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SessionInfo:
+      type: object
+      description: Information about the authenticated session
+      properties:
+        user:
+          type: string
+          description: Authenticated user principal name
+          example: example_value
+        created_time:
+          type: string
+          format: date-time
+          description: Time when the session was created
+          example: '2026-01-15T10:30:00Z'
+        last_accessed_time:
+          type: string
+          format: date-time
+          description: Time when the session was last accessed
+          example: '2026-01-15T10:30:00Z'
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained from POST /session. Include this header in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using vCenter Server credentials. Used primarily for creating sessions.
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/

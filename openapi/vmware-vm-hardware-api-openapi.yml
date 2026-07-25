@@ -1,0 +1,623 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST Clusters VM Hardware API
+  description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
+security:
+- sessionAuth: []
+- basicAuth: []
+tags:
+- name: VM Hardware
+  description: Virtual machine hardware configuration including CPU, memory, disks, network adapters, CD-ROMs, and other virtual devices
+paths:
+  /vcenter/vm/{vm}/hardware:
+    get:
+      operationId: getVMHardware
+      summary: Vmware Get Vm Hardware Configuration
+      description: Returns the full virtual hardware configuration of the specified virtual machine including CPU, memory, and all virtual devices.
+      tags:
+      - VM Hardware
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Hardware configuration returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HardwareInfo'
+              examples:
+                Getvmhardware200Example:
+                  summary: Default getVMHardware 200 response
+                  x-microcks-default: true
+                  value:
+                    version: example_value
+                    upgrade_policy: NEVER
+                    upgrade_version: example_value
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: updateVMHardware
+      summary: Vmware Update Vm Hardware Configuration
+      description: Updates the virtual hardware configuration. Some changes require the VM to be powered off.
+      tags:
+      - VM Hardware
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HardwareUpdateSpec'
+            examples:
+              UpdatevmhardwareRequestExample:
+                summary: Default updateVMHardware request
+                x-microcks-default: true
+                value:
+                  upgrade_policy: NEVER
+                  upgrade_version: example_value
+      responses:
+        '204':
+          description: Hardware updated successfully
+        '400':
+          description: Invalid hardware specification
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/vm/{vm}/hardware/cpu:
+    get:
+      operationId: getVMCpu
+      summary: Vmware Get Vm Cpu Configuration
+      description: Returns the CPU configuration of the specified virtual machine.
+      tags:
+      - VM Hardware
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: CPU configuration returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CpuInfo'
+              examples:
+                Getvmcpu200Example:
+                  summary: Default getVMCpu 200 response
+                  x-microcks-default: true
+                  value:
+                    count: 10
+                    cores_per_socket: 10
+                    hot_add_enabled: true
+                    hot_remove_enabled: true
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: updateVMCpu
+      summary: Vmware Update Vm Cpu Configuration
+      description: Updates the CPU configuration. Hot-add of CPUs is supported if the VM and guest OS support it and the VM is powered on.
+      tags:
+      - VM Hardware
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CpuUpdateSpec'
+            examples:
+              UpdatevmcpuRequestExample:
+                summary: Default updateVMCpu request
+                x-microcks-default: true
+                value:
+                  count: 10
+                  cores_per_socket: 10
+                  hot_add_enabled: true
+                  hot_remove_enabled: true
+      responses:
+        '204':
+          description: CPU configuration updated
+        '400':
+          description: Invalid CPU specification
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/vm/{vm}/hardware/memory:
+    get:
+      operationId: getVMMemory
+      summary: Vmware Get Vm Memory Configuration
+      description: Returns the memory configuration of the specified virtual machine.
+      tags:
+      - VM Hardware
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Memory configuration returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryInfo'
+              examples:
+                Getvmmemory200Example:
+                  summary: Default getVMMemory 200 response
+                  x-microcks-default: true
+                  value:
+                    size_MiB: 10
+                    hot_add_enabled: true
+                    hot_add_increment_size_MiB: 10
+                    hot_add_limit_MiB: 10
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: updateVMMemory
+      summary: Vmware Update Vm Memory Configuration
+      description: Updates the memory configuration. Hot-add of memory is supported if the VM and guest OS support it and the VM is powered on.
+      tags:
+      - VM Hardware
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemoryUpdateSpec'
+            examples:
+              UpdatevmmemoryRequestExample:
+                summary: Default updateVMMemory request
+                x-microcks-default: true
+                value:
+                  size_MiB: 10
+                  hot_add_enabled: true
+      responses:
+        '204':
+          description: Memory configuration updated
+        '400':
+          description: Invalid memory specification
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/vm/{vm}/hardware/disk:
+    get:
+      operationId: listVMDisks
+      summary: Vmware List Vm Virtual Disks
+      description: Returns a list of virtual disks attached to the specified VM.
+      tags:
+      - VM Hardware
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: List of virtual disks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DiskSummary'
+              examples:
+                Listvmdisks200Example:
+                  summary: Default listVMDisks 200 response
+                  x-microcks-default: true
+                  value:
+                  - disk: example_value
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createVMDisk
+      summary: Vmware Add a Virtual Disk to a Vm
+      description: Creates and attaches a new virtual disk to the specified VM. Supports creating new VMDK files or attaching existing ones.
+      tags:
+      - VM Hardware
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiskCreateSpec'
+            examples:
+              CreatevmdiskRequestExample:
+                summary: Default createVMDisk request
+                x-microcks-default: true
+                value:
+                  type: IDE
+                  new_vmdk:
+                    name: Example Title
+                    capacity: 10
+                    storage_policy:
+                      policy: example_value
+                  backing:
+                    type: VMDK_FILE
+                    vmdk_file: example_value
+      responses:
+        '201':
+          description: Disk created and attached successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the new virtual disk
+              examples:
+                Createvmdisk201Example:
+                  summary: Default createVMDisk 201 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Invalid disk specification
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/vm/{vm}/hardware/ethernet:
+    get:
+      operationId: listVMEthernet
+      summary: Vmware List Vm Network Adapters
+      description: Returns a list of virtual Ethernet adapters attached to the specified virtual machine.
+      tags:
+      - VM Hardware
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: List of network adapters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EthernetSummary'
+              examples:
+                Listvmethernet200Example:
+                  summary: Default listVMEthernet 200 response
+                  x-microcks-default: true
+                  value:
+                  - nic: example_value
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createVMEthernet
+      summary: Vmware Add a Network Adapter to a Vm
+      description: Creates and attaches a new virtual Ethernet adapter to the specified virtual machine.
+      tags:
+      - VM Hardware
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EthernetCreateSpec'
+            examples:
+              CreatevmethernetRequestExample:
+                summary: Default createVMEthernet request
+                x-microcks-default: true
+                value:
+                  type: E1000
+                  mac_type: MANUAL
+                  mac_address: example_value
+                  backing:
+                    type: STANDARD_PORTGROUP
+                    network: example_value
+                  start_connected: true
+                  allow_guest_control: true
+                  wake_on_lan_enabled: true
+      responses:
+        '201':
+          description: Network adapter created successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the new network adapter
+              examples:
+                Createvmethernet201Example:
+                  summary: Default createVMEthernet 201 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Invalid adapter specification
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DiskCreateSpec:
+      type: object
+      description: Specification for creating a virtual disk
+      properties:
+        type:
+          type: string
+          description: Host bus adapter type
+          enum:
+          - IDE
+          - SCSI
+          - SATA
+          - NVME
+          example: IDE
+        new_vmdk:
+          type: object
+          description: Specification for a new VMDK file
+          properties:
+            name:
+              type: string
+              description: Name of the VMDK file
+            capacity:
+              type: integer
+              description: Capacity in bytes
+              format: int64
+            storage_policy:
+              type: object
+              properties:
+                policy:
+                  type: string
+                  description: Storage policy identifier
+          example: example_value
+        backing:
+          type: object
+          description: Existing disk backing
+          properties:
+            type:
+              type: string
+              enum:
+              - VMDK_FILE
+            vmdk_file:
+              type: string
+          example: example_value
+    MemoryUpdateSpec:
+      type: object
+      description: Specification for memory configuration
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          minimum: 4
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          example: true
+    MemoryInfo:
+      type: object
+      description: Memory configuration of a virtual machine
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          description: Whether memory hot-add is enabled
+          example: true
+        hot_add_increment_size_MiB:
+          type: integer
+          description: Granularity for memory hot-add in mebibytes
+          example: 10
+        hot_add_limit_MiB:
+          type: integer
+          description: Maximum memory size for hot-add in mebibytes
+          example: 10
+    EthernetCreateSpec:
+      type: object
+      description: Specification for creating a virtual network adapter
+      properties:
+        type:
+          type: string
+          description: Adapter emulation type
+          enum:
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VMXNET2
+          - VMXNET3
+          example: E1000
+        mac_type:
+          type: string
+          enum:
+          - MANUAL
+          - GENERATED
+          - ASSIGNED
+          example: MANUAL
+        mac_address:
+          type: string
+          description: MAC address (required when mac_type is MANUAL)
+          example: example_value
+        backing:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - STANDARD_PORTGROUP
+              - DISTRIBUTED_PORTGROUP
+              - OPAQUE_NETWORK
+            network:
+              type: string
+              description: Identifier of the network
+          example: example_value
+        start_connected:
+          type: boolean
+          default: true
+          example: true
+        allow_guest_control:
+          type: boolean
+          default: false
+          example: true
+        wake_on_lan_enabled:
+          type: boolean
+          default: false
+          example: true
+    HardwareInfo:
+      type: object
+      description: Virtual hardware configuration
+      properties:
+        version:
+          type: string
+          description: Virtual hardware version (e.g., VMX_21)
+          example: example_value
+        upgrade_policy:
+          type: string
+          description: Hardware upgrade policy
+          enum:
+          - NEVER
+          - AFTER_CLEAN_SHUTDOWN
+          - ALWAYS
+          example: NEVER
+        upgrade_version:
+          type: string
+          description: Target hardware version for upgrade
+          example: example_value
+    HardwareUpdateSpec:
+      type: object
+      description: Specification for updating virtual hardware
+      properties:
+        upgrade_policy:
+          type: string
+          enum:
+          - NEVER
+          - AFTER_CLEAN_SHUTDOWN
+          - ALWAYS
+          example: NEVER
+        upgrade_version:
+          type: string
+          example: example_value
+    DiskSummary:
+      type: object
+      description: Summary of a virtual disk
+      properties:
+        disk:
+          type: string
+          description: Identifier of the virtual disk
+          example: example_value
+    EthernetSummary:
+      type: object
+      description: Summary of a virtual network adapter
+      properties:
+        nic:
+          type: string
+          description: Identifier of the network adapter
+          example: example_value
+    CpuInfo:
+      type: object
+      description: CPU configuration of a virtual machine
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+          example: 10
+        cores_per_socket:
+          type: integer
+          description: Number of cores per CPU socket
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          description: Whether CPU hot-add is enabled
+          example: true
+        hot_remove_enabled:
+          type: boolean
+          description: Whether CPU hot-remove is enabled
+          example: true
+    CpuUpdateSpec:
+      type: object
+      description: Specification for CPU configuration
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+          minimum: 1
+          maximum: 768
+          example: 10
+        cores_per_socket:
+          type: integer
+          description: Number of cores per socket
+          minimum: 1
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          example: true
+        hot_remove_enabled:
+          type: boolean
+          example: true
+  parameters:
+    vmId:
+      name: vm
+      in: path
+      required: true
+      description: Identifier of the virtual machine (e.g., vm-123)
+      schema:
+        type: string
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained from POST /session. Include this header in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using vCenter Server credentials. Used primarily for creating sessions.
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/

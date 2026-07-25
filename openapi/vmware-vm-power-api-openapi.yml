@@ -1,0 +1,179 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST Clusters VM Power API
+  description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
+security:
+- sessionAuth: []
+- basicAuth: []
+tags:
+- name: VM Power
+  description: Virtual machine power state operations including power on, power off, suspend, reset, and guest shutdown
+paths:
+  /vcenter/vm/{vm}/power:
+    get:
+      operationId: getVMPowerState
+      summary: Vmware Get Vm Power State
+      description: Returns the current power state of the specified virtual machine.
+      tags:
+      - VM Power
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '200':
+          description: Current power state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PowerInfo'
+              examples:
+                Getvmpowerstate200Example:
+                  summary: Default getVMPowerState 200 response
+                  x-microcks-default: true
+                  value:
+                    state: POWERED_ON
+                    clean_power_off: true
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/vm/{vm}/power?action=start:
+    post:
+      operationId: powerOnVM
+      summary: Vmware Power on a Virtual Machine
+      description: Powers on the specified virtual machine. The VM must be in a powered-off or suspended state.
+      tags:
+      - VM Power
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '204':
+          description: Power on initiated successfully
+        '400':
+          description: VM is already powered on
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/vm/{vm}/power?action=stop:
+    post:
+      operationId: powerOffVM
+      summary: Vmware Power Off a Virtual Machine
+      description: Powers off the specified virtual machine immediately. This is equivalent to pulling the power cord and does not perform a graceful guest OS shutdown. Use the guest shutdown operation for a clean shutdown.
+      tags:
+      - VM Power
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '204':
+          description: Power off initiated successfully
+        '400':
+          description: VM is already powered off
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/vm/{vm}/power?action=suspend:
+    post:
+      operationId: suspendVM
+      summary: Vmware Suspend a Virtual Machine
+      description: Suspends the specified virtual machine, saving its current state to disk. The VM can be resumed later from the suspended state.
+      tags:
+      - VM Power
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '204':
+          description: Suspend initiated successfully
+        '400':
+          description: VM is not in a powered-on state
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/vm/{vm}/power?action=reset:
+    post:
+      operationId: resetVM
+      summary: Vmware Reset a Virtual Machine
+      description: Resets the specified virtual machine. This is equivalent to pressing the reset button and does not perform a graceful guest OS reboot.
+      tags:
+      - VM Power
+      parameters:
+      - $ref: '#/components/parameters/vmId'
+      responses:
+        '204':
+          description: Reset initiated successfully
+        '400':
+          description: VM is not in a powered-on state
+        '401':
+          description: Not authenticated
+        '404':
+          description: Virtual machine not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PowerInfo:
+      type: object
+      description: Power state information for a virtual machine
+      properties:
+        state:
+          type: string
+          description: Current power state
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+          example: POWERED_ON
+        clean_power_off:
+          type: boolean
+          description: Whether the last power-off was clean
+          example: true
+  parameters:
+    vmId:
+      name: vm
+      in: path
+      required: true
+      description: Identifier of the virtual machine (e.g., vm-123)
+      schema:
+        type: string
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained from POST /session. Include this header in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using vCenter Server credentials. Used primarily for creating sessions.
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/

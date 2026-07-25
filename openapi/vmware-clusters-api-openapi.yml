@@ -1,0 +1,187 @@
+openapi: 3.1.0
+info:
+  title: VMware vSphere Automation REST Clusters API
+  description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
+  version: '8.0'
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com/
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/terms-of-use
+  termsOfService: https://www.broadcom.com/company/legal/terms-of-use
+servers:
+- url: https://{vcenter}/api
+  description: vCenter Server REST API endpoint
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: Hostname or IP address of your vCenter Server instance
+security:
+- sessionAuth: []
+- basicAuth: []
+tags:
+- name: Clusters
+  description: Cluster management for compute resource grouping, DRS, and HA configuration
+paths:
+  /vcenter/cluster:
+    get:
+      operationId: listClusters
+      summary: Vmware List Clusters
+      description: Returns a list of clusters in the vCenter inventory matching the specified filter criteria.
+      tags:
+      - Clusters
+      parameters:
+      - name: filter.clusters
+        in: query
+        description: Identifiers of clusters to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.names
+        in: query
+        description: Names of clusters to filter by
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.folders
+        in: query
+        description: Folders that must contain the clusters
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      - name: filter.datacenters
+        in: query
+        description: Datacenters that must contain the clusters
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        example: []
+      responses:
+        '200':
+          description: List of clusters matching the filter
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClusterSummary'
+              examples:
+                Listclusters200Example:
+                  summary: Default listClusters 200 response
+                  x-microcks-default: true
+                  value:
+                  - cluster: example_value
+                    name: Example Title
+                    ha_enabled: true
+                    drs_enabled: true
+        '400':
+          description: Invalid filter parameters
+        '401':
+          description: Not authenticated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vcenter/cluster/{cluster}:
+    get:
+      operationId: getCluster
+      summary: Vmware Get Cluster Details
+      description: Returns detailed information about the specified cluster including DRS and HA configuration.
+      tags:
+      - Clusters
+      parameters:
+      - $ref: '#/components/parameters/clusterId'
+      responses:
+        '200':
+          description: Cluster details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterInfo'
+              examples:
+                Getcluster200Example:
+                  summary: Default getCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    resource_pool: example_value
+        '401':
+          description: Not authenticated
+        '404':
+          description: Cluster not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    clusterId:
+      name: cluster
+      in: path
+      required: true
+      description: Identifier of the cluster (e.g., domain-c7)
+      schema:
+        type: string
+  schemas:
+    ClusterInfo:
+      type: object
+      description: Detailed cluster configuration
+      properties:
+        name:
+          type: string
+          description: Display name of the cluster
+          example: Example Title
+        resource_pool:
+          type: string
+          description: Root resource pool of the cluster
+          example: example_value
+    ClusterSummary:
+      type: object
+      description: Summary of a cluster in the vCenter inventory
+      required:
+      - cluster
+      - name
+      properties:
+        cluster:
+          type: string
+          description: Unique identifier of the cluster (e.g., domain-c7)
+          example: example_value
+        name:
+          type: string
+          description: Display name of the cluster
+          example: Example Title
+        ha_enabled:
+          type: boolean
+          description: Whether vSphere HA is enabled
+          example: true
+        drs_enabled:
+          type: boolean
+          description: Whether vSphere DRS is enabled
+          example: true
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained from POST /session. Include this header in all subsequent API requests.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using vCenter Server credentials. Used primarily for creating sessions.
+externalDocs:
+  description: vSphere Automation API Reference on Broadcom Developer Portal
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
