@@ -1,0 +1,209 @@
+{
+  "info": {
+    "_postman_id": "b993bd67-15de-4091-8723-9d670dd9d006",
+    "name": "VMware vSphere Automation REST Clusters Storage Policies API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:28:09.000Z",
+    "updatedAt": "2026-07-28T03:28:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b993bd67-15de-4091-8723-9d670dd9d006"
+  },
+  "item": [
+    {
+      "name": "vcenter",
+      "item": [
+        {
+          "name": "storage",
+          "item": [
+            {
+              "name": "policies",
+              "item": [
+                {
+                  "name": "Vmware List Storage Policies",
+                  "id": "6e278362-87ca-4e7c-82fc-64670938f4cb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/storage/policies?filter.policies=<string>&filter.policies=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "storage",
+                        "policies"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of storage policies to filter by",
+                          "key": "filter.policies",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Identifiers of storage policies to filter by",
+                          "key": "filter.policies",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of VM storage policies available in the vCenter inventory."
+                  },
+                  "response": [
+                    {
+                      "id": "3f539a9e-fa27-4f75-bdca-f039cf8a8781",
+                      "name": "List of storage policies",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/storage/policies?filter.policies=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "storage",
+                            "policies"
+                          ],
+                          "query": [
+                            {
+                              "description": "Identifiers of storage policies to filter by",
+                              "key": "filter.policies",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"policy\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"policy\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:28:09.000Z",
+                      "updatedAt": "2026-07-28T03:28:09.000Z",
+                      "uid": "35240-3f539a9e-fa27-4f75-bdca-f039cf8a8781"
+                    },
+                    {
+                      "id": "7c3596a9-1c49-418b-8967-d1c6ef4719c7",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/storage/policies?filter.policies=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "storage",
+                            "policies"
+                          ],
+                          "query": [
+                            {
+                              "description": "Identifiers of storage policies to filter by",
+                              "key": "filter.policies",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:09.000Z",
+                      "updatedAt": "2026-07-28T03:28:09.000Z",
+                      "uid": "35240-7c3596a9-1c49-418b-8967-d1c6ef4719c7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:09.000Z",
+                  "updatedAt": "2026-07-28T03:28:09.000Z",
+                  "uid": "35240-6e278362-87ca-4e7c-82fc-64670938f4cb"
+                }
+              ],
+              "id": "604107c2-9493-4dd3-b472-9cf56b78756e",
+              "createdAt": "2026-07-28T03:28:09.000Z",
+              "updatedAt": "2026-07-28T03:28:09.000Z",
+              "uid": "35240-604107c2-9493-4dd3-b472-9cf56b78756e"
+            }
+          ],
+          "id": "5d2d0600-f3ab-44b9-99e9-ea7302a71dc6",
+          "createdAt": "2026-07-28T03:28:09.000Z",
+          "updatedAt": "2026-07-28T03:28:09.000Z",
+          "uid": "35240-5d2d0600-f3ab-44b9-99e9-ea7302a71dc6"
+        }
+      ],
+      "id": "42fa7894-9ad1-4027-8577-7189f38733d3",
+      "createdAt": "2026-07-28T03:28:09.000Z",
+      "updatedAt": "2026-07-28T03:28:09.000Z",
+      "uid": "35240-42fa7894-9ad1-4027-8577-7189f38733d3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

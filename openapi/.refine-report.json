@@ -1,0 +1,42 @@
+{
+  "provider": "vmware",
+  "sources": [
+    "vmware-clusters-api-openapi.yml",
+    "vmware-content-library-api-openapi.yml",
+    "vmware-datacenters-api-openapi.yml",
+    "vmware-datastores-api-openapi.yml",
+    "vmware-folders-api-openapi.yml",
+    "vmware-hosts-api-openapi.yml",
+    "vmware-networks-api-openapi.yml",
+    "vmware-resource-pools-api-openapi.yml",
+    "vmware-session-api-openapi.yml",
+    "vmware-storage-policies-api-openapi.yml",
+    "vmware-tagging-api-openapi.yml",
+    "vmware-vm-guest-api-openapi.yml",
+    "vmware-vm-hardware-api-openapi.yml",
+    "vmware-vm-power-api-openapi.yml",
+    "vmware-vms-api-openapi.yml"
+  ],
+  "outputs": [
+    "vmware-clusters-api-openapi.yml",
+    "vmware-content-library-api-openapi.yml",
+    "vmware-datacenters-api-openapi.yml",
+    "vmware-datastores-api-openapi.yml",
+    "vmware-folders-api-openapi.yml",
+    "vmware-hosts-api-openapi.yml",
+    "vmware-networks-api-openapi.yml",
+    "vmware-resource-pools-api-openapi.yml",
+    "vmware-session-api-openapi.yml",
+    "vmware-storage-policies-api-openapi.yml",
+    "vmware-tagging-api-openapi.yml",
+    "vmware-vm-guest-api-openapi.yml",
+    "vmware-vm-hardware-api-openapi.yml",
+    "vmware-vm-power-api-openapi.yml",
+    "vmware-vms-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

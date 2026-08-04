@@ -1,0 +1,1191 @@
+{
+  "info": {
+    "_postman_id": "cc0c5fed-e0ba-47c7-90ed-0292e23dd0ab",
+    "name": "VMware vSphere Automation REST Clusters VMs API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:28:36.000Z",
+    "updatedAt": "2026-07-28T03:28:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cc0c5fed-e0ba-47c7-90ed-0292e23dd0ab"
+  },
+  "item": [
+    {
+      "name": "vcenter",
+      "item": [
+        {
+          "name": "vm",
+          "item": [
+            {
+              "name": "{vm}",
+              "item": [
+                {
+                  "name": "Vmware Get Virtual Machine Details",
+                  "id": "1da757c2-71df-4e02-aa45-4466dc15a55c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "vm",
+                        ":vm"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4eb1755a-a506-4a9c-b343-dcfcbc39f70f",
+                          "key": "vm",
+                          "value": "<string>",
+                          "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                        }
+                      ]
+                    },
+                    "description": "Returns detailed information about the specified virtual machine including hardware configuration, power state, guest OS, and storage information."
+                  },
+                  "response": [
+                    {
+                      "id": "e4a86f30-fb0b-4ba4-a375-7e4621f9c45d",
+                      "name": "Virtual machine details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "vm"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"identity\": {\n    \"name\": \"<string>\",\n    \"instance_uuid\": \"<uuid>\",\n    \"bios_uuid\": \"<uuid>\"\n  },\n  \"power_state\": \"POWERED_OFF\",\n  \"guest_OS\": \"<string>\",\n  \"hardware\": {\n    \"version\": \"<string>\",\n    \"upgrade_policy\": \"ALWAYS\",\n    \"upgrade_version\": \"<string>\"\n  },\n  \"boot\": {\n    \"type\": \"EFI\",\n    \"delay\": \"<integer>\",\n    \"enter_setup_mode\": \"<boolean>\"\n  },\n  \"cpu\": {\n    \"count\": \"<integer>\",\n    \"cores_per_socket\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\",\n    \"hot_remove_enabled\": \"<boolean>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\",\n    \"hot_add_increment_size_MiB\": \"<integer>\",\n    \"hot_add_limit_MiB\": \"<integer>\"\n  },\n  \"disks\": {\n    \"ullamco93\": {\n      \"label\": \"<string>\",\n      \"type\": \"SCSI\",\n      \"capacity\": \"<long>\",\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    },\n    \"adipisicing__f\": {\n      \"label\": \"<string>\",\n      \"type\": \"IDE\",\n      \"capacity\": \"<long>\",\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    },\n    \"exe\": {\n      \"label\": \"<string>\",\n      \"type\": \"SATA\",\n      \"capacity\": \"<long>\",\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    }\n  },\n  \"nics\": {\n    \"adipisicing_31b\": {\n      \"label\": \"<string>\",\n      \"type\": \"E1000\",\n      \"mac_type\": \"GENERATED\",\n      \"mac_address\": \"<string>\",\n      \"state\": \"CONNECTED\",\n      \"start_connected\": \"<boolean>\",\n      \"backing\": {\n        \"type\": \"STANDARD_PORTGROUP\",\n        \"network\": \"<string>\"\n      },\n      \"allow_guest_control\": \"<boolean>\",\n      \"wake_on_lan_enabled\": \"<boolean>\"\n    },\n    \"quiff7\": {\n      \"label\": \"<string>\",\n      \"type\": \"PCNET32\",\n      \"mac_type\": \"ASSIGNED\",\n      \"mac_address\": \"<string>\",\n      \"state\": \"NOT_CONNECTED\",\n      \"start_connected\": \"<boolean>\",\n      \"backing\": {\n        \"type\": \"STANDARD_PORTGROUP\",\n        \"network\": \"<string>\"\n      },\n      \"allow_guest_control\": \"<boolean>\",\n      \"wake_on_lan_enabled\": \"<boolean>\"\n    }\n  },\n  \"cdroms\": {\n    \"culpa_\": {},\n    \"nostrud21b\": {}\n  },\n  \"parallel_ports\": {\n    \"cillum_ef5\": {},\n    \"sed_b1\": {}\n  },\n  \"serial_ports\": {\n    \"reprehenderit40\": {}\n  },\n  \"floppy_drives\": {\n    \"exercitation_1\": {},\n    \"eu_31e\": {},\n    \"commodo87a\": {}\n  }\n}",
+                      "createdAt": "2026-07-28T03:28:36.000Z",
+                      "updatedAt": "2026-07-28T03:28:36.000Z",
+                      "uid": "35240-e4a86f30-fb0b-4ba4-a375-7e4621f9c45d"
+                    },
+                    {
+                      "id": "5fe3d8aa-20d7-475f-a602-27a8edd92197",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "vm"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:36.000Z",
+                      "updatedAt": "2026-07-28T03:28:36.000Z",
+                      "uid": "35240-5fe3d8aa-20d7-475f-a602-27a8edd92197"
+                    },
+                    {
+                      "id": "c68c493d-427b-45a6-9378-0a14c31ae905",
+                      "name": "Insufficient privileges",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "vm"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:36.000Z",
+                      "updatedAt": "2026-07-28T03:28:36.000Z",
+                      "uid": "35240-c68c493d-427b-45a6-9378-0a14c31ae905"
+                    },
+                    {
+                      "id": "6e600975-922c-4b10-a3f6-98896f340743",
+                      "name": "Virtual machine not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "vm"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:36.000Z",
+                      "updatedAt": "2026-07-28T03:28:36.000Z",
+                      "uid": "35240-6e600975-922c-4b10-a3f6-98896f340743"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:36.000Z",
+                  "updatedAt": "2026-07-28T03:28:36.000Z",
+                  "uid": "35240-1da757c2-71df-4e02-aa45-4466dc15a55c"
+                },
+                {
+                  "name": "Vmware Delete a Virtual Machine",
+                  "id": "073847ea-987f-4e4b-ae4e-0da50fa76a7d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "vm",
+                        ":vm"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ea5b5967-cad1-419f-9a96-808baed79e88",
+                          "key": "vm",
+                          "value": "<string>",
+                          "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                        }
+                      ]
+                    },
+                    "description": "Permanently deletes the specified virtual machine and all associated virtual disks. The VM must be in a powered-off state."
+                  },
+                  "response": [
+                    {
+                      "id": "5775f25f-62ec-4aa6-bd25-53371a5815db",
+                      "name": "Virtual machine deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "vm"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:36.000Z",
+                      "updatedAt": "2026-07-28T03:28:36.000Z",
+                      "uid": "35240-5775f25f-62ec-4aa6-bd25-53371a5815db"
+                    },
+                    {
+                      "id": "373fcaed-6845-4378-96e7-2e7f2d69832d",
+                      "name": "VM is not in a powered-off state",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "vm"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:36.000Z",
+                      "updatedAt": "2026-07-28T03:28:36.000Z",
+                      "uid": "35240-373fcaed-6845-4378-96e7-2e7f2d69832d"
+                    },
+                    {
+                      "id": "fe98d58d-84ed-4ca9-bfff-fa9d2c7cea37",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "vm"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:36.000Z",
+                      "updatedAt": "2026-07-28T03:28:36.000Z",
+                      "uid": "35240-fe98d58d-84ed-4ca9-bfff-fa9d2c7cea37"
+                    },
+                    {
+                      "id": "a21fc7c9-05bc-4eb0-8f7f-d730032abc8a",
+                      "name": "Insufficient privileges",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "vm"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:36.000Z",
+                      "updatedAt": "2026-07-28T03:28:36.000Z",
+                      "uid": "35240-a21fc7c9-05bc-4eb0-8f7f-d730032abc8a"
+                    },
+                    {
+                      "id": "fdf91fba-4212-466f-8ad3-af96730aa868",
+                      "name": "Virtual machine not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "vm"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:36.000Z",
+                      "updatedAt": "2026-07-28T03:28:36.000Z",
+                      "uid": "35240-fdf91fba-4212-466f-8ad3-af96730aa868"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:36.000Z",
+                  "updatedAt": "2026-07-28T03:28:36.000Z",
+                  "uid": "35240-073847ea-987f-4e4b-ae4e-0da50fa76a7d"
+                }
+              ],
+              "id": "7b4b84c9-6f9d-4238-ab6f-12f1c7cd95f5",
+              "createdAt": "2026-07-28T03:28:36.000Z",
+              "updatedAt": "2026-07-28T03:28:36.000Z",
+              "uid": "35240-7b4b84c9-6f9d-4238-ab6f-12f1c7cd95f5"
+            },
+            {
+              "name": "Vmware List Virtual Machines",
+              "id": "5d73be7c-07d0-4ed3-b82e-0e20bd34a582",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/vcenter/vm?filter.vms=<string>&filter.vms=<string>&filter.names=<string>&filter.names=<string>&filter.folders=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.datacenters=<string>&filter.hosts=<string>&filter.hosts=<string>&filter.clusters=<string>&filter.clusters=<string>&filter.resource_pools=<string>&filter.resource_pools=<string>&filter.power_states=SUSPENDED&filter.power_states=SUSPENDED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "query": [
+                    {
+                      "description": "Identifiers of VMs to filter by",
+                      "key": "filter.vms",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Identifiers of VMs to filter by",
+                      "key": "filter.vms",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of VMs to filter by (exact match)",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of VMs to filter by (exact match)",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Folders that must contain the VMs",
+                      "key": "filter.folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Folders that must contain the VMs",
+                      "key": "filter.folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Datacenters that must contain the VMs",
+                      "key": "filter.datacenters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Datacenters that must contain the VMs",
+                      "key": "filter.datacenters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hosts that must contain the VMs",
+                      "key": "filter.hosts",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hosts that must contain the VMs",
+                      "key": "filter.hosts",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Clusters that must contain the VMs",
+                      "key": "filter.clusters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Clusters that must contain the VMs",
+                      "key": "filter.clusters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Resource pools that must contain the VMs",
+                      "key": "filter.resource_pools",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Resource pools that must contain the VMs",
+                      "key": "filter.resource_pools",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Power states to filter by",
+                      "key": "filter.power_states",
+                      "value": "SUSPENDED"
+                    },
+                    {
+                      "description": "Power states to filter by",
+                      "key": "filter.power_states",
+                      "value": "SUSPENDED"
+                    }
+                  ]
+                },
+                "description": "Returns a list of virtual machines in the vCenter inventory matching the specified filter criteria. Results can be filtered by name, power state, host, cluster, datacenter, folder, and resource pool."
+              },
+              "response": [
+                {
+                  "id": "2b3629c8-efa4-4b14-b3e9-c534822b536f",
+                  "name": "List of virtual machines matching the filter",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/vm?filter.vms=<string>&filter.names=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.hosts=<string>&filter.clusters=<string>&filter.resource_pools=<string>&filter.power_states=SUSPENDED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "vm"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of VMs to filter by",
+                          "key": "filter.vms",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of VMs to filter by (exact match)",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the VMs",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the VMs",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Hosts that must contain the VMs",
+                          "key": "filter.hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Clusters that must contain the VMs",
+                          "key": "filter.clusters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Resource pools that must contain the VMs",
+                          "key": "filter.resource_pools",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Power states to filter by",
+                          "key": "filter.power_states",
+                          "value": "SUSPENDED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"vm\": \"<string>\",\n    \"name\": \"<string>\",\n    \"power_state\": \"SUSPENDED\",\n    \"cpu_count\": \"<integer>\",\n    \"memory_size_MiB\": \"<integer>\"\n  },\n  {\n    \"vm\": \"<string>\",\n    \"name\": \"<string>\",\n    \"power_state\": \"POWERED_OFF\",\n    \"cpu_count\": \"<integer>\",\n    \"memory_size_MiB\": \"<integer>\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:28:36.000Z",
+                  "updatedAt": "2026-07-28T03:28:36.000Z",
+                  "uid": "35240-2b3629c8-efa4-4b14-b3e9-c534822b536f"
+                },
+                {
+                  "id": "f82b6837-a11a-4448-a03e-0f8f8512fde3",
+                  "name": "Invalid filter parameters",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/vm?filter.vms=<string>&filter.names=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.hosts=<string>&filter.clusters=<string>&filter.resource_pools=<string>&filter.power_states=SUSPENDED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "vm"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of VMs to filter by",
+                          "key": "filter.vms",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of VMs to filter by (exact match)",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the VMs",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the VMs",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Hosts that must contain the VMs",
+                          "key": "filter.hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Clusters that must contain the VMs",
+                          "key": "filter.clusters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Resource pools that must contain the VMs",
+                          "key": "filter.resource_pools",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Power states to filter by",
+                          "key": "filter.power_states",
+                          "value": "SUSPENDED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:36.000Z",
+                  "updatedAt": "2026-07-28T03:28:36.000Z",
+                  "uid": "35240-f82b6837-a11a-4448-a03e-0f8f8512fde3"
+                },
+                {
+                  "id": "ba51e86b-5472-419d-8408-f5fda3f0fb61",
+                  "name": "Not authenticated",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/vm?filter.vms=<string>&filter.names=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.hosts=<string>&filter.clusters=<string>&filter.resource_pools=<string>&filter.power_states=SUSPENDED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "vm"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of VMs to filter by",
+                          "key": "filter.vms",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of VMs to filter by (exact match)",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the VMs",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the VMs",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Hosts that must contain the VMs",
+                          "key": "filter.hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Clusters that must contain the VMs",
+                          "key": "filter.clusters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Resource pools that must contain the VMs",
+                          "key": "filter.resource_pools",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Power states to filter by",
+                          "key": "filter.power_states",
+                          "value": "SUSPENDED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:36.000Z",
+                  "updatedAt": "2026-07-28T03:28:36.000Z",
+                  "uid": "35240-ba51e86b-5472-419d-8408-f5fda3f0fb61"
+                },
+                {
+                  "id": "fbfbbf6a-93ef-4565-a0b9-e098658ce384",
+                  "name": "Insufficient privileges",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/vm?filter.vms=<string>&filter.names=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.hosts=<string>&filter.clusters=<string>&filter.resource_pools=<string>&filter.power_states=SUSPENDED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "vm"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of VMs to filter by",
+                          "key": "filter.vms",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of VMs to filter by (exact match)",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the VMs",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the VMs",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Hosts that must contain the VMs",
+                          "key": "filter.hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Clusters that must contain the VMs",
+                          "key": "filter.clusters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Resource pools that must contain the VMs",
+                          "key": "filter.resource_pools",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Power states to filter by",
+                          "key": "filter.power_states",
+                          "value": "SUSPENDED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:36.000Z",
+                  "updatedAt": "2026-07-28T03:28:36.000Z",
+                  "uid": "35240-fbfbbf6a-93ef-4565-a0b9-e098658ce384"
+                }
+              ],
+              "createdAt": "2026-07-28T03:28:36.000Z",
+              "updatedAt": "2026-07-28T03:28:36.000Z",
+              "uid": "35240-5d73be7c-07d0-4ed3-b82e-0e20bd34a582"
+            },
+            {
+              "name": "Vmware Create a New Virtual Machine",
+              "id": "6f468eb0-c0d4-46d3-89d9-09f0163c29ca",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"guest_OS\": \"UBUNTU_64\",\n  \"placement\": {\n    \"folder\": \"<string>\",\n    \"host\": \"<string>\",\n    \"cluster\": \"<string>\",\n    \"resource_pool\": \"<string>\",\n    \"datastore\": \"<string>\"\n  },\n  \"hardware_version\": \"VMX_19\",\n  \"cpu\": {\n    \"count\": \"<integer>\",\n    \"cores_per_socket\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\",\n    \"hot_remove_enabled\": \"<boolean>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\"\n  },\n  \"disks\": [\n    {\n      \"type\": \"SATA\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    },\n    {\n      \"type\": \"NVME\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    }\n  ],\n  \"nics\": [\n    {\n      \"type\": \"VMXNET3\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"DISTRIBUTED_PORTGROUP\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    },\n    {\n      \"type\": \"PCNET32\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"OPAQUE_NETWORK\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    }\n  ],\n  \"boot\": {\n    \"type\": \"EFI\",\n    \"efi_legacy_boot\": \"<boolean>\",\n    \"delay\": \"<integer>\",\n    \"enter_setup_mode\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/vcenter/vm",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ]
+                },
+                "description": "Creates a new virtual machine with the specified configuration. The VM is created in the powered-off state and must be explicitly powered on after creation."
+              },
+              "response": [
+                {
+                  "id": "42b72ea4-eb95-4a98-a0d0-284c5b6ef3bf",
+                  "name": "Virtual machine created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"guest_OS\": \"UBUNTU_64\",\n  \"placement\": {\n    \"folder\": \"<string>\",\n    \"host\": \"<string>\",\n    \"cluster\": \"<string>\",\n    \"resource_pool\": \"<string>\",\n    \"datastore\": \"<string>\"\n  },\n  \"hardware_version\": \"VMX_19\",\n  \"cpu\": {\n    \"count\": \"<integer>\",\n    \"cores_per_socket\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\",\n    \"hot_remove_enabled\": \"<boolean>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\"\n  },\n  \"disks\": [\n    {\n      \"type\": \"SATA\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    },\n    {\n      \"type\": \"NVME\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    }\n  ],\n  \"nics\": [\n    {\n      \"type\": \"VMXNET3\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"DISTRIBUTED_PORTGROUP\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    },\n    {\n      \"type\": \"PCNET32\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"OPAQUE_NETWORK\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    }\n  ],\n  \"boot\": {\n    \"type\": \"EFI\",\n    \"efi_legacy_boot\": \"<boolean>\",\n    \"delay\": \"<integer>\",\n    \"enter_setup_mode\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/vm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "vm"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T03:28:36.000Z",
+                  "updatedAt": "2026-07-28T03:28:36.000Z",
+                  "uid": "35240-42b72ea4-eb95-4a98-a0d0-284c5b6ef3bf"
+                },
+                {
+                  "id": "66114c81-6e38-4bea-9289-2d3b548620ab",
+                  "name": "Invalid VM specification",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"guest_OS\": \"UBUNTU_64\",\n  \"placement\": {\n    \"folder\": \"<string>\",\n    \"host\": \"<string>\",\n    \"cluster\": \"<string>\",\n    \"resource_pool\": \"<string>\",\n    \"datastore\": \"<string>\"\n  },\n  \"hardware_version\": \"VMX_19\",\n  \"cpu\": {\n    \"count\": \"<integer>\",\n    \"cores_per_socket\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\",\n    \"hot_remove_enabled\": \"<boolean>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\"\n  },\n  \"disks\": [\n    {\n      \"type\": \"SATA\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    },\n    {\n      \"type\": \"NVME\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    }\n  ],\n  \"nics\": [\n    {\n      \"type\": \"VMXNET3\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"DISTRIBUTED_PORTGROUP\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    },\n    {\n      \"type\": \"PCNET32\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"OPAQUE_NETWORK\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    }\n  ],\n  \"boot\": {\n    \"type\": \"EFI\",\n    \"efi_legacy_boot\": \"<boolean>\",\n    \"delay\": \"<integer>\",\n    \"enter_setup_mode\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/vm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "vm"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:36.000Z",
+                  "updatedAt": "2026-07-28T03:28:36.000Z",
+                  "uid": "35240-66114c81-6e38-4bea-9289-2d3b548620ab"
+                },
+                {
+                  "id": "5ddf4902-1737-4396-ab73-1d51247db0cc",
+                  "name": "Not authenticated",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"guest_OS\": \"UBUNTU_64\",\n  \"placement\": {\n    \"folder\": \"<string>\",\n    \"host\": \"<string>\",\n    \"cluster\": \"<string>\",\n    \"resource_pool\": \"<string>\",\n    \"datastore\": \"<string>\"\n  },\n  \"hardware_version\": \"VMX_19\",\n  \"cpu\": {\n    \"count\": \"<integer>\",\n    \"cores_per_socket\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\",\n    \"hot_remove_enabled\": \"<boolean>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\"\n  },\n  \"disks\": [\n    {\n      \"type\": \"SATA\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    },\n    {\n      \"type\": \"NVME\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    }\n  ],\n  \"nics\": [\n    {\n      \"type\": \"VMXNET3\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"DISTRIBUTED_PORTGROUP\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    },\n    {\n      \"type\": \"PCNET32\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"OPAQUE_NETWORK\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    }\n  ],\n  \"boot\": {\n    \"type\": \"EFI\",\n    \"efi_legacy_boot\": \"<boolean>\",\n    \"delay\": \"<integer>\",\n    \"enter_setup_mode\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/vm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "vm"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:36.000Z",
+                  "updatedAt": "2026-07-28T03:28:36.000Z",
+                  "uid": "35240-5ddf4902-1737-4396-ab73-1d51247db0cc"
+                },
+                {
+                  "id": "b3af483b-5c84-41fd-bd0b-9e8807ee411c",
+                  "name": "Insufficient privileges",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"guest_OS\": \"UBUNTU_64\",\n  \"placement\": {\n    \"folder\": \"<string>\",\n    \"host\": \"<string>\",\n    \"cluster\": \"<string>\",\n    \"resource_pool\": \"<string>\",\n    \"datastore\": \"<string>\"\n  },\n  \"hardware_version\": \"VMX_19\",\n  \"cpu\": {\n    \"count\": \"<integer>\",\n    \"cores_per_socket\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\",\n    \"hot_remove_enabled\": \"<boolean>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\"\n  },\n  \"disks\": [\n    {\n      \"type\": \"SATA\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    },\n    {\n      \"type\": \"NVME\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"VMDK_FILE\",\n        \"vmdk_file\": \"<string>\"\n      }\n    }\n  ],\n  \"nics\": [\n    {\n      \"type\": \"VMXNET3\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"DISTRIBUTED_PORTGROUP\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    },\n    {\n      \"type\": \"PCNET32\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"OPAQUE_NETWORK\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    }\n  ],\n  \"boot\": {\n    \"type\": \"EFI\",\n    \"efi_legacy_boot\": \"<boolean>\",\n    \"delay\": \"<integer>\",\n    \"enter_setup_mode\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/vm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "vm"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:36.000Z",
+                  "updatedAt": "2026-07-28T03:28:36.000Z",
+                  "uid": "35240-b3af483b-5c84-41fd-bd0b-9e8807ee411c"
+                }
+              ],
+              "createdAt": "2026-07-28T03:28:36.000Z",
+              "updatedAt": "2026-07-28T03:28:36.000Z",
+              "uid": "35240-6f468eb0-c0d4-46d3-89d9-09f0163c29ca"
+            }
+          ],
+          "id": "9bb04123-6f58-4d87-8eb1-da3e7511dc8b",
+          "createdAt": "2026-07-28T03:28:36.000Z",
+          "updatedAt": "2026-07-28T03:28:36.000Z",
+          "uid": "35240-9bb04123-6f58-4d87-8eb1-da3e7511dc8b"
+        }
+      ],
+      "id": "b5edb221-6acc-457d-90d8-afbad6d3047c",
+      "createdAt": "2026-07-28T03:28:36.000Z",
+      "updatedAt": "2026-07-28T03:28:36.000Z",
+      "uid": "35240-b5edb221-6acc-457d-90d8-afbad6d3047c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

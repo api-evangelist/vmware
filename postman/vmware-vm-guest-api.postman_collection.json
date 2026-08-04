@@ -1,0 +1,496 @@
+{
+  "info": {
+    "_postman_id": "6da44274-ba33-40fe-88ed-14eb5ad9fd06",
+    "name": "VMware vSphere Automation REST Clusters VM Guest API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:28:31.000Z",
+    "updatedAt": "2026-07-28T03:28:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6da44274-ba33-40fe-88ed-14eb5ad9fd06"
+  },
+  "item": [
+    {
+      "name": "vcenter",
+      "item": [
+        {
+          "name": "vm",
+          "item": [
+            {
+              "name": "{vm}",
+              "item": [
+                {
+                  "name": "guest",
+                  "item": [
+                    {
+                      "name": "identity",
+                      "item": [
+                        {
+                          "name": "Vmware Get Guest Os Identity",
+                          "id": "3826e782-54ae-4bb0-9f53-2604ab8afbf1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/guest/identity",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "guest",
+                                "identity"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8c9a9c8c-2b86-4d25-afc9-0c1a319827ea",
+                                  "key": "vm",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                                }
+                              ]
+                            },
+                            "description": "Returns guest operating system identity information reported by VMware Tools running inside the VM, including OS name, version, hostname, and IP addresses."
+                          },
+                          "response": [
+                            {
+                              "id": "9a707483-8fa0-4d5f-9378-cefc7089acc4",
+                              "name": "Guest identity information",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/guest/identity",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "guest",
+                                    "identity"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"name\": \"<string>\",\n  \"family\": \"OTHER\",\n  \"full_name\": {\n    \"default_message\": \"<string>\",\n    \"id\": \"<string>\"\n  },\n  \"host_name\": \"<string>\",\n  \"ip_address\": \"<ipv4>\"\n}",
+                              "createdAt": "2026-07-28T03:28:32.000Z",
+                              "updatedAt": "2026-07-28T03:28:32.000Z",
+                              "uid": "35240-9a707483-8fa0-4d5f-9378-cefc7089acc4"
+                            },
+                            {
+                              "id": "3c4a458d-5857-4349-b5df-64e0a8bb2750",
+                              "name": "Not authenticated",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/guest/identity",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "guest",
+                                    "identity"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:32.000Z",
+                              "updatedAt": "2026-07-28T03:28:32.000Z",
+                              "uid": "35240-3c4a458d-5857-4349-b5df-64e0a8bb2750"
+                            },
+                            {
+                              "id": "3d71d37c-a06b-4d47-bf26-d64a90363001",
+                              "name": "Virtual machine not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/guest/identity",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "guest",
+                                    "identity"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:32.000Z",
+                              "updatedAt": "2026-07-28T03:28:32.000Z",
+                              "uid": "35240-3d71d37c-a06b-4d47-bf26-d64a90363001"
+                            },
+                            {
+                              "id": "9d0cd258-57be-445a-8934-2052fb35d430",
+                              "name": "VMware Tools not running in the guest",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/guest/identity",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "guest",
+                                    "identity"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Service Unavailable",
+                              "code": 503,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:32.000Z",
+                              "updatedAt": "2026-07-28T03:28:32.000Z",
+                              "uid": "35240-9d0cd258-57be-445a-8934-2052fb35d430"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:28:32.000Z",
+                          "updatedAt": "2026-07-28T03:28:32.000Z",
+                          "uid": "35240-3826e782-54ae-4bb0-9f53-2604ab8afbf1"
+                        }
+                      ],
+                      "id": "8c0eeb07-295c-42e2-a7c0-76202e68d1bd",
+                      "createdAt": "2026-07-28T03:28:32.000Z",
+                      "updatedAt": "2026-07-28T03:28:32.000Z",
+                      "uid": "35240-8c0eeb07-295c-42e2-a7c0-76202e68d1bd"
+                    },
+                    {
+                      "name": "networking",
+                      "item": [
+                        {
+                          "name": "Vmware Get Guest Networking Information",
+                          "id": "c813b5f4-f458-4707-a4b9-47f69f924e6f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/guest/networking",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "guest",
+                                "networking"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5dbf42e7-54ed-4c8f-8653-040d05359eb3",
+                                  "key": "vm",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                                }
+                              ]
+                            },
+                            "description": "Returns guest networking information reported by VMware Tools including network interfaces, IP addresses, DNS configuration, and routing tables."
+                          },
+                          "response": [
+                            {
+                              "id": "edfc72b7-6934-4f00-b843-a65930a9f655",
+                              "name": "Guest networking information",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/guest/networking",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "guest",
+                                    "networking"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"dns_values\": {\n    \"domain_name\": \"<string>\",\n    \"search_domains\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"dns\": {\n    \"ip_addresses\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"interfaces\": [\n    {\n      \"mac_address\": \"<string>\",\n      \"ip\": {\n        \"ip_addresses\": [\n          {\n            \"ip_address\": \"<string>\",\n            \"prefix_length\": \"<integer>\",\n            \"state\": \"INACCESSIBLE\"\n          },\n          {\n            \"ip_address\": \"<string>\",\n            \"prefix_length\": \"<integer>\",\n            \"state\": \"INACCESSIBLE\"\n          }\n        ]\n      }\n    },\n    {\n      \"mac_address\": \"<string>\",\n      \"ip\": {\n        \"ip_addresses\": [\n          {\n            \"ip_address\": \"<string>\",\n            \"prefix_length\": \"<integer>\",\n            \"state\": \"PREFERRED\"\n          },\n          {\n            \"ip_address\": \"<string>\",\n            \"prefix_length\": \"<integer>\",\n            \"state\": \"DEPRECATED\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:28:32.000Z",
+                              "updatedAt": "2026-07-28T03:28:32.000Z",
+                              "uid": "35240-edfc72b7-6934-4f00-b843-a65930a9f655"
+                            },
+                            {
+                              "id": "20dc0bbf-5981-493c-9401-b256f94940f1",
+                              "name": "Not authenticated",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/guest/networking",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "guest",
+                                    "networking"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:32.000Z",
+                              "updatedAt": "2026-07-28T03:28:32.000Z",
+                              "uid": "35240-20dc0bbf-5981-493c-9401-b256f94940f1"
+                            },
+                            {
+                              "id": "fded0b4e-a2af-47b6-b7c4-f5e1064a5ff9",
+                              "name": "Virtual machine not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/guest/networking",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "guest",
+                                    "networking"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:32.000Z",
+                              "updatedAt": "2026-07-28T03:28:32.000Z",
+                              "uid": "35240-fded0b4e-a2af-47b6-b7c4-f5e1064a5ff9"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:28:32.000Z",
+                          "updatedAt": "2026-07-28T03:28:32.000Z",
+                          "uid": "35240-c813b5f4-f458-4707-a4b9-47f69f924e6f"
+                        }
+                      ],
+                      "id": "136fbde0-d377-4027-af09-7c7c511050bf",
+                      "createdAt": "2026-07-28T03:28:32.000Z",
+                      "updatedAt": "2026-07-28T03:28:32.000Z",
+                      "uid": "35240-136fbde0-d377-4027-af09-7c7c511050bf"
+                    }
+                  ],
+                  "id": "6ec2fb68-8eef-434c-beef-2995313454ed",
+                  "createdAt": "2026-07-28T03:28:32.000Z",
+                  "updatedAt": "2026-07-28T03:28:32.000Z",
+                  "uid": "35240-6ec2fb68-8eef-434c-beef-2995313454ed"
+                }
+              ],
+              "id": "651943ea-ef33-4168-8dcf-32436c749e52",
+              "createdAt": "2026-07-28T03:28:32.000Z",
+              "updatedAt": "2026-07-28T03:28:32.000Z",
+              "uid": "35240-651943ea-ef33-4168-8dcf-32436c749e52"
+            }
+          ],
+          "id": "1d63be66-2ad6-4de3-9c61-e08af98f26a9",
+          "createdAt": "2026-07-28T03:28:32.000Z",
+          "updatedAt": "2026-07-28T03:28:32.000Z",
+          "uid": "35240-1d63be66-2ad6-4de3-9c61-e08af98f26a9"
+        }
+      ],
+      "id": "17d5e0a0-f878-4080-b55f-3361eab71196",
+      "createdAt": "2026-07-28T03:28:32.000Z",
+      "updatedAt": "2026-07-28T03:28:32.000Z",
+      "uid": "35240-17d5e0a0-f878-4080-b55f-3361eab71196"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

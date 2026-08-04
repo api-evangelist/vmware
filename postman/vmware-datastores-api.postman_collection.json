@@ -1,0 +1,578 @@
+{
+  "info": {
+    "_postman_id": "2405daec-8b42-40ce-9d0e-416242db582a",
+    "name": "VMware vSphere Automation REST Clusters Datastores API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:27:57.000Z",
+    "updatedAt": "2026-07-28T03:27:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2405daec-8b42-40ce-9d0e-416242db582a"
+  },
+  "item": [
+    {
+      "name": "vcenter",
+      "item": [
+        {
+          "name": "datastore",
+          "item": [
+            {
+              "name": "{datastore}",
+              "item": [
+                {
+                  "name": "Vmware Get Datastore Details",
+                  "id": "adb5f406-61f0-4786-a65b-3f29077589ec",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/datastore/:datastore",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "datastore",
+                        ":datastore"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3ecf0097-2202-48ac-984f-15bc700159d7",
+                          "key": "datastore",
+                          "value": "<string>",
+                          "description": "(Required) Identifier of the datastore (e.g., datastore-15)"
+                        }
+                      ]
+                    },
+                    "description": "Returns detailed information about the specified datastore including capacity, free space, type, and accessible hosts."
+                  },
+                  "response": [
+                    {
+                      "id": "4fe861b3-86b0-4a83-a3df-bfd35f64b4dd",
+                      "name": "Datastore details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/datastore/:datastore",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "datastore",
+                            ":datastore"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastore"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"type\": \"VFFS\",\n  \"accessible\": \"<boolean>\",\n  \"free_space\": \"<long>\",\n  \"capacity\": \"<long>\",\n  \"thin_provisioning_supported\": \"<boolean>\",\n  \"multiple_host_access\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T03:27:58.000Z",
+                      "updatedAt": "2026-07-28T03:27:58.000Z",
+                      "uid": "35240-4fe861b3-86b0-4a83-a3df-bfd35f64b4dd"
+                    },
+                    {
+                      "id": "80d2ae87-88c0-48fb-bd89-cc8dabc6e59f",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/datastore/:datastore",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "datastore",
+                            ":datastore"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastore"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:27:58.000Z",
+                      "updatedAt": "2026-07-28T03:27:58.000Z",
+                      "uid": "35240-80d2ae87-88c0-48fb-bd89-cc8dabc6e59f"
+                    },
+                    {
+                      "id": "e9bc7921-6aae-440e-a5fc-ac17dce87a12",
+                      "name": "Datastore not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/datastore/:datastore",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "datastore",
+                            ":datastore"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastore"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:27:58.000Z",
+                      "updatedAt": "2026-07-28T03:27:58.000Z",
+                      "uid": "35240-e9bc7921-6aae-440e-a5fc-ac17dce87a12"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:27:58.000Z",
+                  "updatedAt": "2026-07-28T03:27:58.000Z",
+                  "uid": "35240-adb5f406-61f0-4786-a65b-3f29077589ec"
+                }
+              ],
+              "id": "bbc43e23-f10b-4a3b-9e5c-22e1a84d80a9",
+              "createdAt": "2026-07-28T03:27:58.000Z",
+              "updatedAt": "2026-07-28T03:27:58.000Z",
+              "uid": "35240-bbc43e23-f10b-4a3b-9e5c-22e1a84d80a9"
+            },
+            {
+              "name": "Vmware List Datastores",
+              "id": "ca17faf0-fc22-4fcc-aad7-fecd840d5f5b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/vcenter/datastore?filter.datastores=<string>&filter.datastores=<string>&filter.names=<string>&filter.names=<string>&filter.types=VMFS&filter.types=NFS41&filter.folders=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.datacenters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vcenter",
+                    "datastore"
+                  ],
+                  "query": [
+                    {
+                      "description": "Identifiers of datastores to filter by",
+                      "key": "filter.datastores",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Identifiers of datastores to filter by",
+                      "key": "filter.datastores",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of datastores to filter by",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of datastores to filter by",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Types of datastores to filter by",
+                      "key": "filter.types",
+                      "value": "VMFS"
+                    },
+                    {
+                      "description": "Types of datastores to filter by",
+                      "key": "filter.types",
+                      "value": "NFS41"
+                    },
+                    {
+                      "description": "Folders that must contain the datastores",
+                      "key": "filter.folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Folders that must contain the datastores",
+                      "key": "filter.folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Datacenters that must contain the datastores",
+                      "key": "filter.datacenters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Datacenters that must contain the datastores",
+                      "key": "filter.datacenters",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of datastores in the vCenter inventory matching the specified filter criteria. Results can be filtered by name, type, datacenter, and folder."
+              },
+              "response": [
+                {
+                  "id": "d92fba2e-b63c-4e19-80f1-a16e566c2325",
+                  "name": "List of datastores matching the filter",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/datastore?filter.datastores=<string>&filter.names=<string>&filter.types=NFS41&filter.folders=<string>&filter.datacenters=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "datastore"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of datastores to filter by",
+                          "key": "filter.datastores",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of datastores to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Types of datastores to filter by",
+                          "key": "filter.types",
+                          "value": "NFS41"
+                        },
+                        {
+                          "description": "Folders that must contain the datastores",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the datastores",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"datastore\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"NFS\",\n    \"free_space\": \"<long>\",\n    \"capacity\": \"<long>\"\n  },\n  {\n    \"datastore\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"NFS\",\n    \"free_space\": \"<long>\",\n    \"capacity\": \"<long>\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:27:58.000Z",
+                  "updatedAt": "2026-07-28T03:27:58.000Z",
+                  "uid": "35240-d92fba2e-b63c-4e19-80f1-a16e566c2325"
+                },
+                {
+                  "id": "49116278-69df-4a33-b1e7-c3e6fc1442c9",
+                  "name": "Invalid filter parameters",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/datastore?filter.datastores=<string>&filter.names=<string>&filter.types=NFS41&filter.folders=<string>&filter.datacenters=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "datastore"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of datastores to filter by",
+                          "key": "filter.datastores",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of datastores to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Types of datastores to filter by",
+                          "key": "filter.types",
+                          "value": "NFS41"
+                        },
+                        {
+                          "description": "Folders that must contain the datastores",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the datastores",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:27:58.000Z",
+                  "updatedAt": "2026-07-28T03:27:58.000Z",
+                  "uid": "35240-49116278-69df-4a33-b1e7-c3e6fc1442c9"
+                },
+                {
+                  "id": "3d6dddc2-b8ee-4c29-bb5c-c63991c54a27",
+                  "name": "Not authenticated",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/datastore?filter.datastores=<string>&filter.names=<string>&filter.types=NFS41&filter.folders=<string>&filter.datacenters=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "datastore"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of datastores to filter by",
+                          "key": "filter.datastores",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of datastores to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Types of datastores to filter by",
+                          "key": "filter.types",
+                          "value": "NFS41"
+                        },
+                        {
+                          "description": "Folders that must contain the datastores",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the datastores",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:27:58.000Z",
+                  "updatedAt": "2026-07-28T03:27:58.000Z",
+                  "uid": "35240-3d6dddc2-b8ee-4c29-bb5c-c63991c54a27"
+                },
+                {
+                  "id": "31176eb0-1c54-40d4-8581-1bde6bfd62f5",
+                  "name": "Insufficient privileges",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/datastore?filter.datastores=<string>&filter.names=<string>&filter.types=NFS41&filter.folders=<string>&filter.datacenters=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "datastore"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of datastores to filter by",
+                          "key": "filter.datastores",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of datastores to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Types of datastores to filter by",
+                          "key": "filter.types",
+                          "value": "NFS41"
+                        },
+                        {
+                          "description": "Folders that must contain the datastores",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the datastores",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:27:58.000Z",
+                  "updatedAt": "2026-07-28T03:27:58.000Z",
+                  "uid": "35240-31176eb0-1c54-40d4-8581-1bde6bfd62f5"
+                }
+              ],
+              "createdAt": "2026-07-28T03:27:58.000Z",
+              "updatedAt": "2026-07-28T03:27:58.000Z",
+              "uid": "35240-ca17faf0-fc22-4fcc-aad7-fecd840d5f5b"
+            }
+          ],
+          "id": "eba8e656-ee8b-4aa1-a9ab-1b65c1b7fbfb",
+          "createdAt": "2026-07-28T03:27:58.000Z",
+          "updatedAt": "2026-07-28T03:27:58.000Z",
+          "uid": "35240-eba8e656-ee8b-4aa1-a9ab-1b65c1b7fbfb"
+        }
+      ],
+      "id": "16889b04-cff4-41c0-a7e6-a7df40e9b9cc",
+      "createdAt": "2026-07-28T03:27:58.000Z",
+      "updatedAt": "2026-07-28T03:27:58.000Z",
+      "uid": "35240-16889b04-cff4-41c0-a7e6-a7df40e9b9cc"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

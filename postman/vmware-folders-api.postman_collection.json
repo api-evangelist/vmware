@@ -1,0 +1,272 @@
+{
+  "info": {
+    "_postman_id": "8b6df53f-46eb-4fc8-a1e2-81a93a037dfe",
+    "name": "VMware vSphere Automation REST Clusters Folders API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:27:58.000Z",
+    "updatedAt": "2026-07-28T03:27:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8b6df53f-46eb-4fc8-a1e2-81a93a037dfe"
+  },
+  "item": [
+    {
+      "name": "vcenter",
+      "item": [
+        {
+          "name": "folder",
+          "item": [
+            {
+              "name": "Vmware List Folders",
+              "id": "6d36283b-81e0-4f33-b101-4f4b8137549e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/vcenter/folder?filter.folders=<string>&filter.folders=<string>&filter.names=<string>&filter.names=<string>&filter.type=DATACENTER&filter.parent_folders=<string>&filter.parent_folders=<string>&filter.datacenters=<string>&filter.datacenters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vcenter",
+                    "folder"
+                  ],
+                  "query": [
+                    {
+                      "description": "Identifiers of folders to filter by",
+                      "key": "filter.folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Identifiers of folders to filter by",
+                      "key": "filter.folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of folders to filter by",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of folders to filter by",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Type of folder to filter by",
+                      "key": "filter.type",
+                      "value": "DATACENTER"
+                    },
+                    {
+                      "description": "Parent folders to filter by",
+                      "key": "filter.parent_folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Parent folders to filter by",
+                      "key": "filter.parent_folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Datacenters that must contain the folders",
+                      "key": "filter.datacenters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Datacenters that must contain the folders",
+                      "key": "filter.datacenters",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of folders in the vCenter inventory matching the specified filter criteria."
+              },
+              "response": [
+                {
+                  "id": "6b33b081-d5ea-4083-917f-489e77928393",
+                  "name": "List of folders",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/folder?filter.folders=<string>&filter.names=<string>&filter.type=DATACENTER&filter.parent_folders=<string>&filter.datacenters=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "folder"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of folders to filter by",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of folders to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Type of folder to filter by",
+                          "key": "filter.type",
+                          "value": "DATACENTER"
+                        },
+                        {
+                          "description": "Parent folders to filter by",
+                          "key": "filter.parent_folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the folders",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"folder\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"NETWORK\"\n  },\n  {\n    \"folder\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"DATACENTER\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:27:59.000Z",
+                  "updatedAt": "2026-07-28T03:27:59.000Z",
+                  "uid": "35240-6b33b081-d5ea-4083-917f-489e77928393"
+                },
+                {
+                  "id": "2505e9c6-ba76-4614-9f98-99c0c1099c0d",
+                  "name": "Not authenticated",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/folder?filter.folders=<string>&filter.names=<string>&filter.type=DATACENTER&filter.parent_folders=<string>&filter.datacenters=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "folder"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of folders to filter by",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of folders to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Type of folder to filter by",
+                          "key": "filter.type",
+                          "value": "DATACENTER"
+                        },
+                        {
+                          "description": "Parent folders to filter by",
+                          "key": "filter.parent_folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the folders",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:27:59.000Z",
+                  "updatedAt": "2026-07-28T03:27:59.000Z",
+                  "uid": "35240-2505e9c6-ba76-4614-9f98-99c0c1099c0d"
+                }
+              ],
+              "createdAt": "2026-07-28T03:27:59.000Z",
+              "updatedAt": "2026-07-28T03:27:59.000Z",
+              "uid": "35240-6d36283b-81e0-4f33-b101-4f4b8137549e"
+            }
+          ],
+          "id": "9f29079c-1e32-44af-98a7-e95b00eea50e",
+          "createdAt": "2026-07-28T03:27:59.000Z",
+          "updatedAt": "2026-07-28T03:27:59.000Z",
+          "uid": "35240-9f29079c-1e32-44af-98a7-e95b00eea50e"
+        }
+      ],
+      "id": "ef50abc8-6a4e-4a30-809d-f6a1e5a9e0b9",
+      "createdAt": "2026-07-28T03:27:59.000Z",
+      "updatedAt": "2026-07-28T03:27:59.000Z",
+      "uid": "35240-ef50abc8-6a4e-4a30-809d-f6a1e5a9e0b9"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

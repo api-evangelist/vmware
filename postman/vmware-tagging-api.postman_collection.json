@@ -1,0 +1,915 @@
+{
+  "info": {
+    "_postman_id": "3c23f656-df03-4f68-9253-4bb7c611c26a",
+    "name": "VMware vSphere Automation REST Clusters Tagging API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:28:14.000Z",
+    "updatedAt": "2026-07-28T03:28:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3c23f656-df03-4f68-9253-4bb7c611c26a"
+  },
+  "item": [
+    {
+      "name": "cis",
+      "item": [
+        {
+          "name": "tagging",
+          "item": [
+            {
+              "name": "category",
+              "item": [
+                {
+                  "name": "Vmware List Tag Categories",
+                  "id": "28a0753e-05d0-4669-ab63-c7cd49b175ad",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cis/tagging/category",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cis",
+                        "tagging",
+                        "category"
+                      ]
+                    },
+                    "description": "Returns all tag category identifiers in the system."
+                  },
+                  "response": [
+                    {
+                      "id": "073a3938-fa2c-42c5-8eaf-6f2a89227c71",
+                      "name": "List of tag category identifiers",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/category",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "category"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-073a3938-fa2c-42c5-8eaf-6f2a89227c71"
+                    },
+                    {
+                      "id": "3121e6c6-5510-4951-aa6f-a408045ac80c",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/category",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "category"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-3121e6c6-5510-4951-aa6f-a408045ac80c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:15.000Z",
+                  "updatedAt": "2026-07-28T03:28:15.000Z",
+                  "uid": "35240-28a0753e-05d0-4669-ab63-c7cd49b175ad"
+                },
+                {
+                  "name": "Vmware Create a Tag Category",
+                  "id": "a3013a04-4609-4e42-901b-9a5109ce3724",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"cardinality\": \"SINGLE\",\n  \"description\": \"<string>\",\n  \"associable_types\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cis/tagging/category",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cis",
+                        "tagging",
+                        "category"
+                      ]
+                    },
+                    "description": "Creates a new tag category used to group related tags."
+                  },
+                  "response": [
+                    {
+                      "id": "36cd134c-4e13-47c2-8fac-9f0b6d915c07",
+                      "name": "Tag category created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"cardinality\": \"SINGLE\",\n  \"description\": \"<string>\",\n  \"associable_types\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/category",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "category"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-36cd134c-4e13-47c2-8fac-9f0b6d915c07"
+                    },
+                    {
+                      "id": "c0d69096-ae50-4107-a887-cf92c1d434dc",
+                      "name": "Invalid specification",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"cardinality\": \"SINGLE\",\n  \"description\": \"<string>\",\n  \"associable_types\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/category",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "category"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-c0d69096-ae50-4107-a887-cf92c1d434dc"
+                    },
+                    {
+                      "id": "d328c608-2973-4b42-bbab-b2033db6c88a",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"cardinality\": \"SINGLE\",\n  \"description\": \"<string>\",\n  \"associable_types\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/category",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "category"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-d328c608-2973-4b42-bbab-b2033db6c88a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:15.000Z",
+                  "updatedAt": "2026-07-28T03:28:15.000Z",
+                  "uid": "35240-a3013a04-4609-4e42-901b-9a5109ce3724"
+                }
+              ],
+              "id": "7f17fc06-d6ba-4bdb-b691-445fb28b2260",
+              "createdAt": "2026-07-28T03:28:15.000Z",
+              "updatedAt": "2026-07-28T03:28:15.000Z",
+              "uid": "35240-7f17fc06-d6ba-4bdb-b691-445fb28b2260"
+            },
+            {
+              "name": "tag",
+              "item": [
+                {
+                  "name": "Vmware List Tags",
+                  "id": "b9cd8163-633a-44d1-9fb8-b88e1013c895",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cis/tagging/tag",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cis",
+                        "tagging",
+                        "tag"
+                      ]
+                    },
+                    "description": "Returns all tag identifiers in the system."
+                  },
+                  "response": [
+                    {
+                      "id": "1d80198a-53b8-496e-8ac1-ff6a2095e1c6",
+                      "name": "List of tag identifiers",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/tag",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "tag"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-1d80198a-53b8-496e-8ac1-ff6a2095e1c6"
+                    },
+                    {
+                      "id": "a77f46a5-dd04-4cb8-ad6b-61367c0c4b33",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/tag",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "tag"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-a77f46a5-dd04-4cb8-ad6b-61367c0c4b33"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:15.000Z",
+                  "updatedAt": "2026-07-28T03:28:15.000Z",
+                  "uid": "35240-b9cd8163-633a-44d1-9fb8-b88e1013c895"
+                },
+                {
+                  "name": "Vmware Create a Tag",
+                  "id": "01697834-34da-4c0b-9098-76349c2f3684",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"category_id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cis/tagging/tag",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cis",
+                        "tagging",
+                        "tag"
+                      ]
+                    },
+                    "description": "Creates a new tag within a specified category."
+                  },
+                  "response": [
+                    {
+                      "id": "9126ea85-2650-4d49-8608-f98781d3bbf3",
+                      "name": "Tag created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"category_id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/tag",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "tag"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-9126ea85-2650-4d49-8608-f98781d3bbf3"
+                    },
+                    {
+                      "id": "0b0553db-dfb3-47ae-a689-f551cf566f10",
+                      "name": "Invalid specification",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"category_id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/tag",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "tag"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-0b0553db-dfb3-47ae-a689-f551cf566f10"
+                    },
+                    {
+                      "id": "8e096d50-9d01-4ff4-9265-a532886e0d8a",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"category_id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/tag",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "tag"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-8e096d50-9d01-4ff4-9265-a532886e0d8a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:15.000Z",
+                  "updatedAt": "2026-07-28T03:28:15.000Z",
+                  "uid": "35240-01697834-34da-4c0b-9098-76349c2f3684"
+                }
+              ],
+              "id": "486a4976-baf4-4090-b856-54ab5dc88aa1",
+              "createdAt": "2026-07-28T03:28:15.000Z",
+              "updatedAt": "2026-07-28T03:28:15.000Z",
+              "uid": "35240-486a4976-baf4-4090-b856-54ab5dc88aa1"
+            },
+            {
+              "name": "tag-association?action=attach",
+              "item": [
+                {
+                  "name": "Vmware Attach a Tag to an Object",
+                  "id": "6337c006-0eb4-4702-ba07-6c2a0705dbe6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tag_id\": \"<string>\",\n  \"object_id\": {\n    \"type\": \"<string>\",\n    \"id\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cis/tagging/tag-association?action=attach",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cis",
+                        "tagging",
+                        "tag-association"
+                      ],
+                      "query": [
+                        {
+                          "key": "action",
+                          "value": "attach"
+                        }
+                      ]
+                    },
+                    "description": "Attaches a tag to a vSphere managed object such as a VM, host, datastore, or cluster."
+                  },
+                  "response": [
+                    {
+                      "id": "0dfbba8d-b42c-465d-83ce-56359109eec3",
+                      "name": "Tag attached successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tag_id\": \"<string>\",\n  \"object_id\": {\n    \"type\": \"<string>\",\n    \"id\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/tag-association",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "tag-association"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-0dfbba8d-b42c-465d-83ce-56359109eec3"
+                    },
+                    {
+                      "id": "c686bfbd-7d3d-488a-8528-580eab7d741f",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tag_id\": \"<string>\",\n  \"object_id\": {\n    \"type\": \"<string>\",\n    \"id\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/tag-association",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "tag-association"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-c686bfbd-7d3d-488a-8528-580eab7d741f"
+                    },
+                    {
+                      "id": "859642e0-d73f-468a-afc5-fe8750c1b18d",
+                      "name": "Tag or object not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tag_id\": \"<string>\",\n  \"object_id\": {\n    \"type\": \"<string>\",\n    \"id\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/cis/tagging/tag-association",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cis",
+                            "tagging",
+                            "tag-association"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:15.000Z",
+                      "updatedAt": "2026-07-28T03:28:15.000Z",
+                      "uid": "35240-859642e0-d73f-468a-afc5-fe8750c1b18d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:15.000Z",
+                  "updatedAt": "2026-07-28T03:28:15.000Z",
+                  "uid": "35240-6337c006-0eb4-4702-ba07-6c2a0705dbe6"
+                }
+              ],
+              "id": "a52e9582-acb5-441b-a1e4-fa0a33d8b95d",
+              "createdAt": "2026-07-28T03:28:15.000Z",
+              "updatedAt": "2026-07-28T03:28:15.000Z",
+              "uid": "35240-a52e9582-acb5-441b-a1e4-fa0a33d8b95d"
+            }
+          ],
+          "id": "6577499a-b66f-45b7-8e6d-25614e23f85b",
+          "createdAt": "2026-07-28T03:28:15.000Z",
+          "updatedAt": "2026-07-28T03:28:15.000Z",
+          "uid": "35240-6577499a-b66f-45b7-8e6d-25614e23f85b"
+        }
+      ],
+      "id": "1ab2afc2-d554-4aaf-994f-f8ee00b06da7",
+      "createdAt": "2026-07-28T03:28:15.000Z",
+      "updatedAt": "2026-07-28T03:28:15.000Z",
+      "uid": "35240-1ab2afc2-d554-4aaf-994f-f8ee00b06da7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

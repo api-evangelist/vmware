@@ -1,0 +1,338 @@
+{
+  "info": {
+    "_postman_id": "7078534f-f4f9-41f7-a7f5-a24838e7c63f",
+    "name": "VMware vSphere Automation REST Clusters Networks API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:28:00.000Z",
+    "updatedAt": "2026-07-28T03:28:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7078534f-f4f9-41f7-a7f5-a24838e7c63f"
+  },
+  "item": [
+    {
+      "name": "vcenter",
+      "item": [
+        {
+          "name": "network",
+          "item": [
+            {
+              "name": "Vmware List Networks",
+              "id": "864a4e54-c1c7-4af8-a8c8-cd70bdf683fe",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/vcenter/network?filter.networks=<string>&filter.networks=<string>&filter.names=<string>&filter.names=<string>&filter.types=OPAQUE_NETWORK&filter.types=DISTRIBUTED_PORTGROUP&filter.datacenters=<string>&filter.datacenters=<string>&filter.folders=<string>&filter.folders=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vcenter",
+                    "network"
+                  ],
+                  "query": [
+                    {
+                      "description": "Identifiers of networks to filter by",
+                      "key": "filter.networks",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Identifiers of networks to filter by",
+                      "key": "filter.networks",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of networks to filter by",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of networks to filter by",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Types of networks to filter by",
+                      "key": "filter.types",
+                      "value": "OPAQUE_NETWORK"
+                    },
+                    {
+                      "description": "Types of networks to filter by",
+                      "key": "filter.types",
+                      "value": "DISTRIBUTED_PORTGROUP"
+                    },
+                    {
+                      "description": "Datacenters that must contain the networks",
+                      "key": "filter.datacenters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Datacenters that must contain the networks",
+                      "key": "filter.datacenters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Folders that must contain the networks",
+                      "key": "filter.folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Folders that must contain the networks",
+                      "key": "filter.folders",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of networks in the vCenter inventory matching the specified filter criteria, including standard port groups, distributed port groups, and NSX logical switches."
+              },
+              "response": [
+                {
+                  "id": "67dbc651-3eef-4047-99fd-b7b1999c98b6",
+                  "name": "List of networks matching the filter",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/network?filter.networks=<string>&filter.names=<string>&filter.types=DISTRIBUTED_PORTGROUP&filter.datacenters=<string>&filter.folders=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "network"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of networks to filter by",
+                          "key": "filter.networks",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of networks to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Types of networks to filter by",
+                          "key": "filter.types",
+                          "value": "DISTRIBUTED_PORTGROUP"
+                        },
+                        {
+                          "description": "Datacenters that must contain the networks",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the networks",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"network\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"DISTRIBUTED_PORTGROUP\"\n  },\n  {\n    \"network\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"DISTRIBUTED_PORTGROUP\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:28:01.000Z",
+                  "updatedAt": "2026-07-28T03:28:01.000Z",
+                  "uid": "35240-67dbc651-3eef-4047-99fd-b7b1999c98b6"
+                },
+                {
+                  "id": "f1490608-19ff-4fd2-9321-e3b5e2fb5cbd",
+                  "name": "Invalid filter parameters",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/network?filter.networks=<string>&filter.names=<string>&filter.types=DISTRIBUTED_PORTGROUP&filter.datacenters=<string>&filter.folders=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "network"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of networks to filter by",
+                          "key": "filter.networks",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of networks to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Types of networks to filter by",
+                          "key": "filter.types",
+                          "value": "DISTRIBUTED_PORTGROUP"
+                        },
+                        {
+                          "description": "Datacenters that must contain the networks",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the networks",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:01.000Z",
+                  "updatedAt": "2026-07-28T03:28:01.000Z",
+                  "uid": "35240-f1490608-19ff-4fd2-9321-e3b5e2fb5cbd"
+                },
+                {
+                  "id": "427f090d-844d-4998-819f-f7df02045755",
+                  "name": "Not authenticated",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/network?filter.networks=<string>&filter.names=<string>&filter.types=DISTRIBUTED_PORTGROUP&filter.datacenters=<string>&filter.folders=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "network"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of networks to filter by",
+                          "key": "filter.networks",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of networks to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Types of networks to filter by",
+                          "key": "filter.types",
+                          "value": "DISTRIBUTED_PORTGROUP"
+                        },
+                        {
+                          "description": "Datacenters that must contain the networks",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the networks",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:01.000Z",
+                  "updatedAt": "2026-07-28T03:28:01.000Z",
+                  "uid": "35240-427f090d-844d-4998-819f-f7df02045755"
+                }
+              ],
+              "createdAt": "2026-07-28T03:28:01.000Z",
+              "updatedAt": "2026-07-28T03:28:01.000Z",
+              "uid": "35240-864a4e54-c1c7-4af8-a8c8-cd70bdf683fe"
+            }
+          ],
+          "id": "3db74564-023f-4ad7-bba9-88810660d644",
+          "createdAt": "2026-07-28T03:28:01.000Z",
+          "updatedAt": "2026-07-28T03:28:01.000Z",
+          "uid": "35240-3db74564-023f-4ad7-bba9-88810660d644"
+        }
+      ],
+      "id": "629089c0-1fde-48de-b7e0-c023bd9585b1",
+      "createdAt": "2026-07-28T03:28:01.000Z",
+      "updatedAt": "2026-07-28T03:28:01.000Z",
+      "uid": "35240-629089c0-1fde-48de-b7e0-c023bd9585b1"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

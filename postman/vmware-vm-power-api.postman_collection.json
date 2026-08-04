@@ -1,0 +1,1118 @@
+{
+  "info": {
+    "_postman_id": "e79595a1-9437-46c0-92d8-e49db2e9e6aa",
+    "name": "VMware vSphere Automation REST Clusters VM Power API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:28:35.000Z",
+    "updatedAt": "2026-07-28T03:28:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e79595a1-9437-46c0-92d8-e49db2e9e6aa"
+  },
+  "item": [
+    {
+      "name": "vcenter",
+      "item": [
+        {
+          "name": "vm",
+          "item": [
+            {
+              "name": "{vm}",
+              "item": [
+                {
+                  "name": "power",
+                  "item": [
+                    {
+                      "name": "Vmware Get Vm Power State",
+                      "id": "89e59352-1153-4974-86f5-5d2c9fe5a245",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm",
+                            "power"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8b6df208-77eb-4323-9adc-d9c1576cdd3a",
+                              "key": "vm",
+                              "value": "<string>",
+                              "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                            }
+                          ]
+                        },
+                        "description": "Returns the current power state of the specified virtual machine."
+                      },
+                      "response": [
+                        {
+                          "id": "5f9e97ff-2295-4b27-8f32-af83f3c923d3",
+                          "name": "Current power state",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"state\": \"SUSPENDED\",\n  \"clean_power_off\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-5f9e97ff-2295-4b27-8f32-af83f3c923d3"
+                        },
+                        {
+                          "id": "58638ac9-8355-47c2-a742-bb18b99c21fb",
+                          "name": "Not authenticated",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-58638ac9-8355-47c2-a742-bb18b99c21fb"
+                        },
+                        {
+                          "id": "86192535-c882-4a40-92f4-635e90077313",
+                          "name": "Virtual machine not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-86192535-c882-4a40-92f4-635e90077313"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:35.000Z",
+                      "updatedAt": "2026-07-28T03:28:35.000Z",
+                      "uid": "35240-89e59352-1153-4974-86f5-5d2c9fe5a245"
+                    }
+                  ],
+                  "id": "26a436da-0db3-4898-9c83-657ca39b1d9b",
+                  "createdAt": "2026-07-28T03:28:35.000Z",
+                  "updatedAt": "2026-07-28T03:28:35.000Z",
+                  "uid": "35240-26a436da-0db3-4898-9c83-657ca39b1d9b"
+                },
+                {
+                  "name": "power?action=start",
+                  "item": [
+                    {
+                      "name": "Vmware Power on a Virtual Machine",
+                      "id": "11603705-7ca8-4c48-bef8-9668271e71ad",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm/power?action=start",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm",
+                            "power"
+                          ],
+                          "query": [
+                            {
+                              "key": "action",
+                              "value": "start"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "f851d78e-b0a4-4e4a-bd7a-1b4381e9cbca",
+                              "key": "vm",
+                              "value": "<string>",
+                              "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                            }
+                          ]
+                        },
+                        "description": "Powers on the specified virtual machine. The VM must be in a powered-off or suspended state."
+                      },
+                      "response": [
+                        {
+                          "id": "8a0b73f2-9734-47ee-8cf1-b92ad7f0be4a",
+                          "name": "Power on initiated successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-8a0b73f2-9734-47ee-8cf1-b92ad7f0be4a"
+                        },
+                        {
+                          "id": "ab848446-c822-4870-aab0-333980c99428",
+                          "name": "VM is already powered on",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-ab848446-c822-4870-aab0-333980c99428"
+                        },
+                        {
+                          "id": "09ee3b37-7a0e-42bf-9918-c0ce76f19f74",
+                          "name": "Not authenticated",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-09ee3b37-7a0e-42bf-9918-c0ce76f19f74"
+                        },
+                        {
+                          "id": "8f06f482-fbb0-409d-a4ca-32b97efa1481",
+                          "name": "Virtual machine not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-8f06f482-fbb0-409d-a4ca-32b97efa1481"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:35.000Z",
+                      "updatedAt": "2026-07-28T03:28:35.000Z",
+                      "uid": "35240-11603705-7ca8-4c48-bef8-9668271e71ad"
+                    }
+                  ],
+                  "id": "7b54063d-7aef-4cdc-9963-483262a14137",
+                  "createdAt": "2026-07-28T03:28:35.000Z",
+                  "updatedAt": "2026-07-28T03:28:35.000Z",
+                  "uid": "35240-7b54063d-7aef-4cdc-9963-483262a14137"
+                },
+                {
+                  "name": "power?action=stop",
+                  "item": [
+                    {
+                      "name": "Vmware Power Off a Virtual Machine",
+                      "id": "2425b912-9a3a-40c4-9135-1a09dec65f25",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm/power?action=stop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm",
+                            "power"
+                          ],
+                          "query": [
+                            {
+                              "key": "action",
+                              "value": "stop"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "2c3bbd69-234d-4d65-acda-4e646be13186",
+                              "key": "vm",
+                              "value": "<string>",
+                              "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                            }
+                          ]
+                        },
+                        "description": "Powers off the specified virtual machine immediately. This is equivalent to pulling the power cord and does not perform a graceful guest OS shutdown. Use the guest shutdown operation for a clean shutdown."
+                      },
+                      "response": [
+                        {
+                          "id": "146c2f56-ada3-4591-88da-ba5a99360c46",
+                          "name": "Power off initiated successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-146c2f56-ada3-4591-88da-ba5a99360c46"
+                        },
+                        {
+                          "id": "b543af64-fd79-47e5-b3de-957274bb5831",
+                          "name": "VM is already powered off",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-b543af64-fd79-47e5-b3de-957274bb5831"
+                        },
+                        {
+                          "id": "3367f05d-4eb6-432a-85c6-bbadcbb7b657",
+                          "name": "Not authenticated",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-3367f05d-4eb6-432a-85c6-bbadcbb7b657"
+                        },
+                        {
+                          "id": "d3b8ef4a-7cff-4051-b8f5-c59e1bbdc332",
+                          "name": "Virtual machine not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-d3b8ef4a-7cff-4051-b8f5-c59e1bbdc332"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:35.000Z",
+                      "updatedAt": "2026-07-28T03:28:35.000Z",
+                      "uid": "35240-2425b912-9a3a-40c4-9135-1a09dec65f25"
+                    }
+                  ],
+                  "id": "be555cdb-88a3-4901-9277-04987acc4385",
+                  "createdAt": "2026-07-28T03:28:35.000Z",
+                  "updatedAt": "2026-07-28T03:28:35.000Z",
+                  "uid": "35240-be555cdb-88a3-4901-9277-04987acc4385"
+                },
+                {
+                  "name": "power?action=suspend",
+                  "item": [
+                    {
+                      "name": "Vmware Suspend a Virtual Machine",
+                      "id": "5b0e85f5-98e9-468c-82de-3a58f053779c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm/power?action=suspend",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm",
+                            "power"
+                          ],
+                          "query": [
+                            {
+                              "key": "action",
+                              "value": "suspend"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "3d6460aa-5c54-4b49-b87a-a36599f5e4b7",
+                              "key": "vm",
+                              "value": "<string>",
+                              "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                            }
+                          ]
+                        },
+                        "description": "Suspends the specified virtual machine, saving its current state to disk. The VM can be resumed later from the suspended state."
+                      },
+                      "response": [
+                        {
+                          "id": "0e1acdeb-45d2-4178-b0d6-c37074572dff",
+                          "name": "Suspend initiated successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-0e1acdeb-45d2-4178-b0d6-c37074572dff"
+                        },
+                        {
+                          "id": "d1e3198a-043e-401c-84f9-98f84d2167f1",
+                          "name": "VM is not in a powered-on state",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-d1e3198a-043e-401c-84f9-98f84d2167f1"
+                        },
+                        {
+                          "id": "0c3d8511-26ba-4463-88d9-53a33fceb375",
+                          "name": "Not authenticated",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-0c3d8511-26ba-4463-88d9-53a33fceb375"
+                        },
+                        {
+                          "id": "55c2f4f7-4e64-41cf-804b-4b3b69ab325f",
+                          "name": "Virtual machine not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-55c2f4f7-4e64-41cf-804b-4b3b69ab325f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:35.000Z",
+                      "updatedAt": "2026-07-28T03:28:35.000Z",
+                      "uid": "35240-5b0e85f5-98e9-468c-82de-3a58f053779c"
+                    }
+                  ],
+                  "id": "5e31b8dc-573b-4510-9e93-673a2213a959",
+                  "createdAt": "2026-07-28T03:28:35.000Z",
+                  "updatedAt": "2026-07-28T03:28:35.000Z",
+                  "uid": "35240-5e31b8dc-573b-4510-9e93-673a2213a959"
+                },
+                {
+                  "name": "power?action=reset",
+                  "item": [
+                    {
+                      "name": "Vmware Reset a Virtual Machine",
+                      "id": "e8d0f1d2-b1c9-45ec-808f-e60f779585dc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm/power?action=reset",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm",
+                            "power"
+                          ],
+                          "query": [
+                            {
+                              "key": "action",
+                              "value": "reset"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "41397c16-4d9f-40d0-b95d-ec2474ee1099",
+                              "key": "vm",
+                              "value": "<string>",
+                              "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                            }
+                          ]
+                        },
+                        "description": "Resets the specified virtual machine. This is equivalent to pressing the reset button and does not perform a graceful guest OS reboot."
+                      },
+                      "response": [
+                        {
+                          "id": "b9d46be6-90b7-4983-b3ff-d70d4054ded3",
+                          "name": "Reset initiated successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-b9d46be6-90b7-4983-b3ff-d70d4054ded3"
+                        },
+                        {
+                          "id": "9aa50347-347b-4ecb-816d-50ad0d96a7a4",
+                          "name": "VM is not in a powered-on state",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-9aa50347-347b-4ecb-816d-50ad0d96a7a4"
+                        },
+                        {
+                          "id": "31d2a205-0b9b-4d65-89fa-b95984ae0ff4",
+                          "name": "Not authenticated",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-31d2a205-0b9b-4d65-89fa-b95984ae0ff4"
+                        },
+                        {
+                          "id": "4f97db3b-6f61-47c5-996e-335e42743424",
+                          "name": "Virtual machine not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "power"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:35.000Z",
+                          "updatedAt": "2026-07-28T03:28:35.000Z",
+                          "uid": "35240-4f97db3b-6f61-47c5-996e-335e42743424"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:35.000Z",
+                      "updatedAt": "2026-07-28T03:28:35.000Z",
+                      "uid": "35240-e8d0f1d2-b1c9-45ec-808f-e60f779585dc"
+                    }
+                  ],
+                  "id": "76086015-322a-4b65-8e2b-4001eaccf428",
+                  "createdAt": "2026-07-28T03:28:35.000Z",
+                  "updatedAt": "2026-07-28T03:28:35.000Z",
+                  "uid": "35240-76086015-322a-4b65-8e2b-4001eaccf428"
+                }
+              ],
+              "id": "68a4dc76-6664-4456-a27f-95f8bf7f4529",
+              "createdAt": "2026-07-28T03:28:35.000Z",
+              "updatedAt": "2026-07-28T03:28:35.000Z",
+              "uid": "35240-68a4dc76-6664-4456-a27f-95f8bf7f4529"
+            }
+          ],
+          "id": "79ac7043-08d5-4cda-adc1-4bb1e1c5f66e",
+          "createdAt": "2026-07-28T03:28:35.000Z",
+          "updatedAt": "2026-07-28T03:28:35.000Z",
+          "uid": "35240-79ac7043-08d5-4cda-adc1-4bb1e1c5f66e"
+        }
+      ],
+      "id": "3cc7ebf7-9f08-4e24-bc78-6bb9069be334",
+      "createdAt": "2026-07-28T03:28:35.000Z",
+      "updatedAt": "2026-07-28T03:28:35.000Z",
+      "uid": "35240-3cc7ebf7-9f08-4e24-bc78-6bb9069be334"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

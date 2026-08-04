@@ -1,0 +1,705 @@
+{
+  "info": {
+    "_postman_id": "3bb17a54-904a-4cbe-94dc-a222cdfbf4a7",
+    "name": "VMware vSphere Automation REST Clusters Content Library API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:27:54.000Z",
+    "updatedAt": "2026-07-28T03:27:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3bb17a54-904a-4cbe-94dc-a222cdfbf4a7"
+  },
+  "item": [
+    {
+      "name": "content",
+      "item": [
+        {
+          "name": "library",
+          "item": [
+            {
+              "name": "{library_id}",
+              "item": [
+                {
+                  "name": "Vmware Get Content Library Details",
+                  "id": "2f9b51a3-4f64-4ce8-bce8-528bb2ba5a3b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/content/library/:library_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "content",
+                        "library",
+                        ":library_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0c686992-2672-4695-9a05-8afa2a62ca71",
+                          "key": "library_id",
+                          "value": "<string>",
+                          "description": "(Required) Identifier of the content library"
+                        }
+                      ]
+                    },
+                    "description": "Returns detailed information about the specified content library."
+                  },
+                  "response": [
+                    {
+                      "id": "e205eca0-8faa-4e10-b23d-e7788b85b801",
+                      "name": "Content library details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/content/library/:library_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "content",
+                            "library",
+                            ":library_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "library_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"SUBSCRIBED\",\n  \"creation_time\": \"<dateTime>\",\n  \"last_modified_time\": \"<dateTime>\",\n  \"last_sync_time\": \"<dateTime>\",\n  \"storage_backings\": [\n    {\n      \"type\": \"<string>\",\n      \"datastore_id\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"datastore_id\": \"<string>\"\n    }\n  ],\n  \"version\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:27:54.000Z",
+                      "updatedAt": "2026-07-28T03:27:54.000Z",
+                      "uid": "35240-e205eca0-8faa-4e10-b23d-e7788b85b801"
+                    },
+                    {
+                      "id": "1258435d-cc5f-47b1-9f44-49f98b7c4b03",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/content/library/:library_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "content",
+                            "library",
+                            ":library_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "library_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:27:54.000Z",
+                      "updatedAt": "2026-07-28T03:27:54.000Z",
+                      "uid": "35240-1258435d-cc5f-47b1-9f44-49f98b7c4b03"
+                    },
+                    {
+                      "id": "3d8861fc-ef6a-4061-bcd9-5faffeca653b",
+                      "name": "Content library not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/content/library/:library_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "content",
+                            "library",
+                            ":library_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "library_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:27:54.000Z",
+                      "updatedAt": "2026-07-28T03:27:54.000Z",
+                      "uid": "35240-3d8861fc-ef6a-4061-bcd9-5faffeca653b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:27:54.000Z",
+                  "updatedAt": "2026-07-28T03:27:54.000Z",
+                  "uid": "35240-2f9b51a3-4f64-4ce8-bce8-528bb2ba5a3b"
+                },
+                {
+                  "name": "Vmware Delete a Content Library",
+                  "id": "9799a3c0-db2e-45cf-8c92-382434550fc4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/content/library/:library_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "content",
+                        "library",
+                        ":library_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d4d77171-94bc-4a48-8077-ad196cbb9c73",
+                          "key": "library_id",
+                          "value": "<string>",
+                          "description": "(Required) Identifier of the content library"
+                        }
+                      ]
+                    },
+                    "description": "Deletes the specified content library and all of its items."
+                  },
+                  "response": [
+                    {
+                      "id": "fd3dcf2f-74bf-4c55-9b9b-dbb49787a029",
+                      "name": "Content library deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/content/library/:library_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "content",
+                            "library",
+                            ":library_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "library_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:27:54.000Z",
+                      "updatedAt": "2026-07-28T03:27:54.000Z",
+                      "uid": "35240-fd3dcf2f-74bf-4c55-9b9b-dbb49787a029"
+                    },
+                    {
+                      "id": "fe22e013-1793-47e9-96cb-dc5feb5b842b",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/content/library/:library_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "content",
+                            "library",
+                            ":library_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "library_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:27:54.000Z",
+                      "updatedAt": "2026-07-28T03:27:54.000Z",
+                      "uid": "35240-fe22e013-1793-47e9-96cb-dc5feb5b842b"
+                    },
+                    {
+                      "id": "9a0bd9b4-60b7-4c7a-a628-80d2a49b26d4",
+                      "name": "Content library not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/content/library/:library_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "content",
+                            "library",
+                            ":library_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "library_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:27:54.000Z",
+                      "updatedAt": "2026-07-28T03:27:54.000Z",
+                      "uid": "35240-9a0bd9b4-60b7-4c7a-a628-80d2a49b26d4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:27:54.000Z",
+                  "updatedAt": "2026-07-28T03:27:54.000Z",
+                  "uid": "35240-9799a3c0-db2e-45cf-8c92-382434550fc4"
+                }
+              ],
+              "id": "341e57a2-2ccf-4886-91c9-9cf83f98ba9d",
+              "createdAt": "2026-07-28T03:27:54.000Z",
+              "updatedAt": "2026-07-28T03:27:54.000Z",
+              "uid": "35240-341e57a2-2ccf-4886-91c9-9cf83f98ba9d"
+            },
+            {
+              "name": "Vmware List Content Libraries",
+              "id": "863f107d-7826-4b59-a7ef-73c80e22d599",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/content/library",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "content",
+                    "library"
+                  ]
+                },
+                "description": "Returns a list of all content library identifiers in the vCenter inventory."
+              },
+              "response": [
+                {
+                  "id": "6b7a6520-1d27-4eb1-8cd5-a2d8f79aad45",
+                  "name": "List of content library identifiers",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/content/library",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "content",
+                        "library"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "createdAt": "2026-07-28T03:27:54.000Z",
+                  "updatedAt": "2026-07-28T03:27:54.000Z",
+                  "uid": "35240-6b7a6520-1d27-4eb1-8cd5-a2d8f79aad45"
+                },
+                {
+                  "id": "d884b3ee-d53f-4274-9243-686f4e02af55",
+                  "name": "Not authenticated",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/content/library",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "content",
+                        "library"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:27:54.000Z",
+                  "updatedAt": "2026-07-28T03:27:54.000Z",
+                  "uid": "35240-d884b3ee-d53f-4274-9243-686f4e02af55"
+                }
+              ],
+              "createdAt": "2026-07-28T03:27:54.000Z",
+              "updatedAt": "2026-07-28T03:27:54.000Z",
+              "uid": "35240-863f107d-7826-4b59-a7ef-73c80e22d599"
+            },
+            {
+              "name": "Vmware Create a Content Library",
+              "id": "6e8e4e09-6b2a-4dd9-bc0e-520d3730f6cf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"SUBSCRIBED\",\n  \"storage_backings\": [\n    {\n      \"type\": \"OTHER\",\n      \"datastore_id\": \"<string>\"\n    },\n    {\n      \"type\": \"DATASTORE\",\n      \"datastore_id\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/content/library",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "content",
+                    "library"
+                  ]
+                },
+                "description": "Creates a new local or subscribed content library for storing templates, ISOs, and OVF packages."
+              },
+              "response": [
+                {
+                  "id": "e0cbfc31-6869-4e5d-935d-1a8ff5720c94",
+                  "name": "Content library created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"SUBSCRIBED\",\n  \"storage_backings\": [\n    {\n      \"type\": \"OTHER\",\n      \"datastore_id\": \"<string>\"\n    },\n    {\n      \"type\": \"DATASTORE\",\n      \"datastore_id\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/content/library",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "content",
+                        "library"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T03:27:54.000Z",
+                  "updatedAt": "2026-07-28T03:27:54.000Z",
+                  "uid": "35240-e0cbfc31-6869-4e5d-935d-1a8ff5720c94"
+                },
+                {
+                  "id": "156fbe87-89ad-4fbc-9071-54b4d55f5c84",
+                  "name": "Invalid specification",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"SUBSCRIBED\",\n  \"storage_backings\": [\n    {\n      \"type\": \"OTHER\",\n      \"datastore_id\": \"<string>\"\n    },\n    {\n      \"type\": \"DATASTORE\",\n      \"datastore_id\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/content/library",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "content",
+                        "library"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:27:54.000Z",
+                  "updatedAt": "2026-07-28T03:27:54.000Z",
+                  "uid": "35240-156fbe87-89ad-4fbc-9071-54b4d55f5c84"
+                },
+                {
+                  "id": "a649fece-9ab4-4971-b27b-9b794f7e06ba",
+                  "name": "Not authenticated",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"SUBSCRIBED\",\n  \"storage_backings\": [\n    {\n      \"type\": \"OTHER\",\n      \"datastore_id\": \"<string>\"\n    },\n    {\n      \"type\": \"DATASTORE\",\n      \"datastore_id\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/content/library",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "content",
+                        "library"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:27:54.000Z",
+                  "updatedAt": "2026-07-28T03:27:54.000Z",
+                  "uid": "35240-a649fece-9ab4-4971-b27b-9b794f7e06ba"
+                }
+              ],
+              "createdAt": "2026-07-28T03:27:54.000Z",
+              "updatedAt": "2026-07-28T03:27:54.000Z",
+              "uid": "35240-6e8e4e09-6b2a-4dd9-bc0e-520d3730f6cf"
+            }
+          ],
+          "id": "748f8180-3165-49e2-abd4-57764e79cdce",
+          "createdAt": "2026-07-28T03:27:54.000Z",
+          "updatedAt": "2026-07-28T03:27:54.000Z",
+          "uid": "35240-748f8180-3165-49e2-abd4-57764e79cdce"
+        }
+      ],
+      "id": "6f3e427a-163c-489c-b9b7-828f41baac34",
+      "createdAt": "2026-07-28T03:27:54.000Z",
+      "updatedAt": "2026-07-28T03:27:54.000Z",
+      "uid": "35240-6f3e427a-163c-489c-b9b7-828f41baac34"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

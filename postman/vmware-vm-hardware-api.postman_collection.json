@@ -1,0 +1,2408 @@
+{
+  "info": {
+    "_postman_id": "8e210a4c-b162-4538-90a8-de06b512a96b",
+    "name": "VMware vSphere Automation REST Clusters VM Hardware API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:28:34.000Z",
+    "updatedAt": "2026-07-28T03:28:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8e210a4c-b162-4538-90a8-de06b512a96b"
+  },
+  "item": [
+    {
+      "name": "vcenter",
+      "item": [
+        {
+          "name": "vm",
+          "item": [
+            {
+              "name": "{vm}",
+              "item": [
+                {
+                  "name": "hardware",
+                  "item": [
+                    {
+                      "name": "cpu",
+                      "item": [
+                        {
+                          "name": "Vmware Get Vm Cpu Configuration",
+                          "id": "2fb6ca01-fa37-4b05-be2f-f9b8276ac909",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/cpu",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware",
+                                "cpu"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f146c6f4-e26e-43c2-bfb8-88a66f0b1bfb",
+                                  "key": "vm",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                                }
+                              ]
+                            },
+                            "description": "Returns the CPU configuration of the specified virtual machine."
+                          },
+                          "response": [
+                            {
+                              "id": "16791ffd-a689-46f3-a2dc-a5bd92542623",
+                              "name": "CPU configuration returned",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/cpu",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "cpu"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"cores_per_socket\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\",\n  \"hot_remove_enabled\": \"<boolean>\"\n}",
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-16791ffd-a689-46f3-a2dc-a5bd92542623"
+                            },
+                            {
+                              "id": "46633f49-77af-4312-89f0-334363c0fb8c",
+                              "name": "Not authenticated",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/cpu",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "cpu"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-46633f49-77af-4312-89f0-334363c0fb8c"
+                            },
+                            {
+                              "id": "9e0f85d5-c2f6-4d87-9c6c-a2060be48e7c",
+                              "name": "Virtual machine not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/cpu",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "cpu"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-9e0f85d5-c2f6-4d87-9c6c-a2060be48e7c"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-2fb6ca01-fa37-4b05-be2f-f9b8276ac909"
+                        },
+                        {
+                          "name": "Vmware Update Vm Cpu Configuration",
+                          "id": "d159fd36-5801-49c2-a486-db1558506457",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"count\": \"<integer>\",\n  \"cores_per_socket\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\",\n  \"hot_remove_enabled\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/cpu",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware",
+                                "cpu"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "75962eeb-9735-4b23-b90f-b3b6694e2f49",
+                                  "key": "vm",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                                }
+                              ]
+                            },
+                            "description": "Updates the CPU configuration. Hot-add of CPUs is supported if the VM and guest OS support it and the VM is powered on."
+                          },
+                          "response": [
+                            {
+                              "id": "06998e00-5d7d-430f-8ae2-341c9b1efb03",
+                              "name": "CPU configuration updated",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"count\": \"<integer>\",\n  \"cores_per_socket\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\",\n  \"hot_remove_enabled\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/cpu",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "cpu"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-06998e00-5d7d-430f-8ae2-341c9b1efb03"
+                            },
+                            {
+                              "id": "83bb0c80-2e15-44d7-9075-8458416c1d51",
+                              "name": "Invalid CPU specification",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"count\": \"<integer>\",\n  \"cores_per_socket\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\",\n  \"hot_remove_enabled\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/cpu",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "cpu"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-83bb0c80-2e15-44d7-9075-8458416c1d51"
+                            },
+                            {
+                              "id": "62cda298-105a-4ff0-991a-3b0004bc3257",
+                              "name": "Not authenticated",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"count\": \"<integer>\",\n  \"cores_per_socket\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\",\n  \"hot_remove_enabled\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/cpu",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "cpu"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-62cda298-105a-4ff0-991a-3b0004bc3257"
+                            },
+                            {
+                              "id": "2aa13083-6250-42b9-977e-937a73c560ab",
+                              "name": "Virtual machine not found",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"count\": \"<integer>\",\n  \"cores_per_socket\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\",\n  \"hot_remove_enabled\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/cpu",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "cpu"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-2aa13083-6250-42b9-977e-937a73c560ab"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-d159fd36-5801-49c2-a486-db1558506457"
+                        }
+                      ],
+                      "id": "35a7a6e2-d402-4512-a2eb-4eac0e17f774",
+                      "createdAt": "2026-07-28T03:28:34.000Z",
+                      "updatedAt": "2026-07-28T03:28:34.000Z",
+                      "uid": "35240-35a7a6e2-d402-4512-a2eb-4eac0e17f774"
+                    },
+                    {
+                      "name": "memory",
+                      "item": [
+                        {
+                          "name": "Vmware Get Vm Memory Configuration",
+                          "id": "08f3a605-1cec-4287-99cf-2d50d1147be0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/memory",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware",
+                                "memory"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "628f2048-f7f6-40fa-b272-e73c4d7060b3",
+                                  "key": "vm",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                                }
+                              ]
+                            },
+                            "description": "Returns the memory configuration of the specified virtual machine."
+                          },
+                          "response": [
+                            {
+                              "id": "66060bc2-e4e6-44d8-9441-840ff3765096",
+                              "name": "Memory configuration returned",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/memory",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "memory"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"size_MiB\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\",\n  \"hot_add_increment_size_MiB\": \"<integer>\",\n  \"hot_add_limit_MiB\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-66060bc2-e4e6-44d8-9441-840ff3765096"
+                            },
+                            {
+                              "id": "765481bd-6cc6-4cdc-abfa-e1c20a614287",
+                              "name": "Not authenticated",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/memory",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "memory"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-765481bd-6cc6-4cdc-abfa-e1c20a614287"
+                            },
+                            {
+                              "id": "1b07da7c-1053-4dbe-9110-8cebfe89e2dd",
+                              "name": "Virtual machine not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/memory",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "memory"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-1b07da7c-1053-4dbe-9110-8cebfe89e2dd"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-08f3a605-1cec-4287-99cf-2d50d1147be0"
+                        },
+                        {
+                          "name": "Vmware Update Vm Memory Configuration",
+                          "id": "9e9ef37e-72b8-49a2-9d3a-15adb98d02c1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"size_MiB\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/memory",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware",
+                                "memory"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "527cd621-7c07-4523-86fd-9a0e2ea061d4",
+                                  "key": "vm",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                                }
+                              ]
+                            },
+                            "description": "Updates the memory configuration. Hot-add of memory is supported if the VM and guest OS support it and the VM is powered on."
+                          },
+                          "response": [
+                            {
+                              "id": "5170c671-475c-4118-a583-378e630aa649",
+                              "name": "Memory configuration updated",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"size_MiB\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/memory",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "memory"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-5170c671-475c-4118-a583-378e630aa649"
+                            },
+                            {
+                              "id": "a9ee448c-a5cf-47b1-b052-7a78725976de",
+                              "name": "Invalid memory specification",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"size_MiB\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/memory",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "memory"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-a9ee448c-a5cf-47b1-b052-7a78725976de"
+                            },
+                            {
+                              "id": "926c7fa9-a9ef-40e3-93c4-6da85d05a02b",
+                              "name": "Not authenticated",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"size_MiB\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/memory",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "memory"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-926c7fa9-a9ef-40e3-93c4-6da85d05a02b"
+                            },
+                            {
+                              "id": "02f541a9-5f05-4e77-b7a7-6831ac9b45f2",
+                              "name": "Virtual machine not found",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"size_MiB\": \"<integer>\",\n  \"hot_add_enabled\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/memory",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "memory"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-02f541a9-5f05-4e77-b7a7-6831ac9b45f2"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-9e9ef37e-72b8-49a2-9d3a-15adb98d02c1"
+                        }
+                      ],
+                      "id": "9cf2fc4b-38db-4e17-b68b-4697a0d88035",
+                      "createdAt": "2026-07-28T03:28:34.000Z",
+                      "updatedAt": "2026-07-28T03:28:34.000Z",
+                      "uid": "35240-9cf2fc4b-38db-4e17-b68b-4697a0d88035"
+                    },
+                    {
+                      "name": "disk",
+                      "item": [
+                        {
+                          "name": "Vmware List Vm Virtual Disks",
+                          "id": "d575e08d-a6b7-43a0-a16a-e6459cba4d61",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/disk",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware",
+                                "disk"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "9c229ab0-fe98-443c-b14e-f212c977aa26",
+                                  "key": "vm",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                                }
+                              ]
+                            },
+                            "description": "Returns a list of virtual disks attached to the specified VM."
+                          },
+                          "response": [
+                            {
+                              "id": "07470cc7-2d5c-4db3-becd-cce171080af1",
+                              "name": "List of virtual disks",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/disk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "disk"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"disk\": \"<string>\"\n  },\n  {\n    \"disk\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-07470cc7-2d5c-4db3-becd-cce171080af1"
+                            },
+                            {
+                              "id": "58e24cfe-4170-4811-a154-59e312137e7a",
+                              "name": "Not authenticated",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/disk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "disk"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-58e24cfe-4170-4811-a154-59e312137e7a"
+                            },
+                            {
+                              "id": "9c155461-75ae-4b2b-8803-806b474f4074",
+                              "name": "Virtual machine not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/disk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "disk"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-9c155461-75ae-4b2b-8803-806b474f4074"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-d575e08d-a6b7-43a0-a16a-e6459cba4d61"
+                        },
+                        {
+                          "name": "Vmware Add a Virtual Disk to a Vm",
+                          "id": "3a960e73-8908-4b74-a6a4-7b06df44f630",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"SATA\",\n  \"new_vmdk\": {\n    \"name\": \"<string>\",\n    \"capacity\": \"<long>\",\n    \"storage_policy\": {\n      \"policy\": \"<string>\"\n    }\n  },\n  \"backing\": {\n    \"type\": \"VMDK_FILE\",\n    \"vmdk_file\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/disk",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware",
+                                "disk"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f411bce7-dd9b-4a4c-b3ab-4d11012c739d",
+                                  "key": "vm",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                                }
+                              ]
+                            },
+                            "description": "Creates and attaches a new virtual disk to the specified VM. Supports creating new VMDK files or attaching existing ones."
+                          },
+                          "response": [
+                            {
+                              "id": "41d4a67f-8858-4703-9ddd-020023659493",
+                              "name": "Disk created and attached successfully",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"type\": \"SATA\",\n  \"new_vmdk\": {\n    \"name\": \"<string>\",\n    \"capacity\": \"<long>\",\n    \"storage_policy\": {\n      \"policy\": \"<string>\"\n    }\n  },\n  \"backing\": {\n    \"type\": \"VMDK_FILE\",\n    \"vmdk_file\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/disk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "disk"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-41d4a67f-8858-4703-9ddd-020023659493"
+                            },
+                            {
+                              "id": "ea0f46ac-e309-4331-b4b8-713626439263",
+                              "name": "Invalid disk specification",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"type\": \"SATA\",\n  \"new_vmdk\": {\n    \"name\": \"<string>\",\n    \"capacity\": \"<long>\",\n    \"storage_policy\": {\n      \"policy\": \"<string>\"\n    }\n  },\n  \"backing\": {\n    \"type\": \"VMDK_FILE\",\n    \"vmdk_file\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/disk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "disk"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-ea0f46ac-e309-4331-b4b8-713626439263"
+                            },
+                            {
+                              "id": "a7278ba1-edd8-4b64-a0d3-3ddc4cfb798e",
+                              "name": "Not authenticated",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"type\": \"SATA\",\n  \"new_vmdk\": {\n    \"name\": \"<string>\",\n    \"capacity\": \"<long>\",\n    \"storage_policy\": {\n      \"policy\": \"<string>\"\n    }\n  },\n  \"backing\": {\n    \"type\": \"VMDK_FILE\",\n    \"vmdk_file\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/disk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "disk"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-a7278ba1-edd8-4b64-a0d3-3ddc4cfb798e"
+                            },
+                            {
+                              "id": "24b56178-56b7-4543-ba7c-66c013bf4924",
+                              "name": "Virtual machine not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"type\": \"SATA\",\n  \"new_vmdk\": {\n    \"name\": \"<string>\",\n    \"capacity\": \"<long>\",\n    \"storage_policy\": {\n      \"policy\": \"<string>\"\n    }\n  },\n  \"backing\": {\n    \"type\": \"VMDK_FILE\",\n    \"vmdk_file\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/disk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "disk"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-24b56178-56b7-4543-ba7c-66c013bf4924"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-3a960e73-8908-4b74-a6a4-7b06df44f630"
+                        }
+                      ],
+                      "id": "eb934038-9a74-4565-bd0d-853fb0906c99",
+                      "createdAt": "2026-07-28T03:28:34.000Z",
+                      "updatedAt": "2026-07-28T03:28:34.000Z",
+                      "uid": "35240-eb934038-9a74-4565-bd0d-853fb0906c99"
+                    },
+                    {
+                      "name": "ethernet",
+                      "item": [
+                        {
+                          "name": "Vmware List Vm Network Adapters",
+                          "id": "82ad95b2-f96b-47bb-92a5-c16ca69c1b0f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/ethernet",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware",
+                                "ethernet"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3a8b522c-a7d0-4fac-bf3c-803a8fb024cb",
+                                  "key": "vm",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                                }
+                              ]
+                            },
+                            "description": "Returns a list of virtual Ethernet adapters attached to the specified virtual machine."
+                          },
+                          "response": [
+                            {
+                              "id": "2dc53322-55e3-48dd-974f-e0fe7fd7a61b",
+                              "name": "List of network adapters",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/ethernet",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "ethernet"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"nic\": \"<string>\"\n  },\n  {\n    \"nic\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-2dc53322-55e3-48dd-974f-e0fe7fd7a61b"
+                            },
+                            {
+                              "id": "5ef16174-3bb6-456b-b2d5-72b0d7aa90c5",
+                              "name": "Not authenticated",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/ethernet",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "ethernet"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-5ef16174-3bb6-456b-b2d5-72b0d7aa90c5"
+                            },
+                            {
+                              "id": "9b3c1736-dc67-44db-b95e-e6c4b0606423",
+                              "name": "Virtual machine not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/ethernet",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "ethernet"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-9b3c1736-dc67-44db-b95e-e6c4b0606423"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-82ad95b2-f96b-47bb-92a5-c16ca69c1b0f"
+                        },
+                        {
+                          "name": "Vmware Add a Network Adapter to a Vm",
+                          "id": "9519cd62-e77a-47b0-83f6-c3dc564faa59",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"E1000\",\n  \"mac_type\": \"ASSIGNED\",\n  \"mac_address\": \"<string>\",\n  \"backing\": {\n    \"type\": \"STANDARD_PORTGROUP\",\n    \"network\": \"<string>\"\n  },\n  \"start_connected\": true,\n  \"allow_guest_control\": false,\n  \"wake_on_lan_enabled\": false\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/ethernet",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware",
+                                "ethernet"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f508416f-0913-47d1-9328-ed5124c48113",
+                                  "key": "vm",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                                }
+                              ]
+                            },
+                            "description": "Creates and attaches a new virtual Ethernet adapter to the specified virtual machine."
+                          },
+                          "response": [
+                            {
+                              "id": "97084f1f-d6c5-4f9e-82fc-c3b77260ac8c",
+                              "name": "Network adapter created successfully",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"type\": \"E1000\",\n  \"mac_type\": \"ASSIGNED\",\n  \"mac_address\": \"<string>\",\n  \"backing\": {\n    \"type\": \"STANDARD_PORTGROUP\",\n    \"network\": \"<string>\"\n  },\n  \"start_connected\": true,\n  \"allow_guest_control\": false,\n  \"wake_on_lan_enabled\": false\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/ethernet",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "ethernet"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-97084f1f-d6c5-4f9e-82fc-c3b77260ac8c"
+                            },
+                            {
+                              "id": "2700fa0f-e1e6-4b2b-acae-be380d8590d1",
+                              "name": "Invalid adapter specification",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"type\": \"E1000\",\n  \"mac_type\": \"ASSIGNED\",\n  \"mac_address\": \"<string>\",\n  \"backing\": {\n    \"type\": \"STANDARD_PORTGROUP\",\n    \"network\": \"<string>\"\n  },\n  \"start_connected\": true,\n  \"allow_guest_control\": false,\n  \"wake_on_lan_enabled\": false\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/ethernet",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "ethernet"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-2700fa0f-e1e6-4b2b-acae-be380d8590d1"
+                            },
+                            {
+                              "id": "4f68df48-e8d5-47ec-9af7-360c25c3507f",
+                              "name": "Not authenticated",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"type\": \"E1000\",\n  \"mac_type\": \"ASSIGNED\",\n  \"mac_address\": \"<string>\",\n  \"backing\": {\n    \"type\": \"STANDARD_PORTGROUP\",\n    \"network\": \"<string>\"\n  },\n  \"start_connected\": true,\n  \"allow_guest_control\": false,\n  \"wake_on_lan_enabled\": false\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/ethernet",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "ethernet"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-4f68df48-e8d5-47ec-9af7-360c25c3507f"
+                            },
+                            {
+                              "id": "cdb2d803-583b-42db-97e8-0447c1b082e0",
+                              "name": "Virtual machine not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "vmware-api-session-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"type\": \"E1000\",\n  \"mac_type\": \"ASSIGNED\",\n  \"mac_address\": \"<string>\",\n  \"backing\": {\n    \"type\": \"STANDARD_PORTGROUP\",\n    \"network\": \"<string>\"\n  },\n  \"start_connected\": true,\n  \"allow_guest_control\": false,\n  \"wake_on_lan_enabled\": false\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware/ethernet",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vcenter",
+                                    "vm",
+                                    ":vm",
+                                    "hardware",
+                                    "ethernet"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vm"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:28:34.000Z",
+                              "updatedAt": "2026-07-28T03:28:34.000Z",
+                              "uid": "35240-cdb2d803-583b-42db-97e8-0447c1b082e0"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-9519cd62-e77a-47b0-83f6-c3dc564faa59"
+                        }
+                      ],
+                      "id": "07b01011-dd56-43f2-b180-73c885be6ffc",
+                      "createdAt": "2026-07-28T03:28:34.000Z",
+                      "updatedAt": "2026-07-28T03:28:34.000Z",
+                      "uid": "35240-07b01011-dd56-43f2-b180-73c885be6ffc"
+                    },
+                    {
+                      "name": "Vmware Get Vm Hardware Configuration",
+                      "id": "ef76d360-2ccd-4610-82b7-50900a4deed6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm",
+                            "hardware"
+                          ],
+                          "variable": [
+                            {
+                              "id": "83dd065b-6f8c-4679-b2ec-ef805a99ac58",
+                              "key": "vm",
+                              "value": "<string>",
+                              "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                            }
+                          ]
+                        },
+                        "description": "Returns the full virtual hardware configuration of the specified virtual machine including CPU, memory, and all virtual devices."
+                      },
+                      "response": [
+                        {
+                          "id": "fbbee50e-513b-44a6-b823-9c6da6768068",
+                          "name": "Hardware configuration returned",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"version\": \"<string>\",\n  \"upgrade_policy\": \"AFTER_CLEAN_SHUTDOWN\",\n  \"upgrade_version\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-fbbee50e-513b-44a6-b823-9c6da6768068"
+                        },
+                        {
+                          "id": "fcd60990-e0e4-46ac-a984-1b1552f54fc1",
+                          "name": "Not authenticated",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-fcd60990-e0e4-46ac-a984-1b1552f54fc1"
+                        },
+                        {
+                          "id": "27cfa0b2-f68d-4a0c-ae93-323eb546fc14",
+                          "name": "Virtual machine not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-27cfa0b2-f68d-4a0c-ae93-323eb546fc14"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:34.000Z",
+                      "updatedAt": "2026-07-28T03:28:34.000Z",
+                      "uid": "35240-ef76d360-2ccd-4610-82b7-50900a4deed6"
+                    },
+                    {
+                      "name": "Vmware Update Vm Hardware Configuration",
+                      "id": "a76dfac6-ae6a-42ac-98ce-b943db8ff2cd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"upgrade_policy\": \"AFTER_CLEAN_SHUTDOWN\",\n  \"upgrade_version\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "vm",
+                            ":vm",
+                            "hardware"
+                          ],
+                          "variable": [
+                            {
+                              "id": "21ea96ee-db87-4e45-9d1f-7f0dfc55a7b5",
+                              "key": "vm",
+                              "value": "<string>",
+                              "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                            }
+                          ]
+                        },
+                        "description": "Updates the virtual hardware configuration. Some changes require the VM to be powered off."
+                      },
+                      "response": [
+                        {
+                          "id": "2ec15f53-512d-41cb-a5c8-38c5cb882a9a",
+                          "name": "Hardware updated successfully",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"upgrade_policy\": \"AFTER_CLEAN_SHUTDOWN\",\n  \"upgrade_version\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-2ec15f53-512d-41cb-a5c8-38c5cb882a9a"
+                        },
+                        {
+                          "id": "79722480-d88e-40a7-980e-5e2f896d290e",
+                          "name": "Invalid hardware specification",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"upgrade_policy\": \"AFTER_CLEAN_SHUTDOWN\",\n  \"upgrade_version\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-79722480-d88e-40a7-980e-5e2f896d290e"
+                        },
+                        {
+                          "id": "dd180220-fe51-47b1-8eb1-caaf1081d4dc",
+                          "name": "Not authenticated",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"upgrade_policy\": \"AFTER_CLEAN_SHUTDOWN\",\n  \"upgrade_version\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-dd180220-fe51-47b1-8eb1-caaf1081d4dc"
+                        },
+                        {
+                          "id": "c26ac903-42d9-40e2-8fcd-7ec49c2b9ff2",
+                          "name": "Virtual machine not found",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"upgrade_policy\": \"AFTER_CLEAN_SHUTDOWN\",\n  \"upgrade_version\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/vm/:vm/hardware",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "vm",
+                                ":vm",
+                                "hardware"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vm"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:34.000Z",
+                          "updatedAt": "2026-07-28T03:28:34.000Z",
+                          "uid": "35240-c26ac903-42d9-40e2-8fcd-7ec49c2b9ff2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:34.000Z",
+                      "updatedAt": "2026-07-28T03:28:34.000Z",
+                      "uid": "35240-a76dfac6-ae6a-42ac-98ce-b943db8ff2cd"
+                    }
+                  ],
+                  "id": "e81f26b6-3f2c-4cf7-a4b0-396f68030b85",
+                  "createdAt": "2026-07-28T03:28:34.000Z",
+                  "updatedAt": "2026-07-28T03:28:34.000Z",
+                  "uid": "35240-e81f26b6-3f2c-4cf7-a4b0-396f68030b85"
+                }
+              ],
+              "id": "5c82fa97-9134-405a-bce0-18e43002e969",
+              "createdAt": "2026-07-28T03:28:34.000Z",
+              "updatedAt": "2026-07-28T03:28:34.000Z",
+              "uid": "35240-5c82fa97-9134-405a-bce0-18e43002e969"
+            }
+          ],
+          "id": "9693f751-c388-46e9-ae5c-04d1d18ac9d4",
+          "createdAt": "2026-07-28T03:28:34.000Z",
+          "updatedAt": "2026-07-28T03:28:34.000Z",
+          "uid": "35240-9693f751-c388-46e9-ae5c-04d1d18ac9d4"
+        }
+      ],
+      "id": "35264fba-37a8-43d1-91ca-7bafb2b2f51e",
+      "createdAt": "2026-07-28T03:28:34.000Z",
+      "updatedAt": "2026-07-28T03:28:34.000Z",
+      "uid": "35240-35264fba-37a8-43d1-91ca-7bafb2b2f51e"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

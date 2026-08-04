@@ -1,0 +1,277 @@
+{
+  "info": {
+    "_postman_id": "9597b457-f9f6-4db0-a740-419d8cdcbc50",
+    "name": "VMware vSphere Automation REST Clusters Resource Pools API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:28:01.000Z",
+    "updatedAt": "2026-07-28T03:28:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9597b457-f9f6-4db0-a740-419d8cdcbc50"
+  },
+  "item": [
+    {
+      "name": "vcenter",
+      "item": [
+        {
+          "name": "resource-pool",
+          "item": [
+            {
+              "name": "Vmware List Resource Pools",
+              "id": "d9bdecde-2689-4310-a260-ddf90ad60f71",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/vcenter/resource-pool?filter.resource_pools=<string>&filter.resource_pools=<string>&filter.names=<string>&filter.names=<string>&filter.clusters=<string>&filter.clusters=<string>&filter.hosts=<string>&filter.hosts=<string>&filter.parent_resource_pools=<string>&filter.parent_resource_pools=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vcenter",
+                    "resource-pool"
+                  ],
+                  "query": [
+                    {
+                      "description": "Identifiers of resource pools to filter by",
+                      "key": "filter.resource_pools",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Identifiers of resource pools to filter by",
+                      "key": "filter.resource_pools",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of resource pools to filter by",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of resource pools to filter by",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Clusters that must contain the resource pools",
+                      "key": "filter.clusters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Clusters that must contain the resource pools",
+                      "key": "filter.clusters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hosts that must contain the resource pools",
+                      "key": "filter.hosts",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hosts that must contain the resource pools",
+                      "key": "filter.hosts",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Parent resource pools to filter by",
+                      "key": "filter.parent_resource_pools",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Parent resource pools to filter by",
+                      "key": "filter.parent_resource_pools",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of resource pools in the vCenter inventory matching the specified filter criteria."
+              },
+              "response": [
+                {
+                  "id": "018fdeef-59b2-46ec-ab3b-aead5644e579",
+                  "name": "List of resource pools",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/resource-pool?filter.resource_pools=<string>&filter.names=<string>&filter.clusters=<string>&filter.hosts=<string>&filter.parent_resource_pools=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "resource-pool"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of resource pools to filter by",
+                          "key": "filter.resource_pools",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of resource pools to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Clusters that must contain the resource pools",
+                          "key": "filter.clusters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Hosts that must contain the resource pools",
+                          "key": "filter.hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Parent resource pools to filter by",
+                          "key": "filter.parent_resource_pools",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"resource_pool\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"resource_pool\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:28:02.000Z",
+                  "updatedAt": "2026-07-28T03:28:02.000Z",
+                  "uid": "35240-018fdeef-59b2-46ec-ab3b-aead5644e579"
+                },
+                {
+                  "id": "fb1c4b5d-6aa4-4176-add3-30561e7796f7",
+                  "name": "Not authenticated",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/resource-pool?filter.resource_pools=<string>&filter.names=<string>&filter.clusters=<string>&filter.hosts=<string>&filter.parent_resource_pools=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "resource-pool"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of resource pools to filter by",
+                          "key": "filter.resource_pools",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of resource pools to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Clusters that must contain the resource pools",
+                          "key": "filter.clusters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Hosts that must contain the resource pools",
+                          "key": "filter.hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Parent resource pools to filter by",
+                          "key": "filter.parent_resource_pools",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:02.000Z",
+                  "updatedAt": "2026-07-28T03:28:02.000Z",
+                  "uid": "35240-fb1c4b5d-6aa4-4176-add3-30561e7796f7"
+                }
+              ],
+              "createdAt": "2026-07-28T03:28:02.000Z",
+              "updatedAt": "2026-07-28T03:28:02.000Z",
+              "uid": "35240-d9bdecde-2689-4310-a260-ddf90ad60f71"
+            }
+          ],
+          "id": "4c94599b-a5f7-4035-82f8-c195f93d7df8",
+          "createdAt": "2026-07-28T03:28:02.000Z",
+          "updatedAt": "2026-07-28T03:28:02.000Z",
+          "uid": "35240-4c94599b-a5f7-4035-82f8-c195f93d7df8"
+        }
+      ],
+      "id": "11da7185-52b5-4c12-8033-ef8019fdd60c",
+      "createdAt": "2026-07-28T03:28:02.000Z",
+      "updatedAt": "2026-07-28T03:28:02.000Z",
+      "uid": "35240-11da7185-52b5-4c12-8033-ef8019fdd60c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}

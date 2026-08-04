@@ -1,0 +1,946 @@
+{
+  "info": {
+    "_postman_id": "71625cde-0447-423e-ab68-0aa5fbc7954f",
+    "name": "VMware vSphere Automation REST Clusters Hosts API",
+    "description": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:27:59.000Z",
+    "updatedAt": "2026-07-28T03:28:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-71625cde-0447-423e-ab68-0aa5fbc7954f"
+  },
+  "item": [
+    {
+      "name": "vcenter",
+      "item": [
+        {
+          "name": "host",
+          "item": [
+            {
+              "name": "{host}",
+              "item": [
+                {
+                  "name": "connect",
+                  "item": [
+                    {
+                      "name": "Vmware Connect an Esxi Host",
+                      "id": "7dcbe28f-c808-417d-8a87-5c6127231c4c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/host/:host/connect",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "host",
+                            ":host",
+                            "connect"
+                          ],
+                          "variable": [
+                            {
+                              "id": "37c44cac-0d5f-4a5d-9c9b-e008c81f9682",
+                              "key": "host",
+                              "value": "<string>",
+                              "description": "(Required) Identifier of the ESXi host (e.g., host-10)"
+                            }
+                          ]
+                        },
+                        "description": "Connects to the specified ESXi host, making it available for virtual machine operations."
+                      },
+                      "response": [
+                        {
+                          "id": "a7fd4a45-5331-4ab7-8dd6-44881c880991",
+                          "name": "Host connected successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/host/:host/connect",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "host",
+                                ":host",
+                                "connect"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "host"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:00.000Z",
+                          "updatedAt": "2026-07-28T03:28:00.000Z",
+                          "uid": "35240-a7fd4a45-5331-4ab7-8dd6-44881c880991"
+                        },
+                        {
+                          "id": "78670b57-dbe5-46fc-868b-ff5b306dc3fb",
+                          "name": "Not authenticated",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/host/:host/connect",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "host",
+                                ":host",
+                                "connect"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "host"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:00.000Z",
+                          "updatedAt": "2026-07-28T03:28:00.000Z",
+                          "uid": "35240-78670b57-dbe5-46fc-868b-ff5b306dc3fb"
+                        },
+                        {
+                          "id": "8d940117-2147-4524-af46-7d707a273533",
+                          "name": "Host not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/host/:host/connect",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "host",
+                                ":host",
+                                "connect"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "host"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:00.000Z",
+                          "updatedAt": "2026-07-28T03:28:00.000Z",
+                          "uid": "35240-8d940117-2147-4524-af46-7d707a273533"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:00.000Z",
+                      "updatedAt": "2026-07-28T03:28:00.000Z",
+                      "uid": "35240-7dcbe28f-c808-417d-8a87-5c6127231c4c"
+                    }
+                  ],
+                  "id": "a5dbd872-8a8e-4845-a062-46d4c94630b1",
+                  "createdAt": "2026-07-28T03:28:00.000Z",
+                  "updatedAt": "2026-07-28T03:28:00.000Z",
+                  "uid": "35240-a5dbd872-8a8e-4845-a062-46d4c94630b1"
+                },
+                {
+                  "name": "disconnect",
+                  "item": [
+                    {
+                      "name": "Vmware Disconnect an Esxi Host",
+                      "id": "28af5947-c465-4bd2-b2e8-fa8bb480e2ff",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/host/:host/disconnect",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "host",
+                            ":host",
+                            "disconnect"
+                          ],
+                          "variable": [
+                            {
+                              "id": "59e0af31-e2b1-4c6d-8f6d-dd517e894b56",
+                              "key": "host",
+                              "value": "<string>",
+                              "description": "(Required) Identifier of the ESXi host (e.g., host-10)"
+                            }
+                          ]
+                        },
+                        "description": "Disconnects the specified ESXi host from vCenter Server. Running VMs are not affected but can no longer be managed through vCenter."
+                      },
+                      "response": [
+                        {
+                          "id": "5c96f3a4-80e0-4763-9e93-6eb751734dc4",
+                          "name": "Host disconnected successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/host/:host/disconnect",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "host",
+                                ":host",
+                                "disconnect"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "host"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:00.000Z",
+                          "updatedAt": "2026-07-28T03:28:00.000Z",
+                          "uid": "35240-5c96f3a4-80e0-4763-9e93-6eb751734dc4"
+                        },
+                        {
+                          "id": "dd450461-2328-4efd-b49c-250d010a882f",
+                          "name": "Not authenticated",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/host/:host/disconnect",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "host",
+                                ":host",
+                                "disconnect"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "host"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:00.000Z",
+                          "updatedAt": "2026-07-28T03:28:00.000Z",
+                          "uid": "35240-dd450461-2328-4efd-b49c-250d010a882f"
+                        },
+                        {
+                          "id": "458ea9b9-4205-479a-bb84-b8424165c8d2",
+                          "name": "Host not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "vmware-api-session-id",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vcenter/host/:host/disconnect",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vcenter",
+                                "host",
+                                ":host",
+                                "disconnect"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "host"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:28:00.000Z",
+                          "updatedAt": "2026-07-28T03:28:00.000Z",
+                          "uid": "35240-458ea9b9-4205-479a-bb84-b8424165c8d2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:00.000Z",
+                      "updatedAt": "2026-07-28T03:28:00.000Z",
+                      "uid": "35240-28af5947-c465-4bd2-b2e8-fa8bb480e2ff"
+                    }
+                  ],
+                  "id": "d359e9bb-df39-4976-9ee8-b860f3cf793e",
+                  "createdAt": "2026-07-28T03:28:00.000Z",
+                  "updatedAt": "2026-07-28T03:28:00.000Z",
+                  "uid": "35240-d359e9bb-df39-4976-9ee8-b860f3cf793e"
+                },
+                {
+                  "name": "Vmware Get Esxi Host Details",
+                  "id": "5dd557d7-d4b4-4b4f-b2f3-5d9d9a6d5a63",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/host/:host",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "host",
+                        ":host"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e93f7441-3848-4707-8cf9-be1c44f6c06f",
+                          "key": "host",
+                          "value": "<string>",
+                          "description": "(Required) Identifier of the ESXi host (e.g., host-10)"
+                        }
+                      ]
+                    },
+                    "description": "Returns detailed information about the specified ESXi host including connection state, hardware, and resource utilization."
+                  },
+                  "response": [
+                    {
+                      "id": "ff34483a-ee2f-4f29-9efa-1bd5020ab094",
+                      "name": "Host details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/host/:host",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "host",
+                            ":host"
+                          ],
+                          "variable": [
+                            {
+                              "key": "host"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"connection_state\": \"NOT_RESPONDING\",\n  \"power_state\": \"STANDBY\"\n}",
+                      "createdAt": "2026-07-28T03:28:00.000Z",
+                      "updatedAt": "2026-07-28T03:28:00.000Z",
+                      "uid": "35240-ff34483a-ee2f-4f29-9efa-1bd5020ab094"
+                    },
+                    {
+                      "id": "bc977778-9759-467f-9469-e59ffdfb001a",
+                      "name": "Not authenticated",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/host/:host",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "host",
+                            ":host"
+                          ],
+                          "variable": [
+                            {
+                              "key": "host"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:00.000Z",
+                      "updatedAt": "2026-07-28T03:28:00.000Z",
+                      "uid": "35240-bc977778-9759-467f-9469-e59ffdfb001a"
+                    },
+                    {
+                      "id": "f8385020-9285-495f-b005-fba1161965e0",
+                      "name": "Host not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "vmware-api-session-id",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vcenter/host/:host",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vcenter",
+                            "host",
+                            ":host"
+                          ],
+                          "variable": [
+                            {
+                              "key": "host"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:28:00.000Z",
+                      "updatedAt": "2026-07-28T03:28:00.000Z",
+                      "uid": "35240-f8385020-9285-495f-b005-fba1161965e0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:00.000Z",
+                  "updatedAt": "2026-07-28T03:28:00.000Z",
+                  "uid": "35240-5dd557d7-d4b4-4b4f-b2f3-5d9d9a6d5a63"
+                }
+              ],
+              "id": "dc30263a-e19f-440a-8103-f78dba400145",
+              "createdAt": "2026-07-28T03:28:00.000Z",
+              "updatedAt": "2026-07-28T03:28:00.000Z",
+              "uid": "35240-dc30263a-e19f-440a-8103-f78dba400145"
+            },
+            {
+              "name": "Vmware List Esxi Hosts",
+              "id": "ebe2fb0a-c506-4044-acf8-1f8c90b2aaed",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/vcenter/host?filter.hosts=<string>&filter.hosts=<string>&filter.names=<string>&filter.names=<string>&filter.folders=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.datacenters=<string>&filter.clusters=<string>&filter.clusters=<string>&filter.connection_states=CONNECTED&filter.connection_states=NOT_RESPONDING",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vcenter",
+                    "host"
+                  ],
+                  "query": [
+                    {
+                      "description": "Identifiers of hosts to filter by",
+                      "key": "filter.hosts",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Identifiers of hosts to filter by",
+                      "key": "filter.hosts",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of hosts to filter by",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Names of hosts to filter by",
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Folders that must contain the hosts",
+                      "key": "filter.folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Folders that must contain the hosts",
+                      "key": "filter.folders",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Datacenters that must contain the hosts",
+                      "key": "filter.datacenters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Datacenters that must contain the hosts",
+                      "key": "filter.datacenters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Clusters that must contain the hosts",
+                      "key": "filter.clusters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Clusters that must contain the hosts",
+                      "key": "filter.clusters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Connection states to filter by",
+                      "key": "filter.connection_states",
+                      "value": "CONNECTED"
+                    },
+                    {
+                      "description": "Connection states to filter by",
+                      "key": "filter.connection_states",
+                      "value": "NOT_RESPONDING"
+                    }
+                  ]
+                },
+                "description": "Returns a list of ESXi hosts in the vCenter inventory matching the specified filter criteria. Results can be filtered by name, connection state, cluster, datacenter, and folder."
+              },
+              "response": [
+                {
+                  "id": "c04a1e87-8617-43d5-93e9-39dbaaa8d13a",
+                  "name": "List of hosts matching the filter",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/host?filter.hosts=<string>&filter.names=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.clusters=<string>&filter.connection_states=NOT_RESPONDING",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "host"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of hosts to filter by",
+                          "key": "filter.hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of hosts to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the hosts",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the hosts",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Clusters that must contain the hosts",
+                          "key": "filter.clusters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Connection states to filter by",
+                          "key": "filter.connection_states",
+                          "value": "NOT_RESPONDING"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"host\": \"<string>\",\n    \"name\": \"<string>\",\n    \"connection_state\": \"NOT_RESPONDING\",\n    \"power_state\": \"POWERED_OFF\"\n  },\n  {\n    \"host\": \"<string>\",\n    \"name\": \"<string>\",\n    \"connection_state\": \"NOT_RESPONDING\",\n    \"power_state\": \"POWERED_ON\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:28:00.000Z",
+                  "updatedAt": "2026-07-28T03:28:00.000Z",
+                  "uid": "35240-c04a1e87-8617-43d5-93e9-39dbaaa8d13a"
+                },
+                {
+                  "id": "40190fd6-b10f-46a3-af7a-f01790974313",
+                  "name": "Invalid filter parameters",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/host?filter.hosts=<string>&filter.names=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.clusters=<string>&filter.connection_states=NOT_RESPONDING",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "host"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of hosts to filter by",
+                          "key": "filter.hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of hosts to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the hosts",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the hosts",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Clusters that must contain the hosts",
+                          "key": "filter.clusters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Connection states to filter by",
+                          "key": "filter.connection_states",
+                          "value": "NOT_RESPONDING"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:00.000Z",
+                  "updatedAt": "2026-07-28T03:28:00.000Z",
+                  "uid": "35240-40190fd6-b10f-46a3-af7a-f01790974313"
+                },
+                {
+                  "id": "1c9abc63-206b-4020-9f79-26851c858d98",
+                  "name": "Not authenticated",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/host?filter.hosts=<string>&filter.names=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.clusters=<string>&filter.connection_states=NOT_RESPONDING",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "host"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of hosts to filter by",
+                          "key": "filter.hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of hosts to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the hosts",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the hosts",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Clusters that must contain the hosts",
+                          "key": "filter.clusters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Connection states to filter by",
+                          "key": "filter.connection_states",
+                          "value": "NOT_RESPONDING"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:00.000Z",
+                  "updatedAt": "2026-07-28T03:28:00.000Z",
+                  "uid": "35240-1c9abc63-206b-4020-9f79-26851c858d98"
+                },
+                {
+                  "id": "52f8f8d2-958e-494c-ae5a-a94f3a1844ef",
+                  "name": "Insufficient privileges",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "vmware-api-session-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vcenter/host?filter.hosts=<string>&filter.names=<string>&filter.folders=<string>&filter.datacenters=<string>&filter.clusters=<string>&filter.connection_states=NOT_RESPONDING",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vcenter",
+                        "host"
+                      ],
+                      "query": [
+                        {
+                          "description": "Identifiers of hosts to filter by",
+                          "key": "filter.hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Names of hosts to filter by",
+                          "key": "filter.names",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Folders that must contain the hosts",
+                          "key": "filter.folders",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Datacenters that must contain the hosts",
+                          "key": "filter.datacenters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Clusters that must contain the hosts",
+                          "key": "filter.clusters",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Connection states to filter by",
+                          "key": "filter.connection_states",
+                          "value": "NOT_RESPONDING"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:28:00.000Z",
+                  "updatedAt": "2026-07-28T03:28:00.000Z",
+                  "uid": "35240-52f8f8d2-958e-494c-ae5a-a94f3a1844ef"
+                }
+              ],
+              "createdAt": "2026-07-28T03:28:00.000Z",
+              "updatedAt": "2026-07-28T03:28:00.000Z",
+              "uid": "35240-ebe2fb0a-c506-4044-acf8-1f8c90b2aaed"
+            }
+          ],
+          "id": "61afde66-2313-4a65-b931-2c940b2f2e92",
+          "createdAt": "2026-07-28T03:28:00.000Z",
+          "updatedAt": "2026-07-28T03:28:00.000Z",
+          "uid": "35240-61afde66-2313-4a65-b931-2c940b2f2e92"
+        }
+      ],
+      "id": "9e8dd6fc-7337-4515-b576-f21ffe419afc",
+      "createdAt": "2026-07-28T03:28:00.000Z",
+      "updatedAt": "2026-07-28T03:28:00.000Z",
+      "uid": "35240-9e8dd6fc-7337-4515-b576-f21ffe419afc"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "vcenter",
+      "value": "vcenter.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{vcenter}}/api"
+    }
+  ]
+}
