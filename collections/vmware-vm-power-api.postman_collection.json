@@ -1,0 +1,1382 @@
+{
+  "item": [
+    {
+      "id": "8dadcabf-278e-4d73-8d2e-8b187cc21eb6",
+      "name": "VM Power",
+      "description": {
+        "content": "Virtual machine power state operations including power on, power off, suspend, reset, and guest shutdown",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf1f6fc5-4554-40b5-8089-2882bca04289",
+          "name": "Vmware Get Vm Power State",
+          "request": {
+            "name": "Vmware Get Vm Power State",
+            "description": {
+              "content": "Returns the current power state of the specified virtual machine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm",
+                "power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dfa74f71-d57a-4399-a579-bc6022e39332",
+              "name": "Current power state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"POWERED_ON\",\n  \"clean_power_off\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7b93ce6-9621-456e-b4cf-2441c91039a3",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b70b975-6663-4cde-b17d-d1b2affc52e5",
+              "name": "Virtual machine not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66df3979-6314-4f9b-8f3e-83469269bf4e",
+          "name": "Vmware Power on a Virtual Machine",
+          "request": {
+            "name": "Vmware Power on a Virtual Machine",
+            "description": {
+              "content": "Powers on the specified virtual machine. The VM must be in a powered-off or suspended state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm",
+                "power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "start"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd03c69c-816b-41d7-b0d5-b0de37444cf3",
+              "name": "Power on initiated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fa4ce7c2-cf0c-4d75-a784-9fbbe45f234e",
+              "name": "VM is already powered on",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b4abaff-c206-45bb-8c1e-93a40aaadf20",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d02bc194-e060-426a-9215-52147f3c2151",
+              "name": "Virtual machine not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea0a5d8a-1331-4981-848d-0231fcaed491",
+          "name": "Vmware Power Off a Virtual Machine",
+          "request": {
+            "name": "Vmware Power Off a Virtual Machine",
+            "description": {
+              "content": "Powers off the specified virtual machine immediately. This is equivalent to pulling the power cord and does not perform a graceful guest OS shutdown. Use the guest shutdown operation for a clean shutdown.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm",
+                "power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "stop"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c668e0e-2342-4e9c-acf7-73ddf2448d9e",
+              "name": "Power off initiated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90cb2557-6a9a-44b0-899a-f9c77da7826f",
+              "name": "VM is already powered off",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1400569-4723-45b4-b1f4-10a55fa25ea5",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d475495-62ee-452a-af80-498ac9e2e807",
+              "name": "Virtual machine not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01135d7f-59dd-421a-9fac-f19008460045",
+          "name": "Vmware Suspend a Virtual Machine",
+          "request": {
+            "name": "Vmware Suspend a Virtual Machine",
+            "description": {
+              "content": "Suspends the specified virtual machine, saving its current state to disk. The VM can be resumed later from the suspended state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm",
+                "power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "suspend"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1ca981c2-62ef-4867-af40-e15c28e6184f",
+              "name": "Suspend initiated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94da442b-a836-4d5a-b8d1-e14b194d718f",
+              "name": "VM is not in a powered-on state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "46afc699-7afd-4613-9248-a7a55f36dd64",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5149487-ebd1-4e4c-b6e1-cc938e49426e",
+              "name": "Virtual machine not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbd260cb-67fc-433d-bd8d-9e3e44e43f61",
+          "name": "Vmware Reset a Virtual Machine",
+          "request": {
+            "name": "Vmware Reset a Virtual Machine",
+            "description": {
+              "content": "Resets the specified virtual machine. This is equivalent to pressing the reset button and does not perform a graceful guest OS reboot.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm",
+                "power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "reset"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "661da04e-639d-427b-8e67-3ab6071d70b0",
+              "name": "Reset initiated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d1653de-45b1-4bb7-a5f1-f35cd7918d22",
+              "name": "VM is not in a powered-on state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3fd75ce1-5823-42ce-b8f1-ba3dc14e88be",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a0774c41-61f3-4699-8a4d-4faf95605117",
+              "name": "Virtual machine not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of your vCenter Server instance",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "vcenter.example.com",
+      "key": "vcenter"
+    },
+    {
+      "type": "string",
+      "value": "https://{{vcenter}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "faeeca2b-ea30-44f7-ae40-21a22f39404a",
+    "name": "VMware vSphere Automation REST Clusters VM Power API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

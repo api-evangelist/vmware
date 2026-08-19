@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters VMs API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "VMs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Virtual Machines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm",
+            "params": [
+              {
+                "name": "filter.vms",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of VMs to filter by"
+              },
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query",
+                "description": "Names of VMs to filter by (exact match)"
+              },
+              {
+                "name": "filter.folders",
+                "value": "",
+                "type": "query",
+                "description": "Folders that must contain the VMs"
+              },
+              {
+                "name": "filter.datacenters",
+                "value": "",
+                "type": "query",
+                "description": "Datacenters that must contain the VMs"
+              },
+              {
+                "name": "filter.hosts",
+                "value": "",
+                "type": "query",
+                "description": "Hosts that must contain the VMs"
+              },
+              {
+                "name": "filter.clusters",
+                "value": "",
+                "type": "query",
+                "description": "Clusters that must contain the VMs"
+              },
+              {
+                "name": "filter.resource_pools",
+                "value": "",
+                "type": "query",
+                "description": "Resource pools that must contain the VMs"
+              },
+              {
+                "name": "filter.power_states",
+                "value": "",
+                "type": "query",
+                "description": "Power states to filter by"
+              }
+            ]
+          },
+          "docs": "Returns a list of virtual machines in the vCenter inventory matching the specified filter criteria. Results can be filtered by name, power state, host, cluster, datacenter, folder, and resource pool."
+        },
+        {
+          "info": {
+            "name": "Vmware Create a New Virtual Machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/vm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new virtual machine with the specified configuration. The VM is created in the powered-off state and must be explicitly powered on after creation."
+        },
+        {
+          "info": {
+            "name": "Vmware Get Virtual Machine Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about the specified virtual machine including hardware configuration, power state, guest OS, and storage information."
+        },
+        {
+          "info": {
+            "name": "Vmware Delete a Virtual Machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Permanently deletes the specified virtual machine and all associated virtual disks. The VM must be in a powered-off state."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

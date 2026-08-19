@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/cluster",
+            "params": [
+              {
+                "name": "filter.clusters",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of clusters to filter by"
+              },
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query",
+                "description": "Names of clusters to filter by"
+              },
+              {
+                "name": "filter.folders",
+                "value": "",
+                "type": "query",
+                "description": "Folders that must contain the clusters"
+              },
+              {
+                "name": "filter.datacenters",
+                "value": "",
+                "type": "query",
+                "description": "Datacenters that must contain the clusters"
+              }
+            ]
+          },
+          "docs": "Returns a list of clusters in the vCenter inventory matching the specified filter criteria."
+        },
+        {
+          "info": {
+            "name": "Vmware Get Cluster Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/cluster/:cluster",
+            "params": [
+              {
+                "name": "cluster",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the cluster (e.g., domain-c7)"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about the specified cluster including DRS and HA configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

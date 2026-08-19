@@ -1,0 +1,973 @@
+{
+  "item": [
+    {
+      "id": "ec4cf8fb-7fc4-4b71-b3c4-501dd288a681",
+      "name": "Datacenters",
+      "description": {
+        "content": "Datacenter management for organizing vSphere inventory",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "38be58d9-23df-4f39-86ee-3de7f2bf3b90",
+          "name": "Vmware List Datacenters",
+          "request": {
+            "name": "Vmware List Datacenters",
+            "description": {
+              "content": "Returns a list of datacenters in the vCenter inventory matching the specified filter criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "datacenter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter.datacenters",
+                  "value": "<string>",
+                  "description": "Identifiers of datacenters to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.datacenters",
+                  "value": "<string>",
+                  "description": "Identifiers of datacenters to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of datacenters to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of datacenters to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.folders",
+                  "value": "<string>",
+                  "description": "Folders that must contain the datacenters"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.folders",
+                  "value": "<string>",
+                  "description": "Folders that must contain the datacenters"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1ba1fa5-ab03-4895-a08a-e2676c9092a5",
+              "name": "List of datacenters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"datacenter\": \"example_value\",\n    \"name\": \"Example Title\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42fe04fe-dc4f-43c5-86d3-c5d6aa05642f",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0586d18d-fb1d-48a2-8286-a43653ba7dbe",
+          "name": "Vmware Create a Datacenter",
+          "request": {
+            "name": "Vmware Create a Datacenter",
+            "description": {
+              "content": "Creates a new datacenter in the specified folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "datacenter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"folder\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "341150d3-ef70-4454-b29b-ea94dc60e4de",
+              "name": "Datacenter created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"folder\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0c29789-54e3-437c-97a6-a8ee9cf998da",
+              "name": "Invalid specification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"folder\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10198848-3dbc-45c2-b8a2-5e6ce3aaf981",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"folder\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fad249c5-5888-4ec0-9379-f7fd5171c458",
+          "name": "Vmware Get Datacenter Details",
+          "request": {
+            "name": "Vmware Get Datacenter Details",
+            "description": {
+              "content": "Returns detailed information about the specified datacenter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "datacenter",
+                ":datacenter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datacenter",
+                  "description": "(Required) Identifier of the datacenter (e.g., datacenter-2)"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b842b0aa-577d-4e83-8bb3-8abb5810a2ba",
+              "name": "Datacenter details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter",
+                    ":datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datacenter",
+                      "description": "(Required) Identifier of the datacenter (e.g., datacenter-2)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"datastore_folder\": \"example_value\",\n  \"host_folder\": \"example_value\",\n  \"network_folder\": \"example_value\",\n  \"vm_folder\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "523d8d35-07be-4c53-a6cd-3d6cac66da25",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter",
+                    ":datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datacenter",
+                      "description": "(Required) Identifier of the datacenter (e.g., datacenter-2)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ed04b09-72df-409d-98cd-50c6ce072a73",
+              "name": "Datacenter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter",
+                    ":datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datacenter",
+                      "description": "(Required) Identifier of the datacenter (e.g., datacenter-2)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad838c2c-16cf-4009-b5b3-3684ba79d076",
+          "name": "Vmware Delete a Datacenter",
+          "request": {
+            "name": "Vmware Delete a Datacenter",
+            "description": {
+              "content": "Deletes the specified datacenter. All hosts and VMs must be removed from the datacenter before deletion.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "datacenter",
+                ":datacenter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "false",
+                  "description": "Force delete even if datacenter is not empty"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datacenter",
+                  "description": "(Required) Identifier of the datacenter (e.g., datacenter-2)"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "956ac321-8bf9-470e-89d7-57864b62ce29",
+              "name": "Datacenter deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter",
+                    ":datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datacenter",
+                      "description": "(Required) Identifier of the datacenter (e.g., datacenter-2)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44145325-397c-453b-b6e6-f240bad9831e",
+              "name": "Datacenter is not empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter",
+                    ":datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datacenter",
+                      "description": "(Required) Identifier of the datacenter (e.g., datacenter-2)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acb0f51e-2be4-4006-ba09-9cf08fdd0c61",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter",
+                    ":datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datacenter",
+                      "description": "(Required) Identifier of the datacenter (e.g., datacenter-2)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "36a04743-4943-4cd9-bc03-7d4ff8b4ce53",
+              "name": "Datacenter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datacenter",
+                    ":datacenter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datacenter",
+                      "description": "(Required) Identifier of the datacenter (e.g., datacenter-2)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of your vCenter Server instance",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "vcenter.example.com",
+      "key": "vcenter"
+    },
+    {
+      "type": "string",
+      "value": "https://{{vcenter}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b5aa4f03-7b2b-45d0-b4ec-50f39e418dfa",
+    "name": "VMware vSphere Automation REST Clusters Datacenters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

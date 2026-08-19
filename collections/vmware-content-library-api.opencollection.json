@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters Content Library API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content Library",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Content Libraries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/content/library"
+          },
+          "docs": "Returns a list of all content library identifiers in the vCenter inventory."
+        },
+        {
+          "info": {
+            "name": "Vmware Create a Content Library",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/content/library",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new local or subscribed content library for storing templates, ISOs, and OVF packages."
+        },
+        {
+          "info": {
+            "name": "Vmware Get Content Library Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/content/library/:library_id",
+            "params": [
+              {
+                "name": "library_id",
+                "value": "500123",
+                "type": "path",
+                "description": "Identifier of the content library"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about the specified content library."
+        },
+        {
+          "info": {
+            "name": "Vmware Delete a Content Library",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{vcenter}/api/content/library/:library_id",
+            "params": [
+              {
+                "name": "library_id",
+                "value": "500123",
+                "type": "path",
+                "description": "Identifier of the content library"
+              }
+            ]
+          },
+          "docs": "Deletes the specified content library and all of its items."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

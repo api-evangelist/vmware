@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters Datastores API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datastores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Datastores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/datastore",
+            "params": [
+              {
+                "name": "filter.datastores",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of datastores to filter by"
+              },
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query",
+                "description": "Names of datastores to filter by"
+              },
+              {
+                "name": "filter.types",
+                "value": "",
+                "type": "query",
+                "description": "Types of datastores to filter by"
+              },
+              {
+                "name": "filter.folders",
+                "value": "",
+                "type": "query",
+                "description": "Folders that must contain the datastores"
+              },
+              {
+                "name": "filter.datacenters",
+                "value": "",
+                "type": "query",
+                "description": "Datacenters that must contain the datastores"
+              }
+            ]
+          },
+          "docs": "Returns a list of datastores in the vCenter inventory matching the specified filter criteria. Results can be filtered by name, type, datacenter, and folder."
+        },
+        {
+          "info": {
+            "name": "Vmware Get Datastore Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/datastore/:datastore",
+            "params": [
+              {
+                "name": "datastore",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the datastore (e.g., datastore-15)"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about the specified datastore including capacity, free space, type, and accessible hosts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1265 @@
+{
+  "item": [
+    {
+      "id": "a0ca8d77-3267-46d2-888e-d8448ea7de14",
+      "name": "VMs",
+      "description": {
+        "content": "Virtual machine lifecycle management including creation, power operations, cloning, migration, and configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09ef7811-8465-42b6-b422-27051eab8def",
+          "name": "Vmware List Virtual Machines",
+          "request": {
+            "name": "Vmware List Virtual Machines",
+            "description": {
+              "content": "Returns a list of virtual machines in the vCenter inventory matching the specified filter criteria. Results can be filtered by name, power state, host, cluster, datacenter, folder, and resource pool.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter.vms",
+                  "value": "<string>",
+                  "description": "Identifiers of VMs to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.vms",
+                  "value": "<string>",
+                  "description": "Identifiers of VMs to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of VMs to filter by (exact match)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of VMs to filter by (exact match)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.folders",
+                  "value": "<string>",
+                  "description": "Folders that must contain the VMs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.folders",
+                  "value": "<string>",
+                  "description": "Folders that must contain the VMs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.datacenters",
+                  "value": "<string>",
+                  "description": "Datacenters that must contain the VMs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.datacenters",
+                  "value": "<string>",
+                  "description": "Datacenters that must contain the VMs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.hosts",
+                  "value": "<string>",
+                  "description": "Hosts that must contain the VMs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.hosts",
+                  "value": "<string>",
+                  "description": "Hosts that must contain the VMs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.clusters",
+                  "value": "<string>",
+                  "description": "Clusters that must contain the VMs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.clusters",
+                  "value": "<string>",
+                  "description": "Clusters that must contain the VMs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.resource_pools",
+                  "value": "<string>",
+                  "description": "Resource pools that must contain the VMs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.resource_pools",
+                  "value": "<string>",
+                  "description": "Resource pools that must contain the VMs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.power_states",
+                  "value": "<string>",
+                  "description": "Power states to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.power_states",
+                  "value": "<string>",
+                  "description": "Power states to filter by"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ec60110-1ab9-4013-9d8b-85653a6dde20",
+              "name": "List of virtual machines matching the filter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"vm\": \"example_value\",\n    \"name\": \"Example Title\",\n    \"power_state\": \"POWERED_ON\",\n    \"cpu_count\": 10,\n    \"memory_size_MiB\": 10\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ba759a0-c4f2-46e4-aeec-482de1bb1f9e",
+              "name": "Invalid filter parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c1f62f8-accd-4aa1-b91e-cc36b418da4c",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "921e5dce-975e-42c5-81a4-d239c9276f94",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ad95f68-94a8-469a-9bae-da364b9be7fe",
+          "name": "Vmware Create a New Virtual Machine",
+          "request": {
+            "name": "Vmware Create a New Virtual Machine",
+            "description": {
+              "content": "Creates a new virtual machine with the specified configuration. The VM is created in the powered-off state and must be explicitly powered on after creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"guest_OS\": \"<string>\",\n  \"placement\": {\n    \"folder\": \"<string>\",\n    \"host\": \"<string>\",\n    \"cluster\": \"<string>\",\n    \"resource_pool\": \"<string>\",\n    \"datastore\": \"<string>\"\n  },\n  \"hardware_version\": \"<string>\",\n  \"cpu\": {\n    \"count\": \"<integer>\",\n    \"cores_per_socket\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\",\n    \"hot_remove_enabled\": \"<boolean>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\",\n    \"hot_add_enabled\": \"<boolean>\"\n  },\n  \"disks\": [\n    {\n      \"type\": \"<string>\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"<string>\",\n        \"vmdk_file\": \"<string>\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"new_vmdk\": {\n        \"name\": \"<string>\",\n        \"capacity\": \"<long>\",\n        \"storage_policy\": {\n          \"policy\": \"<string>\"\n        }\n      },\n      \"backing\": {\n        \"type\": \"<string>\",\n        \"vmdk_file\": \"<string>\"\n      }\n    }\n  ],\n  \"nics\": [\n    {\n      \"type\": \"<string>\",\n      \"mac_type\": \"<string>\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"<string>\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    },\n    {\n      \"type\": \"<string>\",\n      \"mac_type\": \"<string>\",\n      \"mac_address\": \"<string>\",\n      \"backing\": {\n        \"type\": \"<string>\",\n        \"network\": \"<string>\"\n      },\n      \"start_connected\": true,\n      \"allow_guest_control\": false,\n      \"wake_on_lan_enabled\": false\n    }\n  ],\n  \"boot\": {\n    \"type\": \"<string>\",\n    \"efi_legacy_boot\": \"<boolean>\",\n    \"delay\": \"<integer>\",\n    \"enter_setup_mode\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3257dec5-9470-4734-80f3-24df2ad09347",
+              "name": "Virtual machine created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"guest_OS\": \"RHEL_9_64\",\n  \"placement\": {\n    \"folder\": \"example_value\",\n    \"host\": \"example_value\",\n    \"cluster\": \"example_value\",\n    \"resource_pool\": \"example_value\",\n    \"datastore\": \"example_value\"\n  },\n  \"hardware_version\": \"VMX_21\",\n  \"cpu\": {\n    \"count\": 10,\n    \"cores_per_socket\": 10,\n    \"hot_add_enabled\": true,\n    \"hot_remove_enabled\": true\n  },\n  \"memory\": {\n    \"size_MiB\": 10,\n    \"hot_add_enabled\": true\n  },\n  \"disks\": [\n    {\n      \"type\": \"IDE\",\n      \"new_vmdk\": {},\n      \"backing\": {}\n    }\n  ],\n  \"nics\": [\n    {\n      \"type\": \"E1000\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"example_value\",\n      \"backing\": {},\n      \"start_connected\": true,\n      \"allow_guest_control\": true,\n      \"wake_on_lan_enabled\": true\n    }\n  ],\n  \"boot\": {\n    \"type\": \"BIOS\",\n    \"efi_legacy_boot\": true,\n    \"delay\": 10,\n    \"enter_setup_mode\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7e888ee-1173-4a4d-81e6-b9d8e891ac95",
+              "name": "Invalid VM specification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"guest_OS\": \"RHEL_9_64\",\n  \"placement\": {\n    \"folder\": \"example_value\",\n    \"host\": \"example_value\",\n    \"cluster\": \"example_value\",\n    \"resource_pool\": \"example_value\",\n    \"datastore\": \"example_value\"\n  },\n  \"hardware_version\": \"VMX_21\",\n  \"cpu\": {\n    \"count\": 10,\n    \"cores_per_socket\": 10,\n    \"hot_add_enabled\": true,\n    \"hot_remove_enabled\": true\n  },\n  \"memory\": {\n    \"size_MiB\": 10,\n    \"hot_add_enabled\": true\n  },\n  \"disks\": [\n    {\n      \"type\": \"IDE\",\n      \"new_vmdk\": {},\n      \"backing\": {}\n    }\n  ],\n  \"nics\": [\n    {\n      \"type\": \"E1000\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"example_value\",\n      \"backing\": {},\n      \"start_connected\": true,\n      \"allow_guest_control\": true,\n      \"wake_on_lan_enabled\": true\n    }\n  ],\n  \"boot\": {\n    \"type\": \"BIOS\",\n    \"efi_legacy_boot\": true,\n    \"delay\": 10,\n    \"enter_setup_mode\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5f7cfd9-3d33-4416-a9ab-b16782a56ea6",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"guest_OS\": \"RHEL_9_64\",\n  \"placement\": {\n    \"folder\": \"example_value\",\n    \"host\": \"example_value\",\n    \"cluster\": \"example_value\",\n    \"resource_pool\": \"example_value\",\n    \"datastore\": \"example_value\"\n  },\n  \"hardware_version\": \"VMX_21\",\n  \"cpu\": {\n    \"count\": 10,\n    \"cores_per_socket\": 10,\n    \"hot_add_enabled\": true,\n    \"hot_remove_enabled\": true\n  },\n  \"memory\": {\n    \"size_MiB\": 10,\n    \"hot_add_enabled\": true\n  },\n  \"disks\": [\n    {\n      \"type\": \"IDE\",\n      \"new_vmdk\": {},\n      \"backing\": {}\n    }\n  ],\n  \"nics\": [\n    {\n      \"type\": \"E1000\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"example_value\",\n      \"backing\": {},\n      \"start_connected\": true,\n      \"allow_guest_control\": true,\n      \"wake_on_lan_enabled\": true\n    }\n  ],\n  \"boot\": {\n    \"type\": \"BIOS\",\n    \"efi_legacy_boot\": true,\n    \"delay\": 10,\n    \"enter_setup_mode\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "af39f65d-11ca-486d-99b3-654ef85f529c",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"guest_OS\": \"RHEL_9_64\",\n  \"placement\": {\n    \"folder\": \"example_value\",\n    \"host\": \"example_value\",\n    \"cluster\": \"example_value\",\n    \"resource_pool\": \"example_value\",\n    \"datastore\": \"example_value\"\n  },\n  \"hardware_version\": \"VMX_21\",\n  \"cpu\": {\n    \"count\": 10,\n    \"cores_per_socket\": 10,\n    \"hot_add_enabled\": true,\n    \"hot_remove_enabled\": true\n  },\n  \"memory\": {\n    \"size_MiB\": 10,\n    \"hot_add_enabled\": true\n  },\n  \"disks\": [\n    {\n      \"type\": \"IDE\",\n      \"new_vmdk\": {},\n      \"backing\": {}\n    }\n  ],\n  \"nics\": [\n    {\n      \"type\": \"E1000\",\n      \"mac_type\": \"MANUAL\",\n      \"mac_address\": \"example_value\",\n      \"backing\": {},\n      \"start_connected\": true,\n      \"allow_guest_control\": true,\n      \"wake_on_lan_enabled\": true\n    }\n  ],\n  \"boot\": {\n    \"type\": \"BIOS\",\n    \"efi_legacy_boot\": true,\n    \"delay\": 10,\n    \"enter_setup_mode\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fe859aa-c749-460a-8d88-44f543c2e123",
+          "name": "Vmware Get Virtual Machine Details",
+          "request": {
+            "name": "Vmware Get Virtual Machine Details",
+            "description": {
+              "content": "Returns detailed information about the specified virtual machine including hardware configuration, power state, guest OS, and storage information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b91796cf-9248-402c-b52a-b761ac8e8d2f",
+              "name": "Virtual machine details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"identity\": {\n    \"name\": \"Example Title\",\n    \"instance_uuid\": \"500123\",\n    \"bios_uuid\": \"500123\"\n  },\n  \"power_state\": \"POWERED_ON\",\n  \"guest_OS\": \"example_value\",\n  \"hardware\": {\n    \"version\": \"example_value\",\n    \"upgrade_policy\": \"NEVER\",\n    \"upgrade_version\": \"example_value\"\n  },\n  \"boot\": {\n    \"type\": \"BIOS\",\n    \"delay\": 10,\n    \"enter_setup_mode\": true\n  },\n  \"cpu\": {\n    \"count\": 10,\n    \"cores_per_socket\": 10,\n    \"hot_add_enabled\": true,\n    \"hot_remove_enabled\": true\n  },\n  \"memory\": {\n    \"size_MiB\": 10,\n    \"hot_add_enabled\": true,\n    \"hot_add_increment_size_MiB\": 10,\n    \"hot_add_limit_MiB\": 10\n  },\n  \"disks\": \"example_value\",\n  \"nics\": \"example_value\",\n  \"cdroms\": \"example_value\",\n  \"parallel_ports\": \"example_value\",\n  \"serial_ports\": \"example_value\",\n  \"floppy_drives\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "786d99c0-70c7-4dff-b2f7-9b58d2811a1f",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5b368cb-a646-4454-a137-2c10c5e65d0d",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab8ef1ed-f569-4f24-99ec-53edf5c5ed81",
+              "name": "Virtual machine not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af0af10c-6903-4d5a-bc55-297a22163e22",
+          "name": "Vmware Delete a Virtual Machine",
+          "request": {
+            "name": "Vmware Delete a Virtual Machine",
+            "description": {
+              "content": "Permanently deletes the specified virtual machine and all associated virtual disks. The VM must be in a powered-off state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e30133f2-743b-4cf5-ac9d-72278e09f463",
+              "name": "Virtual machine deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2d0f288-f176-4e68-a2bb-c73c5c014a75",
+              "name": "VM is not in a powered-off state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "889e965a-89ce-4a1d-92b3-d18b2c67c9c0",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "010302ea-c8ee-4f2e-9b78-5d1bfccafd6f",
+              "name": "Insufficient privileges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab151e20-2f32-469d-9ee1-e47b637bbffc",
+              "name": "Virtual machine not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Identifier of the virtual machine (e.g., vm-123)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of your vCenter Server instance",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "vcenter.example.com",
+      "key": "vcenter"
+    },
+    {
+      "type": "string",
+      "value": "https://{{vcenter}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4e77c6ef-85a6-4076-8248-74d3ccae8409",
+    "name": "VMware vSphere Automation REST Clusters VMs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

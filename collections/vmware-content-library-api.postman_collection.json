@@ -1,0 +1,854 @@
+{
+  "item": [
+    {
+      "id": "c7e12240-a798-4de4-8ef6-47a266e351bb",
+      "name": "Content Library",
+      "description": {
+        "content": "Content library management for templates, ISOs, and OVF packages shared across vCenter instances",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff401b49-c8c3-4677-929e-3a2d067b4537",
+          "name": "Vmware List Content Libraries",
+          "request": {
+            "name": "Vmware List Content Libraries",
+            "description": {
+              "content": "Returns a list of all content library identifiers in the vCenter inventory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content",
+                "library"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99c745ba-5335-4c83-8761-1b990806148c",
+              "name": "List of content library identifiers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"example_value\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3905cfc-0c2e-405e-9316-7a64dc24d832",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bca53e97-e32d-4050-ab7f-b36a199a5103",
+          "name": "Vmware Create a Content Library",
+          "request": {
+            "name": "Vmware Create a Content Library",
+            "description": {
+              "content": "Creates a new local or subscribed content library for storing templates, ISOs, and OVF packages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content",
+                "library"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"storage_backings\": [\n    {\n      \"type\": \"<string>\",\n      \"datastore_id\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"datastore_id\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7011d612-795e-4dc5-a586-a01e04307746",
+              "name": "Content library created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"description\": \"A sample description.\",\n  \"type\": \"LOCAL\",\n  \"storage_backings\": [\n    {\n      \"type\": \"DATASTORE\",\n      \"datastore_id\": \"500123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5704e2db-c66a-49fa-a85a-0e08fe6f30c6",
+              "name": "Invalid specification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"description\": \"A sample description.\",\n  \"type\": \"LOCAL\",\n  \"storage_backings\": [\n    {\n      \"type\": \"DATASTORE\",\n      \"datastore_id\": \"500123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8590acf6-e9bf-4d05-8f97-6b96c5114b1f",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"description\": \"A sample description.\",\n  \"type\": \"LOCAL\",\n  \"storage_backings\": [\n    {\n      \"type\": \"DATASTORE\",\n      \"datastore_id\": \"500123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "141abf87-864b-4565-94e5-385300f90abb",
+          "name": "Vmware Get Content Library Details",
+          "request": {
+            "name": "Vmware Get Content Library Details",
+            "description": {
+              "content": "Returns detailed information about the specified content library.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content",
+                "library",
+                ":library_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "library_id",
+                  "description": "(Required) Identifier of the content library"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9446fe74-61f5-42da-b756-d705e9a3e98a",
+              "name": "Content library details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library",
+                    ":library_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "library_id",
+                      "description": "(Required) Identifier of the content library"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"name\": \"Example Title\",\n  \"description\": \"A sample description.\",\n  \"type\": \"LOCAL\",\n  \"creation_time\": \"2026-01-15T10:30:00Z\",\n  \"last_modified_time\": \"2026-01-15T10:30:00Z\",\n  \"last_sync_time\": \"2026-01-15T10:30:00Z\",\n  \"storage_backings\": [\n    {\n      \"type\": \"example_value\",\n      \"datastore_id\": \"500123\"\n    }\n  ],\n  \"version\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae7bcad9-de70-4aaa-af13-3e32dafb268a",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library",
+                    ":library_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "library_id",
+                      "description": "(Required) Identifier of the content library"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9374935b-ed82-4d05-bdc5-29f145f340fe",
+              "name": "Content library not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library",
+                    ":library_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "library_id",
+                      "description": "(Required) Identifier of the content library"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb6f4106-1e49-4f8b-8745-5f66c97db502",
+          "name": "Vmware Delete a Content Library",
+          "request": {
+            "name": "Vmware Delete a Content Library",
+            "description": {
+              "content": "Deletes the specified content library and all of its items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content",
+                "library",
+                ":library_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "library_id",
+                  "description": "(Required) Identifier of the content library"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "070780d5-5bb3-4753-9e94-72a723ec1354",
+              "name": "Content library deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library",
+                    ":library_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "library_id",
+                      "description": "(Required) Identifier of the content library"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68a2cba6-c64f-4b25-8bc9-05c7ee62936a",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library",
+                    ":library_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "library_id",
+                      "description": "(Required) Identifier of the content library"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5addb7b2-b8ed-47e5-9333-830d683e055b",
+              "name": "Content library not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "library",
+                    ":library_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "library_id",
+                      "description": "(Required) Identifier of the content library"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of your vCenter Server instance",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "vcenter.example.com",
+      "key": "vcenter"
+    },
+    {
+      "type": "string",
+      "value": "https://{{vcenter}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6e17cd57-773f-4a2f-ae05-c48b20299e02",
+    "name": "VMware vSphere Automation REST Clusters Content Library API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

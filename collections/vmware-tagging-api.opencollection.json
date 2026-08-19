@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters Tagging API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tagging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Tag Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/cis/tagging/category"
+          },
+          "docs": "Returns all tag category identifiers in the system."
+        },
+        {
+          "info": {
+            "name": "Vmware Create a Tag Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/cis/tagging/category",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new tag category used to group related tags."
+        },
+        {
+          "info": {
+            "name": "Vmware List Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/cis/tagging/tag"
+          },
+          "docs": "Returns all tag identifiers in the system."
+        },
+        {
+          "info": {
+            "name": "Vmware Create a Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/cis/tagging/tag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new tag within a specified category."
+        },
+        {
+          "info": {
+            "name": "Vmware Attach a Tag to an Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/cis/tagging/tag-association?action=attach",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attaches a tag to a vSphere managed object such as a VM, host, datastore, or cluster."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

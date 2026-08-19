@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters Session API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Session",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware Get Current Session Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/session"
+          },
+          "docs": "Returns information about the currently authenticated session including the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Vmware Create a New Authentication Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/session",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Creates a new session by authenticating with vCenter Server credentials. Returns a session identifier that must be included in the vmware-api-session-id header for subsequent requests."
+        },
+        {
+          "info": {
+            "name": "Vmware Terminate the Current Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{vcenter}/api/session"
+          },
+          "docs": "Terminates the current authenticated session and invalidates the session token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

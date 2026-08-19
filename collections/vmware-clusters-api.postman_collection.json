@@ -1,0 +1,515 @@
+{
+  "item": [
+    {
+      "id": "00a01c27-b268-4968-82f2-996695cb73bf",
+      "name": "Clusters",
+      "description": {
+        "content": "Cluster management for compute resource grouping, DRS, and HA configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "260845be-f68b-464e-9973-49aa32546b14",
+          "name": "Vmware List Clusters",
+          "request": {
+            "name": "Vmware List Clusters",
+            "description": {
+              "content": "Returns a list of clusters in the vCenter inventory matching the specified filter criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "cluster"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter.clusters",
+                  "value": "<string>",
+                  "description": "Identifiers of clusters to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.clusters",
+                  "value": "<string>",
+                  "description": "Identifiers of clusters to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of clusters to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of clusters to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.folders",
+                  "value": "<string>",
+                  "description": "Folders that must contain the clusters"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.folders",
+                  "value": "<string>",
+                  "description": "Folders that must contain the clusters"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.datacenters",
+                  "value": "<string>",
+                  "description": "Datacenters that must contain the clusters"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.datacenters",
+                  "value": "<string>",
+                  "description": "Datacenters that must contain the clusters"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c936d244-0958-4985-bbe3-fbc6509f28c4",
+              "name": "List of clusters matching the filter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"cluster\": \"example_value\",\n    \"name\": \"Example Title\",\n    \"ha_enabled\": true,\n    \"drs_enabled\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa579fcc-9e92-49e8-b8dd-ec1fb22af5bb",
+              "name": "Invalid filter parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfc2f458-d576-43b3-b073-75ad2cf8ac0a",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6a96832-bc9b-40f4-b83b-ba827e0c10b9",
+          "name": "Vmware Get Cluster Details",
+          "request": {
+            "name": "Vmware Get Cluster Details",
+            "description": {
+              "content": "Returns detailed information about the specified cluster including DRS and HA configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "cluster",
+                ":cluster"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cluster",
+                  "description": "(Required) Identifier of the cluster (e.g., domain-c7)"
+                },
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dce78c6a-7f84-47de-8954-0afcf92cefbc",
+              "name": "Cluster details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "cluster",
+                    ":cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cluster",
+                      "description": "(Required) Identifier of the cluster (e.g., domain-c7)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"resource_pool\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13af85e1-1e40-4be6-8679-136979e42c2e",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "cluster",
+                    ":cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cluster",
+                      "description": "(Required) Identifier of the cluster (e.g., domain-c7)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5065a15-2b53-438c-81e0-bd1bac21778b",
+              "name": "Cluster not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "cluster",
+                    ":cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cluster",
+                      "description": "(Required) Identifier of the cluster (e.g., domain-c7)"
+                    },
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of your vCenter Server instance",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "vcenter.example.com",
+      "key": "vcenter"
+    },
+    {
+      "type": "string",
+      "value": "https://{{vcenter}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f431dad1-7275-42e4-af50-72c0d2d406b4",
+    "name": "VMware vSphere Automation REST Clusters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

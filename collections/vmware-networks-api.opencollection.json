@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters Networks API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Networks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Networks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/network",
+            "params": [
+              {
+                "name": "filter.networks",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of networks to filter by"
+              },
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query",
+                "description": "Names of networks to filter by"
+              },
+              {
+                "name": "filter.types",
+                "value": "",
+                "type": "query",
+                "description": "Types of networks to filter by"
+              },
+              {
+                "name": "filter.datacenters",
+                "value": "",
+                "type": "query",
+                "description": "Datacenters that must contain the networks"
+              },
+              {
+                "name": "filter.folders",
+                "value": "",
+                "type": "query",
+                "description": "Folders that must contain the networks"
+              }
+            ]
+          },
+          "docs": "Returns a list of networks in the vCenter inventory matching the specified filter criteria, including standard port groups, distributed port groups, and NSX logical switches."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

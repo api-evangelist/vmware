@@ -1,0 +1,307 @@
+{
+  "item": [
+    {
+      "id": "9df01270-ab5d-4199-8815-1c090396d4b7",
+      "name": "Networks",
+      "description": {
+        "content": "Virtual network management including standard and distributed port groups and network connectivity",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b329aad-0e82-48cd-a96c-3738b5bfc7b5",
+          "name": "Vmware List Networks",
+          "request": {
+            "name": "Vmware List Networks",
+            "description": {
+              "content": "Returns a list of networks in the vCenter inventory matching the specified filter criteria, including standard port groups, distributed port groups, and NSX logical switches.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "network"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter.networks",
+                  "value": "<string>",
+                  "description": "Identifiers of networks to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.networks",
+                  "value": "<string>",
+                  "description": "Identifiers of networks to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of networks to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of networks to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.types",
+                  "value": "<string>",
+                  "description": "Types of networks to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.types",
+                  "value": "<string>",
+                  "description": "Types of networks to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.datacenters",
+                  "value": "<string>",
+                  "description": "Datacenters that must contain the networks"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.datacenters",
+                  "value": "<string>",
+                  "description": "Datacenters that must contain the networks"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.folders",
+                  "value": "<string>",
+                  "description": "Folders that must contain the networks"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.folders",
+                  "value": "<string>",
+                  "description": "Folders that must contain the networks"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d5a44b2-3847-4439-af84-3e670f0436dd",
+              "name": "List of networks matching the filter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"network\": \"example_value\",\n    \"name\": \"Example Title\",\n    \"type\": \"STANDARD_PORTGROUP\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6e11db3-9cf1-438e-83d6-283b9261e49b",
+              "name": "Invalid filter parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "05aea85c-eeb3-4c07-abff-ba4e8afaa179",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of your vCenter Server instance",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "vcenter.example.com",
+      "key": "vcenter"
+    },
+    {
+      "type": "string",
+      "value": "https://{{vcenter}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7ae9172d-0fc5-4b63-8e28-e42a319b6568",
+    "name": "VMware vSphere Automation REST Clusters Networks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

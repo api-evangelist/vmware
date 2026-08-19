@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters Resource Pools API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resource Pools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Resource Pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/resource-pool",
+            "params": [
+              {
+                "name": "filter.resource_pools",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of resource pools to filter by"
+              },
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query",
+                "description": "Names of resource pools to filter by"
+              },
+              {
+                "name": "filter.clusters",
+                "value": "",
+                "type": "query",
+                "description": "Clusters that must contain the resource pools"
+              },
+              {
+                "name": "filter.hosts",
+                "value": "",
+                "type": "query",
+                "description": "Hosts that must contain the resource pools"
+              },
+              {
+                "name": "filter.parent_resource_pools",
+                "value": "",
+                "type": "query",
+                "description": "Parent resource pools to filter by"
+              }
+            ]
+          },
+          "docs": "Returns a list of resource pools in the vCenter inventory matching the specified filter criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

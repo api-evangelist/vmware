@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters VM Power API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "VM Power",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware Get Vm Power State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/power",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Returns the current power state of the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Vmware Power on a Virtual Machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/power?action=start",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Powers on the specified virtual machine. The VM must be in a powered-off or suspended state."
+        },
+        {
+          "info": {
+            "name": "Vmware Power Off a Virtual Machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/power?action=stop",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Powers off the specified virtual machine immediately. This is equivalent to pulling the power cord and does not perform a graceful guest OS shutdown. Use the guest shutdown operation for a clean shutdown."
+        },
+        {
+          "info": {
+            "name": "Vmware Suspend a Virtual Machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/power?action=suspend",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Suspends the specified virtual machine, saving its current state to disk. The VM can be resumed later from the suspended state."
+        },
+        {
+          "info": {
+            "name": "Vmware Reset a Virtual Machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/power?action=reset",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Resets the specified virtual machine. This is equivalent to pressing the reset button and does not perform a graceful guest OS reboot."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,260 @@
+{
+  "item": [
+    {
+      "id": "ee6e984b-ae94-48b0-81a6-03d611e21a8e",
+      "name": "Resource Pools",
+      "description": {
+        "content": "Resource pool management for allocating compute resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82935080-2664-4894-9ab3-1dd2aed434db",
+          "name": "Vmware List Resource Pools",
+          "request": {
+            "name": "Vmware List Resource Pools",
+            "description": {
+              "content": "Returns a list of resource pools in the vCenter inventory matching the specified filter criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "resource-pool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter.resource_pools",
+                  "value": "<string>",
+                  "description": "Identifiers of resource pools to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.resource_pools",
+                  "value": "<string>",
+                  "description": "Identifiers of resource pools to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of resource pools to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of resource pools to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.clusters",
+                  "value": "<string>",
+                  "description": "Clusters that must contain the resource pools"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.clusters",
+                  "value": "<string>",
+                  "description": "Clusters that must contain the resource pools"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.hosts",
+                  "value": "<string>",
+                  "description": "Hosts that must contain the resource pools"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.hosts",
+                  "value": "<string>",
+                  "description": "Hosts that must contain the resource pools"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.parent_resource_pools",
+                  "value": "<string>",
+                  "description": "Parent resource pools to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.parent_resource_pools",
+                  "value": "<string>",
+                  "description": "Parent resource pools to filter by"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP address of your vCenter Server instance",
+                  "type": "any",
+                  "value": "{{vcenter}}",
+                  "key": "vcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b64fc7f-8d86-4cec-9926-78cdb469c03e",
+              "name": "List of resource pools",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "resource-pool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"resource_pool\": \"example_value\",\n    \"name\": \"Example Title\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d338f36e-1d16-4359-93b8-eabd5c045ffe",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "resource-pool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP address of your vCenter Server instance",
+                      "type": "any",
+                      "value": "{{vcenter}}",
+                      "key": "vcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "vmware-api-session-id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP address of your vCenter Server instance",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "vcenter.example.com",
+      "key": "vcenter"
+    },
+    {
+      "type": "string",
+      "value": "https://{{vcenter}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "vmware-api-session-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c81ff26e-d1dc-4161-8fbc-00712ab5bffa",
+    "name": "VMware vSphere Automation REST Clusters Resource Pools API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters Storage Policies API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Storage Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Storage Policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/storage/policies",
+            "params": [
+              {
+                "name": "filter.policies",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of storage policies to filter by"
+              }
+            ]
+          },
+          "docs": "Returns a list of VM storage policies available in the vCenter inventory."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters Folders API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Folders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/folder",
+            "params": [
+              {
+                "name": "filter.folders",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of folders to filter by"
+              },
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query",
+                "description": "Names of folders to filter by"
+              },
+              {
+                "name": "filter.type",
+                "value": "DATACENTER",
+                "type": "query",
+                "description": "Type of folder to filter by"
+              },
+              {
+                "name": "filter.parent_folders",
+                "value": "",
+                "type": "query",
+                "description": "Parent folders to filter by"
+              },
+              {
+                "name": "filter.datacenters",
+                "value": "",
+                "type": "query",
+                "description": "Datacenters that must contain the folders"
+              }
+            ]
+          },
+          "docs": "Returns a list of folders in the vCenter inventory matching the specified filter criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

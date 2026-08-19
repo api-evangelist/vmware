@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters Datacenters API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datacenters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Datacenters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/datacenter",
+            "params": [
+              {
+                "name": "filter.datacenters",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of datacenters to filter by"
+              },
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query",
+                "description": "Names of datacenters to filter by"
+              },
+              {
+                "name": "filter.folders",
+                "value": "",
+                "type": "query",
+                "description": "Folders that must contain the datacenters"
+              }
+            ]
+          },
+          "docs": "Returns a list of datacenters in the vCenter inventory matching the specified filter criteria."
+        },
+        {
+          "info": {
+            "name": "Vmware Create a Datacenter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/datacenter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new datacenter in the specified folder."
+        },
+        {
+          "info": {
+            "name": "Vmware Get Datacenter Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/datacenter/:datacenter",
+            "params": [
+              {
+                "name": "datacenter",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the datacenter (e.g., datacenter-2)"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about the specified datacenter."
+        },
+        {
+          "info": {
+            "name": "Vmware Delete a Datacenter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{vcenter}/api/vcenter/datacenter/:datacenter",
+            "params": [
+              {
+                "name": "datacenter",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the datacenter (e.g., datacenter-2)"
+              },
+              {
+                "name": "force",
+                "value": "true",
+                "type": "query",
+                "description": "Force delete even if datacenter is not empty"
+              }
+            ]
+          },
+          "docs": "Deletes the specified datacenter. All hosts and VMs must be removed from the datacenter before deletion."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

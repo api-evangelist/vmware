@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters VM Guest API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "VM Guest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware Get Guest Os Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/guest/identity",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Returns guest operating system identity information reported by VMware Tools running inside the VM, including OS name, version, hostname, and IP addresses."
+        },
+        {
+          "info": {
+            "name": "Vmware Get Guest Networking Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/guest/networking",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Returns guest networking information reported by VMware Tools including network interfaces, IP addresses, DNS configuration, and routing tables."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

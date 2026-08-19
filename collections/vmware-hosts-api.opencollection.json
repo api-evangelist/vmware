@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters Hosts API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hosts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware List Esxi Hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/host",
+            "params": [
+              {
+                "name": "filter.hosts",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of hosts to filter by"
+              },
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query",
+                "description": "Names of hosts to filter by"
+              },
+              {
+                "name": "filter.folders",
+                "value": "",
+                "type": "query",
+                "description": "Folders that must contain the hosts"
+              },
+              {
+                "name": "filter.datacenters",
+                "value": "",
+                "type": "query",
+                "description": "Datacenters that must contain the hosts"
+              },
+              {
+                "name": "filter.clusters",
+                "value": "",
+                "type": "query",
+                "description": "Clusters that must contain the hosts"
+              },
+              {
+                "name": "filter.connection_states",
+                "value": "",
+                "type": "query",
+                "description": "Connection states to filter by"
+              }
+            ]
+          },
+          "docs": "Returns a list of ESXi hosts in the vCenter inventory matching the specified filter criteria. Results can be filtered by name, connection state, cluster, datacenter, and folder."
+        },
+        {
+          "info": {
+            "name": "Vmware Get Esxi Host Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/host/:host",
+            "params": [
+              {
+                "name": "host",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the ESXi host (e.g., host-10)"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about the specified ESXi host including connection state, hardware, and resource utilization."
+        },
+        {
+          "info": {
+            "name": "Vmware Connect an Esxi Host",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/host/:host/connect",
+            "params": [
+              {
+                "name": "host",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the ESXi host (e.g., host-10)"
+              }
+            ]
+          },
+          "docs": "Connects to the specified ESXi host, making it available for virtual machine operations."
+        },
+        {
+          "info": {
+            "name": "Vmware Disconnect an Esxi Host",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/host/:host/disconnect",
+            "params": [
+              {
+                "name": "host",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the ESXi host (e.g., host-10)"
+              }
+            ]
+          },
+          "docs": "Disconnects the specified ESXi host from vCenter Server. Running VMs are not affected but can no longer be managed through vCenter."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

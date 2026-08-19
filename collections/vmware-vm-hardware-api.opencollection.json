@@ -1,0 +1,236 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VMware vSphere Automation REST Clusters VM Hardware API",
+    "version": "8.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "VM Hardware",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vmware Get Vm Hardware Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/hardware",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Returns the full virtual hardware configuration of the specified virtual machine including CPU, memory, and all virtual devices."
+        },
+        {
+          "info": {
+            "name": "Vmware Update Vm Hardware Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/hardware",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the virtual hardware configuration. Some changes require the VM to be powered off."
+        },
+        {
+          "info": {
+            "name": "Vmware Get Vm Cpu Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/hardware/cpu",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Returns the CPU configuration of the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Vmware Update Vm Cpu Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/hardware/cpu",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the CPU configuration. Hot-add of CPUs is supported if the VM and guest OS support it and the VM is powered on."
+        },
+        {
+          "info": {
+            "name": "Vmware Get Vm Memory Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/hardware/memory",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Returns the memory configuration of the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Vmware Update Vm Memory Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/hardware/memory",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the memory configuration. Hot-add of memory is supported if the VM and guest OS support it and the VM is powered on."
+        },
+        {
+          "info": {
+            "name": "Vmware List Vm Virtual Disks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/hardware/disk",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Returns a list of virtual disks attached to the specified VM."
+        },
+        {
+          "info": {
+            "name": "Vmware Add a Virtual Disk to a Vm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/hardware/disk",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and attaches a new virtual disk to the specified VM. Supports creating new VMDK files or attaching existing ones."
+        },
+        {
+          "info": {
+            "name": "Vmware List Vm Network Adapters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/hardware/ethernet",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ]
+          },
+          "docs": "Returns a list of virtual Ethernet adapters attached to the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Vmware Add a Network Adapter to a Vm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/hardware/ethernet",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the virtual machine (e.g., vm-123)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and attaches a new virtual Ethernet adapter to the specified virtual machine."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
