@@ -37,6 +37,11 @@ apis:
   humanURL: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
   baseURL: https://{{vcenter}}/sdk
   tags:
+  - Data-Center
+  - SOAP
+  - Virtualization
+  - VM Management
+  tags_raw:
   - Data Center
   - SOAP
   - Virtualization
@@ -112,6 +117,11 @@ apis:
   humanURL: https://developer.vmware.com/apis/tanzu/
   baseURL: https://{{tkg-endpoint}}/api
   tags:
+  - Cloud-Native
+  - Containers
+  - DevOps
+  - Kubernetes
+  tags_raw:
   - Cloud Native
   - Containers
   - DevOps
@@ -303,6 +313,11 @@ apis:
   baseURL: https://{{nsx-manager}}/api/v1
   tags:
   - Firewall
+  - Microsegmentation
+  - Network Security
+  - Threat Detection
+  tags_raw:
+  - Firewall
   - Micro-Segmentation
   - Network Security
   - Threat Detection
@@ -366,6 +381,11 @@ apis:
   tags:
   - AWS
   - Network Virtualization
+  - security-policy
+  - VMware Cloud
+  tags_raw:
+  - AWS
+  - Network Virtualization
   - Security Policy
   - VMware Cloud
   properties:
@@ -399,6 +419,11 @@ apis:
   tags:
   - IT Automation
   - Orchestration
+  - Plugins
+  - Workflow-Automation
+  tags_raw:
+  - IT Automation
+  - Orchestration
   - Plug-Ins
   - Workflow Automation
   properties:
@@ -419,6 +444,11 @@ apis:
     https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-saas-api/latest/
   baseURL: https://{{vrni-saas-host}}/api/ni
   tags:
+  - Microsegmentation
+  - Network Analytics
+  - Network Monitoring
+  - Software-as-a-Service
+  tags_raw:
   - Microsegmentation
   - Network Analytics
   - Network Monitoring
@@ -553,6 +583,11 @@ apis:
   - Automation
   - Cloud Foundation
   - Deployment
+  - Installations
+  tags_raw:
+  - Automation
+  - Cloud Foundation
+  - Deployment
   - Installation
   properties:
   - type: APIReference
@@ -566,6 +601,10 @@ apis:
     https://developer.broadcom.com/xapis/vmware-cloud-foundation-operations-orchestrator-api/latest/
   baseURL: https://{{vro-host}}/vco/api
   tags:
+  - Cloud Foundation
+  - Orchestration
+  - Workflow-Automation
+  tags_raw:
   - Cloud Foundation
   - Operations
   - Orchestration
@@ -707,6 +746,11 @@ apis:
   tags:
   - Artificial Intelligence
   - Infrastructure
+  - Machine-Learning
+  - Private AI
+  tags_raw:
+  - Artificial Intelligence
+  - Infrastructure
   - Machine Learning
   - Private AI
   properties:
@@ -748,6 +792,8 @@ apis:
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
+  - Cluster
+  tags_raw:
   - Clusters
   properties:
   - type: OpenAPI
@@ -829,6 +875,8 @@ apis:
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
+  - Data Centers
+  tags_raw:
   - Datacenters
   properties:
   - type: OpenAPI
@@ -1031,6 +1079,8 @@ apis:
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
+  - ResourcePools
+  tags_raw:
   - Resource Pools
   properties:
   - type: OpenAPI
