@@ -1,0 +1,118 @@
+slug: vmware
+provider: VMware
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 11
+edges:
+- tag: VM Hardware
+  spec_file: vmware-vm-hardware-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.9
+  evidence: PATCH /vcenter/vm/{vm}/hardware/cpu  updateVMCpu  Vmware Update Vm Cpu Configuration; POST
+    /vcenter/vm/{vm}/hardware/disk  Add a Virtual Disk to a Vm
+  reason: Configures virtual CPU, memory, disk and network adapters of VMs — compute/storage/network infrastructure
+    provisioning.
+- tag: VMs
+  spec_file: vmware-vms-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.9
+  evidence: POST /vcenter/vm  createVM  Vmware Create a New Virtual Machine; schema VMCreateSpec
+  reason: Full CRUD over virtual machines in vCenter — provisioning and stewardship of compute infrastructure.
+- tag: Hosts
+  spec_file: vmware-hosts-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.88
+  evidence: POST /vcenter/host/{host}/connect connectHost 'Vmware Connect an Esxi Host'; GET /vcenter/host
+    listHosts 'Vmware List Esxi Hosts'
+  reason: Managing ESXi hypervisor hosts (list, connect, disconnect) is direct compute infrastructure
+    management.
+- tag: Clusters
+  spec_file: vmware-clusters-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: GET /vcenter/cluster listClusters 'Vmware List Clusters' — 'RESTful API for managing VMware
+    vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters'
+  reason: Compute cluster inventory in vCenter is IT infrastructure management (compute/virtualization
+    estate).
+- tag: Datacenters
+  spec_file: vmware-datacenters-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: POST /vcenter/datacenter createDatacenter 'Vmware Create a Datacenter', schema DatacenterCreateSpec
+  reason: Creating and managing vCenter datacenter inventory objects is management of compute/cloud infrastructure.
+- tag: Datastores
+  spec_file: vmware-datastores-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: GET /vcenter/datastore listDatastores 'Vmware List Datastores', schemas DatastoreSummary,
+    DatastoreInfo
+  reason: Datastore (storage) inventory management in vSphere maps to IT infrastructure management — compute,
+    storage, network.
+- tag: Networks
+  spec_file: vmware-networks-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: GET /vcenter/network  listNetworks  Vmware List Networks; schema NetworkSummary; "managing
+    VMware vSphere virtualization platform resources including ... networks"
+  reason: Operations enumerate virtual networks on the vSphere virtualization platform — compute/storage/network
+    infrastructure administration, i.e. IT Infrastructure Management. No business-domain reading fits.
+- tag: Resource Pools
+  spec_file: vmware-resource-pools-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: GET /vcenter/resource-pool  listResourcePools  Vmware List Resource Pools; schema ResourcePoolSummary
+  reason: vSphere resource pools are compute capacity containers in the virtualization platform; this
+    is IT infrastructure administration, not HR or project resourcing.
+- tag: Storage Policies
+  spec_file: vmware-storage-policies-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: GET /vcenter/storage/policies  listStoragePolicies  Vmware List Storage Policies
+  reason: Storage policy inventory for vSphere datastores — infrastructure (storage) management. 'Policies'
+    here is a storage QoS construct, not corporate policy management.
+- tag: VM Power
+  spec_file: vmware-vm-power-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: POST /vcenter/vm/{vm}/power?action=start  powerOnVM  Vmware Power on a Virtual Machine
+  reason: Power state control of virtual machines is day-to-day virtualization infrastructure operation;
+    'Power' is not energy/utility business here.
+- tag: VM Guest
+  spec_file: vmware-vm-guest-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /vcenter/vm/{vm}/guest/identity  getVMGuestIdentity  Vmware Get Guest Os Identity
+  reason: Reads guest OS identity and networking of virtual machines — virtualization infrastructure operations.
+    'Guest' is a VM construct, not a hospitality guest.

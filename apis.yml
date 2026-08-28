@@ -2,6 +2,18 @@ aid: vmware
 name: VMware
 description: Collection of VMware APIs for cloud infrastructure, virtualization, and management solutions including
   vSphere, NSX, vCloud Director, Tanzu, and Aria operations.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -1328,6 +1340,9 @@ apis:
   - type: Documentation
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
 common:
+- type: CapabilityMap
+  url: capabilities/vmware-capability-edges.yml
+  name: VMware Business Capability Map
 - type: ParentCompany
   url: https://apis.io/providers/broadcom/
   name: Broadcom
