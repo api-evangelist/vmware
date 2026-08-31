@@ -300,7 +300,7 @@ apis:
   baseURL: https://{{nsx-manager}}/api/v1
   tags:
   - Firewall
-  - Microsegmentation
+  - Micro-Segmentation
   - Network Security
   - Threat Detection
   tags_raw:
@@ -364,7 +364,7 @@ apis:
   tags:
   - AWS
   - Network Virtualization
-  - security-policy
+  - Security Policy
   - VMware Cloud
   tags_raw:
   - AWS
@@ -397,7 +397,7 @@ apis:
   tags:
   - IT Automation
   - Orchestration
-  - Plugins
+  - Plug-Ins
   - Workflow-Automation
   tags_raw:
   - IT Automation
@@ -818,7 +818,7 @@ apis:
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
-  - Data Centers
+  - Datacenters
   tags_raw:
   - Datacenters
   properties:
@@ -1020,7 +1020,7 @@ apis:
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
-  - ResourcePools
+  - Resource Pools
   tags_raw:
   - Resource Pools
   properties:
