@@ -192,6 +192,11 @@ apis:
   baseURL: https://{{vcenter}}/vsanHealth
   tags:
   - Data Management
+  - Hyperconverged
+  - Storage
+  - vSAN
+  tags_raw:
+  - Data Management
   - Hyper-Converged
   - Storage
   - vSAN
@@ -300,7 +305,7 @@ apis:
   baseURL: https://{{nsx-manager}}/api/v1
   tags:
   - Firewall
-  - Micro-Segmentation
+  - Microsegmentation
   - Network Security
   - Threat Detection
   tags_raw:
@@ -364,7 +369,7 @@ apis:
   tags:
   - AWS
   - Network Virtualization
-  - Security Policy
+  - security-policy
   - VMware Cloud
   tags_raw:
   - AWS
@@ -397,7 +402,7 @@ apis:
   tags:
   - IT Automation
   - Orchestration
-  - Plug-Ins
+  - Plugins
   - Workflow-Automation
   tags_raw:
   - IT Automation
@@ -818,7 +823,7 @@ apis:
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
-  - Datacenters
+  - Data Centers
   tags_raw:
   - Datacenters
   properties:
@@ -1020,7 +1025,7 @@ apis:
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
-  - Resource Pools
+  - ResourcePools
   tags_raw:
   - Resource Pools
   properties:
