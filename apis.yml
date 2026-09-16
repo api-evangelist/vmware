@@ -42,7 +42,8 @@ type: Index
 apis:
 - aid: vmware:vsphere-web-services-api
   name: vSphere Web Services API
-  description: Comprehensive SOAP-based API providing access to all vSphere management functionality including virtual
+  description: >-
+    Comprehensive SOAP-based API providing access to all vSphere management functionality including virtual
     machines, hosts, clusters, networking, and storage.
   humanURL: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
   baseURL: https://{{vcenter}}/sdk
@@ -63,7 +64,8 @@ apis:
     url: https://github.com/vmware/vsphere-automation-sdk-java
 - aid: vmware:virtual-infrastructure-json-api
   name: Virtual Infrastructure JSON API
-  description: HTTP and JSON based wire protocol as an alternative to SOAP and XML for vCenter Server 8.0 Update
+  description: >-
+    HTTP and JSON based wire protocol as an alternative to SOAP and XML for vCenter Server 8.0 Update
     1 and later, documented via OpenAPI 3.0 specification.
   humanURL: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/
   baseURL: https://{{vcenter}}/sdk/vim25/8.0.1.0
@@ -77,7 +79,8 @@ apis:
     url: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/
 - aid: vmware:nsx-t-global-manager-api
   name: NSX-T Global Manager API
-  description: API for managing NSX Federation with centralized configuration of multiple NSX deployments across
+  description: >-
+    API for managing NSX Federation with centralized configuration of multiple NSX deployments across
     sites.
   humanURL: https://developer.broadcom.com/xapis/nsx-t-data-center-global-manager-rest-api/latest/
   baseURL: https://{{global-manager}}/global-manager/api/v1
@@ -91,9 +94,11 @@ apis:
     url: https://developer.broadcom.com/xapis/nsx-t-data-center-global-manager-rest-api/latest/
 - aid: vmware:nsx-intelligence-api
   name: NSX Intelligence API
-  description: API for NSX Intelligence and Application Platform providing network traffic data collection, ingestion,
+  description: >-
+    API for NSX Intelligence and Application Platform providing network traffic data collection, ingestion,
     and correlation capabilities.
-  humanURL: https://developer.broadcom.com/xapis/nsx-intelligence-and-application-platform-apis/latest/
+  humanURL: >-
+    https://developer.broadcom.com/xapis/nsx-intelligence-and-application-platform-apis/latest/
   baseURL: https://{{nsx-manager}}/napp/api/v1
   tags:
   - Network Intelligence
@@ -101,10 +106,12 @@ apis:
   - Traffic Analysis
   properties:
   - type: APIReference
-    url: https://developer.broadcom.com/xapis/nsx-intelligence-and-application-platform-apis/latest/
+    url: >-
+      https://developer.broadcom.com/xapis/nsx-intelligence-and-application-platform-apis/latest/
 - aid: vmware:nsx-autonomous-edge-api
   name: NSX Autonomous Edge API
-  description: REST API for NSX Autonomous Edge providing network virtualization capabilities for edge deployments
+  description: >-
+    REST API for NSX Autonomous Edge providing network virtualization capabilities for edge deployments
     using a resource-oriented architecture with JSON encoding.
   humanURL: https://developer.broadcom.com/xapis/nsx-autonomous-edge-rest-api/latest/
   baseURL: https://{{nsx-edge}}/api/v1
@@ -134,7 +141,8 @@ apis:
   - type: Documentation
     url: https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/index.html
   - type: CLI
-    url: https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/latest/vmware-tanzu-kubernetes-grid/cli-reference.html
+    url: >-
+      https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/latest/vmware-tanzu-kubernetes-grid/cli-reference.html
 - aid: vmware:workspace-one-api
   name: Workspace ONE API
   description: API for unified endpoint management and digital workspace platform.
@@ -152,8 +160,9 @@ apis:
     url: https://developer.vmware.com/apis/workspace-one/latest/reference/
 - aid: vmware:vmware-cloud-foundation-api
   name: VMware Cloud Foundation API
-  description: API for managing the full VMware Cloud Foundation stack including SDDC Manager and Cloud Builder
-    for automated lifecycle management of private cloud infrastructure.
+  description: >-
+    API for managing the full VMware Cloud Foundation stack including SDDC Manager and Cloud Builder for
+    automated lifecycle management of private cloud infrastructure.
   humanURL: https://developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/
   baseURL: https://{{sddc-manager}}/v1
   tags:
@@ -165,12 +174,14 @@ apis:
   - type: APIReference
     url: https://developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/
   - type: Documentation
-    url: https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/administration-sdks-cli-and-tools/about-vmware-cloud-foundation-development/vcf-apis-and-scripts.html
+    url: >-
+      https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/administration-sdks-cli-and-tools/about-vmware-cloud-foundation-development/vcf-apis-and-scripts.html
   - type: SDKs
     url: https://github.com/vmware/vcf-sdk-java
 - aid: vmware:vmware-horizon-server-api
   name: VMware Horizon Server API
-  description: API for managing VMware Horizon virtual desktop and application delivery platform including pools,
+  description: >-
+    API for managing VMware Horizon virtual desktop and application delivery platform including pools,
     farms, desktops, and sessions.
   humanURL: https://developer.broadcom.com/xapis/vmware-horizon-server-api/latest/
   baseURL: https://{{horizon-server}}/rest
@@ -186,7 +197,8 @@ apis:
     url: https://techdocs.broadcom.com/us/en/vmware-cis/horizon.html
 - aid: vmware:vsan-management-api
   name: vSAN Management API
-  description: API for managing VMware vSAN software-defined storage including cluster configuration, disk management,
+  description: >-
+    API for managing VMware vSAN software-defined storage including cluster configuration, disk management,
     health monitoring, and performance analytics.
   humanURL: https://developer.broadcom.com/xapis/vsan-management-api/latest/
   baseURL: https://{{vcenter}}/vsanHealth
@@ -205,7 +217,8 @@ apis:
     url: https://developer.broadcom.com/xapis/vsan-management-api/latest/
 - aid: vmware:vmware-aria-operations-for-logs-api
   name: VMware Aria Operations for Logs API
-  description: REST API for VMware Aria Operations for Logs providing programmatic access to log data ingestion,
+  description: >-
+    REST API for VMware Aria Operations for Logs providing programmatic access to log data ingestion,
     querying, aggregation, and platform configuration.
   humanURL: https://developer.broadcom.com/xapis/vrealize-log-insight-api/latest/
   baseURL: https://{{log-insight-host}}:9543/api/v2
@@ -218,10 +231,12 @@ apis:
   - type: APIReference
     url: https://developer.broadcom.com/xapis/vrealize-log-insight-api/latest/
   - type: Documentation
-    url: https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-operations-for-logs/8-18/developer-resources-for-vmware-aria-operations-for-logs-8-18/the-vrealize-log-insight-rest-api.html
+    url: >-
+      https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-operations-for-logs/8-18/developer-resources-for-vmware-aria-operations-for-logs-8-18/the-vrealize-log-insight-rest-api.html
 - aid: vmware:vmware-aria-operations-for-networks-api
   name: VMware Aria Operations for Networks API
-  description: API for network visibility, analytics, and troubleshooting providing access to application discovery,
+  description: >-
+    API for network visibility, analytics, and troubleshooting providing access to application discovery,
     microsegmentation planning, and network flow analysis.
   humanURL: https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-api/latest/
   baseURL: https://{{vrni-host}}/api/ni
@@ -235,8 +250,9 @@ apis:
     url: https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-api/latest/
 - aid: vmware:vmware-aria-suite-lifecycle-api
   name: VMware Aria Suite Lifecycle API
-  description: REST API for managing the lifecycle of VMware Aria suite products including deployment, upgrade,
-    patching, and configuration management.
+  description: >-
+    REST API for managing the lifecycle of VMware Aria suite products including deployment, upgrade, patching,
+    and configuration management.
   humanURL: https://developer.broadcom.com/xapis/vmware-aria-suite-lifecycle-rest-api/latest/
   baseURL: https://{{lcm-host}}/lcm/api
   tags:
@@ -249,9 +265,11 @@ apis:
     url: https://developer.broadcom.com/xapis/vmware-aria-suite-lifecycle-rest-api/latest/
 - aid: vmware:vmware-site-recovery-manager-api
   name: VMware Site Recovery Manager API
-  description: REST API gateway for VMware Site Recovery Manager providing programmatic access to disaster recovery
+  description: >-
+    REST API gateway for VMware Site Recovery Manager providing programmatic access to disaster recovery
     operations including protection groups, recovery plans, and replication management.
-  humanURL: https://developer.broadcom.com/xapis/vmware-site-recovery-manager-rest-api-gateway/latest/
+  humanURL: >-
+    https://developer.broadcom.com/xapis/vmware-site-recovery-manager-rest-api-gateway/latest/
   baseURL: https://{{srm-host}}/api
   tags:
   - Business Continuity
@@ -260,15 +278,18 @@ apis:
   - Site Recovery
   properties:
   - type: APIReference
-    url: https://developer.broadcom.com/xapis/vmware-site-recovery-manager-rest-api-gateway/latest/
+    url: >-
+      https://developer.broadcom.com/xapis/vmware-site-recovery-manager-rest-api-gateway/latest/
   - type: Documentation
-    url: https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-administration-8-8/using-the-site-recovery-manager-rest-api-gateway.html
+    url: >-
+      https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-administration-8-8/using-the-site-recovery-manager-rest-api-gateway.html
   - type: SDKs
     url: https://developer.broadcom.com/sdks/site-recovery-manager-srm/latest
 - aid: vmware:vmware-live-cyber-recovery-api
   name: VMware Live Cyber Recovery API
-  description: REST API for VMware Live Cyber Recovery providing access to cloud file systems, protected sites,
-    VMs, protection groups, and recovery plans for ransomware and disaster recovery.
+  description: >-
+    REST API for VMware Live Cyber Recovery providing access to cloud file systems, protected sites, VMs,
+    protection groups, and recovery plans for ransomware and disaster recovery.
   humanURL: https://developer.broadcom.com/xapis/vmware-live-cyber-recovery-api/latest/
   baseURL: https://{{vcdr-orchestrator}}/api
   tags:
@@ -283,7 +304,8 @@ apis:
     url: https://developer.broadcom.com/sdks/vmware-live-cyber-recovery-sdk/latest
 - aid: vmware:vmware-live-site-recovery-api
   name: VMware Live Site Recovery API
-  description: API for VMware Live Site Recovery providing disaster recovery as a service capabilities with automated
+  description: >-
+    API for VMware Live Site Recovery providing disaster recovery as a service capabilities with automated
     recovery plan execution and testing.
   humanURL: https://developer.broadcom.com/xapis/vmware-live-site-recovery-v1-api/latest/
   baseURL: https://{{vcdr-host}}/api/vcdr/v1
@@ -296,11 +318,13 @@ apis:
   - type: APIReference
     url: https://developer.broadcom.com/xapis/vmware-live-site-recovery-v1-api/latest/
   - type: Documentation
-    url: https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/using-the-site-recovery-manager-rest-api-gateway.html
+    url: >-
+      https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/using-the-site-recovery-manager-rest-api-gateway.html
 - aid: vmware:vmware-vdefend-api
   name: VMware vDefend API
-  description: API for VMware vDefend lateral security platform providing network security segmentation, threat
-    detection, network analysis, and malware prevention capabilities.
+  description: >-
+    API for VMware vDefend lateral security platform providing network security segmentation, threat detection,
+    network analysis, and malware prevention capabilities.
   humanURL: https://developer.broadcom.com/xapis/vmware-vdefend/latest/
   baseURL: https://{{nsx-manager}}/api/v1
   tags:
@@ -320,7 +344,8 @@ apis:
     url: https://techdocs.broadcom.com/us/en/vmware-security-load-balancing/vdefend.html
 - aid: vmware:vcf-operations-api
   name: VCF Operations API
-  description: API for VMware Cloud Foundation operations management providing monitoring, analytics, and performance
+  description: >-
+    API for VMware Cloud Foundation operations management providing monitoring, analytics, and performance
     optimization for VCF deployments.
   humanURL: https://developer.broadcom.com/xapis/vcf-operations-api/latest/
   baseURL: https://{{vrops-host}}/suite-api/api
@@ -334,7 +359,8 @@ apis:
     url: https://developer.broadcom.com/xapis/vcf-operations-api/latest/
 - aid: vmware:vmware-view-api
   name: VMware View API
-  description: API providing comprehensive access to VMware Horizon View data structures for managing virtual desktop
+  description: >-
+    API providing comprehensive access to VMware Horizon View data structures for managing virtual desktop
     infrastructure including desktop pools, sessions, and entitlements.
   humanURL: https://developer.broadcom.com/xapis/view-api/latest/
   baseURL: https://{{horizon-server}}/view-vlsi/rest
@@ -348,7 +374,8 @@ apis:
     url: https://developer.broadcom.com/xapis/view-api/latest/
 - aid: vmware:vmware-cloud-on-aws-api-reference
   name: VMware Cloud on AWS API Reference
-  description: Comprehensive API reference for managing VMware Cloud on AWS infrastructure including SDDCs, organizations,
+  description: >-
+    Comprehensive API reference for managing VMware Cloud on AWS infrastructure including SDDCs, organizations,
     subscriptions, and ESX host configurations.
   humanURL: https://developer.broadcom.com/xapis/vmware-cloud-on-aws-api-reference/latest/
   baseURL: https://vmc.vmware.com/vmc/api
@@ -362,7 +389,8 @@ apis:
     url: https://developer.broadcom.com/xapis/vmware-cloud-on-aws-api-reference/latest/
 - aid: vmware:nsx-vmc-policy-api
   name: NSX VMC Policy API
-  description: API for managing logical networking in NSX for VMware Cloud on AWS customers including security policies,
+  description: >-
+    API for managing logical networking in NSX for VMware Cloud on AWS customers including security policies,
     segments, and gateway configurations.
   humanURL: https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/
   baseURL: https://{{nsx-manager}}/policy/api/v1
@@ -381,9 +409,11 @@ apis:
     url: https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/
 - aid: vmware:vmware-cloud-disaster-recovery-api
   name: VMware Cloud Disaster Recovery API
-  description: REST API for VMware Cloud Disaster Recovery providing access to cloud file systems, protected sites,
+  description: >-
+    REST API for VMware Cloud Disaster Recovery providing access to cloud file systems, protected sites,
     protected VMs, protection groups, and Recovery SDDCs.
-  humanURL: https://developer.broadcom.com/xapis/vmware-cloud-disaster-recovery-api-reference/latest/
+  humanURL: >-
+    https://developer.broadcom.com/xapis/vmware-cloud-disaster-recovery-api-reference/latest/
   baseURL: https://{{vcdr-host}}/api
   tags:
   - Business Continuity
@@ -392,11 +422,14 @@ apis:
   - Disaster Recovery
   properties:
   - type: APIReference
-    url: https://developer.broadcom.com/xapis/vmware-cloud-disaster-recovery-api-reference/latest/
+    url: >-
+      https://developer.broadcom.com/xapis/vmware-cloud-disaster-recovery-api-reference/latest/
 - aid: vmware:vmware-aria-automation-orchestrator-api
   name: VMware Aria Automation Orchestrator API
-  description: REST API for VMware Aria Automation Orchestrator enabling programmatic access to run and schedule
-    workflows, retrieve workflow details and logs, browse inventories and plug-ins, and import and export packages.
+  description: >-
+    REST API for VMware Aria Automation Orchestrator enabling programmatic access to run and schedule
+    workflows, retrieve workflow details and logs, browse inventories and plug-ins, and import and export
+    packages.
   humanURL: https://developer.broadcom.com/xapis/vrealize-orchestrator-api/latest/
   baseURL: https://{{vro-host}}/vco/api
   tags:
@@ -413,14 +446,18 @@ apis:
   - type: APIReference
     url: https://developer.broadcom.com/xapis/vrealize-orchestrator-api/latest/
   - type: Documentation
-    url: https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-automation/all/developing-web-services-client-for-vco-all/using-the-orchestrator-rest-api.html
+    url: >-
+      https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-automation/all/developing-web-services-client-for-vco-all/using-the-orchestrator-rest-api.html
   - type: SDKs
-    url: https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-automation/all/vro-plug-in-development-all.html
+    url: >-
+      https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-automation/all/vro-plug-in-development-all.html
 - aid: vmware:vmware-aria-operations-for-networks-saas-api
   name: VMware Aria Operations for Networks SaaS API
-  description: SaaS version of the VMware Aria Operations for Networks API providing cloud-hosted network visibility,
+  description: >-
+    SaaS version of the VMware Aria Operations for Networks API providing cloud-hosted network visibility,
     analytics, and microsegmentation planning capabilities with token-based authentication.
-  humanURL: https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-saas-api/latest/
+  humanURL: >-
+    https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-saas-api/latest/
   baseURL: https://{{vrni-saas-host}}/api/ni
   tags:
   - Microsegmentation
@@ -434,11 +471,13 @@ apis:
   - SaaS
   properties:
   - type: APIReference
-    url: https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-saas-api/latest/
+    url: >-
+      https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-saas-api/latest/
 - aid: vmware:vcf-operations-for-networks-api
   name: VCF Operations for Networks API
-  description: API for VCF Operations for Networks providing network visibility, analytics, and troubleshooting
-    for VMware Cloud Foundation deployments.
+  description: >-
+    API for VCF Operations for Networks providing network visibility, analytics, and troubleshooting for
+    VMware Cloud Foundation deployments.
   humanURL: https://developer.broadcom.com/xapis/vcf-operations-for-networks-api/latest/
   baseURL: https://{{vrni-host}}/api/ni
   tags:
@@ -451,7 +490,8 @@ apis:
     url: https://developer.broadcom.com/xapis/vcf-operations-for-networks-api/latest/
 - aid: vmware:vmware-avi-load-balancer-api
   name: VMware Avi Load Balancer API
-  description: RESTful API for VMware Avi Load Balancer providing programmatic access to application delivery services
+  description: >-
+    RESTful API for VMware Avi Load Balancer providing programmatic access to application delivery services
     including virtual services, pools, service engines, analytics, and health monitoring.
   humanURL: https://developer.broadcom.com/xapis/vmware-avi-load-balancer/latest/
   baseURL: https://{{avi-controller}}/api
@@ -464,10 +504,12 @@ apis:
   - type: APIReference
     url: https://developer.broadcom.com/xapis/vmware-avi-load-balancer/latest/
   - type: Documentation
-    url: https://techdocs.broadcom.com/us/en/vmware-security-load-balancing/avi-load-balancer.html
+    url: >-
+      https://techdocs.broadcom.com/us/en/vmware-security-load-balancing/avi-load-balancer.html
 - aid: vmware:vmware-data-services-manager-api
   name: VMware Data Services Manager API
-  description: API for VMware Data Services Manager providing on-demand provisioning and automated management of
+  description: >-
+    API for VMware Data Services Manager providing on-demand provisioning and automated management of
     PostgreSQL, MySQL, and Microsoft SQL Server databases in vSphere environments.
   humanURL: https://developer.broadcom.com/xapis/vmware-data-services-manager/latest/
   baseURL: https://{{dsm-host}}/api
@@ -480,12 +522,15 @@ apis:
   - type: APIReference
     url: https://developer.broadcom.com/xapis/vmware-data-services-manager/latest/
   - type: Documentation
-    url: https://techdocs.broadcom.com/us/en/vmware-cis/dsm/data-services-manager/2-1/access-the-vmware-data-services-manager-api.html
+    url: >-
+      https://techdocs.broadcom.com/us/en/vmware-cis/dsm/data-services-manager/2-1/access-the-vmware-data-services-manager-api.html
 - aid: vmware:vmware-data-services-manager-kubernetes-api
   name: VMware Data Services Manager Kubernetes API
-  description: Kubernetes API for VMware Data Services Manager enabling self-service consumption of supported data
+  description: >-
+    Kubernetes API for VMware Data Services Manager enabling self-service consumption of supported data
     services through Kubernetes custom resources.
-  humanURL: https://developer.broadcom.com/xapis/vmware-data-services-manager-kubernetes-api/latest/all-api-ref.html
+  humanURL: >-
+    https://developer.broadcom.com/xapis/vmware-data-services-manager-kubernetes-api/latest/all-api-ref.html
   baseURL: https://{{k8s-api}}/apis
   tags:
   - Data Services
@@ -494,10 +539,12 @@ apis:
   - Self-Service
   properties:
   - type: APIReference
-    url: https://developer.broadcom.com/xapis/vmware-data-services-manager-kubernetes-api/latest/all-api-ref.html
+    url: >-
+      https://developer.broadcom.com/xapis/vmware-data-services-manager-kubernetes-api/latest/all-api-ref.html
 - aid: vmware:app-volumes-api
   name: App Volumes API
-  description: API for VMware App Volumes providing programmatic access to real-time application delivery and lifecycle
+  description: >-
+    API for VMware App Volumes providing programmatic access to real-time application delivery and lifecycle
     management for virtual desktops and published applications.
   humanURL: https://developer.broadcom.com/xapis/app-volumes-api/latest/
   baseURL: https://{{app-volumes-manager}}/api
@@ -511,9 +558,11 @@ apis:
     url: https://developer.broadcom.com/xapis/app-volumes-api/latest/
 - aid: vmware:vmware-vsphere-kubernetes-service-api
   name: VMware vSphere Kubernetes Service API
-  description: API for VMware vSphere Kubernetes Service enabling management of Tanzu Kubernetes clusters on vSphere
+  description: >-
+    API for VMware vSphere Kubernetes Service enabling management of Tanzu Kubernetes clusters on vSphere
     including cluster lifecycle, node pools, and infrastructure configuration.
-  humanURL: https://developer.broadcom.com/xapis/vmware-vsphere-kubernetes-service/latest/api-docs.html
+  humanURL: >-
+    https://developer.broadcom.com/xapis/vmware-vsphere-kubernetes-service/latest/api-docs.html
   baseURL: https://{{vcenter}}/api
   tags:
   - Container Management
@@ -522,10 +571,12 @@ apis:
   - vSphere
   properties:
   - type: APIReference
-    url: https://developer.broadcom.com/xapis/vmware-vsphere-kubernetes-service/latest/api-docs.html
+    url: >-
+      https://developer.broadcom.com/xapis/vmware-vsphere-kubernetes-service/latest/api-docs.html
 - aid: vmware:sddc-manager-api
   name: SDDC Manager API
-  description: API for SDDC Manager providing programmatic access to VMware Cloud Foundation workload domain lifecycle
+  description: >-
+    API for SDDC Manager providing programmatic access to VMware Cloud Foundation workload domain lifecycle
     management, host commissioning, and infrastructure configuration.
   humanURL: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
   baseURL: https://{{sddc-manager}}/v1
@@ -539,8 +590,9 @@ apis:
     url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
 - aid: vmware:vcf-installer-api
   name: VCF Installer API
-  description: API for VMware Cloud Foundation Installer providing automated infrastructure bringup and initial
-    deployment of VCF components.
+  description: >-
+    API for VMware Cloud Foundation Installer providing automated infrastructure bringup and initial deployment
+    of VCF components.
   humanURL: https://developer.broadcom.com/xapis/vcf-installer-api/latest/
   baseURL: https://{{cloud-builder}}/v1
   tags:
@@ -558,9 +610,11 @@ apis:
     url: https://developer.broadcom.com/xapis/vcf-installer-api/latest/
 - aid: vmware:vcf-operations-orchestrator-api
   name: VCF Operations Orchestrator API
-  description: REST API for VMware Cloud Foundation Operations Orchestrator providing workflow automation and orchestration
+  description: >-
+    REST API for VMware Cloud Foundation Operations Orchestrator providing workflow automation and orchestration
     capabilities for VCF infrastructure management.
-  humanURL: https://developer.broadcom.com/xapis/vmware-cloud-foundation-operations-orchestrator-api/latest/
+  humanURL: >-
+    https://developer.broadcom.com/xapis/vmware-cloud-foundation-operations-orchestrator-api/latest/
   baseURL: https://{{vro-host}}/vco/api
   tags:
   - Cloud Foundation
@@ -573,10 +627,12 @@ apis:
   - Workflow Automation
   properties:
   - type: APIReference
-    url: https://developer.broadcom.com/xapis/vmware-cloud-foundation-operations-orchestrator-api/latest/
+    url: >-
+      https://developer.broadcom.com/xapis/vmware-cloud-foundation-operations-orchestrator-api/latest/
 - aid: vmware:vmware-cloud-director-openapi
   name: VMware Cloud Director OpenAPI
-  description: Modern RESTful API for VMware Cloud Director defined using OpenAPI standards providing cloud service
+  description: >-
+    Modern RESTful API for VMware Cloud Director defined using OpenAPI standards providing cloud service
     delivery and multi-tenancy management capabilities.
   humanURL: https://developer.broadcom.com/xapis/vmware-cloud-director-openapi/latest/
   baseURL: https://{{vcd-host}}/cloudapi
@@ -589,10 +645,12 @@ apis:
   - type: APIReference
     url: https://developer.broadcom.com/xapis/vmware-cloud-director-openapi/latest/
   - type: GettingStarted
-    url: https://techdocs.broadcom.com/us/en/vmware-cis/cloud-director/vmware-cloud-director/10-6/getting-started-with-vcloud-openapis-10-6.html
+    url: >-
+      https://techdocs.broadcom.com/us/en/vmware-cis/cloud-director/vmware-cloud-director/10-6/getting-started-with-vcloud-openapis-10-6.html
 - aid: vmware:vmware-cloud-director-api
   name: VMware Cloud Director API
-  description: XML-based API for VMware Cloud Director providing comprehensive cloud service provider capabilities
+  description: >-
+    XML-based API for VMware Cloud Director providing comprehensive cloud service provider capabilities
     including organization, VDC, vApp, and catalog management.
   humanURL: https://developer.broadcom.com/xapis/vmware-cloud-director-api/latest/
   baseURL: https://{{vcd-host}}/api
@@ -606,7 +664,8 @@ apis:
     url: https://developer.broadcom.com/xapis/vmware-cloud-director-api/latest/
 - aid: vmware:vmware-identity-manager-api
   name: VMware Identity Manager API
-  description: API for VMware Identity Manager providing identity and access management capabilities including authentication,
+  description: >-
+    API for VMware Identity Manager providing identity and access management capabilities including authentication,
     authorization, directory integration, and single sign-on.
   humanURL: https://developer.broadcom.com/xapis/vmware-identity-manager-api/latest/
   baseURL: https://{{idm-host}}/SAAS/jersey/manager/api
@@ -620,7 +679,8 @@ apis:
     url: https://developer.broadcom.com/xapis/vmware-identity-manager-api/latest/
 - aid: vmware:operations-for-applications-rest-api
   name: Operations for Applications REST API
-  description: REST API for Operations for Applications providing access to metrics, dashboards, alerts, events,
+  description: >-
+    REST API for Operations for Applications providing access to metrics, dashboards, alerts, events,
     and integrations for full-stack observability and monitoring.
   humanURL: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
   baseURL: https://{{wavefront-host}}/api/v2
@@ -634,7 +694,8 @@ apis:
     url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
 - aid: vmware:data-management-for-vmware-tanzu-rest-api
   name: Data Management for VMware Tanzu REST API
-  description: REST API for Data Management for VMware Tanzu providing database-as-a-service capabilities for provisioning
+  description: >-
+    REST API for Data Management for VMware Tanzu providing database-as-a-service capabilities for provisioning
     and managing data services on Kubernetes.
   humanURL: https://developer.broadcom.com/xapis/data-management-for-vmware-tanzu-rest-api/latest/
   baseURL: https://{{tanzu-data-host}}/api
@@ -648,7 +709,8 @@ apis:
     url: https://developer.broadcom.com/xapis/data-management-for-vmware-tanzu-rest-api/latest/
 - aid: vmware:vmware-cloud-foundation-for-vxrail-api
   name: VMware Cloud Foundation for VxRail API
-  description: API for managing VMware Cloud Foundation deployments on Dell VxRail hyperconverged infrastructure
+  description: >-
+    API for managing VMware Cloud Foundation deployments on Dell VxRail hyperconverged infrastructure
     including cluster expansion, lifecycle management, and VxRail-specific operations.
   humanURL: https://developer.broadcom.com/xapis/vmware-cloud-foundation-for-vxrail-api/latest/
   baseURL: https://{{sddc-manager}}/v1
@@ -662,7 +724,8 @@ apis:
     url: https://developer.broadcom.com/xapis/vmware-cloud-foundation-for-vxrail-api/latest/
 - aid: vmware:vcf-usage-meter-api
   name: VCF Usage Meter API
-  description: API for VMware Cloud Foundation Usage Meter providing metering and usage reporting capabilities for
+  description: >-
+    API for VMware Cloud Foundation Usage Meter providing metering and usage reporting capabilities for
     VMware product consumption tracking by service providers.
   humanURL: https://developer.broadcom.com/xapis/vcf-usage-meter-apis/latest/
   baseURL: https://{{usage-meter}}/api
@@ -676,8 +739,9 @@ apis:
     url: https://developer.broadcom.com/xapis/vcf-usage-meter-apis/latest/
 - aid: vmware:virtual-storage-lifecycle-management-api
   name: Virtual Storage Lifecycle Management API
-  description: API for managing the lifecycle of virtual storage including first-class disks, storage policies,
-    and virtual disk operations in vSphere environments.
+  description: >-
+    API for managing the lifecycle of virtual storage including first-class disks, storage policies, and
+    virtual disk operations in vSphere environments.
   humanURL: https://developer.broadcom.com/xapis/virtual-storage-lifecycle-management-api/latest/
   baseURL: https://{{vcenter}}/api
   tags:
@@ -690,7 +754,8 @@ apis:
     url: https://developer.broadcom.com/xapis/virtual-storage-lifecycle-management-api/latest/
 - aid: vmware:vmware-private-ai-service-api
   name: VMware Private AI Service API
-  description: API for VMware Private AI providing on-premises AI and machine learning infrastructure services for
+  description: >-
+    API for VMware Private AI providing on-premises AI and machine learning infrastructure services for
     deploying and managing AI workloads within VMware environments.
   humanURL: https://developer.broadcom.com/xapis/vmware-private-ai-service-api/latest/
   baseURL: https://{{pai-host}}/api
@@ -709,7 +774,8 @@ apis:
     url: https://developer.broadcom.com/xapis/vmware-private-ai-service-api/latest/
 - aid: vmware:vmware-hcx-api
   name: VMware HCX API
-  description: REST API for VMware HCX enabling workload mobility, network extension, and disaster recovery across
+  description: >-
+    REST API for VMware HCX enabling workload mobility, network extension, and disaster recovery across
     data centers and clouds with support for migration automation and service mesh management.
   humanURL: https://techdocs.broadcom.com/us/en/vmware-cis/hcx/vmware-hcx/4-10.html
   baseURL: https://{{hcx-manager}}/hybridity/api
@@ -723,7 +789,8 @@ apis:
     url: https://techdocs.broadcom.com/us/en/vmware-cis/hcx/vmware-hcx/4-10.html
 - aid: vmware:vmware-cloud-provider-lifecycle-manager-api
   name: VMware Cloud Provider Lifecycle Manager API
-  description: API for managing the lifecycle of VMware cloud provider environments including deployment, upgrade,
+  description: >-
+    API for managing the lifecycle of VMware cloud provider environments including deployment, upgrade,
     and configuration of VMware products for service providers.
   humanURL: https://developer.broadcom.com/xapis/vmware-cloud-provider-lifecycle-manager-api/latest/
   baseURL: https://{{vclm-host}}/api
@@ -779,7 +846,8 @@ apis:
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
 - aid: vmware:vmware-content-library-api
   name: VMware Content Library API
-  description: Content library management for templates, ISOs, and OVF packages shared across vCenter instances
+  description: >-
+    Content library management for templates, ISOs, and OVF packages shared across vCenter instances
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
@@ -787,48 +855,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/vmware-content-library-api-openapi.yml
-  - type: Documentation
-    url: https://developer.vmware.com/docs/vsphere-automation/latest/
-  - type: Authentication
-    url: https://developer.vmware.com/docs/vsphere-automation/latest/authentication/
-  - type: APIReference
-    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
-  - type: JSONSchema
-    url: json-schema/vmware-virtual-machine-schema.json
-  - type: JSONLD
-    url: json-ld/vmware-vsphere-context.jsonld
-  - type: Documentation
-    url: https://developer.vmware.com/docs/vmware-cloud-director/latest/
-  - type: APIReference
-    url: https://developer.broadcom.com/xapis/vmware-cloud-director-openapi/latest/
-  - type: Documentation
-    url: https://developer.vmware.com/docs/nsx-t/latest/
-  - type: APIReference
-    url: https://developer.broadcom.com/xapis/nsx-t-data-center-rest-api/latest/
-  - type: Documentation
-    url: https://developer.vmware.com/docs/vrealize-automation/latest/
-  - type: CodeExamples
-    url: https://github.com/vmware/vrealize-automation-samples
-  - type: Documentation
-    url: https://developer.vmware.com/docs/vmc/latest/
-  - type: GettingStarted
-    url: https://developer.vmware.com/docs/vmc/latest/getting-started/
-  - type: APIReference
-    url: https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/
-  - type: Documentation
-    url: https://developer.vmware.com/docs/vrealize-operations/latest/
-- aid: vmware:vmware-datacenters-api
-  name: VMware Datacenters API
-  description: Datacenter management for organizing vSphere inventory
-  humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
-  baseURL: https://{{vcenter}}/api
-  tags:
-  - Data Centers
-  tags_raw:
-  - Datacenters
-  properties:
-  - type: OpenAPI
-    url: openapi/vmware-datacenters-api-openapi.yml
   - type: Documentation
     url: https://developer.vmware.com/docs/vsphere-automation/latest/
   - type: Authentication
@@ -941,7 +967,8 @@ apis:
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
 - aid: vmware:vmware-hosts-api
   name: VMware Hosts API
-  description: ESXi host management including connection state, maintenance mode, and host configuration
+  description: >-
+    ESXi host management including connection state, maintenance mode, and host configuration
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
@@ -981,7 +1008,8 @@ apis:
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
 - aid: vmware:vmware-networks-api
   name: VMware Networks API
-  description: Virtual network management including standard and distributed port groups and network connectivity
+  description: >-
+    Virtual network management including standard and distributed port groups and network connectivity
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
@@ -1183,7 +1211,8 @@ apis:
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
 - aid: vmware:vmware-vm-guest-api
   name: VMware VM Guest API
-  description: Guest operating system operations including identity, networking, local filesystem, and process management
+  description: >-
+    Guest operating system operations including identity, networking, local filesystem, and process management
     via VMware Tools
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
@@ -1224,7 +1253,8 @@ apis:
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
 - aid: vmware:vmware-vm-hardware-api
   name: VMware VM Hardware API
-  description: Virtual machine hardware configuration including CPU, memory, disks, network adapters, CD-ROMs, and
+  description: >-
+    Virtual machine hardware configuration including CPU, memory, disks, network adapters, CD-ROMs, and
     other virtual devices
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
@@ -1265,7 +1295,8 @@ apis:
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
 - aid: vmware:vmware-vm-power-api
   name: VMware VM Power API
-  description: Virtual machine power state operations including power on, power off, suspend, reset, and guest shutdown
+  description: >-
+    Virtual machine power state operations including power on, power off, suspend, reset, and guest shutdown
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
@@ -1303,17 +1334,58 @@ apis:
     url: https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/
   - type: Documentation
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
-- aid: vmware:vmware-vms-api
-  name: VMware VMs API
-  description: Virtual machine lifecycle management including creation, power operations, cloning, migration, and
-    configuration
-  humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
-  baseURL: https://{{vcenter}}/api
+- aid: vmware:vmware-data-centers-api
+  name: VMware Data Centers API
+  description: Datacenter management for organizing vSphere inventory
+  humanURL: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
+  baseURL: https://{{vcenter}}/sdk
   tags:
-  - VMs
+  - Data Centers
   properties:
   - type: OpenAPI
-    url: openapi/vmware-vms-api-openapi.yml
+    url: openapi/vmware-data-centers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vmware.com/docs/vsphere-automation/latest/
+  - type: Authentication
+    url: https://developer.vmware.com/docs/vsphere-automation/latest/authentication/
+  - type: APIReference
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/vmware-virtual-machine-schema.json
+  - type: JSONLD
+    url: json-ld/vmware-vsphere-context.jsonld
+  - type: Documentation
+    url: https://developer.vmware.com/docs/vmware-cloud-director/latest/
+  - type: APIReference
+    url: https://developer.broadcom.com/xapis/vmware-cloud-director-openapi/latest/
+  - type: Documentation
+    url: https://developer.vmware.com/docs/nsx-t/latest/
+  - type: APIReference
+    url: https://developer.broadcom.com/xapis/nsx-t-data-center-rest-api/latest/
+  - type: Documentation
+    url: https://developer.vmware.com/docs/vrealize-automation/latest/
+  - type: CodeExamples
+    url: https://github.com/vmware/vrealize-automation-samples
+  - type: Documentation
+    url: https://developer.vmware.com/docs/vmc/latest/
+  - type: GettingStarted
+    url: https://developer.vmware.com/docs/vmc/latest/getting-started/
+  - type: APIReference
+    url: https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/
+  - type: Documentation
+    url: https://developer.vmware.com/docs/vrealize-operations/latest/
+- aid: vmware:vmware-v-ms-api
+  name: VMware V Ms API
+  description: >-
+    Virtual machine lifecycle management including creation, power operations, cloning, migration, and
+    configuration
+  humanURL: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
+  baseURL: https://{{vcenter}}/sdk
+  tags:
+  - V Ms
+  properties:
+  - type: OpenAPI
+    url: openapi/vmware-v-ms-api-openapi.yml
   - type: Documentation
     url: https://developer.vmware.com/docs/vsphere-automation/latest/
   - type: Authentication
