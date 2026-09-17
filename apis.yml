@@ -1334,16 +1334,18 @@ apis:
     url: https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/
   - type: Documentation
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
-- aid: vmware:vmware-data-centers-api
-  name: VMware Data Centers API
-  description: Datacenter management for organizing vSphere inventory
+- aid: vmware:vmware-vms-api
+  name: VMware V Ms API
+  description: >-
+    Virtual machine lifecycle management including creation, power operations, cloning, migration, and
+    configuration
   humanURL: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
   baseURL: https://{{vcenter}}/sdk
   tags:
-  - Data Centers
+  - VMs
   properties:
   - type: OpenAPI
-    url: openapi/vmware-data-centers-api-openapi.yml
+    url: openapi/vmware-vms-api-openapi.yml
   - type: Documentation
     url: https://developer.vmware.com/docs/vsphere-automation/latest/
   - type: Authentication
@@ -1374,18 +1376,16 @@ apis:
     url: https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/
   - type: Documentation
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
-- aid: vmware:vmware-v-ms-api
-  name: VMware V Ms API
-  description: >-
-    Virtual machine lifecycle management including creation, power operations, cloning, migration, and
-    configuration
+- aid: vmware:vmware-data-centers-api
+  name: VMware Data Centers API
+  description: Datacenter management for organizing vSphere inventory
   humanURL: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
   baseURL: https://{{vcenter}}/sdk
   tags:
-  - V Ms
+  - Data Centers
   properties:
   - type: OpenAPI
-    url: openapi/vmware-v-ms-api-openapi.yml
+    url: openapi/vmware-data-centers-api-openapi.yml
   - type: Documentation
     url: https://developer.vmware.com/docs/vsphere-automation/latest/
   - type: Authentication
