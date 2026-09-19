@@ -641,6 +641,11 @@ apis:
   - Cloud Management
   - Multi-Tenancy
   - OpenAPI
+  - Service Providers
+  tags_raw:
+  - Cloud Management
+  - Multi-Tenancy
+  - OpenAPI
   - Service Provider
   properties:
   - type: APIReference
@@ -658,6 +663,11 @@ apis:
   tags:
   - Cloud Management
   - Multi-Tenancy
+  - Service Providers
+  - XML
+  tags_raw:
+  - Cloud Management
+  - Multi-Tenancy
   - Service Provider
   - XML
   properties:
@@ -671,6 +681,11 @@ apis:
   humanURL: https://developer.broadcom.com/xapis/vmware-identity-manager-api/latest/
   baseURL: https://{{idm-host}}/SAAS/jersey/manager/api
   tags:
+  - Access Management
+  - Authentication
+  - Identity Management
+  - SSO
+  tags_raw:
   - Access Management
   - Authentication
   - Identity Management
@@ -731,6 +746,11 @@ apis:
   humanURL: https://developer.broadcom.com/xapis/vcf-usage-meter-apis/latest/
   baseURL: https://{{usage-meter}}/api
   tags:
+  - Billing
+  - Reporting
+  - Service Providers
+  - Usage Metering
+  tags_raw:
   - Billing
   - Reporting
   - Service Provider
@@ -796,6 +816,11 @@ apis:
   humanURL: https://developer.broadcom.com/xapis/vmware-cloud-provider-lifecycle-manager-api/latest/
   baseURL: https://{{vclm-host}}/api
   tags:
+  - Cloud Provider
+  - Deployment
+  - Lifecycle Management
+  - Service Providers
+  tags_raw:
   - Cloud Provider
   - Deployment
   - Lifecycle Management
@@ -1096,6 +1121,8 @@ apis:
   humanURL: https://developer.vmware.com/apis/vsphere-automation/latest/
   baseURL: https://{{vcenter}}/api
   tags:
+  - Sessions
+  tags_raw:
   - Session
   properties:
   - type: OpenAPI
@@ -1383,6 +1410,8 @@ apis:
   humanURL: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
   baseURL: https://{{vcenter}}/sdk
   tags:
+  - Data-Center
+  tags_raw:
   - Data Centers
   properties:
   - type: OpenAPI
