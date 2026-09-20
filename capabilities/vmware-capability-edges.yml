@@ -53,7 +53,8 @@ edges:
   reason: Compute cluster inventory in vCenter is IT infrastructure management (compute/virtualization
     estate).
 - tag: Datacenters
-  spec_file: vmware-datacenters-api-openapi.yml
+  spec_file: vmware-data-centers-api-openapi.yml
+  reanchored_from: vmware-datacenters-api-openapi.yml
   capability_id: BC-600.50
   capability_id_l1: BC-600
   capability_name: IT Infrastructure Management
