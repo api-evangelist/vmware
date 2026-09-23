@@ -1,21 +1,7 @@
 {
   "provider": "vmware",
   "sources": [
-    "vmware-clusters-api-openapi.yml",
-    "vmware-content-library-api-openapi.yml",
-    "vmware-datacenters-api-openapi.yml",
-    "vmware-datastores-api-openapi.yml",
-    "vmware-folders-api-openapi.yml",
-    "vmware-hosts-api-openapi.yml",
-    "vmware-networks-api-openapi.yml",
-    "vmware-resource-pools-api-openapi.yml",
-    "vmware-session-api-openapi.yml",
-    "vmware-storage-policies-api-openapi.yml",
-    "vmware-tagging-api-openapi.yml",
-    "vmware-vm-guest-api-openapi.yml",
-    "vmware-vm-hardware-api-openapi.yml",
-    "vmware-vm-power-api-openapi.yml",
-    "vmware-vms-api-openapi.yml"
+    "_original/vmware-vsphere-api-openapi.yml"
   ],
   "outputs": [
     "vmware-clusters-api-openapi.yml",
@@ -34,9 +20,32 @@
     "vmware-vm-power-api-openapi.yml",
     "vmware-vms-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "vmware-vsphere-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: vmware-data-centers-api-openapi.yml, vmware-v-ms-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 59 total)"
+  ],
+  "skipped": [
+    "vmware-clusters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-content-library-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-data-centers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-datastores-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-folders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-hosts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-networks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-resource-pools-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-session-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-storage-policies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-tagging-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-v-ms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-vm-guest-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-vm-hardware-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vmware-vm-power-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
