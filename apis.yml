@@ -35,6 +35,7 @@ tags:
 - Infrastructure
 - Virtualization
 - VMware
+- Data Center
 created: '2024-01-01'
 modified: '2026-08-21'
 url: https://raw.githubusercontent.com/api-evangelist/vmware/refs/heads/main/apis.yml
@@ -49,7 +50,7 @@ apis:
   humanURL: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
   baseURL: https://{{vcenter}}/sdk
   tags:
-  - Data-Center
+  - Data Center
   - SOAP
   - Virtualization
   - VM Management
@@ -58,6 +59,7 @@ apis:
   - SOAP
   - Virtualization
   - VM Management
+  - Data-Center
   properties:
   - type: APIReference
     url: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
@@ -437,12 +439,13 @@ apis:
   - IT Automation
   - Orchestration
   - Plugins
-  - Workflow-Automation
+  - Workflow Automation
   tags_raw:
   - IT Automation
   - Orchestration
   - Plug-Ins
   - Workflow Automation
+  - Workflow-Automation
   properties:
   - type: APIReference
     url: https://developer.broadcom.com/xapis/vrealize-orchestrator-api/latest/
@@ -620,12 +623,13 @@ apis:
   tags:
   - Cloud Foundation
   - Orchestration
-  - Workflow-Automation
+  - Workflow Automation
   tags_raw:
   - Cloud Foundation
   - Operations
   - Orchestration
   - Workflow Automation
+  - Workflow-Automation
   properties:
   - type: APIReference
     url: >-
@@ -783,13 +787,14 @@ apis:
   tags:
   - Artificial Intelligence
   - Infrastructure
-  - Machine-Learning
+  - Machine Learning
   - Private AI
   tags_raw:
   - Artificial Intelligence
   - Infrastructure
   - Machine Learning
   - Private AI
+  - Machine-Learning
   properties:
   - type: APIReference
     url: https://developer.broadcom.com/xapis/vmware-private-ai-service-api/latest/
@@ -1410,8 +1415,6 @@ apis:
   humanURL: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
   baseURL: https://{{vcenter}}/sdk
   tags:
-  - Data-Center
-  tags_raw:
   - Data Centers
   properties:
   - type: OpenAPI

@@ -128,19 +128,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    clusterId:
+      name: cluster
+      in: path
+      required: true
+      description: Identifier of the cluster (e.g., domain-c7)
+      schema:
+        type: string
   schemas:
-    ClusterInfo:
-      type: object
-      description: Detailed cluster configuration
-      properties:
-        name:
-          type: string
-          description: Display name of the cluster
-          example: Example Title
-        resource_pool:
-          type: string
-          description: Root resource pool of the cluster
-          example: example_value
     ClusterSummary:
       type: object
       description: Summary of a cluster in the vCenter inventory
@@ -164,14 +160,18 @@ components:
           type: boolean
           description: Whether vSphere DRS is enabled
           example: true
-  parameters:
-    clusterId:
-      name: cluster
-      in: path
-      required: true
-      description: Identifier of the cluster (e.g., domain-c7)
-      schema:
-        type: string
+    ClusterInfo:
+      type: object
+      description: Detailed cluster configuration
+      properties:
+        name:
+          type: string
+          description: Display name of the cluster
+          example: Example Title
+        resource_pool:
+          type: string
+          description: Root resource pool of the cluster
+          example: example_value
   securitySchemes:
     sessionAuth:
       type: apiKey

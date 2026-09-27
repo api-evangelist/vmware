@@ -183,14 +183,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    datacenterId:
-      name: datacenter
-      in: path
-      required: true
-      description: Identifier of the datacenter (e.g., datacenter-2)
-      schema:
-        type: string
   schemas:
     DatacenterCreateSpec:
       type: object
@@ -246,6 +238,14 @@ components:
           type: string
           description: VM folder identifier
           example: example_value
+  parameters:
+    datacenterId:
+      name: datacenter
+      in: path
+      required: true
+      description: Identifier of the datacenter (e.g., datacenter-2)
+      schema:
+        type: string
   securitySchemes:
     sessionAuth:
       type: apiKey

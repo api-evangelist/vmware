@@ -193,6 +193,14 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    hostId:
+      name: host
+      in: path
+      required: true
+      description: Identifier of the ESXi host (e.g., host-10)
+      schema:
+        type: string
   schemas:
     HostInfo:
       type: object
@@ -247,14 +255,6 @@ components:
           - POWERED_OFF
           - STANDBY
           example: POWERED_ON
-  parameters:
-    hostId:
-      name: host
-      in: path
-      required: true
-      description: Identifier of the ESXi host (e.g., host-10)
-      schema:
-        type: string
   securitySchemes:
     sessionAuth:
       type: apiKey

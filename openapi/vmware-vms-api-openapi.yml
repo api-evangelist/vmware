@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: VMware vSphere Automation REST V Ms API
+  title: VMware vSphere Automation REST VMs API
   description: RESTful API for managing VMware vSphere virtualization platform resources including virtual machines, hosts, datastores, clusters, networks, and related infrastructure. The vSphere Automation API provides modern REST endpoints for vCenter Server operations using JSON payloads and session-based or OAuth authentication. This API supersedes the legacy SOAP-based vSphere Web Services API for most automation use cases.
   version: '8.0'
   contact:
@@ -302,89 +302,89 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    VMInfo:
+    EthernetInfo:
       type: object
-      description: Detailed virtual machine configuration and state
+      description: Detailed virtual network adapter configuration
       properties:
-        name:
+        label:
           type: string
-          description: Display name of the virtual machine
+          description: Display label of the adapter
           example: Example Title
-        identity:
-          type: object
-          description: VM identity information
-          properties:
-            name:
-              type: string
-            instance_uuid:
-              type: string
-              format: uuid
-            bios_uuid:
-              type: string
-              format: uuid
-          example: example_value
-        power_state:
+        type:
           type: string
+          description: Adapter emulation type
           enum:
-          - POWERED_ON
-          - POWERED_OFF
-          - SUSPENDED
-          example: POWERED_ON
-        guest_OS:
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VMXNET2
+          - VMXNET3
+          example: E1000
+        mac_type:
           type: string
-          description: Configured guest operating system
+          description: MAC address type
+          enum:
+          - MANUAL
+          - GENERATED
+          - ASSIGNED
+          example: MANUAL
+        mac_address:
+          type: string
+          description: MAC address of the adapter
           example: example_value
-        hardware:
-          $ref: '#/components/schemas/HardwareInfo'
-        boot:
+        state:
+          type: string
+          description: Connection state
+          enum:
+          - CONNECTED
+          - NOT_CONNECTED
+          example: CONNECTED
+        start_connected:
+          type: boolean
+          description: Whether the adapter connects at power on
+          example: true
+        backing:
           type: object
+          description: Network backing information
           properties:
             type:
               type: string
               enum:
-              - BIOS
-              - EFI
-            delay:
-              type: integer
-            enter_setup_mode:
-              type: boolean
+              - STANDARD_PORTGROUP
+              - DISTRIBUTED_PORTGROUP
+              - OPAQUE_NETWORK
+              - HOST_DEVICE
+            network:
+              type: string
+              description: Identifier of the backing network
           example: example_value
-        cpu:
-          $ref: '#/components/schemas/CpuInfo'
-        memory:
-          $ref: '#/components/schemas/MemoryInfo'
-        disks:
-          type: object
-          description: Map of disk identifier to disk configuration
-          additionalProperties:
-            $ref: '#/components/schemas/DiskInfo'
+        allow_guest_control:
+          type: boolean
+          description: Whether guest OS can change adapter settings
+          example: true
+        wake_on_lan_enabled:
+          type: boolean
+          example: true
+    HardwareInfo:
+      type: object
+      description: Virtual hardware configuration
+      properties:
+        version:
+          type: string
+          description: Virtual hardware version (e.g., VMX_21)
           example: example_value
-        nics:
-          type: object
-          description: Map of NIC identifier to NIC configuration
-          additionalProperties:
-            $ref: '#/components/schemas/EthernetInfo'
-          example: example_value
-        cdroms:
-          type: object
-          description: Map of CD-ROM identifier to CD-ROM configuration
-          additionalProperties:
-            type: object
-          example: example_value
-        parallel_ports:
-          type: object
-          additionalProperties:
-            type: object
-          example: example_value
-        serial_ports:
-          type: object
-          additionalProperties:
-            type: object
-          example: example_value
-        floppy_drives:
-          type: object
-          additionalProperties:
-            type: object
+        upgrade_policy:
+          type: string
+          description: Hardware upgrade policy
+          enum:
+          - NEVER
+          - AFTER_CLEAN_SHUTDOWN
+          - ALWAYS
+          example: NEVER
+        upgrade_version:
+          type: string
+          description: Target hardware version for upgrade
           example: example_value
     VMCreateSpec:
       type: object
@@ -480,47 +480,110 @@ components:
               type: boolean
               description: Enter BIOS/EFI setup on next boot
           example: example_value
-    HardwareInfo:
+    CpuInfo:
       type: object
-      description: Virtual hardware configuration
-      properties:
-        version:
-          type: string
-          description: Virtual hardware version (e.g., VMX_21)
-          example: example_value
-        upgrade_policy:
-          type: string
-          description: Hardware upgrade policy
-          enum:
-          - NEVER
-          - AFTER_CLEAN_SHUTDOWN
-          - ALWAYS
-          example: NEVER
-        upgrade_version:
-          type: string
-          description: Target hardware version for upgrade
-          example: example_value
-    CpuUpdateSpec:
-      type: object
-      description: Specification for CPU configuration
+      description: CPU configuration of a virtual machine
       properties:
         count:
           type: integer
           description: Number of virtual CPU cores
-          minimum: 1
-          maximum: 768
           example: 10
         cores_per_socket:
           type: integer
-          description: Number of cores per socket
-          minimum: 1
+          description: Number of cores per CPU socket
           example: 10
         hot_add_enabled:
           type: boolean
+          description: Whether CPU hot-add is enabled
           example: true
         hot_remove_enabled:
           type: boolean
+          description: Whether CPU hot-remove is enabled
           example: true
+    VMInfo:
+      type: object
+      description: Detailed virtual machine configuration and state
+      properties:
+        name:
+          type: string
+          description: Display name of the virtual machine
+          example: Example Title
+        identity:
+          type: object
+          description: VM identity information
+          properties:
+            name:
+              type: string
+            instance_uuid:
+              type: string
+              format: uuid
+            bios_uuid:
+              type: string
+              format: uuid
+          example: example_value
+        power_state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+          example: POWERED_ON
+        guest_OS:
+          type: string
+          description: Configured guest operating system
+          example: example_value
+        hardware:
+          $ref: '#/components/schemas/HardwareInfo'
+        boot:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - BIOS
+              - EFI
+            delay:
+              type: integer
+            enter_setup_mode:
+              type: boolean
+          example: example_value
+        cpu:
+          $ref: '#/components/schemas/CpuInfo'
+        memory:
+          $ref: '#/components/schemas/MemoryInfo'
+        disks:
+          type: object
+          description: Map of disk identifier to disk configuration
+          additionalProperties:
+            $ref: '#/components/schemas/DiskInfo'
+          example: example_value
+        nics:
+          type: object
+          description: Map of NIC identifier to NIC configuration
+          additionalProperties:
+            $ref: '#/components/schemas/EthernetInfo'
+          example: example_value
+        cdroms:
+          type: object
+          description: Map of CD-ROM identifier to CD-ROM configuration
+          additionalProperties:
+            type: object
+          example: example_value
+        parallel_ports:
+          type: object
+          additionalProperties:
+            type: object
+          example: example_value
+        serial_ports:
+          type: object
+          additionalProperties:
+            type: object
+          example: example_value
+        floppy_drives:
+          type: object
+          additionalProperties:
+            type: object
+          example: example_value
     DiskInfo:
       type: object
       description: Detailed virtual disk configuration
@@ -575,141 +638,6 @@ components:
           type: integer
           description: Maximum memory size for hot-add in mebibytes
           example: 10
-    EthernetInfo:
-      type: object
-      description: Detailed virtual network adapter configuration
-      properties:
-        label:
-          type: string
-          description: Display label of the adapter
-          example: Example Title
-        type:
-          type: string
-          description: Adapter emulation type
-          enum:
-          - E1000
-          - E1000E
-          - PCNET32
-          - VMXNET
-          - VMXNET2
-          - VMXNET3
-          example: E1000
-        mac_type:
-          type: string
-          description: MAC address type
-          enum:
-          - MANUAL
-          - GENERATED
-          - ASSIGNED
-          example: MANUAL
-        mac_address:
-          type: string
-          description: MAC address of the adapter
-          example: example_value
-        state:
-          type: string
-          description: Connection state
-          enum:
-          - CONNECTED
-          - NOT_CONNECTED
-          example: CONNECTED
-        start_connected:
-          type: boolean
-          description: Whether the adapter connects at power on
-          example: true
-        backing:
-          type: object
-          description: Network backing information
-          properties:
-            type:
-              type: string
-              enum:
-              - STANDARD_PORTGROUP
-              - DISTRIBUTED_PORTGROUP
-              - OPAQUE_NETWORK
-              - HOST_DEVICE
-            network:
-              type: string
-              description: Identifier of the backing network
-          example: example_value
-        allow_guest_control:
-          type: boolean
-          description: Whether guest OS can change adapter settings
-          example: true
-        wake_on_lan_enabled:
-          type: boolean
-          example: true
-    EthernetCreateSpec:
-      type: object
-      description: Specification for creating a virtual network adapter
-      properties:
-        type:
-          type: string
-          description: Adapter emulation type
-          enum:
-          - E1000
-          - E1000E
-          - PCNET32
-          - VMXNET
-          - VMXNET2
-          - VMXNET3
-          example: E1000
-        mac_type:
-          type: string
-          enum:
-          - MANUAL
-          - GENERATED
-          - ASSIGNED
-          example: MANUAL
-        mac_address:
-          type: string
-          description: MAC address (required when mac_type is MANUAL)
-          example: example_value
-        backing:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - STANDARD_PORTGROUP
-              - DISTRIBUTED_PORTGROUP
-              - OPAQUE_NETWORK
-            network:
-              type: string
-              description: Identifier of the network
-          example: example_value
-        start_connected:
-          type: boolean
-          default: true
-          example: true
-        allow_guest_control:
-          type: boolean
-          default: false
-          example: true
-        wake_on_lan_enabled:
-          type: boolean
-          default: false
-          example: true
-    CpuInfo:
-      type: object
-      description: CPU configuration of a virtual machine
-      properties:
-        count:
-          type: integer
-          description: Number of virtual CPU cores
-          example: 10
-        cores_per_socket:
-          type: integer
-          description: Number of cores per CPU socket
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          description: Whether CPU hot-add is enabled
-          example: true
-        hot_remove_enabled:
-          type: boolean
-          description: Whether CPU hot-remove is enabled
-          example: true
     MemoryUpdateSpec:
       type: object
       description: Specification for memory configuration
@@ -795,6 +723,78 @@ components:
             vmdk_file:
               type: string
           example: example_value
+    CpuUpdateSpec:
+      type: object
+      description: Specification for CPU configuration
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+          minimum: 1
+          maximum: 768
+          example: 10
+        cores_per_socket:
+          type: integer
+          description: Number of cores per socket
+          minimum: 1
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          example: true
+        hot_remove_enabled:
+          type: boolean
+          example: true
+    EthernetCreateSpec:
+      type: object
+      description: Specification for creating a virtual network adapter
+      properties:
+        type:
+          type: string
+          description: Adapter emulation type
+          enum:
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VMXNET2
+          - VMXNET3
+          example: E1000
+        mac_type:
+          type: string
+          enum:
+          - MANUAL
+          - GENERATED
+          - ASSIGNED
+          example: MANUAL
+        mac_address:
+          type: string
+          description: MAC address (required when mac_type is MANUAL)
+          example: example_value
+        backing:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - STANDARD_PORTGROUP
+              - DISTRIBUTED_PORTGROUP
+              - OPAQUE_NETWORK
+            network:
+              type: string
+              description: Identifier of the network
+          example: example_value
+        start_connected:
+          type: boolean
+          default: true
+          example: true
+        allow_guest_control:
+          type: boolean
+          default: false
+          example: true
+        wake_on_lan_enabled:
+          type: boolean
+          default: false
+          example: true
   parameters:
     vmId:
       name: vm

@@ -155,6 +155,43 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    DatastoreSummary:
+      type: object
+      description: Summary of a datastore in the vCenter inventory
+      required:
+      - datastore
+      - name
+      properties:
+        datastore:
+          type: string
+          description: Unique identifier of the datastore (e.g., datastore-15)
+          example: example_value
+        name:
+          type: string
+          description: Display name of the datastore
+          example: Example Title
+        type:
+          type: string
+          description: Type of the datastore
+          enum:
+          - VMFS
+          - NFS
+          - NFS41
+          - CIFS
+          - VSAN
+          - VFFS
+          - VVOL
+          example: VMFS
+        free_space:
+          type: integer
+          description: Free space in bytes
+          format: int64
+          example: 10
+        capacity:
+          type: integer
+          description: Total capacity in bytes
+          format: int64
+          example: 10
     DatastoreInfo:
       type: object
       description: Detailed datastore configuration and status
@@ -196,43 +233,6 @@ components:
           type: boolean
           description: Whether the datastore is accessible by multiple hosts
           example: true
-    DatastoreSummary:
-      type: object
-      description: Summary of a datastore in the vCenter inventory
-      required:
-      - datastore
-      - name
-      properties:
-        datastore:
-          type: string
-          description: Unique identifier of the datastore (e.g., datastore-15)
-          example: example_value
-        name:
-          type: string
-          description: Display name of the datastore
-          example: Example Title
-        type:
-          type: string
-          description: Type of the datastore
-          enum:
-          - VMFS
-          - NFS
-          - NFS41
-          - CIFS
-          - VSAN
-          - VFFS
-          - VVOL
-          example: VMFS
-        free_space:
-          type: integer
-          description: Free space in bytes
-          format: int64
-          example: 10
-        capacity:
-          type: integer
-          description: Total capacity in bytes
-          format: int64
-          example: 10
   parameters:
     datastoreId:
       name: datastore

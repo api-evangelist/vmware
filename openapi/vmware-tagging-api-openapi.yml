@@ -194,33 +194,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    TagCategoryCreateSpec:
-      type: object
-      description: Specification for creating a tag category
-      required:
-      - name
-      - cardinality
-      properties:
-        name:
-          type: string
-          description: Name for the new category
-          example: Example Title
-        description:
-          type: string
-          example: A sample description.
-        cardinality:
-          type: string
-          description: Cardinality of the category
-          enum:
-          - SINGLE
-          - MULTIPLE
-          example: SINGLE
-        associable_types:
-          type: array
-          description: Object types that can be tagged with tags in this category
-          items:
-            type: string
-          example: []
     TagAssociationSpec:
       type: object
       description: Specification for attaching a tag to an object
@@ -251,6 +224,33 @@ components:
               type: string
               description: Identifier of the managed object
           example: '500123'
+    TagCategoryCreateSpec:
+      type: object
+      description: Specification for creating a tag category
+      required:
+      - name
+      - cardinality
+      properties:
+        name:
+          type: string
+          description: Name for the new category
+          example: Example Title
+        description:
+          type: string
+          example: A sample description.
+        cardinality:
+          type: string
+          description: Cardinality of the category
+          enum:
+          - SINGLE
+          - MULTIPLE
+          example: SINGLE
+        associable_types:
+          type: array
+          description: Object types that can be tagged with tags in this category
+          items:
+            type: string
+          example: []
     TagCreateSpec:
       type: object
       description: Specification for creating a tag

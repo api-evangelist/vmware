@@ -384,14 +384,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DiskSummary:
-      type: object
-      description: Summary of a virtual disk
-      properties:
-        disk:
-          type: string
-          description: Identifier of the virtual disk
-          example: example_value
     HardwareInfo:
       type: object
       description: Virtual hardware configuration
@@ -412,6 +404,46 @@ components:
           type: string
           description: Target hardware version for upgrade
           example: example_value
+    CpuInfo:
+      type: object
+      description: CPU configuration of a virtual machine
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+          example: 10
+        cores_per_socket:
+          type: integer
+          description: Number of cores per CPU socket
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          description: Whether CPU hot-add is enabled
+          example: true
+        hot_remove_enabled:
+          type: boolean
+          description: Whether CPU hot-remove is enabled
+          example: true
+    MemoryInfo:
+      type: object
+      description: Memory configuration of a virtual machine
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          description: Whether memory hot-add is enabled
+          example: true
+        hot_add_increment_size_MiB:
+          type: integer
+          description: Granularity for memory hot-add in mebibytes
+          example: 10
+        hot_add_limit_MiB:
+          type: integer
+          description: Maximum memory size for hot-add in mebibytes
+          example: 10
     HardwareUpdateSpec:
       type: object
       description: Specification for updating virtual hardware
@@ -425,6 +457,76 @@ components:
           example: NEVER
         upgrade_version:
           type: string
+          example: example_value
+    DiskSummary:
+      type: object
+      description: Summary of a virtual disk
+      properties:
+        disk:
+          type: string
+          description: Identifier of the virtual disk
+          example: example_value
+    EthernetSummary:
+      type: object
+      description: Summary of a virtual network adapter
+      properties:
+        nic:
+          type: string
+          description: Identifier of the network adapter
+          example: example_value
+    MemoryUpdateSpec:
+      type: object
+      description: Specification for memory configuration
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          minimum: 4
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          example: true
+    DiskCreateSpec:
+      type: object
+      description: Specification for creating a virtual disk
+      properties:
+        type:
+          type: string
+          description: Host bus adapter type
+          enum:
+          - IDE
+          - SCSI
+          - SATA
+          - NVME
+          example: IDE
+        new_vmdk:
+          type: object
+          description: Specification for a new VMDK file
+          properties:
+            name:
+              type: string
+              description: Name of the VMDK file
+            capacity:
+              type: integer
+              description: Capacity in bytes
+              format: int64
+            storage_policy:
+              type: object
+              properties:
+                policy:
+                  type: string
+                  description: Storage policy identifier
+          example: example_value
+        backing:
+          type: object
+          description: Existing disk backing
+          properties:
+            type:
+              type: string
+              enum:
+              - VMDK_FILE
+            vmdk_file:
+              type: string
           example: example_value
     CpuUpdateSpec:
       type: object
@@ -498,108 +600,6 @@ components:
           type: boolean
           default: false
           example: true
-    MemoryInfo:
-      type: object
-      description: Memory configuration of a virtual machine
-      properties:
-        size_MiB:
-          type: integer
-          description: Memory size in mebibytes
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          description: Whether memory hot-add is enabled
-          example: true
-        hot_add_increment_size_MiB:
-          type: integer
-          description: Granularity for memory hot-add in mebibytes
-          example: 10
-        hot_add_limit_MiB:
-          type: integer
-          description: Maximum memory size for hot-add in mebibytes
-          example: 10
-    CpuInfo:
-      type: object
-      description: CPU configuration of a virtual machine
-      properties:
-        count:
-          type: integer
-          description: Number of virtual CPU cores
-          example: 10
-        cores_per_socket:
-          type: integer
-          description: Number of cores per CPU socket
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          description: Whether CPU hot-add is enabled
-          example: true
-        hot_remove_enabled:
-          type: boolean
-          description: Whether CPU hot-remove is enabled
-          example: true
-    EthernetSummary:
-      type: object
-      description: Summary of a virtual network adapter
-      properties:
-        nic:
-          type: string
-          description: Identifier of the network adapter
-          example: example_value
-    MemoryUpdateSpec:
-      type: object
-      description: Specification for memory configuration
-      properties:
-        size_MiB:
-          type: integer
-          description: Memory size in mebibytes
-          minimum: 4
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          example: true
-    DiskCreateSpec:
-      type: object
-      description: Specification for creating a virtual disk
-      properties:
-        type:
-          type: string
-          description: Host bus adapter type
-          enum:
-          - IDE
-          - SCSI
-          - SATA
-          - NVME
-          example: IDE
-        new_vmdk:
-          type: object
-          description: Specification for a new VMDK file
-          properties:
-            name:
-              type: string
-              description: Name of the VMDK file
-            capacity:
-              type: integer
-              description: Capacity in bytes
-              format: int64
-            storage_policy:
-              type: object
-              properties:
-                policy:
-                  type: string
-                  description: Storage policy identifier
-          example: example_value
-        backing:
-          type: object
-          description: Existing disk backing
-          properties:
-            type:
-              type: string
-              enum:
-              - VMDK_FILE
-            vmdk_file:
-              type: string
-          example: example_value
   parameters:
     vmId:
       name: vm
