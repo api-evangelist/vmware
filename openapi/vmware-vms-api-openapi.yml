@@ -302,6 +302,163 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    EthernetCreateSpec:
+      type: object
+      description: Specification for creating a virtual network adapter
+      properties:
+        type:
+          type: string
+          description: Adapter emulation type
+          enum:
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VMXNET2
+          - VMXNET3
+          example: E1000
+        mac_type:
+          type: string
+          enum:
+          - MANUAL
+          - GENERATED
+          - ASSIGNED
+          example: MANUAL
+        mac_address:
+          type: string
+          description: MAC address (required when mac_type is MANUAL)
+          example: example_value
+        backing:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - STANDARD_PORTGROUP
+              - DISTRIBUTED_PORTGROUP
+              - OPAQUE_NETWORK
+            network:
+              type: string
+              description: Identifier of the network
+          example: example_value
+        start_connected:
+          type: boolean
+          default: true
+          example: true
+        allow_guest_control:
+          type: boolean
+          default: false
+          example: true
+        wake_on_lan_enabled:
+          type: boolean
+          default: false
+          example: true
+    MemoryUpdateSpec:
+      type: object
+      description: Specification for memory configuration
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          minimum: 4
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          example: true
+    MemoryInfo:
+      type: object
+      description: Memory configuration of a virtual machine
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          description: Whether memory hot-add is enabled
+          example: true
+        hot_add_increment_size_MiB:
+          type: integer
+          description: Granularity for memory hot-add in mebibytes
+          example: 10
+        hot_add_limit_MiB:
+          type: integer
+          description: Maximum memory size for hot-add in mebibytes
+          example: 10
+    HardwareInfo:
+      type: object
+      description: Virtual hardware configuration
+      properties:
+        version:
+          type: string
+          description: Virtual hardware version (e.g., VMX_21)
+          example: example_value
+        upgrade_policy:
+          type: string
+          description: Hardware upgrade policy
+          enum:
+          - NEVER
+          - AFTER_CLEAN_SHUTDOWN
+          - ALWAYS
+          example: NEVER
+        upgrade_version:
+          type: string
+          description: Target hardware version for upgrade
+          example: example_value
+    CpuInfo:
+      type: object
+      description: CPU configuration of a virtual machine
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+          example: 10
+        cores_per_socket:
+          type: integer
+          description: Number of cores per CPU socket
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          description: Whether CPU hot-add is enabled
+          example: true
+        hot_remove_enabled:
+          type: boolean
+          description: Whether CPU hot-remove is enabled
+          example: true
+    DiskInfo:
+      type: object
+      description: Detailed virtual disk configuration
+      properties:
+        label:
+          type: string
+          description: Display label of the virtual disk
+          example: Example Title
+        type:
+          type: string
+          description: Type of host bus adapter
+          enum:
+          - IDE
+          - SCSI
+          - SATA
+          - NVME
+          example: IDE
+        capacity:
+          type: integer
+          description: Capacity of the virtual disk in bytes
+          format: int64
+          example: 10
+        backing:
+          type: object
+          description: Disk backing information
+          properties:
+            type:
+              type: string
+              enum:
+              - VMDK_FILE
+            vmdk_file:
+              type: string
+              description: Path to the VMDK file
+          example: example_value
     EthernetInfo:
       type: object
       description: Detailed virtual network adapter configuration
@@ -365,140 +522,6 @@ components:
           example: true
         wake_on_lan_enabled:
           type: boolean
-          example: true
-    HardwareInfo:
-      type: object
-      description: Virtual hardware configuration
-      properties:
-        version:
-          type: string
-          description: Virtual hardware version (e.g., VMX_21)
-          example: example_value
-        upgrade_policy:
-          type: string
-          description: Hardware upgrade policy
-          enum:
-          - NEVER
-          - AFTER_CLEAN_SHUTDOWN
-          - ALWAYS
-          example: NEVER
-        upgrade_version:
-          type: string
-          description: Target hardware version for upgrade
-          example: example_value
-    VMCreateSpec:
-      type: object
-      description: Specification for creating a new virtual machine
-      required:
-      - name
-      - guest_OS
-      - placement
-      properties:
-        name:
-          type: string
-          description: Display name for the new VM
-          example: Example Title
-        guest_OS:
-          type: string
-          description: Guest operating system identifier
-          enum:
-          - RHEL_9_64
-          - RHEL_8_64
-          - UBUNTU_64
-          - DEBIAN_11_64
-          - WINDOWS_SERVER_2022
-          - WINDOWS_SERVER_2019
-          - WINDOWS_11_64
-          - OTHER_LINUX_64
-          - OTHER_64
-          example: RHEL_9_64
-        placement:
-          type: object
-          description: Placement specification for the VM
-          properties:
-            folder:
-              type: string
-              description: VM folder identifier
-            host:
-              type: string
-              description: Host identifier for initial placement
-            cluster:
-              type: string
-              description: Cluster identifier for initial placement
-            resource_pool:
-              type: string
-              description: Resource pool identifier
-            datastore:
-              type: string
-              description: Datastore identifier for VM files
-          example: example_value
-        hardware_version:
-          type: string
-          description: Virtual hardware version
-          enum:
-          - VMX_21
-          - VMX_20
-          - VMX_19
-          - VMX_18
-          - VMX_17
-          - VMX_16
-          - VMX_15
-          - VMX_14
-          - VMX_13
-          example: VMX_21
-        cpu:
-          $ref: '#/components/schemas/CpuUpdateSpec'
-        memory:
-          $ref: '#/components/schemas/MemoryUpdateSpec'
-        disks:
-          type: array
-          description: Virtual disks to create with the VM
-          items:
-            $ref: '#/components/schemas/DiskCreateSpec'
-          example: []
-        nics:
-          type: array
-          description: Network adapters to create with the VM
-          items:
-            $ref: '#/components/schemas/EthernetCreateSpec'
-          example: []
-        boot:
-          type: object
-          description: Boot configuration
-          properties:
-            type:
-              type: string
-              enum:
-              - BIOS
-              - EFI
-            efi_legacy_boot:
-              type: boolean
-            delay:
-              type: integer
-              description: Boot delay in milliseconds
-            enter_setup_mode:
-              type: boolean
-              description: Enter BIOS/EFI setup on next boot
-          example: example_value
-    CpuInfo:
-      type: object
-      description: CPU configuration of a virtual machine
-      properties:
-        count:
-          type: integer
-          description: Number of virtual CPU cores
-          example: 10
-        cores_per_socket:
-          type: integer
-          description: Number of cores per CPU socket
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          description: Whether CPU hot-add is enabled
-          example: true
-        hot_remove_enabled:
-          type: boolean
-          description: Whether CPU hot-remove is enabled
           example: true
     VMInfo:
       type: object
@@ -584,72 +607,6 @@ components:
           additionalProperties:
             type: object
           example: example_value
-    DiskInfo:
-      type: object
-      description: Detailed virtual disk configuration
-      properties:
-        label:
-          type: string
-          description: Display label of the virtual disk
-          example: Example Title
-        type:
-          type: string
-          description: Type of host bus adapter
-          enum:
-          - IDE
-          - SCSI
-          - SATA
-          - NVME
-          example: IDE
-        capacity:
-          type: integer
-          description: Capacity of the virtual disk in bytes
-          format: int64
-          example: 10
-        backing:
-          type: object
-          description: Disk backing information
-          properties:
-            type:
-              type: string
-              enum:
-              - VMDK_FILE
-            vmdk_file:
-              type: string
-              description: Path to the VMDK file
-          example: example_value
-    MemoryInfo:
-      type: object
-      description: Memory configuration of a virtual machine
-      properties:
-        size_MiB:
-          type: integer
-          description: Memory size in mebibytes
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          description: Whether memory hot-add is enabled
-          example: true
-        hot_add_increment_size_MiB:
-          type: integer
-          description: Granularity for memory hot-add in mebibytes
-          example: 10
-        hot_add_limit_MiB:
-          type: integer
-          description: Maximum memory size for hot-add in mebibytes
-          example: 10
-    MemoryUpdateSpec:
-      type: object
-      description: Specification for memory configuration
-      properties:
-        size_MiB:
-          type: integer
-          description: Memory size in mebibytes
-          minimum: 4
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          example: true
     VMSummary:
       type: object
       description: Summary of a virtual machine in the vCenter inventory
@@ -744,57 +701,100 @@ components:
         hot_remove_enabled:
           type: boolean
           example: true
-    EthernetCreateSpec:
+    VMCreateSpec:
       type: object
-      description: Specification for creating a virtual network adapter
+      description: Specification for creating a new virtual machine
+      required:
+      - name
+      - guest_OS
+      - placement
       properties:
-        type:
+        name:
           type: string
-          description: Adapter emulation type
+          description: Display name for the new VM
+          example: Example Title
+        guest_OS:
+          type: string
+          description: Guest operating system identifier
           enum:
-          - E1000
-          - E1000E
-          - PCNET32
-          - VMXNET
-          - VMXNET2
-          - VMXNET3
-          example: E1000
-        mac_type:
-          type: string
-          enum:
-          - MANUAL
-          - GENERATED
-          - ASSIGNED
-          example: MANUAL
-        mac_address:
-          type: string
-          description: MAC address (required when mac_type is MANUAL)
-          example: example_value
-        backing:
+          - RHEL_9_64
+          - RHEL_8_64
+          - UBUNTU_64
+          - DEBIAN_11_64
+          - WINDOWS_SERVER_2022
+          - WINDOWS_SERVER_2019
+          - WINDOWS_11_64
+          - OTHER_LINUX_64
+          - OTHER_64
+          example: RHEL_9_64
+        placement:
           type: object
+          description: Placement specification for the VM
+          properties:
+            folder:
+              type: string
+              description: VM folder identifier
+            host:
+              type: string
+              description: Host identifier for initial placement
+            cluster:
+              type: string
+              description: Cluster identifier for initial placement
+            resource_pool:
+              type: string
+              description: Resource pool identifier
+            datastore:
+              type: string
+              description: Datastore identifier for VM files
+          example: example_value
+        hardware_version:
+          type: string
+          description: Virtual hardware version
+          enum:
+          - VMX_21
+          - VMX_20
+          - VMX_19
+          - VMX_18
+          - VMX_17
+          - VMX_16
+          - VMX_15
+          - VMX_14
+          - VMX_13
+          example: VMX_21
+        cpu:
+          $ref: '#/components/schemas/CpuUpdateSpec'
+        memory:
+          $ref: '#/components/schemas/MemoryUpdateSpec'
+        disks:
+          type: array
+          description: Virtual disks to create with the VM
+          items:
+            $ref: '#/components/schemas/DiskCreateSpec'
+          example: []
+        nics:
+          type: array
+          description: Network adapters to create with the VM
+          items:
+            $ref: '#/components/schemas/EthernetCreateSpec'
+          example: []
+        boot:
+          type: object
+          description: Boot configuration
           properties:
             type:
               type: string
               enum:
-              - STANDARD_PORTGROUP
-              - DISTRIBUTED_PORTGROUP
-              - OPAQUE_NETWORK
-            network:
-              type: string
-              description: Identifier of the network
+              - BIOS
+              - EFI
+            efi_legacy_boot:
+              type: boolean
+            delay:
+              type: integer
+              description: Boot delay in milliseconds
+            enter_setup_mode:
+              type: boolean
+              description: Enter BIOS/EFI setup on next boot
           example: example_value
-        start_connected:
-          type: boolean
-          default: true
-          example: true
-        allow_guest_control:
-          type: boolean
-          default: false
-          example: true
-        wake_on_lan_enabled:
-          type: boolean
-          default: false
-          example: true
   parameters:
     vmId:
       name: vm

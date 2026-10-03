@@ -194,6 +194,24 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    TagCreateSpec:
+      type: object
+      description: Specification for creating a tag
+      required:
+      - name
+      - category_id
+      properties:
+        name:
+          type: string
+          description: Name for the new tag
+          example: Example Title
+        description:
+          type: string
+          example: A sample description.
+        category_id:
+          type: string
+          description: Identifier of the parent category
+          example: '500123'
     TagAssociationSpec:
       type: object
       description: Specification for attaching a tag to an object
@@ -251,24 +269,6 @@ components:
           items:
             type: string
           example: []
-    TagCreateSpec:
-      type: object
-      description: Specification for creating a tag
-      required:
-      - name
-      - category_id
-      properties:
-        name:
-          type: string
-          description: Name for the new tag
-          example: Example Title
-        description:
-          type: string
-          example: A sample description.
-        category_id:
-          type: string
-          description: Identifier of the parent category
-          example: '500123'
   securitySchemes:
     sessionAuth:
       type: apiKey
