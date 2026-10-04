@@ -353,354 +353,6 @@ components:
           type: boolean
           default: false
           example: true
-    MemoryUpdateSpec:
-      type: object
-      description: Specification for memory configuration
-      properties:
-        size_MiB:
-          type: integer
-          description: Memory size in mebibytes
-          minimum: 4
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          example: true
-    MemoryInfo:
-      type: object
-      description: Memory configuration of a virtual machine
-      properties:
-        size_MiB:
-          type: integer
-          description: Memory size in mebibytes
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          description: Whether memory hot-add is enabled
-          example: true
-        hot_add_increment_size_MiB:
-          type: integer
-          description: Granularity for memory hot-add in mebibytes
-          example: 10
-        hot_add_limit_MiB:
-          type: integer
-          description: Maximum memory size for hot-add in mebibytes
-          example: 10
-    HardwareInfo:
-      type: object
-      description: Virtual hardware configuration
-      properties:
-        version:
-          type: string
-          description: Virtual hardware version (e.g., VMX_21)
-          example: example_value
-        upgrade_policy:
-          type: string
-          description: Hardware upgrade policy
-          enum:
-          - NEVER
-          - AFTER_CLEAN_SHUTDOWN
-          - ALWAYS
-          example: NEVER
-        upgrade_version:
-          type: string
-          description: Target hardware version for upgrade
-          example: example_value
-    CpuInfo:
-      type: object
-      description: CPU configuration of a virtual machine
-      properties:
-        count:
-          type: integer
-          description: Number of virtual CPU cores
-          example: 10
-        cores_per_socket:
-          type: integer
-          description: Number of cores per CPU socket
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          description: Whether CPU hot-add is enabled
-          example: true
-        hot_remove_enabled:
-          type: boolean
-          description: Whether CPU hot-remove is enabled
-          example: true
-    DiskInfo:
-      type: object
-      description: Detailed virtual disk configuration
-      properties:
-        label:
-          type: string
-          description: Display label of the virtual disk
-          example: Example Title
-        type:
-          type: string
-          description: Type of host bus adapter
-          enum:
-          - IDE
-          - SCSI
-          - SATA
-          - NVME
-          example: IDE
-        capacity:
-          type: integer
-          description: Capacity of the virtual disk in bytes
-          format: int64
-          example: 10
-        backing:
-          type: object
-          description: Disk backing information
-          properties:
-            type:
-              type: string
-              enum:
-              - VMDK_FILE
-            vmdk_file:
-              type: string
-              description: Path to the VMDK file
-          example: example_value
-    EthernetInfo:
-      type: object
-      description: Detailed virtual network adapter configuration
-      properties:
-        label:
-          type: string
-          description: Display label of the adapter
-          example: Example Title
-        type:
-          type: string
-          description: Adapter emulation type
-          enum:
-          - E1000
-          - E1000E
-          - PCNET32
-          - VMXNET
-          - VMXNET2
-          - VMXNET3
-          example: E1000
-        mac_type:
-          type: string
-          description: MAC address type
-          enum:
-          - MANUAL
-          - GENERATED
-          - ASSIGNED
-          example: MANUAL
-        mac_address:
-          type: string
-          description: MAC address of the adapter
-          example: example_value
-        state:
-          type: string
-          description: Connection state
-          enum:
-          - CONNECTED
-          - NOT_CONNECTED
-          example: CONNECTED
-        start_connected:
-          type: boolean
-          description: Whether the adapter connects at power on
-          example: true
-        backing:
-          type: object
-          description: Network backing information
-          properties:
-            type:
-              type: string
-              enum:
-              - STANDARD_PORTGROUP
-              - DISTRIBUTED_PORTGROUP
-              - OPAQUE_NETWORK
-              - HOST_DEVICE
-            network:
-              type: string
-              description: Identifier of the backing network
-          example: example_value
-        allow_guest_control:
-          type: boolean
-          description: Whether guest OS can change adapter settings
-          example: true
-        wake_on_lan_enabled:
-          type: boolean
-          example: true
-    VMInfo:
-      type: object
-      description: Detailed virtual machine configuration and state
-      properties:
-        name:
-          type: string
-          description: Display name of the virtual machine
-          example: Example Title
-        identity:
-          type: object
-          description: VM identity information
-          properties:
-            name:
-              type: string
-            instance_uuid:
-              type: string
-              format: uuid
-            bios_uuid:
-              type: string
-              format: uuid
-          example: example_value
-        power_state:
-          type: string
-          enum:
-          - POWERED_ON
-          - POWERED_OFF
-          - SUSPENDED
-          example: POWERED_ON
-        guest_OS:
-          type: string
-          description: Configured guest operating system
-          example: example_value
-        hardware:
-          $ref: '#/components/schemas/HardwareInfo'
-        boot:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - BIOS
-              - EFI
-            delay:
-              type: integer
-            enter_setup_mode:
-              type: boolean
-          example: example_value
-        cpu:
-          $ref: '#/components/schemas/CpuInfo'
-        memory:
-          $ref: '#/components/schemas/MemoryInfo'
-        disks:
-          type: object
-          description: Map of disk identifier to disk configuration
-          additionalProperties:
-            $ref: '#/components/schemas/DiskInfo'
-          example: example_value
-        nics:
-          type: object
-          description: Map of NIC identifier to NIC configuration
-          additionalProperties:
-            $ref: '#/components/schemas/EthernetInfo'
-          example: example_value
-        cdroms:
-          type: object
-          description: Map of CD-ROM identifier to CD-ROM configuration
-          additionalProperties:
-            type: object
-          example: example_value
-        parallel_ports:
-          type: object
-          additionalProperties:
-            type: object
-          example: example_value
-        serial_ports:
-          type: object
-          additionalProperties:
-            type: object
-          example: example_value
-        floppy_drives:
-          type: object
-          additionalProperties:
-            type: object
-          example: example_value
-    VMSummary:
-      type: object
-      description: Summary of a virtual machine in the vCenter inventory
-      required:
-      - vm
-      - name
-      properties:
-        vm:
-          type: string
-          description: Unique identifier of the virtual machine (e.g., vm-123)
-          example: example_value
-        name:
-          type: string
-          description: Display name of the virtual machine
-          example: Example Title
-        power_state:
-          type: string
-          description: Current power state of the VM
-          enum:
-          - POWERED_ON
-          - POWERED_OFF
-          - SUSPENDED
-          example: POWERED_ON
-        cpu_count:
-          type: integer
-          description: Number of virtual CPUs
-          example: 10
-        memory_size_MiB:
-          type: integer
-          description: Memory size in mebibytes
-          example: 10
-    DiskCreateSpec:
-      type: object
-      description: Specification for creating a virtual disk
-      properties:
-        type:
-          type: string
-          description: Host bus adapter type
-          enum:
-          - IDE
-          - SCSI
-          - SATA
-          - NVME
-          example: IDE
-        new_vmdk:
-          type: object
-          description: Specification for a new VMDK file
-          properties:
-            name:
-              type: string
-              description: Name of the VMDK file
-            capacity:
-              type: integer
-              description: Capacity in bytes
-              format: int64
-            storage_policy:
-              type: object
-              properties:
-                policy:
-                  type: string
-                  description: Storage policy identifier
-          example: example_value
-        backing:
-          type: object
-          description: Existing disk backing
-          properties:
-            type:
-              type: string
-              enum:
-              - VMDK_FILE
-            vmdk_file:
-              type: string
-          example: example_value
-    CpuUpdateSpec:
-      type: object
-      description: Specification for CPU configuration
-      properties:
-        count:
-          type: integer
-          description: Number of virtual CPU cores
-          minimum: 1
-          maximum: 768
-          example: 10
-        cores_per_socket:
-          type: integer
-          description: Number of cores per socket
-          minimum: 1
-          example: 10
-        hot_add_enabled:
-          type: boolean
-          example: true
-        hot_remove_enabled:
-          type: boolean
-          example: true
     VMCreateSpec:
       type: object
       description: Specification for creating a new virtual machine
@@ -794,6 +446,354 @@ components:
             enter_setup_mode:
               type: boolean
               description: Enter BIOS/EFI setup on next boot
+          example: example_value
+    VMSummary:
+      type: object
+      description: Summary of a virtual machine in the vCenter inventory
+      required:
+      - vm
+      - name
+      properties:
+        vm:
+          type: string
+          description: Unique identifier of the virtual machine (e.g., vm-123)
+          example: example_value
+        name:
+          type: string
+          description: Display name of the virtual machine
+          example: Example Title
+        power_state:
+          type: string
+          description: Current power state of the VM
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+          example: POWERED_ON
+        cpu_count:
+          type: integer
+          description: Number of virtual CPUs
+          example: 10
+        memory_size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          example: 10
+    DiskInfo:
+      type: object
+      description: Detailed virtual disk configuration
+      properties:
+        label:
+          type: string
+          description: Display label of the virtual disk
+          example: Example Title
+        type:
+          type: string
+          description: Type of host bus adapter
+          enum:
+          - IDE
+          - SCSI
+          - SATA
+          - NVME
+          example: IDE
+        capacity:
+          type: integer
+          description: Capacity of the virtual disk in bytes
+          format: int64
+          example: 10
+        backing:
+          type: object
+          description: Disk backing information
+          properties:
+            type:
+              type: string
+              enum:
+              - VMDK_FILE
+            vmdk_file:
+              type: string
+              description: Path to the VMDK file
+          example: example_value
+    DiskCreateSpec:
+      type: object
+      description: Specification for creating a virtual disk
+      properties:
+        type:
+          type: string
+          description: Host bus adapter type
+          enum:
+          - IDE
+          - SCSI
+          - SATA
+          - NVME
+          example: IDE
+        new_vmdk:
+          type: object
+          description: Specification for a new VMDK file
+          properties:
+            name:
+              type: string
+              description: Name of the VMDK file
+            capacity:
+              type: integer
+              description: Capacity in bytes
+              format: int64
+            storage_policy:
+              type: object
+              properties:
+                policy:
+                  type: string
+                  description: Storage policy identifier
+          example: example_value
+        backing:
+          type: object
+          description: Existing disk backing
+          properties:
+            type:
+              type: string
+              enum:
+              - VMDK_FILE
+            vmdk_file:
+              type: string
+          example: example_value
+    EthernetInfo:
+      type: object
+      description: Detailed virtual network adapter configuration
+      properties:
+        label:
+          type: string
+          description: Display label of the adapter
+          example: Example Title
+        type:
+          type: string
+          description: Adapter emulation type
+          enum:
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VMXNET2
+          - VMXNET3
+          example: E1000
+        mac_type:
+          type: string
+          description: MAC address type
+          enum:
+          - MANUAL
+          - GENERATED
+          - ASSIGNED
+          example: MANUAL
+        mac_address:
+          type: string
+          description: MAC address of the adapter
+          example: example_value
+        state:
+          type: string
+          description: Connection state
+          enum:
+          - CONNECTED
+          - NOT_CONNECTED
+          example: CONNECTED
+        start_connected:
+          type: boolean
+          description: Whether the adapter connects at power on
+          example: true
+        backing:
+          type: object
+          description: Network backing information
+          properties:
+            type:
+              type: string
+              enum:
+              - STANDARD_PORTGROUP
+              - DISTRIBUTED_PORTGROUP
+              - OPAQUE_NETWORK
+              - HOST_DEVICE
+            network:
+              type: string
+              description: Identifier of the backing network
+          example: example_value
+        allow_guest_control:
+          type: boolean
+          description: Whether guest OS can change adapter settings
+          example: true
+        wake_on_lan_enabled:
+          type: boolean
+          example: true
+    MemoryUpdateSpec:
+      type: object
+      description: Specification for memory configuration
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          minimum: 4
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          example: true
+    CpuInfo:
+      type: object
+      description: CPU configuration of a virtual machine
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+          example: 10
+        cores_per_socket:
+          type: integer
+          description: Number of cores per CPU socket
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          description: Whether CPU hot-add is enabled
+          example: true
+        hot_remove_enabled:
+          type: boolean
+          description: Whether CPU hot-remove is enabled
+          example: true
+    CpuUpdateSpec:
+      type: object
+      description: Specification for CPU configuration
+      properties:
+        count:
+          type: integer
+          description: Number of virtual CPU cores
+          minimum: 1
+          maximum: 768
+          example: 10
+        cores_per_socket:
+          type: integer
+          description: Number of cores per socket
+          minimum: 1
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          example: true
+        hot_remove_enabled:
+          type: boolean
+          example: true
+    MemoryInfo:
+      type: object
+      description: Memory configuration of a virtual machine
+      properties:
+        size_MiB:
+          type: integer
+          description: Memory size in mebibytes
+          example: 10
+        hot_add_enabled:
+          type: boolean
+          description: Whether memory hot-add is enabled
+          example: true
+        hot_add_increment_size_MiB:
+          type: integer
+          description: Granularity for memory hot-add in mebibytes
+          example: 10
+        hot_add_limit_MiB:
+          type: integer
+          description: Maximum memory size for hot-add in mebibytes
+          example: 10
+    VMInfo:
+      type: object
+      description: Detailed virtual machine configuration and state
+      properties:
+        name:
+          type: string
+          description: Display name of the virtual machine
+          example: Example Title
+        identity:
+          type: object
+          description: VM identity information
+          properties:
+            name:
+              type: string
+            instance_uuid:
+              type: string
+              format: uuid
+            bios_uuid:
+              type: string
+              format: uuid
+          example: example_value
+        power_state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+          example: POWERED_ON
+        guest_OS:
+          type: string
+          description: Configured guest operating system
+          example: example_value
+        hardware:
+          $ref: '#/components/schemas/HardwareInfo'
+        boot:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - BIOS
+              - EFI
+            delay:
+              type: integer
+            enter_setup_mode:
+              type: boolean
+          example: example_value
+        cpu:
+          $ref: '#/components/schemas/CpuInfo'
+        memory:
+          $ref: '#/components/schemas/MemoryInfo'
+        disks:
+          type: object
+          description: Map of disk identifier to disk configuration
+          additionalProperties:
+            $ref: '#/components/schemas/DiskInfo'
+          example: example_value
+        nics:
+          type: object
+          description: Map of NIC identifier to NIC configuration
+          additionalProperties:
+            $ref: '#/components/schemas/EthernetInfo'
+          example: example_value
+        cdroms:
+          type: object
+          description: Map of CD-ROM identifier to CD-ROM configuration
+          additionalProperties:
+            type: object
+          example: example_value
+        parallel_ports:
+          type: object
+          additionalProperties:
+            type: object
+          example: example_value
+        serial_ports:
+          type: object
+          additionalProperties:
+            type: object
+          example: example_value
+        floppy_drives:
+          type: object
+          additionalProperties:
+            type: object
+          example: example_value
+    HardwareInfo:
+      type: object
+      description: Virtual hardware configuration
+      properties:
+        version:
+          type: string
+          description: Virtual hardware version (e.g., VMX_21)
+          example: example_value
+        upgrade_policy:
+          type: string
+          description: Hardware upgrade policy
+          enum:
+          - NEVER
+          - AFTER_CLEAN_SHUTDOWN
+          - ALWAYS
+          example: NEVER
+        upgrade_version:
+          type: string
+          description: Target hardware version for upgrade
           example: example_value
   parameters:
     vmId:

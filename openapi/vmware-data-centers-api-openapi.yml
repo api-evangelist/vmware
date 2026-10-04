@@ -208,21 +208,6 @@ components:
           type: string
           description: VM folder identifier
           example: example_value
-    DatacenterSummary:
-      type: object
-      description: Summary of a datacenter
-      required:
-      - datacenter
-      - name
-      properties:
-        datacenter:
-          type: string
-          description: Unique identifier of the datacenter
-          example: example_value
-        name:
-          type: string
-          description: Display name of the datacenter
-          example: Example Title
     DatacenterCreateSpec:
       type: object
       description: Specification for creating a datacenter
@@ -238,6 +223,21 @@ components:
           type: string
           description: Parent folder identifier
           example: example_value
+    DatacenterSummary:
+      type: object
+      description: Summary of a datacenter
+      required:
+      - datacenter
+      - name
+      properties:
+        datacenter:
+          type: string
+          description: Unique identifier of the datacenter
+          example: example_value
+        name:
+          type: string
+          description: Display name of the datacenter
+          example: Example Title
   parameters:
     datacenterId:
       name: datacenter
