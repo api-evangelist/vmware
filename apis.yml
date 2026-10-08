@@ -1450,6 +1450,12 @@ apis:
   - type: Documentation
     url: https://developer.vmware.com/docs/vrealize-operations/latest/
 common:
+- type: Plans
+  url: plans/vmware-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/vmware-rate-limits.yml
+- type: FinOps
+  url: finops/vmware-finops.yml
 - type: Website
   url: https://www.broadcom.com/
 - type: CapabilityMap
