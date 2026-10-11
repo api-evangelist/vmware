@@ -8,6 +8,7 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: VMware
 providerId: vmware
+name: VMware FinOps
 publisherName: Broadcom Inc.
 serviceCategory: Cloud Infrastructure / Virtualization
 created: '2026-05-04'
