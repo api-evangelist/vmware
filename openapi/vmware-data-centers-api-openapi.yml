@@ -184,6 +184,36 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    DatacenterSummary:
+      type: object
+      description: Summary of a datacenter
+      required:
+      - datacenter
+      - name
+      properties:
+        datacenter:
+          type: string
+          description: Unique identifier of the datacenter
+          example: example_value
+        name:
+          type: string
+          description: Display name of the datacenter
+          example: Example Title
+    DatacenterCreateSpec:
+      type: object
+      description: Specification for creating a datacenter
+      required:
+      - name
+      - folder
+      properties:
+        name:
+          type: string
+          description: Name for the new datacenter
+          example: Example Title
+        folder:
+          type: string
+          description: Parent folder identifier
+          example: example_value
     DatacenterInfo:
       type: object
       description: Detailed datacenter information
@@ -208,36 +238,6 @@ components:
           type: string
           description: VM folder identifier
           example: example_value
-    DatacenterCreateSpec:
-      type: object
-      description: Specification for creating a datacenter
-      required:
-      - name
-      - folder
-      properties:
-        name:
-          type: string
-          description: Name for the new datacenter
-          example: Example Title
-        folder:
-          type: string
-          description: Parent folder identifier
-          example: example_value
-    DatacenterSummary:
-      type: object
-      description: Summary of a datacenter
-      required:
-      - datacenter
-      - name
-      properties:
-        datacenter:
-          type: string
-          description: Unique identifier of the datacenter
-          example: example_value
-        name:
-          type: string
-          description: Display name of the datacenter
-          example: Example Title
   parameters:
     datacenterId:
       name: datacenter

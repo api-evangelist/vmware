@@ -139,14 +139,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    vmId:
-      name: vm
-      in: path
-      required: true
-      description: Identifier of the virtual machine (e.g., vm-123)
-      schema:
-        type: string
   schemas:
     PowerInfo:
       type: object
@@ -164,6 +156,14 @@ components:
           type: boolean
           description: Whether the last power-off was clean
           example: true
+  parameters:
+    vmId:
+      name: vm
+      in: path
+      required: true
+      description: Identifier of the virtual machine (e.g., vm-123)
+      schema:
+        type: string
   securitySchemes:
     sessionAuth:
       type: apiKey

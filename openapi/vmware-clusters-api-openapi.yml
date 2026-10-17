@@ -129,18 +129,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ClusterInfo:
-      type: object
-      description: Detailed cluster configuration
-      properties:
-        name:
-          type: string
-          description: Display name of the cluster
-          example: Example Title
-        resource_pool:
-          type: string
-          description: Root resource pool of the cluster
-          example: example_value
     ClusterSummary:
       type: object
       description: Summary of a cluster in the vCenter inventory
@@ -164,6 +152,18 @@ components:
           type: boolean
           description: Whether vSphere DRS is enabled
           example: true
+    ClusterInfo:
+      type: object
+      description: Detailed cluster configuration
+      properties:
+        name:
+          type: string
+          description: Display name of the cluster
+          example: Example Title
+        resource_pool:
+          type: string
+          description: Root resource pool of the cluster
+          example: example_value
   parameters:
     clusterId:
       name: cluster
