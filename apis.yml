@@ -685,9 +685,8 @@ apis:
   humanURL: https://developer.broadcom.com/xapis/vmware-identity-manager-api/latest/
   baseURL: https://{{idm-host}}/SAAS/jersey/manager/api
   tags:
-  - Access Management
+  - Identity and Access Management
   - Authentication
-  - Identity Management
   - SSO
   tags_raw:
   - Access Management
@@ -1415,6 +1414,8 @@ apis:
   humanURL: https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/
   baseURL: https://{{vcenter}}/sdk
   tags:
+  - Data Center
+  tags_raw:
   - Data Centers
   properties:
   - type: OpenAPI
