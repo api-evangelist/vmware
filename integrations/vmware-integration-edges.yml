@@ -59,16 +59,73 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-official-clis.py
   first_seen: '2026-10-20'
+- partner_name: Pulumi (pulumi-registry)
+  partner: pulumi
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: pulumi-registry
+  evidence: https://www.pulumi.com/registry/packages/avi/
+  mirror_of: pulumi/integrations/pulumi-integration-edges.yml
+  apps:
+  - avi
+  - nsxt
+  - vcd
+  - vmc
+  - vra
+  - wavefront
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+  badges:
+  - Verified publisher (GitHub domain-verified organization)
+- partner_name: Terraform (terraform-registry)
+  partner: terraform
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: terraform-registry
+  evidence: https://registry.terraform.io/providers/vmware/vsphere
+  mirror_of: terraform/integrations/terraform-integration-edges.yml
+  apps:
+  - vmware/vsphere
+  - vmware/vcd
+  - vmware/avi
+  - vmware/vra
+  - vmware/nsxt
+  - vmware/wavefront
+  - vmware/vmc
+  - vmware/vra7
+  - vmware/tanzu-mission-control
+  - vmware/vcfa
+  - vmware/hcx
+  - vmware/vcf
+  - vmware/vcda
+  - vmware/nsxt-virtual-private-cloud
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+  badges:
+  - Verified publisher (Terraform partner tier)
+  - Verified publisher (GitHub domain-verified organization)
 generated: '2026-10-20'
 method: searched
 source:
-- https://cdn.winget.microsoft.com/cache
-- https://formulae.brew.sh/api/cask.json
 - https://formulae.brew.sh/api/formula.json
-- https://github.com/ScoopInstaller/Extras
+- https://formulae.brew.sh/api/cask.json
+- https://cdn.winget.microsoft.com/cache
 - https://github.com/ScoopInstaller/Main
-- https://pypi.org/pypi
+- https://github.com/ScoopInstaller/Extras
 - https://registry.npmjs.org
+- https://pypi.org/pypi
 checked:
 - https://cdn.winget.microsoft.com/cache
 - https://formulae.brew.sh/api/cask.json
@@ -77,3 +134,5 @@ checked:
 - https://github.com/ScoopInstaller/Main
 - https://pypi.org/pypi
 - https://registry.npmjs.org
+- pulumi/integrations/pulumi-integration-edges.yml
+- terraform/integrations/terraform-integration-edges.yml
