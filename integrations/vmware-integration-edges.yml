@@ -59,6 +59,104 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-official-clis.py
   first_seen: '2026-10-20'
+- partner_name: OpenSSF Best Practices Badge (bestpractices.dev)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.bestpractices.dev/en/projects/4421
+  category: OpenSSF Best Practices badge (open-source project security practices)
+  contract_reference:
+    register: OpenSSF Best Practices Badge projects (www.bestpractices.dev/en/projects.json)
+    standard: OpenSSF Best Practices Badge criteria (passing / silver / gold)
+    spec_file: null
+    role: badged-project-owner
+    registered_name: clarity
+    matched_domain: null
+    matched_by: github-org
+    certified_products:
+    - product: open-source project
+      product_type: open-source project
+      standard: OpenSSF Best Practices Badge criteria (passing / silver / gold)
+      partner_tier: passing
+      lapsed: false
+      badge_date: '2021-04-06'
+    badged_projects:
+    - name: clarity
+      id: 4421
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/4421
+    - name: Repository Service for TUF (RSTUF)
+      id: 6587
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/6587
+    signal_note: 'certified_products = ONE entry per provider (product type open-source project): highest current
+      OpenSSF Best Practices badge level in partner_tier, earliest date at that level; lapsed: true when every linked
+      project lost its badge. badged_projects is context, never counted'
+    detected_by: sweep-openssf-best-practices-badges.py
+    detected: '2026-10-22'
+    matched_github_org: vmware
+    identity_note: project repo_url is in a GitHub org that is a GitHubOrganization pointer in exactly one live
+      repo
+  detected_by: sweep-openssf-best-practices-badges.py
+  first_seen: '2026-10-22'
+- partner_name: TX-RAMP
+  partner: null
+  partner_match: register
+  partner_tier: Level 2
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://dir.texas.gov/resource-library-item/tx-ramp-certified-cloud-products
+  category: Texas state cloud security certification (TX-RAMP)
+  contract_reference:
+    register: TX-RAMP Certified Cloud Products (Texas DIR)
+    standard: TX-RAMP
+    spec_file: null
+    role: tx-ramp-certified
+    register_file: https://dir.texas.gov/sites/default/files/2026-10/Copy%20of%20TX-RAMP%20Certified%20Cloud%20Products_1.xlsx
+    registrations:
+    - certification_id: TX1009332
+      product: VMware Government Services (VGS)
+      registered_vendor: Vmware
+      certification_level: Level 2
+      cloud_categories:
+      - IaaS
+      certification_path: Certification Due to Existing Other RAMP-Certification
+      expires: null
+      lapsed: false
+      matched_domain: null
+      matched_by: local-verified
+    - certification_id: TX985585
+      product: VMware Cloud on AWS GovCloud (VMC)
+      registered_vendor: Vmware
+      certification_level: Level 2
+      cloud_categories:
+      - IaaS
+      certification_path: Certification Due to Existing Other RAMP-Certification
+      expires: null
+      lapsed: false
+      matched_domain: null
+      matched_by: local-verified
+    identity: VMware is all/vmware; vmware.com is held only by the vmware-tanzu product repo
+    identity_source: hand-verified (LOCAL_VERIFIED)
+    signal_note: 'certified_products = one entry per cloud category (SaaS / PaaS / IaaS) the vendor holds a TX-RAMP
+      certification in, never per product; products are context, never counted. certification_level = the highest
+      level in that category; lapsed: true when every product in the category is past its expiry date. partner_tier
+      = the highest CURRENT level'
+    certified_products:
+    - product: IaaS
+      product_type: IaaS
+      standard: TX-RAMP
+      certification_level: Level 2
+      lapsed: false
+    detected_by: sweep-tx-ramp-certified-cloud.py
+    detected: '2026-10-22'
+  detected_by: sweep-tx-ramp-certified-cloud.py
+  first_seen: '2026-10-22'
 - partner_name: Pulumi (pulumi-registry)
   partner: pulumi
   partner_match: mirror
@@ -116,49 +214,28 @@ edges:
   badges:
   - Verified publisher (Terraform partner tier)
   - Verified publisher (GitHub domain-verified organization)
-- partner_name: OpenSSF Best Practices Badge (bestpractices.dev)
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://www.bestpractices.dev/en/projects/4421
-  category: OpenSSF Best Practices badge (open-source project security practices)
-  contract_reference:
-    register: OpenSSF Best Practices Badge projects (www.bestpractices.dev/en/projects.json)
-    standard: OpenSSF Best Practices Badge criteria (passing / silver / gold)
-    spec_file: null
-    role: badged-project-owner
-    registered_name: clarity
-    matched_domain: null
-    matched_by: github-org
-    certified_products:
-    - product: open-source project
-      product_type: open-source project
-      standard: OpenSSF Best Practices Badge criteria (passing / silver / gold)
-      partner_tier: passing
-      lapsed: false
-      badge_date: '2021-04-06'
-    badged_projects:
-    - name: clarity
-      id: 4421
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/4421
-    - name: Repository Service for TUF (RSTUF)
-      id: 6587
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/6587
-    signal_note: 'certified_products = ONE entry per provider (product type open-source project): highest current
-      OpenSSF Best Practices badge level in partner_tier, earliest date at that level; lapsed: true when every linked
-      project lost its badge. badged_projects is context, never counted'
-    detected_by: sweep-openssf-best-practices-badges.py
-    detected: '2026-10-22'
-    matched_github_org: vmware
-    identity_note: project repo_url is in a GitHub org that is a GitHubOrganization pointer in exactly one live
-      repo
-  detected_by: sweep-openssf-best-practices-badges.py
-  first_seen: '2026-10-22'
+- partner_name: Ansible (ansible-galaxy)
+  partner: ansible
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: ansible-galaxy
+  evidence: https://galaxy.ansible.com/ui/repo/published/vmware/alb/
+  mirror_of: ansible/integrations/ansible-integration-edges.yml
+  apps:
+  - vmware.alb
+  - amolopcito.alb
+  - damhau.ansible_for_nsxt
+  - rohan_sss1.alb
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: configuration-management content listing (Ansible collection)
+  badges:
+  - Verified publisher (GitHub domain-verified organization)
 generated: '2026-10-20'
 method: searched
 source:
@@ -181,3 +258,5 @@ checked:
 - terraform/integrations/terraform-integration-edges.yml
 - https://www.bestpractices.dev/en/projects.json
 - https://www.bestpractices.dev/en/projects.json?page=N
+- https://dir.texas.gov/resource-library-item/tx-ramp-certified-cloud-products
+- ansible/integrations/ansible-integration-edges.yml
