@@ -1,4 +1,4 @@
-# VMware (vmware)
+# VMware
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,1084 +66,318 @@
 
 Collection of VMware APIs for cloud infrastructure, virtualization, and management solutions including vSphere, NSX, vCloud Director, Tanzu, and Aria operations.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/vmware/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/vmware/refs/heads/main/apis.yml)
-
-## Scope
-
-- **Type:** Index
-
-## Tags
-
-- Cloud Computing
-- Container Management
-- Hybrid Cloud
-- Infrastructure
-- Virtualization
-
-## Timestamps
-
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
-
-## APIs
-
-### vSphere API
-
-API for managing VMware vSphere virtualization platform, including VMs, hosts, and datastores.
-
-- **Human URL:** [https://developer.vmware.com/apis/vsphere-automation/latest/](https://developer.vmware.com/apis/vsphere-automation/latest/)
-- **Base URL:** `https://{{vcenter}}/api`
-
-#### Tags
-
-- Data Center
-- Hypervisor
-- Virtualization
-- VM Management
-
-#### Properties
-
-- [Documentation](https://developer.vmware.com/docs/vsphere-automation/latest/)
-- [OpenAPI](openapi/vmware-vsphere-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [OpenAPI](https://developer.vmware.com/apis/vsphere-automation/latest/openapi/) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://developer.vmware.com/docs/vsphere-automation/latest/authentication/)
-- [API Reference](https://developer.broadcom.com/xapis/vsphere-automation-api/latest/)
-- [JSON Schema](json-schema/vmware-virtual-machine-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/vmware-vsphere-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-
-### vSphere Web Services API
-
-Comprehensive SOAP-based API providing access to all vSphere management functionality including virtual machines, hosts, clusters, networking, and storage.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/)
-- **Base URL:** `https://{{vcenter}}/sdk`
-
-#### Tags
-
-- Data Center
-- SOAP
-- Virtualization
-- VM Management
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/)
-- [SDK](https://github.com/vmware/vsphere-automation-sdk-java)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Virtual Infrastructure JSON API
-
-HTTP and JSON based wire protocol as an alternative to SOAP and XML for vCenter Server 8.0 Update 1 and later, documented via OpenAPI 3.0 specification.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/)
-- **Base URL:** `https://{{vcenter}}/sdk/vim25/8.0.1.0`
-
-#### Tags
-
-- JSON
-- REST
-- vCenter
-- Virtualization
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### vCloud Director API
-
-API for VMware vCloud Director cloud service delivery platform.
-
-- **Human URL:** [https://developer.vmware.com/apis/vmware-cloud-director/latest/](https://developer.vmware.com/apis/vmware-cloud-director/latest/)
-- **Base URL:** `https://{{vcd-host}}/api`
-
-#### Tags
-
-- Cloud Management
-- Multi-Tenancy
-- Service Provider
-
-#### Properties
-
-- [Documentation](https://developer.vmware.com/docs/vmware-cloud-director/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/vmware-cloud-director/latest/openapi/) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://developer.broadcom.com/xapis/vmware-cloud-director-openapi/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### NSX-T Data Center API
-
-API for NSX-T network virtualization and security platform.
-
-- **Human URL:** [https://developer.vmware.com/apis/nsx-t/latest/](https://developer.vmware.com/apis/nsx-t/latest/)
-- **Base URL:** `https://{{nsx-manager}}/api/v1`
-
-#### Tags
-
-- Load Balancing
-- Micro-Segmentation
-- Network Virtualization
-- Security
-
-#### Properties
-
-- [Documentation](https://developer.vmware.com/docs/nsx-t/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/nsx-t/latest/openapi/) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://developer.broadcom.com/xapis/nsx-t-data-center-rest-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### NSX-T Global Manager API
-
-API for managing NSX Federation with centralized configuration of multiple NSX deployments across sites.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/nsx-t-data-center-global-manager-rest-api/latest/](https://developer.broadcom.com/xapis/nsx-t-data-center-global-manager-rest-api/latest/)
-- **Base URL:** `https://{{global-manager}}/global-manager/api/v1`
-
-#### Tags
-
-- Federation
-- Multi-Site
-- Network Virtualization
-- Security
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/nsx-t-data-center-global-manager-rest-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### NSX Intelligence API
-
-API for NSX Intelligence and Application Platform providing network traffic data collection, ingestion, and correlation capabilities.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/nsx-intelligence-and-application-platform-apis/latest/](https://developer.broadcom.com/xapis/nsx-intelligence-and-application-platform-apis/latest/)
-- **Base URL:** `https://{{nsx-manager}}/napp/api/v1`
-
-#### Tags
-
-- Network Intelligence
-- Security Analytics
-- Traffic Analysis
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/nsx-intelligence-and-application-platform-apis/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### NSX Autonomous Edge API
-
-REST API for NSX Autonomous Edge providing network virtualization capabilities for edge deployments using a resource-oriented architecture with JSON encoding.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/nsx-autonomous-edge-rest-api/latest/](https://developer.broadcom.com/xapis/nsx-autonomous-edge-rest-api/latest/)
-- **Base URL:** `https://{{nsx-edge}}/api/v1`
-
-#### Tags
-
-- Edge Computing
-- Network Virtualization
-- SD-WAN
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/nsx-autonomous-edge-rest-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### vRealize Automation API
-
-API for automating IT service delivery and cloud infrastructure management.
-
-- **Human URL:** [https://developer.vmware.com/apis/vrealize-automation/latest/](https://developer.vmware.com/apis/vrealize-automation/latest/)
-- **Base URL:** `https://{{vra-host}}/automation-api`
-
-#### Tags
-
-- Automation
-- Infrastructure as Code
-- Orchestration
-- Self-Service
-
-#### Properties
-
-- [Documentation](https://developer.vmware.com/docs/vrealize-automation/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/vrealize-automation/latest/openapi/) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Code Examples](https://github.com/vmware/vrealize-automation-samples)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Cloud on AWS API
-
-API for managing VMware Cloud on AWS infrastructure.
-
-- **Human URL:** [https://developer.vmware.com/apis/vmc/latest/](https://developer.vmware.com/apis/vmc/latest/)
-- **Base URL:** `https://vmc.vmware.com/vmc/api`
-
-#### Tags
-
-- AWS
-- Cloud Services
-- Hybrid Cloud
-- SDDC
-
-#### Properties
-
-- [Documentation](https://developer.vmware.com/docs/vmc/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/vmc/latest/openapi/) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Getting Started](https://developer.vmware.com/docs/vmc/latest/getting-started/)
-- [API Reference](https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Tanzu Kubernetes Grid API
-
-API for managing enterprise-ready Kubernetes clusters.
-
-- **Human URL:** [https://developer.vmware.com/apis/tanzu/](https://developer.vmware.com/apis/tanzu/)
-- **Base URL:** `https://{{tkg-endpoint}}/api`
-
-#### Tags
-
-- Cloud Native
-- Containers
-- DevOps
-- Kubernetes
-
-#### Properties
-
-- [Documentation](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/index.html)
-- [C L I](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/latest/vmware-tanzu-kubernetes-grid/cli-reference.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### vRealize Operations API
-
-API for IT operations management and performance monitoring.
-
-- **Human URL:** [https://developer.vmware.com/apis/vrealize-operations/latest/](https://developer.vmware.com/apis/vrealize-operations/latest/)
-- **Base URL:** `https://{{vrops-host}}/suite-api/api`
-
-#### Tags
-
-- Analytics
-- Monitoring
-- Operations
-- Performance
-
-#### Properties
-
-- [Documentation](https://developer.vmware.com/docs/vrealize-operations/latest/)
-- [OpenAPI](https://developer.vmware.com/apis/vrealize-operations/latest/openapi/) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Workspace ONE API
-
-API for unified endpoint management and digital workspace platform.
-
-- **Human URL:** [https://developer.vmware.com/apis/workspace-one/](https://developer.vmware.com/apis/workspace-one/)
-- **Base URL:** `https://{{ws1-host}}/api`
-
-#### Tags
-
-- Endpoint Management
-- Enterprise Mobility
-- Identity
-- Mobile Device Management
-
-#### Properties
-
-- [Documentation](https://developer.vmware.com/docs/workspace-one/)
-- [API Reference](https://developer.vmware.com/apis/workspace-one/latest/reference/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Cloud Foundation API
-
-API for managing the full VMware Cloud Foundation stack including SDDC Manager and Cloud Builder for automated lifecycle management of private cloud infrastructure.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/](https://developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/)
-- **Base URL:** `https://{{sddc-manager}}/v1`
-
-#### Tags
-
-- Cloud Foundation
-- Hyperconverged Infrastructure
-- Lifecycle Management
-- SDDC
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/)
-- [Documentation](https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/administration-sdks-cli-and-tools/about-vmware-cloud-foundation-development/vcf-apis-and-scripts.html)
-- [SDK](https://github.com/vmware/vcf-sdk-java)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Horizon Server API
-
-API for managing VMware Horizon virtual desktop and application delivery platform including pools, farms, desktops, and sessions.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-horizon-server-api/latest/](https://developer.broadcom.com/xapis/vmware-horizon-server-api/latest/)
-- **Base URL:** `https://{{horizon-server}}/rest`
-
-#### Tags
-
-- Desktop Virtualization
-- Remote Access
-- VDI
-- Virtual Desktop
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-horizon-server-api/latest/)
-- [Documentation](https://techdocs.broadcom.com/us/en/vmware-cis/horizon.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### vSAN Management API
-
-API for managing VMware vSAN software-defined storage including cluster configuration, disk management, health monitoring, and performance analytics.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vsan-management-api/latest/](https://developer.broadcom.com/xapis/vsan-management-api/latest/)
-- **Base URL:** `https://{{vcenter}}/vsanHealth`
-
-#### Tags
-
-- Data Management
-- Hyper-Converged
-- Storage
-- vSAN
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vsan-management-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Aria Operations for Logs API
-
-REST API for VMware Aria Operations for Logs providing programmatic access to log data ingestion, querying, aggregation, and platform configuration.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vrealize-log-insight-api/latest/](https://developer.broadcom.com/xapis/vrealize-log-insight-api/latest/)
-- **Base URL:** `https://{{log-insight-host}}:9543/api/v2`
-
-#### Tags
-
-- Analytics
-- Log Management
-- Monitoring
-- Observability
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vrealize-log-insight-api/latest/)
-- [Documentation](https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-operations-for-logs/8-18/developer-resources-for-vmware-aria-operations-for-logs-8-18/the-vrealize-log-insight-rest-api.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Aria Operations for Networks API
-
-API for network visibility, analytics, and troubleshooting providing access to application discovery, microsegmentation planning, and network flow analysis.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-api/latest/](https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-api/latest/)
-- **Base URL:** `https://{{vrni-host}}/api/ni`
-
-#### Tags
-
-- Microsegmentation
-- Network Analytics
-- Network Monitoring
-- Troubleshooting
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Aria Suite Lifecycle API
-
-REST API for managing the lifecycle of VMware Aria suite products including deployment, upgrade, patching, and configuration management.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-aria-suite-lifecycle-rest-api/latest/](https://developer.broadcom.com/xapis/vmware-aria-suite-lifecycle-rest-api/latest/)
-- **Base URL:** `https://{{lcm-host}}/lcm/api`
-
-#### Tags
-
-- Automation
-- Configuration Management
-- Deployment
-- Lifecycle Management
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-aria-suite-lifecycle-rest-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Site Recovery Manager API
-
-REST API gateway for VMware Site Recovery Manager providing programmatic access to disaster recovery operations including protection groups, recovery plans, and replication management.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-site-recovery-manager-rest-api-gateway/latest/](https://developer.broadcom.com/xapis/vmware-site-recovery-manager-rest-api-gateway/latest/)
-- **Base URL:** `https://{{srm-host}}/api`
-
-#### Tags
-
-- Business Continuity
-- Disaster Recovery
-- Replication
-- Site Recovery
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-site-recovery-manager-rest-api-gateway/latest/)
-- [Documentation](https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-administration-8-8/using-the-site-recovery-manager-rest-api-gateway.html)
-- [SDK](https://developer.broadcom.com/sdks/site-recovery-manager-srm/latest)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Live Cyber Recovery API
-
-REST API for VMware Live Cyber Recovery providing access to cloud file systems, protected sites, VMs, protection groups, and recovery plans for ransomware and disaster recovery.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-live-cyber-recovery-api/latest/](https://developer.broadcom.com/xapis/vmware-live-cyber-recovery-api/latest/)
-- **Base URL:** `https://{{vcdr-orchestrator}}/api`
-
-#### Tags
-
-- Cloud Recovery
-- Cyber Recovery
-- Data Protection
-- Ransomware Protection
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-live-cyber-recovery-api/latest/)
-- [SDK](https://developer.broadcom.com/sdks/vmware-live-cyber-recovery-sdk/latest)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Live Site Recovery API
-
-API for VMware Live Site Recovery providing disaster recovery as a service capabilities with automated recovery plan execution and testing.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-live-site-recovery-v1-api/latest/](https://developer.broadcom.com/xapis/vmware-live-site-recovery-v1-api/latest/)
-- **Base URL:** `https://{{vcdr-host}}/api/vcdr/v1`
-
-#### Tags
-
-- Business Continuity
-- Disaster Recovery
-- DRaaS
-- Site Recovery
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-live-site-recovery-v1-api/latest/)
-- [Documentation](https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/using-the-site-recovery-manager-rest-api-gateway.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware vDefend API
-
-API for VMware vDefend lateral security platform providing network security segmentation, threat detection, network analysis, and malware prevention capabilities.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-vdefend/latest/](https://developer.broadcom.com/xapis/vmware-vdefend/latest/)
-- **Base URL:** `https://{{nsx-manager}}/api/v1`
-
-#### Tags
-
-- Firewall
-- Micro-Segmentation
-- Network Security
-- Threat Detection
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-vdefend/latest/)
-- [Documentation](https://techdocs.broadcom.com/us/en/vmware-security-load-balancing/vdefend.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VCF Operations API
-
-API for VMware Cloud Foundation operations management providing monitoring, analytics, and performance optimization for VCF deployments.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vcf-operations-api/latest/](https://developer.broadcom.com/xapis/vcf-operations-api/latest/)
-- **Base URL:** `https://{{vrops-host}}/suite-api/api`
-
-#### Tags
-
-- Analytics
-- Cloud Foundation
-- Monitoring
-- Operations Management
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vcf-operations-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware View API
-
-API providing comprehensive access to VMware Horizon View data structures for managing virtual desktop infrastructure including desktop pools, sessions, and entitlements.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/view-api/latest/](https://developer.broadcom.com/xapis/view-api/latest/)
-- **Base URL:** `https://{{horizon-server}}/view-vlsi/rest`
-
-#### Tags
-
-- Desktop Management
-- Horizon View
-- VDI
-- Virtual Desktop
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/view-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Cloud on AWS API Reference
-
-Comprehensive API reference for managing VMware Cloud on AWS infrastructure including SDDCs, organizations, subscriptions, and ESX host configurations.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-cloud-on-aws-api-reference/latest/](https://developer.broadcom.com/xapis/vmware-cloud-on-aws-api-reference/latest/)
-- **Base URL:** `https://vmc.vmware.com/vmc/api`
-
-#### Tags
-
-- AWS
-- Cloud Infrastructure
-- Hybrid Cloud
-- SDDC
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-cloud-on-aws-api-reference/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### NSX VMC Policy API
-
-API for managing logical networking in NSX for VMware Cloud on AWS customers including security policies, segments, and gateway configurations.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/](https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/)
-- **Base URL:** `https://{{nsx-manager}}/policy/api/v1`
-
-#### Tags
-
-- AWS
-- Network Virtualization
-- Security Policy
-- VMware Cloud
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/nsx-vmc-policy/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Cloud Disaster Recovery API
-
-REST API for VMware Cloud Disaster Recovery providing access to cloud file systems, protected sites, protected VMs, protection groups, and Recovery SDDCs.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-cloud-disaster-recovery-api-reference/latest/](https://developer.broadcom.com/xapis/vmware-cloud-disaster-recovery-api-reference/latest/)
-- **Base URL:** `https://{{vcdr-host}}/api`
-
-#### Tags
-
-- Business Continuity
-- Cloud Recovery
-- Data Protection
-- Disaster Recovery
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-cloud-disaster-recovery-api-reference/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Aria Automation Orchestrator API
-
-REST API for VMware Aria Automation Orchestrator enabling programmatic access to run and schedule workflows, retrieve workflow details and logs, browse inventories and plug-ins, and import and export packages.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vrealize-orchestrator-api/latest/](https://developer.broadcom.com/xapis/vrealize-orchestrator-api/latest/)
-- **Base URL:** `https://{{vro-host}}/vco/api`
-
-#### Tags
-
-- IT Automation
-- Orchestration
-- Plug-Ins
-- Workflow Automation
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vrealize-orchestrator-api/latest/)
-- [Documentation](https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-automation/all/developing-web-services-client-for-vco-all/using-the-orchestrator-rest-api.html)
-- [SDK](https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-automation/all/vro-plug-in-development-all.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Aria Operations for Networks SaaS API
-
-SaaS version of the VMware Aria Operations for Networks API providing cloud-hosted network visibility, analytics, and microsegmentation planning capabilities with token-based authentication.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-saas-api/latest/](https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-saas-api/latest/)
-- **Base URL:** `https://{{vrni-saas-host}}/api/ni`
-
-#### Tags
-
-- Microsegmentation
-- Network Analytics
-- Network Monitoring
-- SaaS
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-aria-operations-for-networks-saas-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VCF Operations for Networks API
-
-API for VCF Operations for Networks providing network visibility, analytics, and troubleshooting for VMware Cloud Foundation deployments.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vcf-operations-for-networks-api/latest/](https://developer.broadcom.com/xapis/vcf-operations-for-networks-api/latest/)
-- **Base URL:** `https://{{vrni-host}}/api/ni`
-
-#### Tags
-
-- Cloud Foundation
-- Network Analytics
-- Network Monitoring
-- Troubleshooting
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vcf-operations-for-networks-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Avi Load Balancer API
-
-RESTful API for VMware Avi Load Balancer providing programmatic access to application delivery services including virtual services, pools, service engines, analytics, and health monitoring.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-avi-load-balancer/latest/](https://developer.broadcom.com/xapis/vmware-avi-load-balancer/latest/)
-- **Base URL:** `https://{{avi-controller}}/api`
-
-#### Tags
-
-- Analytics
-- Application Delivery
-- Load Balancing
-- Traffic Management
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-avi-load-balancer/latest/)
-- [Documentation](https://techdocs.broadcom.com/us/en/vmware-security-load-balancing/avi-load-balancer.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Data Services Manager API
-
-API for VMware Data Services Manager providing on-demand provisioning and automated management of PostgreSQL, MySQL, and Microsoft SQL Server databases in vSphere environments.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-data-services-manager/latest/](https://developer.broadcom.com/xapis/vmware-data-services-manager/latest/)
-- **Base URL:** `https://{{dsm-host}}/api`
-
-#### Tags
-
-- Data Services
-- Database Management
-- MySQL
-- PostgreSQL
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-data-services-manager/latest/)
-- [Documentation](https://techdocs.broadcom.com/us/en/vmware-cis/dsm/data-services-manager/2-1/access-the-vmware-data-services-manager-api.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Data Services Manager Kubernetes API
-
-Kubernetes API for VMware Data Services Manager enabling self-service consumption of supported data services through Kubernetes custom resources.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-data-services-manager-kubernetes-api/latest/all-api-ref.html](https://developer.broadcom.com/xapis/vmware-data-services-manager-kubernetes-api/latest/all-api-ref.html)
-- **Base URL:** `https://{{k8s-api}}/apis`
-
-#### Tags
-
-- Data Services
-- Database Management
-- Kubernetes
-- Self-Service
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-data-services-manager-kubernetes-api/latest/all-api-ref.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### App Volumes API
-
-API for VMware App Volumes providing programmatic access to real-time application delivery and lifecycle management for virtual desktops and published applications.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/app-volumes-api/latest/](https://developer.broadcom.com/xapis/app-volumes-api/latest/)
-- **Base URL:** `https://{{app-volumes-manager}}/api`
-
-#### Tags
-
-- Application Delivery
-- Application Management
-- Desktop Virtualization
-- VDI
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/app-volumes-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware vSphere Kubernetes Service API
-
-API for VMware vSphere Kubernetes Service enabling management of Tanzu Kubernetes clusters on vSphere including cluster lifecycle, node pools, and infrastructure configuration.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-vsphere-kubernetes-service/latest/api-docs.html](https://developer.broadcom.com/xapis/vmware-vsphere-kubernetes-service/latest/api-docs.html)
-- **Base URL:** `https://{{vcenter}}/api`
-
-#### Tags
-
-- Container Management
-- Kubernetes
-- Tanzu
-- vSphere
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-vsphere-kubernetes-service/latest/api-docs.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### SDDC Manager API
-
-API for SDDC Manager providing programmatic access to VMware Cloud Foundation workload domain lifecycle management, host commissioning, and infrastructure configuration.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/sddc-manager-api/latest/](https://developer.broadcom.com/xapis/sddc-manager-api/latest/)
-- **Base URL:** `https://{{sddc-manager}}/v1`
-
-#### Tags
-
-- Cloud Foundation
-- Infrastructure
-- Lifecycle Management
-- SDDC
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/sddc-manager-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VCF Installer API
-
-API for VMware Cloud Foundation Installer providing automated infrastructure bringup and initial deployment of VCF components.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vcf-installer-api/latest/](https://developer.broadcom.com/xapis/vcf-installer-api/latest/)
-- **Base URL:** `https://{{cloud-builder}}/v1`
-
-#### Tags
-
-- Automation
-- Cloud Foundation
-- Deployment
-- Installation
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vcf-installer-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VCF Operations Orchestrator API
-
-REST API for VMware Cloud Foundation Operations Orchestrator providing workflow automation and orchestration capabilities for VCF infrastructure management.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-cloud-foundation-operations-orchestrator-api/latest/](https://developer.broadcom.com/xapis/vmware-cloud-foundation-operations-orchestrator-api/latest/)
-- **Base URL:** `https://{{vro-host}}/vco/api`
-
-#### Tags
-
-- Cloud Foundation
-- Operations
-- Orchestration
-- Workflow Automation
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-cloud-foundation-operations-orchestrator-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Cloud Director OpenAPI
-
-Modern RESTful API for VMware Cloud Director defined using OpenAPI standards providing cloud service delivery and multi-tenancy management capabilities.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-cloud-director-openapi/latest/](https://developer.broadcom.com/xapis/vmware-cloud-director-openapi/latest/)
-- **Base URL:** `https://{{vcd-host}}/cloudapi`
-
-#### Tags
-
-- Cloud Management
-- Multi-Tenancy
-- OpenAPI
-- Service Provider
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-cloud-director-openapi/latest/)
-- [Getting Started](https://techdocs.broadcom.com/us/en/vmware-cis/cloud-director/vmware-cloud-director/10-6/getting-started-with-vcloud-openapis-10-6.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Cloud Director API
-
-XML-based API for VMware Cloud Director providing comprehensive cloud service provider capabilities including organization, VDC, vApp, and catalog management.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-cloud-director-api/latest/](https://developer.broadcom.com/xapis/vmware-cloud-director-api/latest/)
-- **Base URL:** `https://{{vcd-host}}/api`
-
-#### Tags
-
-- Cloud Management
-- Multi-Tenancy
-- Service Provider
-- XML
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-cloud-director-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Identity Manager API
-
-API for VMware Identity Manager providing identity and access management capabilities including authentication, authorization, directory integration, and single sign-on.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-identity-manager-api/latest/](https://developer.broadcom.com/xapis/vmware-identity-manager-api/latest/)
-- **Base URL:** `https://{{idm-host}}/SAAS/jersey/manager/api`
-
-#### Tags
-
-- Access Management
-- Authentication
-- Identity Management
-- Single Sign-On
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-identity-manager-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Operations for Applications REST API
-
-REST API for Operations for Applications providing access to metrics, dashboards, alerts, events, and integrations for full-stack observability and monitoring.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/](https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/)
-- **Base URL:** `https://{{wavefront-host}}/api/v2`
-
-#### Tags
-
-- Dashboards
-- Metrics
-- Monitoring
-- Observability
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Data Management for VMware Tanzu REST API
-
-REST API for Data Management for VMware Tanzu providing database-as-a-service capabilities for provisioning and managing data services on Kubernetes.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/data-management-for-vmware-tanzu-rest-api/latest/](https://developer.broadcom.com/xapis/data-management-for-vmware-tanzu-rest-api/latest/)
-- **Base URL:** `https://{{tanzu-data-host}}/api`
-
-#### Tags
-
-- Data Management
-- Database
-- Kubernetes
-- Tanzu
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/data-management-for-vmware-tanzu-rest-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Cloud Foundation for VxRail API
-
-API for managing VMware Cloud Foundation deployments on Dell VxRail hyperconverged infrastructure including cluster expansion, lifecycle management, and VxRail-specific operations.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-cloud-foundation-for-vxrail-api/latest/](https://developer.broadcom.com/xapis/vmware-cloud-foundation-for-vxrail-api/latest/)
-- **Base URL:** `https://{{sddc-manager}}/v1`
-
-#### Tags
-
-- Cloud Foundation
-- Dell
-- Hyperconverged Infrastructure
-- VxRail
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-cloud-foundation-for-vxrail-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VCF Usage Meter API
-
-API for VMware Cloud Foundation Usage Meter providing metering and usage reporting capabilities for VMware product consumption tracking by service providers.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vcf-usage-meter-apis/latest/](https://developer.broadcom.com/xapis/vcf-usage-meter-apis/latest/)
-- **Base URL:** `https://{{usage-meter}}/api`
-
-#### Tags
-
-- Billing
-- Reporting
-- Service Provider
-- Usage Metering
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vcf-usage-meter-apis/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Virtual Storage Lifecycle Management API
-
-API for managing the lifecycle of virtual storage including first-class disks, storage policies, and virtual disk operations in vSphere environments.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/virtual-storage-lifecycle-management-api/latest/](https://developer.broadcom.com/xapis/virtual-storage-lifecycle-management-api/latest/)
-- **Base URL:** `https://{{vcenter}}/api`
-
-#### Tags
-
-- Lifecycle Management
-- Storage
-- Storage Policy
-- Virtual Disk
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/virtual-storage-lifecycle-management-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Private AI Service API
-
-API for VMware Private AI providing on-premises AI and machine learning infrastructure services for deploying and managing AI workloads within VMware environments.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-private-ai-service-api/latest/](https://developer.broadcom.com/xapis/vmware-private-ai-service-api/latest/)
-- **Base URL:** `https://{{pai-host}}/api`
-
-#### Tags
-
-- Artificial Intelligence
-- Infrastructure
-- Machine Learning
-- Private AI
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-private-ai-service-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware HCX API
-
-REST API for VMware HCX enabling workload mobility, network extension, and disaster recovery across data centers and clouds with support for migration automation and service mesh management.
-
-- **Human URL:** [https://techdocs.broadcom.com/us/en/vmware-cis/hcx/vmware-hcx/4-10.html](https://techdocs.broadcom.com/us/en/vmware-cis/hcx/vmware-hcx/4-10.html)
-- **Base URL:** `https://{{hcx-manager}}/hybridity/api`
-
-#### Tags
-
-- Disaster Recovery
-- Hybrid Cloud
-- Network Extension
-- Workload Migration
-
-#### Properties
-
-- [Documentation](https://techdocs.broadcom.com/us/en/vmware-cis/hcx/vmware-hcx/4-10.html)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VMware Cloud Provider Lifecycle Manager API
-
-API for managing the lifecycle of VMware cloud provider environments including deployment, upgrade, and configuration of VMware products for service providers.
-
-- **Human URL:** [https://developer.broadcom.com/xapis/vmware-cloud-provider-lifecycle-manager-api/latest/](https://developer.broadcom.com/xapis/vmware-cloud-provider-lifecycle-manager-api/latest/)
-- **Base URL:** `https://{{vclm-host}}/api`
-
-#### Tags
-
-- Cloud Provider
-- Deployment
-- Lifecycle Management
-- Service Provider
-
-#### Properties
-
-- [API Reference](https://developer.broadcom.com/xapis/vmware-cloud-provider-lifecycle-manager-api/latest/)
-- [Postman Collection](collections/vmware-vsphere-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vmware-vsphere-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/vmware)
-- [Portal](https://developer.broadcom.com/)
+**Areas:** Cloud Computing · Container Management · Hybrid Cloud · Infrastructure · Virtualization · VMware · Data Center
+
+## VMware on APIs.io
+
+Everything profiled for VMware is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/vmware/](https://apis.io/providers/vmware/)** — or go straight to one of the APIs or properties below.
+
+### APIs (59)
+
+- [vSphere Web Services API](https://apis.io/apis/vmware/vsphere-web-services-api/) — Comprehensive SOAP-based API providing access to all vSphere management functionality including virtual machines, hosts, clusters, networking, and storage.
+- [Virtual Infrastructure JSON API](https://apis.io/apis/vmware/virtual-infrastructure-json-api/) — HTTP and JSON based wire protocol as an alternative to SOAP and XML for vCenter Server 8.0 Update 1 and later, documented via OpenAPI 3.0 specification.
+- [NSX-T Global Manager API](https://apis.io/apis/vmware/nsx-t-global-manager-api/) — API for managing NSX Federation with centralized configuration of multiple NSX deployments across sites.
+- [NSX Intelligence API](https://apis.io/apis/vmware/nsx-intelligence-api/) — API for NSX Intelligence and Application Platform providing network traffic data collection, ingestion, and correlation capabilities.
+- [NSX Autonomous Edge API](https://apis.io/apis/vmware/nsx-autonomous-edge-api/) — REST API for NSX Autonomous Edge providing network virtualization capabilities for edge deployments using a resource-oriented architecture with JSON encoding.
+- [Tanzu Kubernetes Grid API](https://apis.io/apis/vmware/tanzu-kubernetes-grid-api/) — API for managing enterprise-ready Kubernetes clusters.
+- [Workspace ONE API](https://apis.io/apis/vmware/workspace-one-api/) — API for unified endpoint management and digital workspace platform.
+- [VMware Cloud Foundation API](https://apis.io/apis/vmware/vmware-cloud-foundation-api/) — API for managing the full VMware Cloud Foundation stack including SDDC Manager and Cloud Builder for automated lifecycle management of private cloud…
+- [VMware Horizon Server API](https://apis.io/apis/vmware/vmware-horizon-server-api/) — API for managing VMware Horizon virtual desktop and application delivery platform including pools, farms, desktops, and sessions.
+- [vSAN Management API](https://apis.io/apis/vmware/vsan-management-api/) — API for managing VMware vSAN software-defined storage including cluster configuration, disk management, health monitoring, and performance analytics.
+- [VMware Aria Operations for Logs API](https://apis.io/apis/vmware/vmware-aria-operations-for-logs-api/) — REST API for VMware Aria Operations for Logs providing programmatic access to log data ingestion, querying, aggregation, and platform configuration.
+- [VMware Aria Operations for Networks API](https://apis.io/apis/vmware/vmware-aria-operations-for-networks-api/) — API for network visibility, analytics, and troubleshooting providing access to application discovery, microsegmentation planning, and network flow analysis.
+- [VMware Aria Suite Lifecycle API](https://apis.io/apis/vmware/vmware-aria-suite-lifecycle-api/) — REST API for managing the lifecycle of VMware Aria suite products including deployment, upgrade, patching, and configuration management.
+- [VMware Site Recovery Manager API](https://apis.io/apis/vmware/vmware-site-recovery-manager-api/) — REST API gateway for VMware Site Recovery Manager providing programmatic access to disaster recovery operations including protection groups, recovery plans,…
+- [VMware Live Cyber Recovery API](https://apis.io/apis/vmware/vmware-live-cyber-recovery-api/) — REST API for VMware Live Cyber Recovery providing access to cloud file systems, protected sites, VMs, protection groups, and recovery plans for ransomware…
+- [VMware Live Site Recovery API](https://apis.io/apis/vmware/vmware-live-site-recovery-api/) — API for VMware Live Site Recovery providing disaster recovery as a service capabilities with automated recovery plan execution and testing.
+- [VMware vDefend API](https://apis.io/apis/vmware/vmware-vdefend-api/) — API for VMware vDefend lateral security platform providing network security segmentation, threat detection, network analysis, and malware prevention…
+- [VCF Operations API](https://apis.io/apis/vmware/vcf-operations-api/) — API for VMware Cloud Foundation operations management providing monitoring, analytics, and performance optimization for VCF deployments.
+- [VMware View API](https://apis.io/apis/vmware/vmware-view-api/) — API providing comprehensive access to VMware Horizon View data structures for managing virtual desktop infrastructure including desktop pools, sessions, and…
+- [VMware Cloud on AWS API Reference](https://apis.io/apis/vmware/vmware-cloud-on-aws-api-reference/) — Comprehensive API reference for managing VMware Cloud on AWS infrastructure including SDDCs, organizations, subscriptions, and ESX host configurations.
+- [NSX VMC Policy API](https://apis.io/apis/vmware/nsx-vmc-policy-api/) — API for managing logical networking in NSX for VMware Cloud on AWS customers including security policies, segments, and gateway configurations.
+- [VMware Cloud Disaster Recovery API](https://apis.io/apis/vmware/vmware-cloud-disaster-recovery-api/) — REST API for VMware Cloud Disaster Recovery providing access to cloud file systems, protected sites, protected VMs, protection groups, and Recovery SDDCs.
+- [VMware Aria Automation Orchestrator API](https://apis.io/apis/vmware/vmware-aria-automation-orchestrator-api/) — REST API for VMware Aria Automation Orchestrator enabling programmatic access to run and schedule workflows, retrieve workflow details and logs, browse…
+- [VMware Aria Operations for Networks SaaS API](https://apis.io/apis/vmware/vmware-aria-operations-for-networks-saas-api/) — SaaS version of the VMware Aria Operations for Networks API providing cloud-hosted network visibility, analytics, and microsegmentation planning…
+- [VCF Operations for Networks API](https://apis.io/apis/vmware/vcf-operations-for-networks-api/) — API for VCF Operations for Networks providing network visibility, analytics, and troubleshooting for VMware Cloud Foundation deployments.
+- [VMware Avi Load Balancer API](https://apis.io/apis/vmware/vmware-avi-load-balancer-api/) — RESTful API for VMware Avi Load Balancer providing programmatic access to application delivery services including virtual services, pools, service engines,…
+- [VMware Data Services Manager API](https://apis.io/apis/vmware/vmware-data-services-manager-api/) — API for VMware Data Services Manager providing on-demand provisioning and automated management of PostgreSQL, MySQL, and Microsoft SQL Server databases in…
+- [VMware Data Services Manager Kubernetes API](https://apis.io/apis/vmware/vmware-data-services-manager-kubernetes-api/) — Kubernetes API for VMware Data Services Manager enabling self-service consumption of supported data services through Kubernetes custom resources.
+- [App Volumes API](https://apis.io/apis/vmware/app-volumes-api/) — API for VMware App Volumes providing programmatic access to real-time application delivery and lifecycle management for virtual desktops and published…
+- [VMware vSphere Kubernetes Service API](https://apis.io/apis/vmware/vmware-vsphere-kubernetes-service-api/) — API for VMware vSphere Kubernetes Service enabling management of Tanzu Kubernetes clusters on vSphere including cluster lifecycle, node pools, and…
+- [SDDC Manager API](https://apis.io/apis/vmware/sddc-manager-api/) — API for SDDC Manager providing programmatic access to VMware Cloud Foundation workload domain lifecycle management, host commissioning, and infrastructure…
+- [VCF Installer API](https://apis.io/apis/vmware/vcf-installer-api/) — API for VMware Cloud Foundation Installer providing automated infrastructure bringup and initial deployment of VCF components.
+- [VCF Operations Orchestrator API](https://apis.io/apis/vmware/vcf-operations-orchestrator-api/) — REST API for VMware Cloud Foundation Operations Orchestrator providing workflow automation and orchestration capabilities for VCF infrastructure management.
+- [VMware Cloud Director OpenAPI](https://apis.io/apis/vmware/vmware-cloud-director-openapi/) — Modern RESTful API for VMware Cloud Director defined using OpenAPI standards providing cloud service delivery and multi-tenancy management capabilities.
+- [VMware Cloud Director API](https://apis.io/apis/vmware/vmware-cloud-director-api/) — XML-based API for VMware Cloud Director providing comprehensive cloud service provider capabilities including organization, VDC, vApp, and catalog management.
+- [VMware Identity Manager API](https://apis.io/apis/vmware/vmware-identity-manager-api/) — API for VMware Identity Manager providing identity and access management capabilities including authentication, authorization, directory integration, and…
+- [Operations for Applications REST API](https://apis.io/apis/vmware/operations-for-applications-rest-api/) — REST API for Operations for Applications providing access to metrics, dashboards, alerts, events, and integrations for full-stack observability and monitoring.
+- [Data Management for VMware Tanzu REST API](https://apis.io/apis/vmware/data-management-for-vmware-tanzu-rest-api/) — REST API for Data Management for VMware Tanzu providing database-as-a-service capabilities for provisioning and managing data services on Kubernetes.
+- [VMware Cloud Foundation for VxRail API](https://apis.io/apis/vmware/vmware-cloud-foundation-for-vxrail-api/) — API for managing VMware Cloud Foundation deployments on Dell VxRail hyperconverged infrastructure including cluster expansion, lifecycle management, and…
+- [VCF Usage Meter API](https://apis.io/apis/vmware/vcf-usage-meter-api/) — API for VMware Cloud Foundation Usage Meter providing metering and usage reporting capabilities for VMware product consumption tracking by service providers.
+- [Virtual Storage Lifecycle Management API](https://apis.io/apis/vmware/virtual-storage-lifecycle-management-api/) — API for managing the lifecycle of virtual storage including first-class disks, storage policies, and virtual disk operations in vSphere environments.
+- [VMware Private AI Service API](https://apis.io/apis/vmware/vmware-private-ai-service-api/) — API for VMware Private AI providing on-premises AI and machine learning infrastructure services for deploying and managing AI workloads within VMware…
+- [VMware HCX API](https://apis.io/apis/vmware/vmware-hcx-api/) — REST API for VMware HCX enabling workload mobility, network extension, and disaster recovery across data centers and clouds with support for migration…
+- [VMware Cloud Provider Lifecycle Manager API](https://apis.io/apis/vmware/vmware-cloud-provider-lifecycle-manager-api/) — API for managing the lifecycle of VMware cloud provider environments including deployment, upgrade, and configuration of VMware products for service providers.
+- [VMware Clusters API](https://apis.io/apis/vmware/vmware-clusters-api/) — Cluster management for compute resource grouping, DRS, and HA configuration
+- [VMware Content Library API](https://apis.io/apis/vmware/vmware-content-library-api/) — Content library management for templates, ISOs, and OVF packages shared across vCenter instances
+- [VMware Datastores API](https://apis.io/apis/vmware/vmware-datastores-api/) — Datastore management including browsing, capacity monitoring, and storage configuration
+- [VMware Folders API](https://apis.io/apis/vmware/vmware-folders-api/) — Inventory folder management for organizing vSphere objects
+- [VMware Hosts API](https://apis.io/apis/vmware/vmware-hosts-api/) — ESXi host management including connection state, maintenance mode, and host configuration
+- [VMware Networks API](https://apis.io/apis/vmware/vmware-networks-api/) — Virtual network management including standard and distributed port groups and network connectivity
+- [VMware Resource Pools API](https://apis.io/apis/vmware/vmware-resource-pools-api/) — Resource pool management for allocating compute resources
+- [VMware Session API](https://apis.io/apis/vmware/vmware-session-api/) — Authentication session management for the vSphere REST API
+- [VMware Storage Policies API](https://apis.io/apis/vmware/vmware-storage-policies-api/) — VM storage policy management for defining storage requirements and compliance
+- [VMware Tagging API](https://apis.io/apis/vmware/vmware-tagging-api/) — Tag and category management for organizing and classifying vSphere inventory objects
+- [VMware VM Guest API](https://apis.io/apis/vmware/vmware-vm-guest-api/) — Guest operating system operations including identity, networking, local filesystem, and process management via VMware Tools
+- [VMware VM Hardware API](https://apis.io/apis/vmware/vmware-vm-hardware-api/) — Virtual machine hardware configuration including CPU, memory, disks, network adapters, CD-ROMs, and other virtual devices
+- [VMware VM Power API](https://apis.io/apis/vmware/vmware-vm-power-api/) — Virtual machine power state operations including power on, power off, suspend, reset, and guest shutdown
+- [VMware V Ms API](https://apis.io/apis/vmware/vmware-vms-api/) — Virtual machine lifecycle management including creation, power operations, cloning, migration, and configuration
+- [VMware Data Centers API](https://apis.io/apis/vmware/vmware-data-centers-api/) — Datacenter management for organizing vSphere inventory
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Vmware Agentic Access](https://apis.io/agentic-access/vmware/vmware-agentic-access/)
+
+#### JSON Schema (75)
+
+The data models the API reads and writes.
+
+- [ClusterInfo](https://apis.io/schemas/vmware/vmware-clusterinfo/)
+- [ClusterSummary](https://apis.io/schemas/vmware/vmware-clustersummary/)
+- [CpuInfo](https://apis.io/schemas/vmware/vmware-cpuinfo/)
+- [CpuUpdateSpec](https://apis.io/schemas/vmware/vmware-cpuupdatespec/)
+- [DatacenterCreateSpec](https://apis.io/schemas/vmware/vmware-datacentercreatespec/)
+- [DatacenterInfo](https://apis.io/schemas/vmware/vmware-datacenterinfo/)
+- [DatacenterSummary](https://apis.io/schemas/vmware/vmware-datacentersummary/)
+- [DatastoreInfo](https://apis.io/schemas/vmware/vmware-datastoreinfo/)
+- [DatastoreSummary](https://apis.io/schemas/vmware/vmware-datastoresummary/)
+- [DiskCreateSpec](https://apis.io/schemas/vmware/vmware-diskcreatespec/)
+- [DiskInfo](https://apis.io/schemas/vmware/vmware-diskinfo/)
+- [DiskSummary](https://apis.io/schemas/vmware/vmware-disksummary/)
+- [EthernetCreateSpec](https://apis.io/schemas/vmware/vmware-ethernetcreatespec/)
+- [EthernetInfo](https://apis.io/schemas/vmware/vmware-ethernetinfo/)
+- [EthernetSummary](https://apis.io/schemas/vmware/vmware-ethernetsummary/)
+- [FolderSummary](https://apis.io/schemas/vmware/vmware-foldersummary/)
+- [GuestIdentityInfo](https://apis.io/schemas/vmware/vmware-guestidentityinfo/)
+- [GuestNetworkingInfo](https://apis.io/schemas/vmware/vmware-guestnetworkinginfo/)
+- [HardwareInfo](https://apis.io/schemas/vmware/vmware-hardwareinfo/)
+- [HardwareUpdateSpec](https://apis.io/schemas/vmware/vmware-hardwareupdatespec/)
+- [HostInfo](https://apis.io/schemas/vmware/vmware-hostinfo/)
+- [HostSummary](https://apis.io/schemas/vmware/vmware-hostsummary/)
+- [LibraryCreateSpec](https://apis.io/schemas/vmware/vmware-librarycreatespec/)
+- [LibraryInfo](https://apis.io/schemas/vmware/vmware-libraryinfo/)
+- [MemoryInfo](https://apis.io/schemas/vmware/vmware-memoryinfo/)
+- …and 50 more published on APIs.io
+
+#### JSON Structure (38)
+
+Data models expressed in JSON Structure.
+
+- [Vmware Structure](https://apis.io/json-structure/vmware/vmware-structure/)
+- [Vmware Vsphere Cluster Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-cluster-info-structure/)
+- [Vmware Vsphere Cluster Summary Structure](https://apis.io/json-structure/vmware/vmware-vsphere-cluster-summary-structure/)
+- [Vmware Vsphere Cpu Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-cpu-info-structure/)
+- [Vmware Vsphere Cpu Update Spec Structure](https://apis.io/json-structure/vmware/vmware-vsphere-cpu-update-spec-structure/)
+- [Vmware Vsphere Datacenter Create Spec Structure](https://apis.io/json-structure/vmware/vmware-vsphere-datacenter-create-spec-structure/)
+- [Vmware Vsphere Datacenter Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-datacenter-info-structure/)
+- [Vmware Vsphere Datacenter Summary Structure](https://apis.io/json-structure/vmware/vmware-vsphere-datacenter-summary-structure/)
+- [Vmware Vsphere Datastore Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-datastore-info-structure/)
+- [Vmware Vsphere Datastore Summary Structure](https://apis.io/json-structure/vmware/vmware-vsphere-datastore-summary-structure/)
+- [Vmware Vsphere Disk Create Spec Structure](https://apis.io/json-structure/vmware/vmware-vsphere-disk-create-spec-structure/)
+- [Vmware Vsphere Disk Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-disk-info-structure/)
+- [Vmware Vsphere Disk Summary Structure](https://apis.io/json-structure/vmware/vmware-vsphere-disk-summary-structure/)
+- [Vmware Vsphere Ethernet Create Spec Structure](https://apis.io/json-structure/vmware/vmware-vsphere-ethernet-create-spec-structure/)
+- [Vmware Vsphere Ethernet Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-ethernet-info-structure/)
+- [Vmware Vsphere Ethernet Summary Structure](https://apis.io/json-structure/vmware/vmware-vsphere-ethernet-summary-structure/)
+- [Vmware Vsphere Folder Summary Structure](https://apis.io/json-structure/vmware/vmware-vsphere-folder-summary-structure/)
+- [Vmware Vsphere Guest Identity Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-guest-identity-info-structure/)
+- [Vmware Vsphere Guest Networking Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-guest-networking-info-structure/)
+- [Vmware Vsphere Hardware Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-hardware-info-structure/)
+- [Vmware Vsphere Hardware Update Spec Structure](https://apis.io/json-structure/vmware/vmware-vsphere-hardware-update-spec-structure/)
+- [Vmware Vsphere Host Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-host-info-structure/)
+- [Vmware Vsphere Host Summary Structure](https://apis.io/json-structure/vmware/vmware-vsphere-host-summary-structure/)
+- [Vmware Vsphere Library Create Spec Structure](https://apis.io/json-structure/vmware/vmware-vsphere-library-create-spec-structure/)
+- [Vmware Vsphere Library Info Structure](https://apis.io/json-structure/vmware/vmware-vsphere-library-info-structure/)
+- …and 13 more published on APIs.io
+
+#### JSON-LD (2)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Vmware Context](https://apis.io/jsonld/vmware/vmware-context/)
+- [Vmware Vsphere Context](https://apis.io/jsonld/vmware/vmware-vsphere-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [VMware Domain Vocabulary](https://apis.io/vocabularies/vmware/vmware-vocabulary/)
+
+#### Examples (76)
+
+Example requests and responses.
+
+- [Vmware Attachtag Example](https://apis.io/examples/vmware/vmware-attachtag-example/)
+- [Vmware Createcontentlibrary Example](https://apis.io/examples/vmware/vmware-createcontentlibrary-example/)
+- [Vmware Createdatacenter Example](https://apis.io/examples/vmware/vmware-createdatacenter-example/)
+- [Vmware Createsession Example](https://apis.io/examples/vmware/vmware-createsession-example/)
+- [Vmware Createtag Example](https://apis.io/examples/vmware/vmware-createtag-example/)
+- [Vmware Createtagcategory Example](https://apis.io/examples/vmware/vmware-createtagcategory-example/)
+- [Vmware Createvm Example](https://apis.io/examples/vmware/vmware-createvm-example/)
+- [Vmware Createvmdisk Example](https://apis.io/examples/vmware/vmware-createvmdisk-example/)
+- [Vmware Createvmethernet Example](https://apis.io/examples/vmware/vmware-createvmethernet-example/)
+- [Vmware Getcluster Example](https://apis.io/examples/vmware/vmware-getcluster-example/)
+- [Vmware Getcontentlibrary Example](https://apis.io/examples/vmware/vmware-getcontentlibrary-example/)
+- [Vmware Getdatacenter Example](https://apis.io/examples/vmware/vmware-getdatacenter-example/)
+- [Vmware Getdatastore Example](https://apis.io/examples/vmware/vmware-getdatastore-example/)
+- [Vmware Gethost Example](https://apis.io/examples/vmware/vmware-gethost-example/)
+- [Vmware Getsessioninfo Example](https://apis.io/examples/vmware/vmware-getsessioninfo-example/)
+- [Vmware Getvm Example](https://apis.io/examples/vmware/vmware-getvm-example/)
+- [Vmware Getvmcpu Example](https://apis.io/examples/vmware/vmware-getvmcpu-example/)
+- [Vmware Getvmguestidentity Example](https://apis.io/examples/vmware/vmware-getvmguestidentity-example/)
+- [Vmware Getvmguestnetworking Example](https://apis.io/examples/vmware/vmware-getvmguestnetworking-example/)
+- [Vmware Getvmhardware Example](https://apis.io/examples/vmware/vmware-getvmhardware-example/)
+- [Vmware Getvmmemory Example](https://apis.io/examples/vmware/vmware-getvmmemory-example/)
+- [Vmware Getvmpowerstate Example](https://apis.io/examples/vmware/vmware-getvmpowerstate-example/)
+- [Vmware Listclusters Example](https://apis.io/examples/vmware/vmware-listclusters-example/)
+- [Vmware Listcontentlibraries Example](https://apis.io/examples/vmware/vmware-listcontentlibraries-example/)
+- [Vmware Listdatacenters Example](https://apis.io/examples/vmware/vmware-listdatacenters-example/)
+- …and 51 more published on APIs.io
+
+#### Collections (31)
+
+Postman and Open Collection request collections.
+
+- [VMware vSphere Automation REST Clusters API](https://apis.io/collections/vmware/open-vmware-clusters-api/)
+- [VMware vSphere Automation REST Clusters Content Library API](https://apis.io/collections/vmware/open-vmware-content-library-api/)
+- [VMware vSphere Automation REST Clusters Datacenters API](https://apis.io/collections/vmware/open-vmware-datacenters-api/)
+- [VMware vSphere Automation REST Clusters Datastores API](https://apis.io/collections/vmware/open-vmware-datastores-api/)
+- [VMware vSphere Automation REST Clusters Folders API](https://apis.io/collections/vmware/open-vmware-folders-api/)
+- [VMware vSphere Automation REST Clusters Hosts API](https://apis.io/collections/vmware/open-vmware-hosts-api/)
+- [VMware vSphere Automation REST Clusters Networks API](https://apis.io/collections/vmware/open-vmware-networks-api/)
+- [VMware vSphere Automation REST Clusters Resource Pools API](https://apis.io/collections/vmware/open-vmware-resource-pools-api/)
+- [VMware vSphere Automation REST Clusters Session API](https://apis.io/collections/vmware/open-vmware-session-api/)
+- [VMware vSphere Automation REST Clusters Storage Policies API](https://apis.io/collections/vmware/open-vmware-storage-policies-api/)
+- [VMware vSphere Automation REST Clusters Tagging API](https://apis.io/collections/vmware/open-vmware-tagging-api/)
+- [VMware vSphere Automation REST Clusters VM Guest API](https://apis.io/collections/vmware/open-vmware-vm-guest-api/)
+- [VMware vSphere Automation REST Clusters VM Hardware API](https://apis.io/collections/vmware/open-vmware-vm-hardware-api/)
+- [VMware vSphere Automation REST Clusters VM Power API](https://apis.io/collections/vmware/open-vmware-vm-power-api/)
+- [VMware vSphere Automation REST Clusters VMs API](https://apis.io/collections/vmware/open-vmware-vms-api/)
+- [VMware vSphere Automation REST API](https://apis.io/collections/vmware/open-vmware-vsphere-api/)
+- [VMware vSphere Automation REST Clusters API](https://apis.io/collections/vmware/postman-vmware-clusters-api/)
+- [VMware vSphere Automation REST Clusters Content Library API](https://apis.io/collections/vmware/postman-vmware-content-library-api/)
+- [VMware vSphere Automation REST Clusters Datacenters API](https://apis.io/collections/vmware/postman-vmware-datacenters-api/)
+- [VMware vSphere Automation REST Clusters Datastores API](https://apis.io/collections/vmware/postman-vmware-datastores-api/)
+- [VMware vSphere Automation REST Clusters Folders API](https://apis.io/collections/vmware/postman-vmware-folders-api/)
+- [VMware vSphere Automation REST Clusters Hosts API](https://apis.io/collections/vmware/postman-vmware-hosts-api/)
+- [VMware vSphere Automation REST Clusters Networks API](https://apis.io/collections/vmware/postman-vmware-networks-api/)
+- [VMware vSphere Automation REST Clusters Resource Pools API](https://apis.io/collections/vmware/postman-vmware-resource-pools-api/)
+- [VMware vSphere Automation REST Clusters Session API](https://apis.io/collections/vmware/postman-vmware-session-api/)
+- …and 6 more published on APIs.io
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [VMware — jsonschema rules](https://apis.io/rules/vmware/vmware-jsonschema-spectral-rules/)
+- [VMware API Rules](https://apis.io/rules/vmware/vmware-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Vmware Authentication](https://apis.io/security/vmware/vmware-authentication/)
+- [Vmware Domain Security](https://apis.io/security/vmware/vmware-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Vmware Plans Pricing](https://apis.io/plans/vmware/vmware-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Vmware Rate Limits](https://apis.io/rate-limits/vmware/vmware-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Vmware Finops](https://apis.io/finops/vmware/vmware-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.broadcom.com/)
 - [Documentation](https://techdocs.broadcom.com/us/en/vmware-cis.html)
-- [SDK](https://developer.broadcom.com/vmware-sdk-api)
-- [Code Examples](https://developer.broadcom.com/codesample)
-- [C L I](https://developer.broadcom.com/powercli/latest/)
-- [Blog](https://blogs.vmware.com/code/)
-- [Support](https://www.broadcom.com/support/vmware-services)
-- [GitHub Organization](https://github.com/vmware)
-- [GitHub Repository](https://github.com/vmware-samples)
-- [Login](https://developer.broadcom.com/)
-- [Privacy Policy](https://www.broadcom.com/company/legal/privacy/policy)
-- [Terms of Service](https://www.broadcom.com/company/legal/terms-of-use)
-- [Status Page](https://status.vmware-services.io/)
 - [Pricing](https://www.broadcom.com/products/software/vmware)
-- [JSON-LD](json-ld/vmware-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/vmware-virtual-machine-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Spectral Rules](rules/vmware-spectral-rules.yml)
-- [Vocabulary](vocabulary/vmware-vocabulary.yaml)
-- [Features](https://www.vmware.com/products.html)
-- [Use Cases](https://www.vmware.com/solutions.html)
-- [Integrations](https://www.vmware.com/partners.html)
+- [Support](https://www.broadcom.com/support/vmware-services)
+- [Blog](https://blogs.vmware.com/code/)
+- [Terms of service](https://www.broadcom.com/company/legal/terms-of-use)
+- [Privacy policy](https://www.broadcom.com/company/legal/privacy/policy)
+- [GitHub](https://github.com/vmware)
+- [Status](https://status.vmware-services.io/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 51.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 62.6 |
+| Contract governance | 27.3 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 75.0 |
+| Access clarity | 39.5 |
+
+**Agent readiness 23.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/vmware/](https://apis.io/providers/vmware/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for VMware: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/vmware/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
